@@ -1,692 +1,1802 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-lang="zh">
 <head>
-    <style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nien-Tsu Li — EDA APR Engineer & AI Researcher</title>
+  <style>
+    :root {
+      --navy: #1e3a5f;
+      --navy-light: #2d5282;
+      --blue: #2563eb;
+      --blue-light: #3b82f6;
+      --slate: #475569;
+      --slate-light: #64748b;
+      --bg: #ffffff;
+      --bg2: #f8fafc;
+      --bg3: #f1f5f9;
+      --border: #e2e8f0;
+      --border2: #cbd5e1;
+      --text: #0f172a;
+      --text2: #334155;
+      --text3: #64748b;
+      --green: #059669;
+      --amber: #d97706;
+      --red: #dc2626;
+    }
 
-#box{
-            width:310px;
-            padding:20px;
-            
-            display:inline-block;
-            vertical-align:top;
-            height:400px;
-            
-        }
-        * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-body {
-  padding: 50px;
-  justify-content: center;
-  background-color: #f8f8ff;
-  font-size: 14px;
-  line-height: 20px;
-  color: #636366;
-  font-family: 'Oxygen', sans-serif;
-}
-ul {
-  padding: 0;
-  list-style: none;
-}
-a {
-  text-decoration: none;
-  color: #3b4144;
-}
-h1,h2,h3,h4,h5,h6 {
-  margin: 0;
-}
-h1 {
-  line-height: 60px;
-}
-h2 {
-  font-size: 22px;
-  font-family: 'Open Sans', sans-serif;
-}
-h3 {
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-}
-h4 {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-h5 {
-  font-size: 13px;
-  line-height: 25px;
-}
-p {
-  font-size: 13px;
-  line-height: 23px;
-}
-.resume {
-  margin: 0 auto;
-  max-width: 850px;
-  min-width: 700px;
-  border: solid #fff 7px;
-  padding: 25px;
-  overflow: hidden;
-}
-.decoration {
-  width: 300px;
-  height: 100px;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-  border-radius: 70px;
-  position: absolute;
-  transform: rotate(-30deg);
-}
-.decoration:nth-of-type(1) {
-  top: -95px;
-  left: 74%;
-}
-.decoration:nth-of-type(2) {
-  top: 40px;
-  left: 71%;
-  width: 400px;
-}
-.top,.left,.right,.footer {
-  padding: 15px;
-}
-.content {
-  display: flex;
-}
-.left {
-  flex: 5;
-  padding-right: 30px;
-  padding-left: 30px;
-}
-.right {
-  flex: 8;
-  padding-left: 40px;
-  border-left: 3px solid #fff;
-}
-.top {
-  display: flex;
-  position:relative;
-  margin-bottom: 20px;
-}
-.footer {
-  margin-top: 30px;
-  padding-left: 40px;
-}
-.myPhoto,.nameCircle {
-  width: 120px;
-  height: 120px;
-  background-color: #fff;
-  border-radius: 50%;
-  margin-left: 10px;
-  background-image: url("https://i.ibb.co/NC7cVPQ/single.jpg");
-  background-size: 120px 120px;
-  background-position: center;
-}
-.nameCircle {
-  position: absolute;
-  left: 35px;
-  z-index: -1;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-  border: none;
-}
-.myName {
-  padding-left: 40px;
-  padding-top: 10px;
-}
-.circle {
-  width: 90px;
-  height: 90px;
-  background-color: #fff;
-  border-radius: 50%;
-  margin: 0 auto;
-  margin-bottom: 10px;
-  border: 1px solid #3b4144;
-  background-size: 90px 90px;
-  background-position: center;
-}
-.circle-image1 {
-  background-image: url("https://i.ibb.co/Gn2tv3x/machine-learning-icon-outline-style-thin-line-creative-logo-graphic-design-more-163107940.jpg")
-}
-.circle-image2 {
-  background-image: url("https://i.ibb.co/nmm9G9M/20152064-Ia-QZZQee-CQ.jpg")
-}
-.circle-image3 {
-  background-image: url("https://i.ibb.co/jrsgJm4/256-2566010-pl-sql-logo-png.jpg")
-}
-.circle-image4 {
-  background-image: url("https://i.ibb.co/VqDmcx4/back-end-icon-simple-element-from-website-development-collection-filled-back-end-icon-for-templates.jpg")
-}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
-.buttons {
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-.btn {
-  padding: 5px 20px;
-  background-color: #fbfbff;
-  margin-right: 10px;
-  border: 1px solid #636366;
-  font-family: 'Open Sans', sans-serif;
-}
-.btn:hover {
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-  border: 1px solid #ddd;
-  color: #fff;
-}
-.listPassion {
-  display: flex;
-  flex-wrap: wrap;
-}
-.listPassion > li {
-  width: 50%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  justify-content: center;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-.listSkill {
-  margin-bottom: 40px;
-}
-.listSkill > ul{
-  display: flex;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-.listSkill >li {
-  padding-left: 10px;
-}
-.skillLevel {
-  width: 65px;
-  height: 55px;
-  border: 3px solid #dfdfff;
-/*  border-radius: 50%;*/  
-  text-align: center;
-  position: relative;
-  margin-left: 10px;
-  padding-top: 13px;
-  z-index: -2;
-}
-.level1,.level2 {
-  position: absolute;
-  background-color: #F8F8FF;
-  z-index: -1;
-}
-.level1 {
-  width: 35px;
-  height: 30px;
-  left: -3px;
-  top: 22px;
-}
-.level2 {
-  width: 65px;
-  left: -3px;
-  top: -3px;
-  height: 30px;
-}
-.listAward > li {
-  margin-top: 10px;
-  padding-left: 10px;
-  font-family: 'Open Sans', sans-serif;
-}
-.footer {
-  position: relative;
-}
-.footerCircle {
-  width: 140px;
-  height: 140px;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-  position: absolute;
-  border-radius: 50%;
-  top: 30px;
-  left: -100px;
-  z-index: -1;
-} 
-.time {
-  padding-left: 30px;
-  width: 100%;
-  height: 60px;
-  margin-bottom: 27px;
-  position: relative;
-}
-.decorationLine {
-  position: absolute;
-  height: 6px;
-  margin-top: 20px;
-  line-height: 35px;
-  font-family: 'Open Sans', sans-serif;
-}
-.decorationCircle {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #82d5ff;
-}
-.decorationLine:nth-of-type(1) {
-  width: 35%;
-  top: -20px;
-  left: 20px;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-} 
-.decorationCircle:nth-of-type(2) {
-  top: 0px;
-  left: 40%;
-}
-.decorationLine:nth-of-type(3) {
-  width: 50%;
-  left: 36%;
-  top: 0px;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-}
-.decorationCircle:nth-of-type(4) {
-  top: 20px;
-  left: 89%;
-}
-.decorationLine:nth-of-type(5) {
-  width: 25%;
-  left: 69%;
-  top: 20px;
-  background: linear-gradient(135deg, #ffb2e4, #82d5ff);
-} 
-.decorationCircle:nth-of-type(6) {
-  top: 40px;
-  left: 97%;
-}
-.listExperience {
-  display: flex;
-  /*padding-left: 30px;*/
-}
-.listExperience > li {
-  padding-left: 20px;
-  flex: 3;
-}
-.listExperience li ul {
-  font-size: 13px;
-  line-height: 20px;
-  margin-top: 10px;
-  padding-left: 15px;
-  border-left: 3px solid #dfdfff;
-/*   background-color: pink; */
-}
-.listExperience > li > ul > li {
-  margin-top: 13px;
-} 
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'Noto Sans TC', -apple-system, system-ui, sans-serif;
+      line-height: 1.6;
+      font-size: 15px;
+    }
 
-/* @media only screen and (max-width: 700px) {
-body {
-  padding: 0px;
-}
-.resume {
-  width: 100%;
-  min-width: 300px;
-  border: none;
-  padding: 50px;
-}
-.nameCircle {
-  top: 15px;
-  left: 30px;
-}
-.content,.listExperience {
-  display: block;
-}
-.top,.footer {
-  display: inline-block;
-  width: 100%;  
-  margin: 0 auto;
-}
-h4 {
-  margin-top: 30px;
-}
-.myName {
-  padding-left: 15px;
-  padding-top: 20px;
-}
-.listPassion > li {
-  width: 25%;
-}
-.right {
-  border: none;
-  padding-left: 30px;
-}
-.footer {
-  padding-left: 30px;
-}
-.time {
-  display: none;
-}
-.listExperience > li {
-    margin-bottom: 30px;
-  } */
-/* @media only screen and (max-width: 500px) {
-.resume {
-  padding: 10px;
-}
-.listPassion > li {
-  width: 50%;
-}
-.skillLevel {
-  width: 60px;
-  margin-left: 0px;
-  margin-right: 10px;
-}
-.listAward > li {
-  padding-left: 0px;
-}
-.decoration:nth-of-type(1) {
-  top: -30px;
-  left: 50%;
-  height: 80px;
-}
-.listSkill >li {
-    padding-left: 0px;
-}
-.decoration:nth-of-type(2) {
-  top: 35px;
-  left: 73%;
-}
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
 
-} */
-    </style>
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
 
-    <meta property="og:title" content="李念祖 Harden Li"/>
-    <meta property="og:image" content="https://i.ibb.co/NC7cVPQ/single.jpg"/>
-    <meta property="og:site_name" content="李念祖 Harden Li"/>
-    <meta property="og:description" content="我喜歡稀奇古怪的玩意，是一個有很多很酷想法的人。熱愛學習新的技能、創作方式，凡事先動手做，擁有強大的自學能力。"/>  
-  </head>
-  <body>
-    <div class="resume">
-      <div class="top">
-        <div class="decoration"></div>
-        <div class="decoration"></div>
-        <div class="myPhoto"></div>
-        <div class="nameCircle"></div>
-        <div class="myName">
-          <h1>李念祖</h1>
-          <h2>Harden Li</h2>
-        </div>
-      </div>
-      <div class="content">
-        <div class="left">
-          <h3>
-            Soft Engineer; AIOT Engineer ; Back-End Engineer
-          </h3>
-          <p>I have a strong passion for pursuing abilities and self-learning, and enjoy practical implementation and the process of solving problems. I consider myself flexible and a fast learner, and I enjoy project development and technical research. I am capable of fulfilling development project roles.</p>
-          <div class="buttons">
-            <a class="btn" href="https://harden004.medium.com/%E8%AB%96%E6%96%87%E7%AD%86%E8%A8%98-exploiting-the-intrinsic-neighborhood-structure-for-source-free-domain-adaptation-76db3c56cdc3" target="_blank">
-                Blog 
-            </a>
-            <a class="btn" href="https://www.youtube.com/@hardenli6973/videos" target="_blank">
-                Youtube 
-            </a>
-            <p style="padding: 10px;"> contact me </p>
-            <a class="btn fill" href="https://www.linkedin.com/in/neintsu-li-69556b183/" target="_blank">
-                LinkedIn
-            </a>
-            <a class="btn fill" href="mailto:s0362022@gmail.com" target="_blank">
-                Mail
-            </a>
-            
-          </div>
-          <div class="block">
-            <h4>Passion</h4>
-            <ul class="listPassion">
-              <li>
-                <div class="circle circle-image1">
-                </div>
-                AI
-              </li>
-              <li>
-                <div class="circle circle-image2"></div>
-                Edge Device
-              </li>
-              <li>
-                <div class="circle circle-image3"></div>
-                SQL & NOSQL
-              </li>
-              <li>
-                <div class="circle circle-image4"></div>
-                Back-end
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="right">
-          <div class="block">
-            <h4>Skill</h4>
-            <ul class="listSkill">
-              <li><h5>Python</h5></li>
-              <ul>
-                <li>
-                  <div class="skillLevel">
-                    <!-- <div class="littleCircle">AI</div> -->
-                    Big-Data 
-                  </div>
-                </li>
-                <li>
-                  <div class="skillLevel">
-                    <!-- div class="littleCircle">PS</div> -->
-                    Visualize
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="skillLevel">
-                    <!-- <div class="littleCircle">ID</div> -->
-                    ML/DL
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                <li>
-                  <div class="skillLevel">
-                    <!-- <div class="littleCircle">Sketch</div> -->
-                    CV
-                    <div class="level1"></div>
-                  </div>
-                </li>
-              </ul>
-              <li><h5>Computer Vision</h5></li>
-              <ul>
-                <li>
-                    <div class="skillLevel">
-                        CNN
-                        <div class="level1"></div>
-                      </div>
-                </li>
-                <li>
-                  <div class="skillLevel">
-                    YOLO
-                    <div class="level1"></div>
-                    
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                
-                <li>
-                  <div class="skillLevel">
-                    Seg
-                    <div class="level1"></div>
-                  </div>
-                </li>
-              </ul>
-              <li><h5>Web</h5></li>
-              <ul>
-                <li>
-                    <div class="skillLevel">
-                      Flask
-                     
-                      <div class="level1"></div>
-                    </div>
-                  </li>
-                <li>
-                  <div class="skillLevel">
-                    HTML
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                <li> 
-                  <div class="skillLevel">
-                    CSS
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                
-              </ul>
-              <li><h5>IOT</h5></li>
-              <ul>
-                <li>
-                    <div class="skillLevel">
-                      Jetson 
-                     
-                      <div class="level1"></div>
-                    </div>
-                  </li>
-                <li>
-                  <div class="skillLevel">
-                    Raspberry
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                <li> 
-                  <div class="skillLevel">
-                    MQTT
-                    <div class="level1"></div>
-                  </div>
-                </li>
-                
-              </ul>
-            </ul>
-            <h4>Award</h4>
-            <ul class="listAward">
-              <li>2020 Practical Competition on IOT - TOP 10</li>
-              <li>2021 Institute of Higher Education Mechatronics Innovation& Creative Intelligence Practice Competition - TOP 10</li>
-              
-            </ul>
-            <br>
-            <h4>Project</h4>
-            <ul class="listAward">
-              <li>Continuous real-time video fall detection system foruse in care centers</li>
-              <li>real-time measurement system for the light transmittance of black and white smoke</li>
-              <li>Analysis of traffic accidents in Taichung City over the past decade</li>
-            </ul>
+    .nav-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
 
-          </div>
-        </div>
-      </div>
-      <div class="footer">
-        <h4>Experience</h4>
-        <div class="footerCircle"></div>
-        <div class="time">
-          <div class="decorationLine">June 2020 - June 2021</div>
-          <div class="decorationCircle"></div>
-          <div class="decorationLine">July 2022 -  September 2022</div>
-          <div class="decorationCircle"></div>
-          <div class="decorationLine">September 2022 - Present</div>
-          <div class="decorationCircle"></div>
-        </div>
-        <!--       <div class="footerCircle circle1"></div>
-        <div class="footerCircle circle2"></div> -->
-        <ul class="listExperience">
-          <li class="year">
-            <h5>Ai4kids</h5>
-            <h6>Speech/host</h6>
-            <ul>
-              <li>Invited by many high school and college camps to teach AI knowledge and implementation projects.</li>
-              <li>The content of Deep Learning - Image detection/ classification</li>
-            </ul>
-          </li>
-          <li class="year">
-            <h5>AUO Corporation  </h5>
-            <h6>Soft Engineer(intern)</h6>
-            <ul>
-              <li>Independently produced a website that builds AI models for use throughout the factory.</li>
-              <li>Respectively in unsupervised model, few-shot model, standard model, and parallel processing servers.</li>
-              <li>Framwork : Flask/Tensorflow/Pytorch  </li>
-              <li>Skill: GAN/MeTa learning/YOLO/Unet/classification</li>
-            </ul>
-          </li>
-          <li class="year">
-            <h5>National Cheng Kung University </h5>
-            <h6> Master of Electrical Engineering</h6>
-            <ul>
-              <li>Pathological image processing and detection</li>
-              <li>Research and writing of papers</li>
-              <li>Semantic Segmentation/self-Supervised learning / Domain Adaptation</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+    .nav-title {
+      font-size: 0.8rem;
+      color: var(--text3);
+      display: none;
+    }
 
-      <br>
-      <br>
-      <div id="box">
-        <p style="padding-top: 20px; font-size: 20px;text-align: center;"> Software Architecture::</p>
-        <p>
-          Establishing system architecture such as the connection between programming languages, front-end web pages
-          and back-end servers, back-end databases and back-end operations, so that the system can input from edge devices acceleratly, transmit
-          to the cloud, access the back-end database and perform operations before returning to the front-end and user end.
-        </p>
-        </div>
-      
-        <div id="box">
-          <iframe width="500" height="300" src="https://www.youtube.com/embed/hcsMEc7okB0" title="【OPENCV CUDA】How to Build Opencv GPU with Cuda on Windows" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      
-        </div>
-        <div id="box">
-          <P style="text-align: center;font-size: 20px;">IOT：</P>
+    @media(min-width: 640px) { .nav-title { display: block; } }
 
-          <li>Edge device Applications：Jetson Nano/Nx and Raspberry Pi</li>
-          <li>MQTT to be communication protocol</li>
+    nav ul {
+      display: none;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
 
-      </div>
-      <div id="box">
-        <iframe  width="560" height="315" src="https://www.youtube.com/embed/TVj1aR5d7es" title="［AIOT專案］工安配置智慧閘門暨工業安全帽偵測系統" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-    <div id="box">
-      <P style="text-align: center;font-size: 20px;">Computer Vision：</P>
-      <br>
-          
-          
-              <li style="font-size: 17px;">
-                  Image processing
-              </li>
+    @media(min-width: 768px) { nav ul { display: flex; } }
 
-              <p>Gaussian filter, binarization cut to reduce noise and deepen object contours in the image</p>
-              <br>  
-          
-              <li style="font-size: 17px;">
-                  Depth image
-              </li>
-              <br>
-              <p>Intel RealSense Camera</p>
-              <p>Medical Imaging and Pathology Imaging</p>
-              <br>
-              <li style="font-size: 17px;">
-                  Deep learning
-                </li>
-                  <br>
-                  <li>
-                      YOLO：anomaly detection
-                  </li>
-                  <li>
-                      Unet : segmentation
-                      
-                  </li>
-                  <li>
-                      CNN : classification 
-                      
-                  </li>
-                  <li> 
-                      SOTA Research
-                  </li>
-              
-              
+    nav ul a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-          
+    nav ul a:hover { color: var(--blue); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lang-toggle {
+      background: var(--bg3);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-toggle:hover {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    /* ── LANG CONTENT ── */
+    [data-zh], [data-en] { display: none; }
+    [data-lang="zh"] [data-zh] { display: block; }
+    [data-lang="en"] [data-en] { display: block; }
+    [data-lang="zh"] span[data-zh],
+    [data-lang="zh"] li[data-zh],
+    [data-lang="zh"] td[data-zh] { display: inline; }
+    [data-lang="en"] span[data-en],
+    [data-lang="en"] li[data-en],
+    [data-lang="en"] td[data-en] { display: inline; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: #fff;
+      padding: 4rem 2rem 3.5rem;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media(max-width: 640px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    .hero-name {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-name .zh-name {
+      font-size: 0.55em;
+      font-weight: 500;
+      opacity: 0.75;
+      margin-left: 0.5rem;
+    }
+
+    .hero-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #93c5fd;
+      margin-bottom: 1rem;
+    }
+
+    .hero-summary {
+      font-size: 0.93rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .hero-link {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+
+    .hero-link:hover { background: rgba(255,255,255,0.22); }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #93c5fd;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      margin-top: 0.1rem;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 4rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .section-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--navy);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* ── PILLARS ── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .pillar {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      background: var(--bg);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .pillar:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border-color: var(--blue-light);
+    }
+
+    .pillar-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .pillar-icon.blue { background: #dbeafe; }
+    .pillar-icon.green { background: #d1fae5; }
+    .pillar-icon.purple { background: #ede9fe; }
+
+    .pillar h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    .pillar .sub { font-size: 0.78rem; color: var(--text3); margin-top: 0.1rem; }
+    .pillar p { font-size: 0.86rem; color: var(--text2); line-height: 1.65; }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .exp-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    .exp-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+
+    .exp-card.current { border-color: var(--blue-light); border-left: 4px solid var(--navy); }
+    .exp-card.past { border-left: 4px solid var(--border2); }
+
+    .exp-head {
+      padding: 1.2rem 1.4rem;
+      background: var(--bg2);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-head-left {}
+
+    .exp-company {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-role { font-size: 1rem; font-weight: 700; color: var(--navy); }
+
+    .exp-period {
+      font-size: 0.8rem;
+      color: var(--text3);
+      margin-top: 0.2rem;
+    }
+
+    .exp-badge {
+      flex-shrink: 0;
+      background: #dcfce7;
+      border: 1px solid #bbf7d0;
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    .exp-body { padding: 1.2rem 1.4rem; }
+
+    .exp-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-body li {
+      font-size: 0.88rem;
+      color: var(--text2);
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .exp-body li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-size: 0.75rem;
+      top: 0.12rem;
+    }
+
+    .exp-body li strong { color: var(--text); }
+
+    .exp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .chip {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--slate);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .chip.blue { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; }
+    .chip.green { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; }
+
+    /* ── SKILLS ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.87rem;
+    }
+
+    .skills-table th {
+      text-align: left;
+      padding: 0.7rem 1rem;
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .skills-table th:first-child { border-radius: 7px 0 0 0; }
+    .skills-table th:last-child { border-radius: 0 7px 0 0; }
+
+    .skills-table td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text2);
+      vertical-align: top;
+    }
+
+    .skills-table tr:last-child td { border-bottom: none; }
+    .skills-table tr:nth-child(even) td { background: var(--bg2); }
+
+    .skills-table .cat {
+      font-weight: 700;
+      color: var(--navy);
+      white-space: nowrap;
+      width: 160px;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .sp {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--slate);
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .sp.key { background: #eff6ff; border-color: #bfdbfe; color: #1e40af; font-weight: 600; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .pub-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      transition: box-shadow 0.2s;
+    }
+
+    .pub-item:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.07); }
+
+    .pub-badge {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .pub-body h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .pub-venue {
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .pub-desc {
+      font-size: 0.83rem;
+      color: var(--text3);
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-link {
+      font-size: 0.8rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pub-link:hover { text-decoration: underline; }
+
+    /* ── EDUCATION ── */
+    .edu-list { display: flex; flex-direction: column; gap: 0.9rem; }
+
+    .edu-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.1rem 1.3rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg2);
+    }
+
+    .edu-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .edu-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
+    .edu-body .deg { font-size: 0.85rem; color: var(--text2); margin-top: 0.15rem; }
+    .edu-body .period { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
+
+    /* ── CONTENT CREATOR ── */
+    .creator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .creator-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg);
+      transition: box-shadow 0.2s;
+    }
+
+    .creator-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+
+    .creator-card-head {
+      background: var(--bg3);
+      padding: 1rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .creator-card-head .ch-icon {
+      font-size: 1.5rem;
+    }
+
+    .creator-card-head h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .creator-card-head .ch-sub {
+      font-size: 0.75rem;
+      color: var(--text3);
+    }
+
+    .creator-card-body {
+      padding: 1rem 1.2rem;
+    }
+
+    .creator-card-body p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      margin-bottom: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .creator-card-body a {
+      font-size: 0.82rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .creator-card-body a:hover { text-decoration: underline; }
+
+    /* video thumbnail (replaces iframe — works on file://) */
+    .yt-thumb {
+      display: block;
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+      text-decoration: none;
+    }
+
+    .yt-thumb img {
+      width: 100%; display: block;
+      border-radius: 10px;
+    }
+
+    .yt-thumb .yt-play {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.25);
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+
+    .yt-thumb:hover .yt-play { background: rgba(0,0,0,0.45); }
+
+    .yt-play-btn {
+      width: 60px; height: 60px;
+      background: #ff0000;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+
+    .yt-thumb:hover .yt-play-btn { transform: scale(1.1); }
+
+    .yt-play-btn::after {
+      content: '';
+      border-left: 22px solid #fff;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      margin-left: 5px;
+    }
+
+    /* GitHub project cards */
+    .gh-card {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg);
+      text-decoration: none;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      margin-bottom: 0.6rem;
+    }
+
+    .gh-card:hover {
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      border-color: var(--blue-light);
+    }
+
+    .gh-card:last-child { margin-bottom: 0; }
+
+    .gh-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: #24292e;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .gh-card h4 { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .gh-card p  { font-size: 0.78rem; color: var(--text3); margin-top: 0.15rem; }
+
+    /* Bigger content section */
+    #content { padding-top: 2rem; }
+
+    .creator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* ── AWARDS ── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .award-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      align-items: flex-start;
+    }
+
+    .award-item .aw-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.05rem; }
+    .award-item h4 { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .award-item p { font-size: 0.78rem; color: var(--text3); margin-top: 0.15rem; }
+
+    /* ── TWO COLUMN ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media(max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      font-size: 0.87rem;
+      color: #1e40af;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-box strong { font-weight: 700; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg2);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--blue-light);
+      background: #eff6ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .contact-label { font-size: 0.75rem; color: var(--text3); }
+    .contact-value { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+    }
+
+    footer strong { color: rgba(255,255,255,0.85); }
+
+    /* ── ACCORDION ── */
+    .exp-accordion .exp-body { display: none; }
+    .exp-accordion.open .exp-body { display: block; }
+
+    /* Compact headers for accordion items */
+    .exp-accordion .exp-head { padding: 0.7rem 1.1rem; }
+    .exp-accordion .exp-role { font-size: 0.88rem !important; }
+    .exp-accordion .exp-period { font-size: 0.73rem !important; margin-top: 0.1rem; }
+    .exp-accordion .exp-company { font-size: 0.72rem !important; }
+    .exp-accordion .acc-preview { margin-top: 0.35rem; }
+
+    .acc-head {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .acc-head:hover { background: #f1f5f9; }
+
+    .acc-arrow {
+      width: 28px; height: 28px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--slate);
+      transition: transform 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+    .exp-accordion.open .acc-arrow {
+      background: var(--navy);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+
+    .acc-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .exp-accordion.open .acc-preview { display: none; }
+
+    /* ── SKILLS BLOCKS (3 rows) ── */
+    .skill-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-row:last-child { margin-bottom: 0; }
+
+    .skill-row-label {
+      background: var(--navy);
+      color: #fff;
+      padding: 1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .skill-row-label .sr-main {
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .skill-row-label .sr-sub {
+      font-size: 0.72rem;
+      color: #93c5fd;
+      margin-top: 0.25rem;
+    }
+
+    .skill-row-content {
+      background: var(--bg2);
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      justify-content: center;
+    }
+
+    .skill-row-content .sr-key {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skill-row-content .sr-key .sp { font-size: 0.78rem; }
+    .skill-row-content .sr-key .sp.key {
+      background: #1e3a5f;
+      border-color: #2d5282;
+      color: #fff;
+      font-weight: 700;
+    }
+    .skill-row-content .sr-key .sp.sec {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    @media(max-width: 560px) {
+      .skill-row { grid-template-columns: 1fr; }
+      .skill-row-label { padding: 0.7rem 1rem; flex-direction: row; align-items: center; gap: 0.6rem; }
+    }
+
+    /* ── EDUCATION COMPACT ── */
+    .edu-compact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      align-items: center;
+      padding: 0.9rem 1.2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .edu-compact .edu-entry {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+    }
+
+    .edu-compact .edu-entry .deg-badge {
+      background: var(--navy);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .edu-compact .edu-entry .school { font-weight: 700; color: var(--navy); }
+    .edu-compact .edu-entry .dept { color: var(--text3); font-size: 0.82rem; }
+    .edu-compact .edu-sep { color: var(--border2); font-size: 1.2rem; }
+
+    /* ── PRINT ── */
+    @media print {
+      nav { display: none; }
+      .hero { padding: 1.5rem; }
+      .section { margin-bottom: 2rem; }
+      .video-embed { display: none; }
+      .exp-accordion .exp-body { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <span class="nav-name">Nien-Tsu Li · 李念祖</span>
+    <span class="nav-title">Sr. Application Engineer @ Synopsys</span>
   </div>
+  <ul>
+    <li><a href="#about" data-zh>關於我</a><a href="#about" data-en>About</a></li>
+    <li><a href="#experience" data-zh>經歷</a><a href="#experience" data-en>Experience</a></li>
+    <li><a href="#skills" data-zh>技能</a><a href="#skills" data-en>Skills</a></li>
+    <li><a href="#publications" data-zh>論文</a><a href="#publications" data-en>Papers</a></li>
+    <li><a href="#content" data-zh>創作</a><a href="#content" data-en>Content</a></li>
+    <li><a href="#contact" data-zh>聯絡</a><a href="#contact" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLang()">EN / 中</button>
+  </div>
+</nav>
 
-  <div id="box">
-      <iframe width="397" height="505" src="https://www.youtube.com/embed/mH_tKQuBTQs" title="【YOLOv4】 - Mask Detected  Demo(口罩偵測)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>  
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1 class="hero-name">
+        Nien-Tsu Li <span class="zh-name">李念祖</span>
+      </h1>
+      <p class="hero-role" data-zh>資深應用程式工程師 @ Synopsys ｜ EDA APR · AI · Software</p>
+      <p class="hero-role" data-en>Sr. Application Engineer @ Synopsys ｜ EDA APR · AI · Software</p>
 
+      <p class="hero-summary" data-zh>
+        擁有 <strong style="color:#93c5fd">軟體開發</strong> 背景，在取得電機碩士（NCKU）並發表 IEEE 論文後，進入
+        <strong style="color:#93c5fd">Synopsys</strong> 從事 EDA 實體設計（APR）支援工程。
+        現職核心為 Fusion Compiler（FC）與 ICC2，APR 流程中最深厚的專業為
+        <strong style="color:#93c5fd">Floorplan 規劃</strong>與 <strong style="color:#93c5fd">Physical Cell Placement</strong>，
+        協助多家客戶跨 Advanced Technology Node 共同開發，並在
+        R&D、AE 與客戶之間擔任技術橋樑，主導 Issue Triage 與跨國協作。
+      </p>
+      <p class="hero-summary" data-en>
+        Software engineer turned EDA physical-design expert. After earning an M.S. in EE from NCKU
+        and publishing in <strong style="color:#93c5fd">IEEE</strong>, I joined
+        <strong style="color:#93c5fd">Synopsys</strong> to deliver hands-on APR application support.
+        Core strengths: <strong style="color:#93c5fd">Floorplan design</strong> and
+        <strong style="color:#93c5fd">Physical Cell Placement</strong> using FC &amp; ICC2 across
+        multiple advanced technology nodes and customers. I bridge R&amp;D, AE, and customers through
+        structured issue triage and regular overseas collaboration.
+      </p>
 
+      <div class="hero-links">
+        <a class="hero-link" href="https://www.linkedin.com/in/neintsu-li-69556b183/" target="_blank">LinkedIn</a>
+        <a class="hero-link" href="https://s07362022.github.io/" target="_blank">Portfolio</a>
+        <a class="hero-link" href="https://github.com/s07362022" target="_blank">GitHub</a>
+        <a class="hero-link" href="https://www.youtube.com/@hardenli6973" target="_blank">YouTube</a>
+        <a class="hero-link" href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/HyePJzv9p" target="_blank">C/Linux Notes</a>
+        <a class="hero-link" href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/SJYBT8WYa" target="_blank">C++ Blog</a>
+        <a class="hero-link" href="https://ieeexplore.ieee.org/document/10218991" target="_blank">IEEE Paper</a>
+        <a class="hero-link" href="mailto:s07362022@gmail.com">s07362022@gmail.com</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-label" data-zh>IEEE 發表</div>
+        <div class="stat-label" data-en>IEEE Publications</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2+</div>
+        <div class="stat-label" data-zh>年 EDA APR 支援</div>
+        <div class="stat-label" data-en>Yrs EDA APR Support</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">∞</div>
+        <div class="stat-label" data-zh>持續自主學習</div>
+        <div class="stat-label" data-en>Self-Driven Learner</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <!-- ABOUT / PILLARS -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <div class="section-icon">👤</div>
+      <h2 class="section-title" data-zh>關於我</h2>
+      <h2 class="section-title" data-en>Professional Profile</h2>
+    </div>
+
+    <div class="info-box" data-zh>
+      <strong>面試官一眼看懂的定位：</strong>
+      過去是有紮實軟體開發（Python / Flask / SQL）與 AI 研究（IEEE 期刊）背景的工程師，現在是 Synopsys EDA APR 實體設計支援專家，
+      最熟悉 Floorplan 設計與 Physical Cell Placement，同時具備跨國溝通、技術橋樑與 Issue Triage 的能力。
+    </div>
+    <div class="info-box" data-en>
+      <strong>At a glance:</strong>
+      Former software developer &amp; IEEE AI researcher who transitioned into EDA physical design.
+      Now a Synopsys APR application engineer specialising in <strong>floorplan design</strong> and
+      <strong>physical cell placement</strong> — with a track record of bridging R&amp;D, AE, and customers
+      across advanced nodes and international teams.
+    </div>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-top">
+          <div class="pillar-icon blue">⚡</div>
+          <div>
+            <h3 data-zh>EDA APR 現場專家</h3>
+            <h3 data-en>EDA APR Application Expert</h3>
+            <p class="sub" data-zh>Synopsys FC / ICC2 ｜ 現職核心</p>
+            <p class="sub" data-en>Synopsys FC / ICC2 ｜ Current Role</p>
+          </div>
+        </div>
+        <p data-zh>
+          在完整 APR flow 中最精通 <strong>Floorplan 規劃</strong>與 <strong>Physical Cell Placement</strong>，
+          在 advanced node 客戶現場做問題分類（Triage）、方法論修正與工具問題反饋，並與海外 R&D 對齊。
+        </p>
+        <p data-en>
+          Deepest expertise in <strong>floorplan design</strong> and <strong>physical cell placement</strong>
+          within the full APR flow. Triage field issues, align methodology with advanced-node constraints,
+          and coordinate solutions with overseas R&amp;D teams.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-top">
+          <div class="pillar-icon green">🧬</div>
+          <div>
+            <h3 data-zh>AI 病理影像研究者</h3>
+            <h3 data-en>AI Pathology Researcher</h3>
+            <p class="sub" data-zh>IEEE TAI 期刊 ｜ ISCAS · IJCAI</p>
+            <p class="sub" data-en>IEEE TAI Journal ｜ ISCAS · IJCAI</p>
+          </div>
+        </div>
+        <p data-zh>
+          研究聚焦數位病理切片影像：語意分割、<strong>Source-Free Domain Adaptation</strong>、
+          <strong>Knowledge Distillation</strong> 與半監督學習，成果收錄於 IEEE Transactions on Artificial Intelligence。
+        </p>
+        <p data-en>
+          Research in histopathological image analysis: semantic segmentation,
+          <strong>source-free domain adaptation</strong>, <strong>knowledge distillation</strong>,
+          and semi-supervised self-training. Published in IEEE Transactions on Artificial Intelligence.
+        </p>
+      </div>
+
+      <div class="pillar">
+        <div class="pillar-top">
+          <div class="pillar-icon purple">💻</div>
+          <div>
+            <h3 data-zh>軟體工程基底</h3>
+            <h3 data-en>Software Engineering Foundation</h3>
+            <p class="sub" data-zh>Python · C/C++ · Tcl ｜ 持續精進</p>
+            <p class="sub" data-en>Python · C/C++ · Tcl ｜ Active Self-Study</p>
+          </div>
+        </div>
+        <p data-zh>
+          Python 端到端 AI pipeline 與後端（Flask/SQL）；Tcl 腳本自動化 EDA 驗證流程；
+          每日精進 <strong>C/C++ 與 Linux Kernel Driver</strong>，具備從 high-level script 到韌體層的系統觀。
+        </p>
+        <p data-en>
+          Python end-to-end AI pipelines and backend (Flask/SQL); Tcl automation for EDA validation.
+          Daily self-study in <strong>C/C++ and Linux Kernel/Driver</strong> builds
+          complementary system-level understanding alongside high-level scripting.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="section-header">
+      <div class="section-icon">💼</div>
+      <h2 class="section-title" data-zh>工作經歷</h2>
+      <h2 class="section-title" data-en>Work Experience</h2>
+    </div>
+
+    <div class="exp-list">
+
+      <!-- Synopsys Current -->
+      <div class="exp-card current">
+        <div class="exp-head">
+          <div class="exp-head-left">
+            <div class="exp-company">Synopsys 新思科技 · EDA Industry Leader</div>
+            <div class="exp-role" data-zh>資深應用程式工程師（Sr. Application Engineer）</div>
+            <div class="exp-role" data-en>Senior Application Engineer</div>
+            <div class="exp-period" data-zh>2024 年 8 月 — 至今 ｜ 台北市</div>
+            <div class="exp-period" data-en>Aug 2024 – Present ｜ Taipei, Taiwan</div>
+          </div>
+          <span class="exp-badge" data-zh>● 現職</span>
+          <span class="exp-badge" data-en>● Current</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li data-zh>
+              <strong>EDA 工具實作（FC / ICC2）：</strong>主要支援工具為 <strong>Fusion Compiler（FC）</strong>與 <strong>ICC2</strong>，協助客戶執行 APR digital implementation，對齊製程規範與設計環境約束。
+            </li>
+            <li data-en>
+              <strong>EDA tooling (FC / ICC2):</strong> Primary tools are <strong>Fusion Compiler (FC)</strong> and <strong>ICC2</strong>; support customers with APR digital implementation, aligning process design rules and environment constraints.
+            </li>
+
+            <li data-zh>
+              <strong>Floorplan 設計專業：</strong>制定 floorplan 規劃方案，整合面積、時序、Power Domain 與繞線可行性需求；在 floorplan-aware 約束層面協助客戶完成設計收斂。
+            </li>
+            <li data-en>
+              <strong>Floorplan design expertise:</strong> Define floorplan strategies integrating area, timing, power domains, and routability requirements; guide customers to achieve design closure under floorplan-aware constraints.
+            </li>
+
+            <li data-zh>
+              <strong>Physical Cell Placement 設計：</strong>調校 standard / physical cell placement 收斂策略，協助客戶在 PPA（Power / Performance / Area）之間做出有根據的 trade-off 決策。
+            </li>
+            <li data-en>
+              <strong>Physical cell placement:</strong> Tune standard/physical cell placement convergence strategies and help customers make informed PPA (Power / Performance / Area) trade-off decisions.
+            </li>
+
+            <li data-zh>
+              <strong>多客戶 × Advanced Node：</strong>在職期間同時支援<strong>多家客戶</strong>，涵蓋<strong>多個 advanced technology node</strong> 之 methodology 共同開發，依客戶製程規範調整腳本與驗證流程。
+            </li>
+            <li data-en>
+              <strong>Multi-customer · Advanced nodes:</strong> Concurrently support <strong>multiple customers</strong> across <strong>multiple advanced technology nodes</strong>, co-developing methodology and adapting scripts/flows to each customer's process rules.
+            </li>
+
+            <li data-zh>
+              <strong>Issue Triage 與問題排解：</strong>將現場問題精確分類為 usage error、methodology gap 或工具潛在 bug；統整重現環境、推進驗證，提供 workaround 與長期修法建議。
+            </li>
+            <li data-en>
+              <strong>Issue triage &amp; resolution:</strong> Accurately classify field issues as usage errors, methodology gaps, or potential tool bugs; consolidate reproduction environments, drive verification, and deliver workarounds plus long-term fix recommendations.
+            </li>
+
+            <li data-zh>
+              <strong>跨國 / 跨部門協作：</strong>定期與<strong>海外 R&D 團隊</strong>會議對齊技術方向；在 <strong>R&D ↔ AE/FAE ↔ 客戶</strong> 之間擔任技術訊息橋樑，將現場語意轉為可追蹤 issue 規格並完整回饋給用戶端。
+            </li>
+            <li data-en>
+              <strong>Cross-functional / international collaboration:</strong> Regular alignment meetings with <strong>overseas R&amp;D teams</strong>; serve as the technical bridge between <strong>R&amp;D ↔ AE/FAE ↔ customers</strong>, converting field context into traceable issue specs and communicating conclusions back to end users.
+            </li>
+
+            <li data-zh>
+              <strong>Tcl / Python 自動化：</strong>撰寫設計規範 checker、批次驗證與 sign-off 前報表腳本，降低重複性人工除錯成本。
+            </li>
+            <li data-en>
+              <strong>Tcl / Python automation:</strong> Develop design-rule checkers, batch validators, and pre-sign-off report scripts to reduce repetitive manual debug effort.
+            </li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip blue">Fusion Compiler (FC)</span>
+            <span class="chip blue">ICC2</span>
+            <span class="chip blue">Floorplan Design</span>
+            <span class="chip blue">Physical Cell Placement</span>
+            <span class="chip blue">APR Flow</span>
+            <span class="chip blue">Advanced Tech Nodes</span>
+            <span class="chip green">Issue Triage</span>
+            <span class="chip green">Overseas Collaboration</span>
+            <span class="chip green">R&D-AE-Customer Bridge</span>
+            <span class="chip">Tcl</span>
+            <span class="chip">Python Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Synopsys Intern (accordion) -->
+      <div class="exp-card past exp-accordion" id="acc-intern">
+        <div class="exp-head acc-head" onclick="toggleAcc('acc-intern')">
+          <div class="exp-head-left">
+            <div class="exp-company">Synopsys 新思科技</div>
+            <div class="exp-role" data-zh>Application Engineer（實習）</div>
+            <div class="exp-role" data-en>Application Engineer Intern</div>
+            <div class="exp-period" data-zh>2023.07 – 2023.09 ｜ 台北 ｜ <em>2 個月完成 3 個專題</em></div>
+            <div class="exp-period" data-en>Jul – Sep 2023 ｜ Taipei ｜ <em>3 projects completed in 2 months</em></div>
+            <div class="acc-preview">
+              <span class="chip blue">ICC2</span>
+              <span class="chip blue">Floorplan</span>
+              <span class="chip blue">Placement &amp; Routing</span>
+              <span class="chip">Tcl</span>
+              <span class="chip">Python</span>
+            </div>
+          </div>
+          <div class="acc-arrow">＋</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li data-zh>於 ICC2 環境中以 <strong>Tcl + Python</strong> 獨立完成三個工具開發專題：<strong>Boundary Checker</strong>（設計規範符合性驗證）、<strong>Random Floorplan Generator</strong>（規則化版圖自動生成）、<strong>Global Routing / Layer Checker</strong>（繞線層合規驗證）。</li>
+            <li data-en>Independently completed 3 tool-development projects in ICC2 using <strong>Tcl + Python</strong>: <strong>Boundary Checker</strong> (design-rule compliance), <strong>Random Floorplan Generator</strong> (rule-based auto-layout), <strong>Global Routing / Layer Checker</strong> (routing layer validation).</li>
+            <li data-zh>參與後端 APR 實務：直接接觸 <strong>Placement &amp; Routing</strong> 流程，奠定現職 EDA APR 的直接基礎。</li>
+            <li data-en>Hands-on APR practice in <strong>Placement &amp; Routing</strong> flows — direct foundation for current EDA role.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip blue">ICC2</span>
+            <span class="chip blue">Floorplan</span>
+            <span class="chip blue">Placement &amp; Routing</span>
+            <span class="chip">Tcl</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NCKU RA (accordion) -->
+      <div class="exp-card past exp-accordion" id="acc-ncku">
+        <div class="exp-head acc-head" onclick="toggleAcc('acc-ncku')">
+          <div class="exp-head-left">
+            <div class="exp-company" data-zh>國立成功大學（NCKU）</div>
+            <div class="exp-company" data-en>National Cheng Kung University (NCKU)</div>
+            <div class="exp-role" data-zh>研究助理 — AI 病理影像</div>
+            <div class="exp-role" data-en>Research Assistant — AI Pathology</div>
+            <div class="exp-period" data-zh>2023.07 – 2024.07 ｜ 台南 ｜ <em>IEEE ISCAS 2024 · IJCAI 2024</em></div>
+            <div class="exp-period" data-en>Jul 2023 – Jul 2024 ｜ Tainan ｜ <em>IEEE ISCAS 2024 · IJCAI 2024</em></div>
+            <div class="acc-preview">
+              <span class="chip green">AI Pathology</span>
+              <span class="chip green">Domain Generalization</span>
+              <span class="chip green">Semi-Supervised Learning</span>
+              <span class="chip">PyTorch</span>
+            </div>
+          </div>
+          <div class="acc-arrow">＋</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li data-zh>研究主軸：數位病理切片影像，包含<strong>肝細胞核分割（Domain Generalization）</strong>、<strong>半監督語意分割（Semi-Supervised Self-Training）</strong>、跨域一致性對抗背景擾動。</li>
+            <li data-en>Research in digital pathology: <strong>hepatocyte nucleus segmentation (domain generalization)</strong>, <strong>semi-supervised semantic segmentation (self-training)</strong>, and cross-domain consistency against background perturbation.</li>
+            <li data-zh>完成 IEEE ISCAS 2024 與 IJCAI 2024 論文撰寫，以 <strong>PyTorch</strong> 設計完整訓練 / 評估 pipeline。</li>
+            <li data-en>Authored IEEE ISCAS 2024 and IJCAI 2024 papers; designed full training/evaluation pipeline using <strong>PyTorch</strong>.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip green">AI Pathology</span>
+            <span class="chip green">Domain Generalization</span>
+            <span class="chip green">Semi-Supervised Learning</span>
+            <span class="chip green">Knowledge Distillation</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUO (accordion) -->
+      <div class="exp-card past exp-accordion" id="acc-auo">
+        <div class="exp-head acc-head" onclick="toggleAcc('acc-auo')">
+          <div class="exp-head-left">
+            <div class="exp-company">AUO Corporation（友達光電）</div>
+            <div class="exp-role" data-zh>軟體工程師（實習）</div>
+            <div class="exp-role" data-en>Software Engineer Intern</div>
+            <div class="exp-period" data-zh>2022.06 – 2022.08 ｜ 台中 ｜ <em>獨立完成全廠 AI 建模平台</em></div>
+            <div class="exp-period" data-en>Jun – Aug 2022 ｜ Taichung ｜ <em>Built factory-wide AI platform independently</em></div>
+            <div class="acc-preview">
+              <span class="chip">Python</span>
+              <span class="chip">Flask</span>
+              <span class="chip">CNN / GAN</span>
+              <span class="chip">SQL</span>
+              <span class="chip">Full-Stack</span>
+            </div>
+          </div>
+          <div class="acc-arrow">＋</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li data-zh><strong>獨立</strong>開發供全廠使用的 AI 建模網頁平台：整合非監督式、少樣本、標準模型與平行運算伺服器，具備完整 end-to-end 系統設計能力。</li>
+            <li data-en><strong>Independently</strong> built a factory-wide AI model-building web platform: unsupervised, few-shot, and standard models with parallel-processing servers — full end-to-end system design.</li>
+            <li data-zh>技術棧：<strong>Python、Flask、TensorFlow / PyTorch、CNN、GAN、SQL</strong>，完成前後端及資料庫的完整串接。</li>
+            <li data-en>Stack: <strong>Python, Flask, TensorFlow / PyTorch, CNN, GAN, SQL</strong> — full-stack integration of backend, model serving, and database.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Flask</span>
+            <span class="chip">CNN / GAN</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Full-Stack Development</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- THU RA (accordion) -->
+      <div class="exp-card past exp-accordion" id="acc-thu">
+        <div class="exp-head acc-head" onclick="toggleAcc('acc-thu')">
+          <div class="exp-head-left">
+            <div class="exp-company" data-zh>東海大學 · Ai4kids 講師</div>
+            <div class="exp-company" data-en>Tunghai University · Ai4kids Instructor</div>
+            <div class="exp-role" data-zh>研究助理 ＆ AI 課程講師</div>
+            <div class="exp-role" data-en>Research Assistant &amp; AI Instructor</div>
+            <div class="exp-period" data-zh>2020.06 – 2022.07 ｜ 台中 ｜ <em>多所大學 AI 講師 · EPA / IoT 計畫</em></div>
+            <div class="exp-period" data-en>Jun 2020 – Jul 2022 ｜ Taichung ｜ <em>AI Instructor · EPA / IoT Projects</em></div>
+            <div class="acc-preview">
+              <span class="chip green">Technical Teaching</span>
+              <span class="chip">Computer Vision</span>
+              <span class="chip">IoT</span>
+              <span class="chip">Jetson Nano</span>
+            </div>
+          </div>
+          <div class="acc-arrow">＋</div>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li data-zh><strong>EPA 計畫：</strong>以 AI 影像辨識建立黑白煙不透明度即時量測系統。</li>
+            <li data-en><strong>EPA project:</strong> Real-time AI image-recognition system for black/white smoke opacity measurement.</li>
+            <li data-zh><strong>科技部計畫：</strong>整合 IoT + Mobile App 開發高齡照護健康管理平台（Jetson / Raspberry Pi / MQTT）。</li>
+            <li data-en><strong>MOST project:</strong> IoT + mobile app senior care health management platform (Jetson / Raspberry Pi / MQTT).</li>
+            <li data-zh><strong>Ai4kids 講師：</strong>受多所高中與大學邀請，教授深度學習與 AI 實作（影像分類 / 偵測），培養科普溝通與技術表達能力。</li>
+            <li data-en><strong>Ai4kids instructor:</strong> Invited by high schools and colleges to teach deep learning and AI implementation — building technical communication skills.</li>
+          </ul>
+          <div class="exp-chips">
+            <span class="chip">Python</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">IoT</span>
+            <span class="chip green">Technical Teaching</span>
+            <span class="chip">Jetson Nano</span>
+          </div>
+        </div>
+      </div>
 
     </div>
-  </body>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="section-header">
+      <div class="section-icon">🛠</div>
+      <h2 class="section-title" data-zh>技術能力</h2>
+      <h2 class="section-title" data-en>Technical Skills</h2>
+    </div>
+
+    <!-- Row 1: EDA / APR -->
+    <div class="skill-row">
+      <div class="skill-row-label">
+        <div class="sr-main" data-zh>⚡ EDA / APR</div>
+        <div class="sr-main" data-en>⚡ EDA / APR</div>
+        <div class="sr-sub" data-zh>現職核心</div>
+        <div class="sr-sub" data-en>Core Expertise</div>
+      </div>
+      <div class="skill-row-content">
+        <div class="sr-key">
+          <span class="sp key">Fusion Compiler (FC)</span>
+          <span class="sp key">ICC2</span>
+          <span class="sp key">Floorplan Design</span>
+          <span class="sp key">Physical Cell Placement</span>
+          <span class="sp sec">APR Flow</span>
+          <span class="sp sec">Advanced Technology Nodes</span>
+          <span class="sp sec">PPA Optimization</span>
+          <span class="sp sec">Issue Triage</span>
+          <span class="sp sec">Methodology Support</span>
+          <span class="sp sec">Customer Application Support</span>
+          <span class="sp sec">Tcl Scripting</span>
+          <span class="sp sec">Cross-team Collaboration</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Software / Python / AI -->
+    <div class="skill-row">
+      <div class="skill-row-label">
+        <div class="sr-main" data-zh>🐍 Software<br>Python · AI</div>
+        <div class="sr-main" data-en>🐍 Software<br>Python · AI</div>
+        <div class="sr-sub" data-zh>學術 & 工程背景</div>
+        <div class="sr-sub" data-en>Research & Engineering</div>
+      </div>
+      <div class="skill-row-content">
+        <div class="sr-key">
+          <span class="sp key">Python</span>
+          <span class="sp key">AI Pathology Image Recognition</span>
+          <span class="sp key">Semantic Segmentation</span>
+          <span class="sp sec">PyTorch</span>
+          <span class="sp sec">TensorFlow</span>
+          <span class="sp sec">Domain Adaptation</span>
+          <span class="sp sec">Knowledge Distillation</span>
+          <span class="sp sec">Semi-Supervised Learning</span>
+          <span class="sp sec">Flask</span>
+          <span class="sp sec">SQL</span>
+          <span class="sp sec">CNN / GAN</span>
+          <span class="sp sec">OpenCV · CUDA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: C/C++ / Firmware -->
+    <div class="skill-row">
+      <div class="skill-row-label">
+        <div class="sr-main" data-zh>🔧 C / C++<br>韌體 · 系統</div>
+        <div class="sr-main" data-en>🔧 C / C++<br>Firmware · Systems</div>
+        <div class="sr-sub" data-zh>每日自主精進中</div>
+        <div class="sr-sub" data-en>Daily Self-Study</div>
+      </div>
+      <div class="skill-row-content">
+        <div class="sr-key">
+          <span class="sp key">C Language</span>
+          <span class="sp key">C++</span>
+          <span class="sp sec">Pointer / Memory Management</span>
+          <span class="sp sec">Bitwise Operations</span>
+          <span class="sp sec">Linux-style Linked List</span>
+          <span class="sp sec">malloc / calloc</span>
+          <span class="sp sec">Linux Kernel</span>
+          <span class="sp sec">Driver / Firmware</span>
+          <span class="sp sec">Jetson Nano · Raspberry Pi</span>
+          <span class="sp sec">IoT · MQTT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications">
+    <div class="section-header">
+      <div class="section-icon">📄</div>
+      <h2 class="section-title" data-zh>學術發表</h2>
+      <h2 class="section-title" data-en>Publications</h2>
+    </div>
+
+    <div class="pub-list">
+      <div class="pub-item">
+        <div class="pub-badge">IEEE<br>TAI</div>
+        <div class="pub-body">
+          <h4>Domain-Centroid-Guided Progressive Teacher-based Knowledge Distillation for Source-Free Domain Adaptation of Histopathological Images</h4>
+          <p class="pub-venue">IEEE Transactions on Artificial Intelligence (TAI) · 2023 · 期刊論文 / Journal</p>
+          <p class="pub-desc" data-zh>數位病理切片跨域適應：以教師模型 Progressive 蒸餾為核心，在無源域資料的情境下達成跨院所影像遷移。</p>
+          <p class="pub-desc" data-en>Addresses domain shift in histopathology without source-domain data access; uses progressive teacher-based knowledge distillation guided by domain centroids.</p>
+          <a class="pub-link" href="https://ieeexplore.ieee.org/document/10218991" target="_blank">→ View on IEEE Xplore ↗</a>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">IEEE<br>ISCAS<br>2024</div>
+        <div class="pub-body">
+          <h4>Domain Generalization with Anti-background Perturbation Consistency and Texture Reduction Ensemble Models for Hepatocyte Nucleus Segmentation</h4>
+          <p class="pub-venue">IEEE ISCAS 2024 · 國際會議 / Conference</p>
+          <p class="pub-desc" data-zh>肝細胞核分割之跨域泛化：對抗背景擾動一致性損失 + 紋理縮減 Ensemble，提升在未見染色域的穩健性。</p>
+          <p class="pub-desc" data-en>Hepatocyte nucleus segmentation with improved cross-domain robustness via anti-background perturbation consistency and texture-reduction ensemble strategy.</p>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">IJCAI<br>2024</div>
+        <div class="pub-body">
+          <h4>Reliable Self-Training with Class Group Feature Alignment for Semi-Supervised Semantic Segmentation</h4>
+          <p class="pub-venue">IJCAI 2024 · 國際會議 / Conference</p>
+          <p class="pub-desc" data-zh>以類別群組特徵對齊提升半監督語意分割中自訓練的可靠性，降低偽標籤雜訊對模型收斂的影響。</p>
+          <p class="pub-desc" data-en>Improves pseudo-label reliability in semi-supervised semantic segmentation through class group feature alignment, reducing noise from incorrect pseudo labels during self-training.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION (compact) -->
+  <section class="section" id="education" style="margin-bottom:2rem;">
+    <div class="section-header">
+      <div class="section-icon">🎓</div>
+      <h2 class="section-title" data-zh>學歷</h2>
+      <h2 class="section-title" data-en>Education</h2>
+    </div>
+    <div class="edu-compact">
+      <div class="edu-entry">
+        <span class="deg-badge">M.S.</span>
+        <span class="school" data-zh>國立成功大學（NCKU）</span>
+        <span class="school" data-en>NCKU</span>
+        <span class="dept" data-zh>電機工程 · AI 病理影像</span>
+        <span class="dept" data-en>EE · AI Pathology</span>
+        <span class="dept">2022–2024</span>
+      </div>
+      <span class="edu-sep">·</span>
+      <div class="edu-entry">
+        <span class="deg-badge">B.S.</span>
+        <span class="school" data-zh>東海大學</span>
+        <span class="school" data-en>Tunghai University</span>
+        <span class="dept" data-zh>電機工程</span>
+        <span class="dept" data-en>EE</span>
+        <span class="dept">2018–2022</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CREATION / DIFFERENTIATOR -->
+  <section class="section" id="content">
+    <div class="section-header">
+      <div class="section-icon">🎬</div>
+      <h2 class="section-title" data-zh>內容創作與部落格 — 與眾不同的地方</h2>
+      <h2 class="section-title" data-en>Content Creation &amp; Blog — What Sets Me Apart</h2>
+    </div>
+
+    <!-- row 1: YouTube (full width) -->
+    <div class="creator-card" style="margin-bottom:1.2rem;">
+      <div class="creator-card-head">
+        <span class="ch-icon">▶</span>
+        <div>
+          <h3 data-zh>YouTube 精選教學影片</h3>
+          <h3 data-en>YouTube Featured Tutorial</h3>
+          <p class="ch-sub">@hardenli6973 · <span style="color:#15803d;font-weight:700;">1,000+ Views</span></p>
+        </div>
+      </div>
+      <div class="creator-card-body">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:start;">
+
+          <!-- thumbnail (always visible, click to watch) -->
+          <div>
+            <div style="display:flex;gap:0.4rem;margin-bottom:0.7rem;flex-wrap:wrap;">
+              <span style="background:#fef3c7;border:1px solid #fde68a;color:#92400e;font-size:0.72rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:4px;">🔥 精選 / Featured</span>
+              <span style="background:#dcfce7;border:1px solid #bbf7d0;color:#15803d;font-size:0.72rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:4px;">1,000+ Views</span>
+              <span style="background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:0.72rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:4px;">OpenCV · CUDA</span>
+            </div>
+            <!-- YouTube thumbnail — click to watch (works on file://) -->
+            <a class="yt-thumb" href="https://www.youtube.com/watch?v=hcsMEc7okB0" target="_blank" title="點擊觀看 / Click to Watch">
+              <img src="https://img.youtube.com/vi/hcsMEc7okB0/hqdefault.jpg"
+                   alt="【OpenCV CUDA】How to Build OpenCV GPU with CUDA on Windows"
+                   onerror="this.src='https://img.youtube.com/vi/hcsMEc7okB0/mqdefault.jpg'">
+              <div class="yt-play">
+                <div class="yt-play-btn"></div>
+              </div>
+            </a>
+            <p style="font-size:0.75rem;color:var(--text3);margin-bottom:0.5rem;" data-zh>↑ 點擊縮圖至 YouTube 觀看</p>
+            <p style="font-size:0.75rem;color:var(--text3);margin-bottom:0.5rem;" data-en>↑ Click thumbnail to watch on YouTube</p>
+          </div>
+
+          <!-- description -->
+          <div>
+            <p style="font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;" data-zh>【OpenCV CUDA】Windows GPU 加速完整教學</p>
+            <p style="font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem;" data-en>How to Build OpenCV with GPU/CUDA on Windows</p>
+            <p data-zh style="font-size:0.84rem;color:var(--text2);line-height:1.7;margin-bottom:0.9rem;">
+              從 <strong>CMake 設定</strong>到 <strong>Visual Studio 編譯</strong> 的完整手把手教學。
+              當年中文完整教學極少，影片超過 <strong>1,000 觀看</strong>，體現稀缺教學內容的實際需求，也展示了化解複雜環境設定的能力與知識分享意願。
+            </p>
+            <p data-en style="font-size:0.84rem;color:var(--text2);line-height:1.7;margin-bottom:0.9rem;">
+              Step-by-step from <strong>CMake</strong> to <strong>Visual Studio compilation</strong>.
+              Rare complete walkthrough at time of release — <strong>1,000+ views</strong> shows clear audience demand, technical communication ability, and knowledge-sharing culture.
+            </p>
+            <a href="https://www.youtube.com/watch?v=hcsMEc7okB0" target="_blank" style="font-size:0.83rem;color:#ff0000;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-bottom:0.5rem;">▶ Watch on YouTube ↗</a><br>
+            <a href="https://www.youtube.com/@hardenli6973" target="_blank" style="font-size:0.8rem;color:var(--blue);text-decoration:none;font-weight:600;">→ View All Videos ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- row 2: Blogs + GitHub side by side -->
+    <div class="creator-grid">
+
+      <div class="creator-card">
+        <div class="creator-card-head">
+          <span class="ch-icon">📝</span>
+          <div>
+            <h3 data-zh>C / C++ 技術部落格</h3>
+            <h3 data-en>C / C++ Technical Blog</h3>
+            <p class="ch-sub">HackMD · Daily Self-Study</p>
+          </div>
+        </div>
+        <div class="creator-card-body">
+          <p data-zh style="font-size:0.84rem;">
+            追蹤 Jserv（黃敬群教授）Linux Kernel Driver 課程，每天 4 小時精進。
+            公開筆記：指標 / 記憶體、Linux Linked List、bitwise、malloc/calloc、韌體程式設計、C++ 進階主題。
+          </p>
+          <p data-en style="font-size:0.84rem;">
+            Following Jserv's (Prof. Jim Huang) Linux Kernel Driver course, 4 hrs/day.
+            Public notes: pointer/memory, Linux linked list, bitwise ops, malloc/calloc, firmware, advanced C++.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;margin-top:0.85rem;">
+            <a href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/HyePJzv9p" target="_blank" style="font-size:0.82rem;color:var(--blue);text-decoration:none;font-weight:600;">→ C Language Notes ↗</a>
+            <a href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/SJYBT8WYa" target="_blank" style="font-size:0.82rem;color:var(--blue);text-decoration:none;font-weight:600;">→ C++ Blog ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card">
+        <div class="creator-card-head">
+          <span class="ch-icon">⚙</span>
+          <div>
+            <h3 data-zh>GitHub 開源專案</h3>
+            <h3 data-en>GitHub Projects</h3>
+            <p class="ch-sub">s07362022 · 36 Repos</p>
+          </div>
+        </div>
+        <div class="creator-card-body">
+          <a class="gh-card" href="https://github.com/s07362022/Nvidia-TLT-yolo" target="_blank">
+            <div class="gh-icon">⚙</div>
+            <div>
+              <h4>Nvidia-TLT-yolo</h4>
+              <p data-zh>NVIDIA Transfer Learning Toolkit (TLT-2.0) × YOLO 遷移學習完整流程，含 CUDA / Docker / 訓練配置</p>
+              <p data-en>NVIDIA TLT-2.0 × YOLO transfer learning pipeline — CUDA setup, Docker, training config</p>
+            </div>
+          </a>
+          <a class="gh-card" href="https://github.com/s07362022" target="_blank">
+            <div class="gh-icon">🐙</div>
+            <div>
+              <h4 data-zh>完整作品集 → GitHub Profile</h4>
+              <h4 data-en>Full Portfolio → GitHub Profile</h4>
+              <p data-zh>36 個 Repository：AI 模型、電腦視覺、Jetson、HDL、影像處理</p>
+              <p data-en>36 repos: AI models, computer vision, Jetson, HDL, image processing</p>
+            </div>
+          </a>
+          <a href="https://s07362022.github.io/" target="_blank" style="font-size:0.82rem;color:var(--blue);text-decoration:none;font-weight:600;margin-top:0.3rem;display:inline-block;">→ Portfolio Website ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="section" id="awards">
+    <div class="section-header">
+      <div class="section-icon">🏆</div>
+      <h2 class="section-title" data-zh>競賽與獎項</h2>
+      <h2 class="section-title" data-en>Awards &amp; Honors</h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-item">
+        <span class="aw-icon">📰</span>
+        <div>
+          <h4 data-zh>IEEE TAI 期刊論文</h4>
+          <h4 data-en>IEEE TAI Journal Publication</h4>
+          <p>IEEE Transactions on AI · 2023</p>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="aw-icon">📰</span>
+        <div>
+          <h4 data-zh>ISCAS 2024 ＆ IJCAI 2024</h4>
+          <h4 data-en>ISCAS 2024 &amp; IJCAI 2024</h4>
+          <p data-zh>IEEE / 國際頂級會議論文</p>
+          <p data-en>International Conference Papers</p>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="aw-icon">🏅</span>
+        <div>
+          <h4 data-zh>大專機電暨智慧創意競賽</h4>
+          <h4 data-en>Higher Ed Mechatronics Competition</h4>
+          <p data-zh>照護連續影像跌倒偵測 · 2021</p>
+          <p data-en>Fall Detection System · 2021</p>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="aw-icon">🥈</span>
+        <div>
+          <h4 data-zh>物聯網產業論壇競賽 — 前十</h4>
+          <h4 data-en>IoT Industry Competition — Top 10</h4>
+          <p>2020</p>
+        </div>
+      </div>
+      <div class="award-item">
+        <span class="aw-icon">🎖</span>
+        <div>
+          <h4 data-zh>理律盃全國競賽 — 佳作</h4>
+          <h4 data-en>LLSC National Competition — Honorable</h4>
+          <p data-zh>跨領域公民行動 · 2020</p>
+          <p data-en>Cross-disciplinary Civic Action · 2020</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <div class="section-icon">✉</div>
+      <h2 class="section-title" data-zh>聯絡方式</h2>
+      <h2 class="section-title" data-en>Contact</h2>
+    </div>
+    <p style="color:var(--text2); margin-bottom:1.5rem; font-size:0.9rem;" data-zh>歡迎 EDA 工具、半導體 IP、AI 研究或軟體開發相關機會洽詢，也歡迎技術交流。</p>
+    <p style="color:var(--text2); margin-bottom:1.5rem; font-size:0.9rem;" data-en>Open to opportunities in EDA tools, semiconductor IP, AI research, and software development. Happy to connect for technical exchange.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:s07362022@gmail.com">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">s07362022@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/neintsu-li-69556b183/" target="_blank">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">neintsu-li-69556b183</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://s07362022.github.io/" target="_blank">
+        <div class="contact-icon">🖥</div>
+        <div>
+          <div class="contact-label" data-zh>作品集 / 部落格</div>
+          <div class="contact-label" data-en>Portfolio / Blog</div>
+          <div class="contact-value">s07362022.github.io</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://www.youtube.com/@hardenli6973" target="_blank">
+        <div class="contact-icon">▶</div>
+        <div>
+          <div class="contact-label">YouTube</div>
+          <div class="contact-value">@hardenli6973</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/HyePJzv9p" target="_blank">
+        <div class="contact-icon">📝</div>
+        <div>
+          <div class="contact-label" data-zh>C 語言學習筆記</div>
+          <div class="contact-label" data-en>C Language Notes</div>
+          <div class="contact-value">HackMD</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://hackmd.io/@ydrfJFuFQ3iNBkVWg3nqrA/SJYBT8WYa" target="_blank">
+        <div class="contact-icon">📝</div>
+        <div>
+          <div class="contact-label" data-zh>C++ 部落格</div>
+          <div class="contact-label" data-en>C++ Blog</div>
+          <div class="contact-value">HackMD</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://ieeexplore.ieee.org/document/10218991" target="_blank">
+        <div class="contact-icon">📄</div>
+        <div>
+          <div class="contact-label">IEEE Paper</div>
+          <div class="contact-value">TAI 2023</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <strong>Nien-Tsu Li（李念祖 / Harden Li）</strong><br>
+  Sr. Application Engineer @ Synopsys · M.S. NCKU EE · IEEE Author<br>
+  <span style="margin-top:0.4rem;display:block">© 2026 · s07362022@gmail.com</span>
+</footer>
+
+<script>
+  function toggleLang() {
+    const html = document.documentElement;
+    const cur = html.getAttribute('data-lang');
+    html.setAttribute('data-lang', cur === 'zh' ? 'en' : 'zh');
+    html.setAttribute('lang', cur === 'zh' ? 'en' : 'zh-TW');
+  }
+
+  function toggleAcc(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.06 });
+
+  document.querySelectorAll(
+    '.exp-card, .pillar, .pub-item, .award-item, .creator-card, .skill-row'
+  ).forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
