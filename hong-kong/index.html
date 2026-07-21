@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#FFF9F3" />
   <title>2026 香港 · 3 天 2 夜旅行筆記 v2</title>
   <meta name="description" content="2026年8月香港3天2夜：英皇駿景酒店、葵涌廣場13間掃街、Big Bus維港線、航班8/7–8/9，含Google Maps" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -10,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Sans+TC:wght@400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
   <style>
   :root {
+    color-scheme: light only;
     --paper:#FFF9F3; --paper2:#FFF0E6; --card:#FFF; --border:#E8D5C4; --border2:#F3E8DC;
     --ink:#1F2937; --ink2:#4B5563; --muted:#8B7E72;
     --teal:#C0392B; --teal-lt:#FDECEA; --teal-dk:#922B21;
@@ -18,9 +21,10 @@
     --ruby:#922B21; --ruby-lt:#FADBD8;
     --shadow-sm:0 1px 4px rgba(31,41,55,.07); --r:14px; --r-sm:8px;
   }
+  html{background:#FFF9F3;color-scheme:light only}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{font-family:"Noto Sans TC",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:.94rem;min-height:100vh}
+  body{font-family:"Noto Sans TC",system-ui,sans-serif;background:#FFF9F3;background:var(--paper);color:#1F2937;color:var(--ink);line-height:1.7;font-size:.94rem;min-height:100vh}
   a{color:var(--sky)}
   .shell{display:grid;max-width:1060px;margin:0 auto}
   @media(min-width:820px){.shell{grid-template-columns:200px 1fr}}
@@ -167,6 +171,22 @@
   footer{margin-top:3rem;padding-top:1.5rem;border-top:2px dashed var(--border);text-align:center}
   .footer-note{font-size:.77rem;color:var(--muted);line-height:1.7}
   @media print{.sidebar,.mobile-nav{display:none}.day-card{break-inside:avoid}}
+  /* 強制明亮主題：避免 Chrome／Edge 深色模式自動反轉 HTTPS 頁面 */
+  @media (prefers-color-scheme: dark){
+    :root{color-scheme:light only}
+    html,body{background:#FFF9F3!important;color:#1F2937!important}
+    .sidebar a,.cover-pill,.mobile-pills a,.lang-switch button{color:#4B5563!important}
+    .stat-card,.day-card,.tip-card,.check-group,.transport-box,.summary-box,.mobile-nav,.nearby-card{background:#FFF!important}
+    .cover-pill,.nearby-card,.ref-box{background:#FFF0E6!important}
+    .sidebar a:hover,.sidebar a.active{background:#FDECEA!important;color:#922B21!important}
+    .lang-switch button.active{background:#C0392B!important;color:#fff!important;border-color:#C0392B!important}
+    .verified-card{background:#E8F4FC!important;color:#1a4d7a!important}
+    .day-note.tip{background:#EAF7EF!important;color:#1e5631!important}
+    .day-note.warn{background:#FDF0E4!important;color:#A04000!important}
+    .day-note.stay{background:#FDECEA!important;color:#922B21!important}
+    .budget-total{background:#FDF0E4!important;border-color:#D35400!important}
+    .score-total{background:#FDECEA!important;border-color:#C0392B!important}
+  }
   </style>
 </head>
 <body>
