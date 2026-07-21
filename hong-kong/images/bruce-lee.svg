@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-label="Avenue of Stars Bruce Lee">
+  <rect width="960" height="720" fill="#AED6F1"/>
+  <rect y="580" width="960" height="140" fill="#BDC3C7"/>
+  <rect y="520" width="960" height="60" fill="#2874A6" opacity="0.6"/>
+  <rect x="455" y="280" width="50" height="300" fill="#717D7E" rx="8"/>
+  <ellipse cx="480" cy="250" rx="35" ry="40" fill="#717D7E"/>
+  <text x="480" y="680" text-anchor="middle" fill="#2C3E50" font-family="Arial,sans-serif" font-size="26" font-weight="600">Avenue of Stars</text>
+  <text x="480" y="708" text-anchor="middle" fill="#566573" font-family="Arial,sans-serif" font-size="15">Big Bus Stop 16</text>
+</svg>

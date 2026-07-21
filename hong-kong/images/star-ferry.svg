@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-label="Star Ferry">
+  <defs>
+    <linearGradient id="g-sf-sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3498DB"/>
+      <stop offset="100%" stop-color="#1F618D"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="640" fill="#FDEBD0"/>
+  <rect y="380" width="960" height="260" fill="url(#g-sf-sea)"/>
+  <path d="M320 400 L640 400 L620 460 L340 460 Z" fill="#C0392B"/>
+  <rect x="380" y="360" width="200" height="45" fill="#fff" rx="4"/>
+  <text x="480" y="560" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="600">Star Ferry</text>
+</svg>

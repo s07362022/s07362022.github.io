@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Victoria Harbour">
+  <defs>
+    <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#E8F4FC"/>
+    </linearGradient>
+    <linearGradient id="g-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2874A6"/>
+      <stop offset="100%" stop-color="#1A5276"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#g-sky)"/>
+  <rect y="360" width="960" height="180" fill="url(#g-water)"/>
+  <rect x="520" y="180" width="55" height="180" fill="#5D6D7E"/>
+  <rect x="590" y="140" width="45" height="220" fill="#566573"/>
+  <rect x="650" y="160" width="70" height="200" fill="#4A5568"/>
+  <rect x="740" y="120" width="50" height="240" fill="#2C3E50"/>
+  <rect x="810" y="150" width="90" height="210" fill="#34495E"/>
+  <text x="480" y="500" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="600">Victoria Harbour</text>
+</svg>

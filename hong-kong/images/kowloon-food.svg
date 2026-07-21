@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Kwai Chung Plaza">
+  <rect width="960" height="540" fill="#1B2631"/>
+  <rect x="80" y="80" width="800" height="380" fill="#34495E" rx="12"/>
+  <rect x="100" y="100" width="760" height="60" fill="#C0392B" rx="6"/>
+  <text x="480" y="140" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="22" font-weight="700">Kwai Chung Plaza</text>
+  <text x="480" y="395" text-anchor="middle" fill="#D6EAF8" font-family="Arial,sans-serif" font-size="18">Food crawl - pick 4 to 6 stalls</text>
+  <text x="480" y="510" text-anchor="middle" fill="#F8C471" font-family="Arial,sans-serif" font-size="16">Day 3 - Kwai Fong MTR 2 min walk</text>
+</svg>
