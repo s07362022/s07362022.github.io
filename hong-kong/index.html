@@ -9,6 +9,7 @@
   <meta name="description" content="2026年8月香港3天2夜：09:00出發、朋友路線、Big Bus、天星小輪、灣仔酒吧、葵涌廣場掃街；英皇駿景、航班8/7–8/9，含Google Maps" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="/hong-kong/images/hk-skyline.svg" type="image/svg+xml" />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Sans+TC:wght@400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
   <style>
   :root {
@@ -112,8 +113,8 @@
   .img-grid{display:grid;gap:.75rem;margin:1rem 0 1.25rem}
   @media(min-width:560px){.img-grid.two{grid-template-columns:1fr 1fr}}
   figure.spot-fig{margin:0;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--border);background:var(--card);box-shadow:var(--shadow-sm)}
-  figure.spot-fig img,.spot-img{display:block;width:100%;height:auto;max-height:220px;object-fit:cover}
-  figure.spot-fig img[src$=".svg"]{max-height:none;object-fit:contain;background:linear-gradient(180deg,#E8F4FC,#FFF9F3)}
+  figure.spot-fig img,.spot-img{display:block;width:100%;height:auto;min-height:140px;max-height:280px;object-fit:cover;background:var(--paper2)}
+  figure.spot-fig img[src$=".svg"],.spot-img[src$=".svg"]{max-height:320px;min-height:180px;object-fit:contain;background:linear-gradient(180deg,#E8F4FC,#FFF9F3)}
   figure.spot-fig figcaption{font-size:.72rem;color:var(--muted);padding:.45rem .65rem;text-align:center}
   .food-nearby{display:grid;gap:.65rem;margin:.75rem 1.3rem 1rem}
   @media(min-width:560px){.food-nearby{grid-template-columns:1fr 1fr}}
@@ -236,11 +237,11 @@
 
     <div class="img-grid two">
       <figure class="spot-fig">
-        <img class="spot-img" src="./images/hk-skyline.jpg" alt="Victoria Harbour Hong Kong" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='./images/hk-skyline.svg';" />
+        <img class="spot-img" src="/hong-kong/images/hk-skyline.jpg" alt="Victoria Harbour Hong Kong" width="960" height="540" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='/hong-kong/images/hk-skyline.svg';" />
         <figcaption><span data-i18n="img.harbour">維多利亞港 · Victoria Harbour</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Central_%26_Admiralty_from_Victoria_Harbour,_January_2017.jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
       </figure>
       <figure class="spot-fig">
-        <img class="spot-img" src="./images/star-ferry.jpg" alt="Star Ferry Hong Kong" width="960" height="640" loading="lazy" onerror="this.onerror=null;this.src='./images/star-ferry.svg';" />
+        <img class="spot-img" src="/hong-kong/images/star-ferry.jpg" alt="Star Ferry Hong Kong" width="960" height="640" loading="eager" onerror="this.onerror=null;this.src='/hong-kong/images/star-ferry.svg';" />
         <figcaption><span data-i18n="img.ferry">天星小輪 · Star Ferry</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Star_Ferry_Hong_Kong_(084945).jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
       </figure>
     </div>
@@ -538,18 +539,18 @@
         </div>
         <div class="img-grid two" style="margin:0 1.3rem 1rem">
           <figure class="spot-fig">
-            <img class="spot-img" src="./images/dim-sum.svg" alt="Hong Kong dim sum" width="960" height="540" loading="lazy" />
+            <img class="spot-img" src="/hong-kong/images/dim-sum.svg" alt="Hong Kong dim sum" width="960" height="540" loading="lazy" />
             <figcaption>新興食家 · 點心早茶</figcaption>
           </figure>
           <figure class="spot-fig">
-            <img class="spot-img" src="./images/mid-levels.svg" alt="Mid-Levels Escalator" width="960" height="540" loading="lazy" />
+            <img class="spot-img" src="/hong-kong/images/mid-levels.svg" alt="Mid-Levels Escalator" width="960" height="540" loading="lazy" />
             <figcaption>半山扶梯 · 上午散步</figcaption>
           </figure>
         </div>
         <div class="day-note warn">🎫 Big Bus 請<strong>事先購票</strong>；9:00 出發版建議搭 <strong>13:00 前後</strong> 班次。若新興食家 09:30 前排隊 &gt;40 分，改備選：<a href="https://www.google.com/maps/search/?api=1&query=One+Dim+Sum+Causeway+Bay">灣仔點心</a>。</div>
         <div class="day-budget-bar">💰 <strong>Day 2 預算合計</strong>：約 HK$620–850／人＋酒吧可選 HK$120–250／杯</div>
         <figure class="spot-fig" style="margin:0 1.3rem 1rem">
-          <img class="spot-img" src="./images/bruce-lee.jpg" alt="Avenue of Stars Bruce Lee" width="960" height="720" loading="lazy" onerror="this.onerror=null;this.src='./images/bruce-lee.svg';" />
+          <img class="spot-img" src="/hong-kong/images/bruce-lee.jpg" alt="Avenue of Stars Bruce Lee" width="960" height="720" loading="lazy" onerror="this.onerror=null;this.src='/hong-kong/images/bruce-lee.svg';" />
           <figcaption><span data-i18n="img.bruce">星光大道 · Avenue of Stars</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Statue_of_Bruce_Lee.JPG" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 3.0</small></figcaption>
         </figure>
         <div class="tl">
@@ -684,10 +685,12 @@
               </div>
             </div>
           </div>
-          <figure class="spot-fig" style="margin:0 1.3rem 1rem">
-            <img class="spot-img" src="./images/central-market.svg" alt="Central Market Hong Kong" width="960" height="540" loading="lazy" />
-            <figcaption>中環街市 · Central Market</figcaption>
-          </figure>
+        </div>
+        <figure class="spot-fig" style="margin:0 1.3rem 1rem">
+          <img class="spot-img" src="/hong-kong/images/central-market.svg" alt="Central Market Hong Kong" width="960" height="540" loading="lazy" />
+          <figcaption>中環街市 · Central Market</figcaption>
+        </figure>
+        <div class="tl">
           <div class="tl-row">
             <div class="tl-time">18:30</div>
             <div>
@@ -890,7 +893,7 @@
 
     <div class="sec-head" id="bars"><i>🍸</i> 酒吧推薦 · 晚間</div>
     <figure class="spot-fig" style="margin-bottom:1rem">
-      <img class="spot-img" src="./images/wan-chai-harbour.svg" alt="Wan Chai harbour sunset" width="960" height="540" loading="lazy" />
+      <img class="spot-img" src="/hong-kong/images/wan-chai-harbour.svg" alt="Wan Chai harbour sunset" width="960" height="540" loading="lazy" />
       <figcaption>Day 2：海濱日落後 → 21:15 酒吧 · 23:00 回飯店</figcaption>
     </figure>
     <p class="sec-sub">Day 2 主場在 <strong>21:15</strong> 後；Day 1 抵達日可選一杯。皆距英皇駿景可步行或 MTR 1 站。雞尾酒約 HK$120–250／杯，熱門店建議 IG／官網預約。</p>
@@ -1006,7 +1009,7 @@
       <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Kwai+Fong+Station&destination=Kwai+Chung+Plaza+7+Kwai+Foo+Road&travelmode=walking" target="_blank" rel="noopener noreferrer" data-i18n-en="🚶 Kwai Fong D → KCP">🚶 葵芳 D→葵廣</a>
     </div>
     <figure class="spot-fig" style="margin-bottom:1.25rem">
-      <img class="spot-img" src="./images/kowloon-food.jpg" alt="Kwai Chung Plaza" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='./images/kowloon-food.svg';" />
+      <img class="spot-img" src="/hong-kong/images/kowloon-food.jpg" alt="Kwai Chung Plaza" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='/hong-kong/images/kowloon-food.svg';" />
       <figcaption><span data-i18n="img.kcp">葵涌廣場 · Kwai Chung Plaza</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Kwai_Chung_Plaza_(Hong_Kong).jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
     </figure>
 
@@ -1179,6 +1182,16 @@
     </footer>
   </main>
 </div>
+<script>
+(function () {
+  if (location.protocol === 'file:') {
+    document.querySelectorAll('img[src^="/hong-kong/images/"]').forEach(function (img) {
+      var name = img.getAttribute('src').split('/').pop();
+      if (name) img.src = 'images/' + name;
+    });
+  }
+})();
+</script>
 <script src="./i18n.js"></script>
 <script>
 (function () {

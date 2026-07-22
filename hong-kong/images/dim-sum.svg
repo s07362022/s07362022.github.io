@@ -5,5 +5,5 @@
   <circle cx="480" cy="250" r="85" fill="#E8D5C4" stroke="#C0392B" stroke-width="4"/>
   <circle cx="640" cy="270" r="90" fill="#E8D5C4" stroke="#C0392B" stroke-width="4"/>
   <rect x="260" y="380" width="440" height="24" rx="12" fill="#D35400" opacity=".35"/>
-  <text x="480" y="480" text-anchor="middle" fill="#922B21" font-family="Arial,sans-serif" font-size="32" font-weight="600">Dim Sum · ÞÃ</text>
+  <text x="480" y="480" text-anchor="middle" fill="#922B21" font-family="Arial,sans-serif" font-size="32" font-weight="600">Dim Sum</text>
 </svg>
