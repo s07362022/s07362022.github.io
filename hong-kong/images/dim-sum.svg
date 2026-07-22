@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Dim sum">
+  <rect width="960" height="540" fill="#FDF0E4"/>
+  <circle cx="320" cy="270" r="90" fill="#E8D5C4" stroke="#C0392B" stroke-width="4"/>
+  <circle cx="480" cy="250" r="85" fill="#E8D5C4" stroke="#C0392B" stroke-width="4"/>
+  <circle cx="640" cy="270" r="90" fill="#E8D5C4" stroke="#C0392B" stroke-width="4"/>
+  <rect x="260" y="380" width="440" height="24" rx="12" fill="#D35400" opacity=".35"/>
+  <text x="480" y="480" text-anchor="middle" fill="#922B21" font-family="Arial,sans-serif" font-size="32" font-weight="600">Dim Sum · ÞÃ</text>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="Wan Chai Harbour">
+  <defs>
+    <linearGradient id="g-sunset" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5B041"/>
+      <stop offset="55%" stop-color="#E8A0BF"/>
+      <stop offset="100%" stop-color="#2874A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#g-sunset)"/>
+  <circle cx="760" cy="130" r="55" fill="#F4D03F" opacity=".85"/>
+  <rect y="360" width="960" height="180" fill="#1A5276" opacity=".75"/>
+  <text x="480" y="500" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="600">Wan Chai Harbour · cÔwñ</text>
+</svg>
