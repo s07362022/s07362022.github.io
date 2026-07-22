@@ -12,5 +12,5 @@
   <rect x="120" y="240" width="720" height="40" fill="#566573"/>
   <rect x="120" y="320" width="720" height="40" fill="#5D6D7E"/>
   <polygon points="760,420 860,420 810,480" fill="#C0392B"/>
-  <text x="480" y="510" text-anchor="middle" fill="#1F2937" font-family="Arial,sans-serif" font-size="28" font-weight="600">Mid-Levels Escalator · Jqv¯</text>
+  <text x="480" y="510" text-anchor="middle" fill="#1F2937" font-family="Arial,sans-serif" font-size="28" font-weight="600">Mid-Levels Escalator</text>
 </svg>
