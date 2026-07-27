@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 北京玩吃筆記 · final</title>
+  <meta name="description" content="2026-09-22～09-27 北京6日最終版（無圖）：台灣旅客行前、交通抵達、伴手禮回台、αβ並列、驗證估價。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Noto+Sans+TC:wght@400;500;600;700&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
+  <style>
+  /* ═══════════════════════════════════════
+     TOKENS
+  ═══════════════════════════════════════ */
+  :root {
+    --paper:    #F9F5EE;
+    --paper2:   #F3EDE2;
+    --card:     #FFFFFF;
+    --border:   #E2D9CC;
+    --border2:  #EDE6DB;
+
+    --ink:      #29211A;
+    --ink2:     #5C4F43;
+    --muted:    #8C7E72;
+
+    --teal:     #2A7A6E;
+    --teal-lt:  #E5F3F1;
+    --teal-dk:  #1C5549;
+
+    --amber:    #C86A1E;
+    --amber-lt: #FDF0E4;
+    --amber-dk: #8A4610;
+
+    --sky:      #2D6FA8;
+    --sky-lt:   #E4EFF9;
+
+    --moss:     #4A7C3F;
+    --moss-lt:  #EAF3E7;
+
+    --ruby:     #B83232;
+    --ruby-lt:  #FDEAEA;
+
+    --shadow-sm: 0 1px 4px rgba(41,33,26,.07);
+    --shadow:    0 3px 14px rgba(41,33,26,.09);
+    --shadow-lg: 0 8px 32px rgba(41,33,26,.12);
+
+    --r:   14px;
+    --r-sm: 8px;
+  }
+
+  /* ═══════════════════════════════════════
+     RESET & BASE
+  ═══════════════════════════════════════ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: "Noto Sans TC", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 0.94rem;
+    min-height: 100vh;
+  }
+
+  a { color: var(--teal); }
+
+  /* ═══════════════════════════════════════
+     LAYOUT SHELL
+  ═══════════════════════════════════════ */
+  .shell {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 820px) {
+    .shell {
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+    }
+  }
+
+  /* ═══════════════════════════════════════
+     STICKY SIDEBAR NAV
+  ═══════════════════════════════════════ */
+  .sidebar {
+    display: none;
+  }
+
+  @media (min-width: 820px) {
+    .sidebar {
+      display: block;
+      position: sticky;
+      top: 1.5rem;
+      align-self: start;
+      height: fit-content;
+      padding: 1.5rem 1rem 1.5rem 1.25rem;
+    }
+  }
+
+  .sidebar-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  .sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 0.32rem 0.65rem;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: background .12s, color .12s;
+    border-left: 2.5px solid transparent;
+  }
+
+  .sidebar a:hover,
+  .sidebar a.active {
+    background: var(--teal-lt);
+    color: var(--teal-dk);
+    border-left-color: var(--teal);
+  }
+
+  .sidebar .sep {
+    height: 1px;
+    background: var(--border2);
+    margin: 0.5rem 0;
+  }
+
+  /* ═══════════════════════════════════════
+     MAIN CONTENT
+  ═══════════════════════════════════════ */
+  .main {
+    padding: 2rem 1.25rem 5rem;
+    min-width: 0;
+  }
+
+  @media (min-width: 820px) {
+    .main { padding: 2rem 2.5rem 5rem 1.5rem; }
+  }
+
+  /* ═══════════════════════════════════════
+     COVER HEADER
+  ═══════════════════════════════════════ */
+  .cover {
+    text-align: center;
+    padding: 2.5rem 1rem 2.25rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px dashed var(--border);
+    position: relative;
+  }
+
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px; height: 88px;
+    border: 3px solid var(--teal);
+    border-radius: 50%;
+    font-size: 2.4rem;
+    color: var(--teal);
+    background: var(--teal-lt);
+    margin-bottom: 1.1rem;
+  }
+
+  .cover h1 {
+    font-family: "Lora", serif;
+    font-size: clamp(1.7rem, 5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--teal-dk);
+    letter-spacing: .01em;
+    margin-bottom: .4rem;
+    line-height: 1.25;
+  }
+
+  .cover-en {
+    font-family: "Caveat", cursive;
+    font-size: 1.15rem;
+    color: var(--muted);
+    display: block;
+    margin-bottom: .9rem;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .cover-pill {
+    display: inline-block;
+    padding: .28rem .85rem;
+    border-radius: 999px;
+    font-size: .76rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    color: var(--ink2);
+    background: var(--paper2);
+  }
+
+  .cover-date {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    padding: .32rem 1.1rem;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+
+  /* ═══════════════════════════════════════
+     MOBILE QUICK NAV
+  ═══════════════════════════════════════ */
+  .mobile-nav {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.75rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 820px) { .mobile-nav { display: none; } }
+
+  .mobile-nav-label {
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-bottom: .65rem;
+  }
+
+  .mobile-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem;
+  }
+
+  .mobile-pills a {
+    padding: .28rem .65rem;
+    border-radius: 999px;
+    font-size: .76rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid var(--border);
+    color: var(--ink2);
+    transition: all .12s;
+  }
+
+  .mobile-pills a:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-lt);
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION HEADING
+  ═══════════════════════════════════════ */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--muted);
+    padding-bottom: .5rem;
+    border-bottom: 1.5px solid var(--border);
+    margin: 2.25rem 0 1.1rem;
+  }
+
+  .sec-head:first-of-type { margin-top: 0; }
+  .sec-head i { font-style: normal; font-size: .95rem; }
+
+  /* ═══════════════════════════════════════
+     AT-A-GLANCE STATS
+  ═══════════════════════════════════════ */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .65rem;
+    margin-bottom: .25rem;
+  }
+
+  @media (min-width: 540px) {
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: .85rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-icon { font-size: 1.4rem; display: block; margin-bottom: .2rem; }
+  .stat-val  { font-family: "Caveat", cursive; font-size: 1.5rem; font-weight: 700; color: var(--teal-dk); line-height: 1; }
+  .stat-lbl  { font-size: .73rem; color: var(--muted); margin-top: .15rem; }
+
+  /* ═══════════════════════════════════════
+     BOOKING CARDS
+  ═══════════════════════════════════════ */
+  .booking-grid {
+    display: grid;
+    gap: .75rem;
+  }
+
+  @media (min-width: 560px) {
+    .booking-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .bk-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: 1.1rem 1.2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+  }
+
+  .bk-icon { font-size: 1.7rem; }
+  .bk-name { font-weight: 700; font-size: .95rem; color: var(--ink); }
+  .bk-date { font-family: "DM Mono", monospace; font-size: .75rem; color: var(--muted); }
+  .bk-desc { font-size: .81rem; color: var(--ink2); line-height: 1.5; }
+
+  .bk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    margin-top: .3rem;
+    padding: .38rem .9rem;
+    background: var(--amber);
+    color: #fff;
+    text-decoration: none;
+    border-radius: var(--r-sm);
+    font-size: .78rem;
+    font-weight: 700;
+    width: fit-content;
+    transition: background .15s;
+  }
+  .bk-btn:hover { background: var(--amber-dk); }
+
+  /* ═══════════════════════════════════════
+     DAY CARD
+  ═══════════════════════════════════════ */
+  .day-wrap { margin-bottom: 1.4rem; scroll-margin-top: 1.5rem; }
+
+  .day-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* day header */
+  .day-hd {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .9rem 1.3rem;
+    background: var(--teal);
+    color: #fff;
+  }
+
+  .day-hd-num {
+    font-family: "Caveat", cursive;
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: .92;
+  }
+
+  .day-hd-divider {
+    width: 1px; height: 28px;
+    background: rgba(255,255,255,.3);
+    flex-shrink: 0;
+  }
+
+  .day-hd-right { flex: 1; min-width: 0; }
+
+  .day-hd-title {
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: .06rem;
+  }
+
+  .day-hd-date {
+    font-family: "DM Mono", monospace;
+    font-size: .73rem;
+    opacity: .78;
+  }
+
+  /* note strips */
+  .day-note {
+    margin: .55rem 1.3rem;
+    padding: .55rem .85rem;
+    border-radius: var(--r-sm);
+    font-size: .81rem;
+    line-height: 1.55;
+  }
+  .day-note.stay  { background: var(--teal-lt);  border-left: 3px solid var(--teal);  color: var(--teal-dk); }
+  .day-note.warn  { background: var(--amber-lt); border-left: 3px solid var(--amber); color: var(--amber-dk); }
+  .day-note.ferry { background: var(--sky-lt);   border-left: 3px solid var(--sky);   color: #1a4d7a; }
+  .day-note.tip   { background: var(--moss-lt);  border-left: 3px solid var(--moss);  color: #2e5426; }
+
+  /* ═══════════════════════════════════════
+     TIMELINE ROWS
+  ═══════════════════════════════════════ */
+  .tl { padding: .3rem 0 .4rem; }
+
+  .tl-row {
+    display: grid;
+    grid-template-columns: 4.2rem 1fr;
+    gap: .45rem .9rem;
+    padding: .72rem 1.3rem;
+    border-bottom: 1px dashed var(--border2);
+    align-items: start;
+  }
+
+  .tl-row:last-child { border-bottom: none; }
+
+  .tl-time {
+    font-family: "DM Mono", monospace;
+    font-size: .79rem;
+    font-weight: 500;
+    color: var(--teal);
+    text-align: right;
+    padding-top: .18rem;
+    white-space: nowrap;
+  }
+
+  .tl-body { min-width: 0; }
+
+  .tl-place {
+    font-weight: 700;
+    font-size: .94rem;
+    margin-bottom: .2rem;
+    line-height: 1.35;
+  }
+
+  .tl-dur {
+    font-size: .77rem;
+    color: var(--muted);
+    margin-bottom: .35rem;
+  }
+
+  /* chips row */
+  .chips { display: flex; flex-wrap: wrap; gap: .28rem; margin-bottom: .35rem; }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .22rem;
+    padding: .19rem .58rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 600;
+    border: 1px solid;
+    line-height: 1.4;
+    text-decoration: none;
+    transition: opacity .12s;
+  }
+  .chip:hover { opacity: .82; }
+
+  .chip.walk  { background: var(--moss-lt); border-color: #9dce91; color: #2e5426; }
+  .chip.uber  { background: var(--amber-lt); border-color: #f5c98a; color: var(--amber-dk); }
+  .chip.ferry { background: var(--sky-lt); border-color: #93c5fd; color: #1a4d7a; }
+  .chip.bus   { background: var(--moss-lt); border-color: #9dce91; color: #2e5426; }
+  .chip.fly   { background: var(--ruby-lt); border-color: #f0a8a8; color: #7a1f1f; }
+  .chip.map   { background: var(--teal-lt); border-color: #9dd0cb; color: var(--teal-dk); }
+  .chip.free  { background: var(--paper2); border-color: var(--border); color: var(--muted); }
+
+  /* link buttons */
+  .links { display: flex; flex-wrap: wrap; gap: .28rem; }
+
+  .lbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: .22rem;
+    padding: .22rem .58rem;
+    border-radius: 6px;
+    font-size: .72rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid;
+    transition: background .12s;
+  }
+  .lbtn.map  { background: var(--teal-lt); border-color: #9dd0cb; color: var(--teal-dk); }
+  .lbtn.book { background: var(--amber-lt); border-color: #f5c98a; color: var(--amber-dk); }
+  .lbtn.map:hover  { background: #c3e8e6; }
+  .lbtn.book:hover { background: #fde4c0; }
+
+  /* description text inside row */
+  .tl-info {
+    font-size: .79rem;
+    color: var(--ink2);
+    margin-bottom: .3rem;
+    line-height: 1.55;
+  }
+
+  .tl-info li { margin-bottom: .15rem; }
+
+  /* ═══════════════════════════════════════
+     EMPTY DAY
+  ═══════════════════════════════════════ */
+  .empty-body {
+    padding: 1.15rem 1.3rem;
+    font-style: italic;
+    color: var(--muted);
+    font-size: .89rem;
+  }
+
+  /* ═══════════════════════════════════════
+     TIPS GRID
+  ═══════════════════════════════════════ */
+  .tips-grid {
+    display: grid;
+    gap: .75rem;
+  }
+
+  @media (min-width: 560px) {
+    .tips-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .tip-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--r);
+    padding: 1rem 1.15rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tip-card h4 {
+    font-size: .86rem;
+    font-weight: 700;
+    color: var(--teal-dk);
+    margin-bottom: .5rem;
+  }
+
+  .tip-card ul {
+    padding-left: 1.1rem;
+    font-size: .81rem;
+    color: var(--ink2);
+  }
+  .tip-card li { margin-bottom: .28rem; line-height: 1.5; }
+
+  /* ═══════════════════════════════════════
+     UBER SUMMARY TABLE
+  ═══════════════════════════════════════ */
+  .uber-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .82rem;
+    background: var(--card);
+    border-radius: var(--r);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .uber-table thead tr { background: var(--teal); color: #fff; }
+  .uber-table thead th { padding: .65rem 1rem; text-align: left; font-weight: 700; font-size: .78rem; }
+  .uber-table tbody tr:nth-child(odd)  { background: var(--paper2); }
+  .uber-table tbody tr:nth-child(even) { background: var(--card); }
+  .uber-table td { padding: .58rem 1rem; border-bottom: 1px solid var(--border2); color: var(--ink); }
+  .uber-table tbody tr:last-child td { border-bottom: none; }
+  .uber-price { font-family: "DM Mono", monospace; font-weight: 500; color: var(--amber-dk); white-space: nowrap; }
+
+  /* ═══════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════ */
+  footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed var(--border);
+    text-align: center;
+  }
+
+  .chictrip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 700;
+    padding: .6rem 1.3rem;
+    border-radius: 10px;
+    border: 1.5px solid var(--teal);
+    transition: background .15s;
+    font-size: .88rem;
+  }
+  .chictrip-btn:hover { background: var(--teal-lt); }
+
+  .footer-note {
+    margin-top: .9rem;
+    font-size: .77rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT
+  ═══════════════════════════════════════ */
+  @media print {
+    body { background: #fff; font-size: .85rem; }
+    .sidebar, .mobile-nav { display: none; }
+    .day-card { box-shadow: none; break-inside: avoid; }
+    .main { padding: 0; }
+  }
+  
+  .ver-box { display:grid; gap:.75rem; margin:1rem 0; }
+  @media (min-width:700px){ .ver-box{ grid-template-columns:1fr 1fr; } }
+  .ver-card { background:var(--card); border:1.5px solid var(--border); border-radius:var(--r); padding:1rem 1.1rem; box-shadow:var(--shadow-sm); }
+  .ver-card.rec { border-color:var(--teal); box-shadow:0 0 0 2px var(--teal-lt); }
+  .ver-tag { display:inline-block; font-size:.72rem; font-weight:700; padding:.2rem .55rem; border-radius:999px; margin-bottom:.45rem; }
+  .ver-tag.a { background:var(--amber-lt); color:var(--amber-dk); }
+  .ver-tag.b { background:var(--teal-lt); color:var(--teal-dk); }
+  .food-table, .info-table { width:100%; border-collapse:collapse; font-size:.82rem; background:var(--card); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow-sm); margin-bottom:1rem; }
+  .food-table thead tr, .info-table thead tr { background:var(--teal); color:#fff; }
+  .food-table th, .info-table th { padding:.65rem .85rem; text-align:left; font-weight:700; font-size:.76rem; }
+  .food-table td, .info-table td { padding:.55rem .85rem; border-bottom:1px solid var(--border2); vertical-align:top; }
+  .food-table tbody tr:nth-child(odd), .info-table tbody tr:nth-child(odd) { background:var(--paper2); }
+  .img-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:.5rem; margin:.6rem 0 1rem; }
+  .img-row figure { margin:0; background:var(--card); border:1px solid var(--border); border-radius:var(--r-sm); overflow:hidden; }
+  .img-row img { width:100%; height:110px; object-fit:cover; display:block; background:#ddd; }
+  .img-row figcaption { font-size:.68rem; color:var(--muted); padding:.35rem .5rem; }
+  .day-hero { width:100%; height:160px; object-fit:cover; display:block; background:#ddd; }
+  .alpha-note { font-size:.78rem; color:var(--amber-dk); background:var(--amber-lt); padding:.45rem .7rem; border-radius:var(--r-sm); margin:.4rem 1.3rem; }
+  .beta-note { font-size:.78rem; color:var(--teal-dk); background:var(--teal-lt); padding:.45rem .7rem; border-radius:var(--r-sm); margin:.4rem 1.3rem; }
+  .food-tip { font-size:.78rem; color:var(--ink2); background:var(--paper2); border-left:3px solid var(--amber); padding:.45rem .7rem; border-radius:0 var(--r-sm) var(--r-sm) 0; margin:.35rem 0; }
+  .price { font-family:"DM Mono",monospace; font-size:.78rem; color:var(--amber-dk); }
+  .src { font-size:.68rem; color:var(--muted); }
+
+  .ver-box{display:grid;gap:.75rem;margin:1rem 0}
+  @media(min-width:700px){.ver-box{grid-template-columns:1fr 1fr}}
+  .ver-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow-sm)}
+  .ver-card.rec{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-lt)}
+  .ver-tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;margin-bottom:.45rem}
+  .ver-tag.a{background:var(--amber-lt);color:var(--amber-dk)}
+  .ver-tag.b{background:var(--teal-lt);color:var(--teal-dk)}
+  .food-table,.info-table{width:100%;border-collapse:collapse;font-size:.82rem;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:1rem}
+  .food-table thead tr,.info-table thead tr{background:var(--teal);color:#fff}
+  .food-table th,.info-table th{padding:.65rem .85rem;text-align:left;font-weight:700;font-size:.76rem}
+  .food-table td,.info-table td{padding:.55rem .85rem;border-bottom:1px solid var(--border2);vertical-align:top}
+  .food-table tbody tr:nth-child(odd),.info-table tbody tr:nth-child(odd){background:var(--paper2)}
+  .img-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.5rem;margin:.6rem 0 1rem}
+  .img-row figure{margin:0;background:var(--card);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden}
+  .img-row img{width:100%;height:110px;object-fit:cover;display:block;background:#ddd}
+  .img-row figcaption{font-size:.68rem;color:var(--muted);padding:.35rem .5rem}
+  .day-hero{width:100%;height:180px;object-fit:cover;display:block;background:#ddd}
+  .day-hero-cap{font-size:.72rem;color:var(--muted);padding:.35rem 1.3rem .15rem;background:var(--paper2);border-bottom:1px dashed var(--border)}
+  .inline-shot{width:100%;max-height:130px;object-fit:cover;border-radius:8px;margin:.4rem 0;display:block}
+  .inline-shot+ .shot-cap,.shot-cap{font-size:.68rem;color:var(--muted);margin:-.2rem 0 .4rem}
+  .alpha-note{font-size:.78rem;color:var(--amber-dk);background:var(--amber-lt);padding:.45rem .7rem;border-radius:var(--r-sm);margin:.4rem 1.3rem}
+  .beta-note{font-size:.78rem;color:var(--teal-dk);background:var(--teal-lt);padding:.45rem .7rem;border-radius:var(--r-sm);margin:.4rem 1.3rem}
+  .food-tip{font-size:.78rem;color:var(--ink2);background:var(--paper2);border-left:3px solid var(--amber);padding:.45rem .7rem;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:.35rem 0}
+  .price{font-family:"DM Mono",monospace;font-size:.78rem;color:var(--amber-dk)}
+  .src{font-size:.68rem;color:var(--muted)}
+
+  .ver-box{display:grid;gap:.75rem;margin:1rem 0}
+  @media(min-width:700px){.ver-box{grid-template-columns:1fr 1fr}}
+  .ver-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--shadow-sm)}
+  .ver-card.rec{border-color:var(--teal);box-shadow:0 0 0 2px var(--teal-lt)}
+  .ver-tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;margin-bottom:.45rem}
+  .ver-tag.a{background:var(--amber-lt);color:var(--amber-dk)}
+  .ver-tag.b{background:var(--teal-lt);color:var(--teal-dk)}
+  .food-table,.info-table{width:100%;border-collapse:collapse;font-size:.82rem;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:1rem}
+  .food-table thead tr,.info-table thead tr{background:var(--teal);color:#fff}
+  .food-table th,.info-table th{padding:.65rem .85rem;text-align:left;font-weight:700;font-size:.76rem}
+  .food-table td,.info-table td{padding:.55rem .85rem;border-bottom:1px solid var(--border2);vertical-align:top}
+  .food-table tbody tr:nth-child(odd),.info-table tbody tr:nth-child(odd){background:var(--paper2)}
+  .alpha-note{font-size:.78rem;color:var(--amber-dk);background:var(--amber-lt);padding:.45rem .7rem;border-radius:var(--r-sm);margin:.4rem 1.3rem}
+  .beta-note{font-size:.78rem;color:var(--teal-dk);background:var(--teal-lt);padding:.45rem .7rem;border-radius:var(--r-sm);margin:.4rem 1.3rem}
+  .food-tip{font-size:.78rem;color:var(--ink2);background:var(--paper2);border-left:3px solid var(--amber);padding:.45rem .7rem;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:.35rem 0}
+  .price{font-family:"DM Mono",monospace;font-size:.78rem;color:var(--amber-dk)}
+  .src{font-size:.68rem;color:var(--muted)}
+  .check-ok{color:var(--teal-dk)}
+  .check-warn{color:var(--amber-dk)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="行程導覽">
+    <div class="sidebar-label">行程導覽 · final</div>
+    <ul>
+      <li><a href="#tips">行前說明（台灣）</a></li>
+      <li><a href="#arrival">交通與抵達</a></li>
+      <li><a href="#bookings">票券／機票</a></li>
+      <li><a href="#versions">α／β 並列</a></li>
+      <li><a href="#souvenirs">伴手禮回台</a></li>
+      <li><a href="#price-table">驗證估價</a></li>
+      <li><a href="#food-table">餐廳總表</a></li>
+      <li><a href="#shop-table">大街小巷</a></li>
+      <li class="sep"></li>
+      <li><a href="#d1">Day 1 抵達</a></li>
+      <li><a href="#d2">Day 2 故宮</a></li>
+      <li><a href="#d3">Day 3 長城</a></li>
+      <li><a href="#d4">Day 4 胡同／湯泉</a></li>
+      <li><a href="#d5">Day 5 街巷／火鍋</a></li>
+      <li><a href="#d6">Day 6 離境</a></li>
+      <li class="sep"></li>
+          </ul>
+  </aside>
+  <main class="main">
+    <header class="cover" id="overview">
+      <div class="cover-badge">🏯</div>
+      <h1>北京 6 日玩吃筆記</h1>
+      <span class="cover-en">Final · no photos · Sep 22–27, 2026</span>
+      <div class="cover-meta">
+        <span class="cover-pill">管庄亞朵</span>
+        <span class="cover-pill">高德／百度</span>
+        <span class="cover-pill">09:30–10:00 出發</span>
+        <span class="cover-pill">最終版</span>
+      </div>
+      <span class="cover-date">2026 / 09 / 22（二）— 09 / 27（日）</span>
+    </header>
+
+    <nav class="mobile-nav" aria-label="快速跳轉">
+      <div class="mobile-nav-label">快速跳轉</div>
+      <div class="mobile-pills">
+        <a href="#tips">行前</a><a href="#arrival">抵達</a><a href="#souvenirs">伴手禮</a>
+        <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a>
+        <a href="#d4">D4</a><a href="#d5">D5</a><a href="#d6">D6</a>
+      </div>
+    </nav>
+
+    <div class="stats-grid">
+      <div class="stat-card"><span class="stat-icon">📅</span><div class="stat-val">6日</div><div class="stat-lbl">5 晚同一住宿</div></div>
+      <div class="stat-card"><span class="stat-icon">✈️</span><div class="stat-val">CA</div><div class="stat-lbl">TPE ↔ PEK</div></div>
+      <div class="stat-card"><span class="stat-icon">🇹🇼</span><div class="stat-val">TW</div><div class="stat-lbl">台灣旅客視角</div></div>
+      <div class="stat-card"><span class="stat-icon">🔁</span><div class="stat-val">α｜β</div><div class="stat-lbl">長城／湯泉</div></div>
+    </div>
+
+    <div class="sec-head" id="tips"><span>💡</span> 行前說明（台灣旅客）</div>
+    <div class="tips-grid">
+      <div class="tip-card"><h4>證件與入境</h4>
+        <ul>
+          <li>備<strong>台胞證</strong>＋有效簽注；以出發前官方最新為準</li>
+          <li>護照備援；現場依指示填表／掃碼</li>
+          <li>CA186／CA189 可能改班，以航空公司簡訊為準</li>
+          <li>截圖機票與飯店<strong>簡體地址</strong>給司機</li>
+        </ul>
+      </div>
+      <div class="tip-card"><h4>通訊與支付</h4>
+        <ul>
+          <li><strong>微信＋支付寶</strong>必備；出發前綁卡或儲值</li>
+          <li>備少量人民幣；小店／地鐵常刷不了台灣卡</li>
+          <li>下載<strong>高德、百度、滴滴、億通行</strong></li>
+          <li>漫遊或中國 eSIM／實體卡</li>
+        </ul>
+      </div>
+      <div class="tip-card"><h4>網路與 App</h4>
+        <ul>
+          <li>Google 服務可能不穩 → 地圖改高德／百度</li>
+          <li>故宮：微信「故宮博物院」小程序，提前 7 日 20:00 放票</li>
+          <li>點評／美團：取號、營業、團購</li>
+        </ul>
+      </div>
+      <div class="tip-card"><h4>預約與節奏</h4>
+        <ul>
+          <li>故宮不售當日票；9/23（三）可入（週一休）</li>
+          <li>長城集合常早於 09:30</li>
+          <li>每日約 09:30–10:00 出發；一般 22:00，夜店可到 00:00</li>
+          <li>關鍵地名存<strong>簡體</strong></li>
+        </ul>
+      </div>
+      <div class="tip-card"><h4>文化與安全</h4>
+        <ul>
+          <li>廟宇安靜；胡同勿闖民宅</li>
+          <li>南門涮肉只去宏源<strong>正牌直營</strong></li>
+          <li>夜店看管隨身物；110／120</li>
+        </ul>
+      </div>
+      <div class="tip-card"><h4>回台注意</h4>
+        <ul>
+          <li>食品過安檢以機場規定為準</li>
+          <li>優先：稻香村、花茶、布鞋／文創</li>
+          <li>離境預留 2.5 小時＋到 PEK</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-head" id="arrival"><span>🚇</span> 交通與抵達方式</div>
+    <div class="day-note tip" style="margin:0 0 1rem">飯店：北京傳媒大學管庄地鐵站亞朵（八通線<strong>管庄</strong>）。全程同一間。出發前用「億通行」再核路線。</div>
+    <div style="overflow-x:auto"><table class="info-table">
+      <thead><tr><th>路段</th><th>建議</th><th>步驟</th><th>費用</th></tr></thead>
+      <tbody>
+        <tr><td>PEK → 亞朵</td><td><strong>軌道</strong></td><td>出關 → 首都機場線 → 換地鐵至八通線管庄 → 步行。億通行：機場 T2/T3 → 管庄。</td><td class="price">機場線 ¥25＋地鐵（起步 ¥3）</td></tr>
+        <tr><td>PEK → 亞朵</td><td><strong>滴滴</strong></td><td>網約車點上車；導航「北京传媒大学管庄地铁站亚朵酒店」。</td><td class="price">滴滴即時（常見約 ¥80–150＋）</td></tr>
+        <tr><td>日常城區</td><td>地鐵為主</td><td>管庄進出市區多需換線；微信／支付寶進站。</td><td class="price">6km 內 ¥3，其後階梯</td></tr>
+        <tr><td>管庄 ↔ 故宮</td><td>地鐵</td><td>約 50–70 分；預留安檢；依預約入口（午門等）。</td><td class="price">約 ¥5–7</td></tr>
+        <tr><td>慕田峪</td><td>Klook／KKday</td><td>依訂單集合；含接送較省事。</td><td class="price">含團費；自助見估價表</td></tr>
+        <tr><td>湯泉</td><td>滴滴</td><td>地鐵繞則改車。</td><td class="price">滴滴即時</td></tr>
+        <tr><td>亞朵 → PEK</td><td>10:30–11:00 出發</td><td>趕 CA189 13:55；軌道反向或滴滴。</td><td class="price">機場線 ¥25 或滴滴</td></tr>
+      </tbody>
+    </table></div>
+    <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener noreferrer">百度</a>
+    </div>
+    <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div>
+
+    <div class="sec-head" id="bookings"><span>🎟</span> 票券／機票／住宿</div>
+    <div class="booking-grid">
+      <div class="bk-card">
+        <div class="bk-icon">✈️</div>
+        <div class="bk-name">來回機票</div>
+        <div class="bk-date">CA186 9/22 13:00–16:15｜CA189 9/27 13:55–17:05</div>
+        <a class="bk-btn" href="https://www.skyscanner.com.tw/transport/flights/tpe/pek/260922/260927/config/17075-2609221300--32690-0-15277-2609221615%7C15277-2609271355--32690-0-17075-2609271705?cabinclass=economy&adultsv2=1&outboundaltsenabled=false&inboundaltsenabled=false&ref=save2list" target="_blank" rel="noopener noreferrer">開啟 Skyscanner</a>
+      </div>
+      <div class="bk-card">
+        <div class="bk-icon">🏨</div>
+        <div class="bk-name">管庄亞朵</div>
+        <div class="bk-date">朝陽路 28 號 1 號樓</div>
+        <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div>
+      </div>
+      <div class="bk-card">
+        <div class="bk-icon">🧱</div>
+        <div class="bk-name">慕田峪一日（待訂）</div>
+        <a class="bk-btn" href="https://www.klook.com/zh-TW/activity/14942-mutianyu-great-wall-day-tour-beijing/" target="_blank" rel="noopener noreferrer">Klook</a>
+        <a class="bk-btn" href="https://www.kkday.com/zh-tw/product/561982" target="_blank" rel="noopener noreferrer">KKday</a>
+      </div>
+      <div class="bk-card">
+        <div class="bk-icon">🎫</div>
+        <div class="bk-name">故宮（待預約）</div>
+        <div class="bk-date">旺季大門票 ¥60｜不售當日票</div>
+        <a class="bk-btn" href="https://ticket.dpm.org.cn/" target="_blank" rel="noopener noreferrer">官方訂票</a>
+      </div>
+    </div>
+
+    <div class="sec-head" id="versions"><span>🔁</span> α／β 並列</div>
+    <div class="ver-box">
+      <div class="ver-card"><span class="ver-tag a">版本 α</span><strong>長城當天接湯泉</strong>
+        <p style="font-size:.84rem;margin-top:.4rem;color:var(--ink2)">D3 慕田峪→湯泉｜D4 胡同＋夜店｜D5 街巷＋火鍋</p></div>
+      <div class="ver-card rec"><span class="ver-tag b">版本 β · 建議</span><strong>長城隔日湯泉</strong>
+        <p style="font-size:.84rem;margin-top:.4rem;color:var(--ink2)">D3 長城後休息｜D4 湯泉＋夜店｜D5 伴手禮＋火鍋</p></div>
+    </div>
+
+    <div class="sec-head" id="souvenirs"><span>🎁</span> 伴手禮：推薦帶回台灣</div>
+    <div style="overflow-x:auto"><table class="info-table">
+      <thead><tr><th>推薦</th><th>哪裡買</th><th>為什麼適合</th><th>注意</th></tr></thead>
+      <tbody>
+        <tr><td><strong>北京稻香村糕點</strong></td><td>王府井正規門市</td><td>好分享、好帶</td><td>認「北京」＋小房子 logo</td></tr>
+        <tr><td><strong>張一元／吳裕泰花茶</strong></td><td>大柵欄、王府井</td><td>親友好收</td><td>密封防潮</td></tr>
+        <tr><td><strong>內聯升布鞋</strong></td><td>大柵欄</td><td>有紀念性</td><td>試穿尺寸</td></tr>
+        <tr><td><strong>故宮文創小物</strong></td><td>故宮／王府井</td><td>輕、好過安檢</td><td>易碎改託運</td></tr>
+        <tr><td><strong>果脯／京式零食小包裝</strong></td><td>稻香村、超市</td><td>分裝送禮</td><td>勿帶未檢疫肉類</td></tr>
+      </tbody>
+    </table></div>
+    <div class="day-note tip" style="margin:0 0 1rem">優先：<strong>稻香村 → 花茶 → 布鞋／文創</strong>。</div>
+
+    <div class="sec-head" id="price-table"><span>💰</span> 驗證估價</div>
+    <div style="overflow-x:auto"><table class="info-table">
+      <thead><tr><th>項目</th><th>價格</th><th>來源</th></tr></thead>
+      <tbody>
+        <tr><td>故宮大門票（旺季）</td><td class="price">¥60</td><td class="src">故宮官網</td></tr>
+        <tr><td>景山</td><td class="price">¥2</td><td class="src">公示常見價</td></tr>
+        <tr><td>雍和宮</td><td class="price">¥25</td><td class="src">yonghegong.cn</td></tr>
+        <tr><td>慕田峪票／擺渡／纜車雙程</td><td class="price">¥40／¥15／¥140</td><td class="src">官方訂票</td></tr>
+        <tr><td>首都機場線</td><td class="price">¥25</td><td class="src">軌道規則</td></tr>
+        <tr><td>地鐵起步</td><td class="price">¥3（6km 內）</td><td class="src">軌道規則</td></tr>
+        <tr><td>四季民福故宮店人均</td><td class="price">¥165</td><td class="src">大眾點評</td></tr>
+        <tr><td>南門涮肉天壇人均</td><td class="price">¥101</td><td class="src">大眾點評</td></tr>
+        <tr><td>芈重山五道口人均</td><td class="price">¥128</td><td class="src">攜程</td></tr>
+        <tr><td>湯泉／滴滴</td><td class="price">當日 App</td><td class="src">不虛報固定價</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-head" id="food-table"><span>🍽</span> 餐廳總表</div>
+    <div style="overflow-x:auto"><table class="food-table">
+      <thead><tr><th>店</th><th>人均</th><th>建議日</th></tr></thead>
+      <tbody>
+        <tr><td>勇盛紅廟</td><td class="price">約 ¥30–60</td><td>D1／D3β</td></tr>
+        <tr><td>四季民福故宮店</td><td class="price">¥165</td><td>D2</td></tr>
+        <tr><td>瀟湘閣</td><td class="price">約 ¥40–80</td><td>D3／D4</td></tr>
+        <tr><td>胡大簋街</td><td class="price">約 ¥100–180</td><td>D4</td></tr>
+        <tr><td>小街豬手</td><td class="price">約 ¥100–130</td><td>D4</td></tr>
+        <tr><td>南門涮肉正牌</td><td class="price">¥101</td><td>D5</td></tr>
+        <tr><td>芈重山／李串串</td><td class="price">¥110–128</td><td>D5 備選</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sec-head" id="shop-table"><span>🛍</span> 大街小巷</div>
+    <div style="overflow-x:auto"><table class="info-table">
+      <thead><tr><th>地點</th><th>停留</th><th>重點</th></tr></thead>
+      <tbody>
+        <tr><td>王府井</td><td>1–1.5h</td><td>稻香村</td></tr>
+        <tr><td>大柵欄／前門</td><td>1.5–2h</td><td>內聯升、張一元</td></tr>
+        <tr><td>五道營／楊梅竹／白塔寺夾道</td><td>各 1–1.5h</td><td>私房巷</td></tr>
+        <tr><td>南鑼／什剎海</td><td>1.5–2h</td><td>熱門胡同</td></tr>
+        <tr><td>三里屯／工體</td><td>夜場</td><td>酒吧區</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="day-wrap" id="d1"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 1</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">🛬 抵達 · 入住 · 輕鬆吃</div><div class="day-hd-date">2026 / 09 / 22 Tue</div></div></div>
+      <div class="day-note stay">詳見「交通與抵達」。機場線 ¥25。</div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">13:00</div><div class="tl-body"><div class="tl-place">TPE 起飛 CA186</div>
+          <a class="lbtn book" href="https://www.skyscanner.com.tw/transport/flights/tpe/pek/260922/260927/config/17075-2609221300--32690-0-15277-2609221615%7C15277-2609271355--32690-0-17075-2609271705?cabinclass=economy&adultsv2=1&outboundaltsenabled=false&inboundaltsenabled=false&ref=save2list" target="_blank" rel="noopener noreferrer">Skyscanner</a></div></div>
+        <div class="tl-row"><div class="tl-time">16:15</div><div class="tl-body"><div class="tl-place">PEK → 管庄亞朵</div>
+          <div class="tl-info">軌道：機場線＋換至八通線管庄；或滴滴。</div>
+          <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener noreferrer">百度</a>
+    </div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%E7%AE%A1%E5%BA%84%E5%9C%B0%E9%93%81%E7%AB%99%E4%BA%9A%E6%9C%B5%E9%85%92%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">19:30</div><div class="tl-body"><div class="tl-place">勇盛牛肉面（紅廟）</div>
+          <div class="food-tip">附近備選：管庄商圈麵館。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99/@12950000,4825000,13z?querytype=s&wd=%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-body"><div class="tl-place">回飯店</div></div></div>
+      </div>
+    </div></div>
+
+    <div class="day-wrap" id="d2"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 2</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">🏯 故宮 · 景山 · 王府井 · 烤鴨</div><div class="day-hd-date">2026 / 09 / 23 Wed</div></div></div>
+      <div class="day-note warn">故宮 ¥60｜景山 ¥2｜約 09:45 出發。</div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">09:45</div><div class="tl-body"><div class="tl-place">地鐵 → 故宮</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2/@12950000,4825000,13z?querytype=s&wd=%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-body"><div class="tl-place">故宮 · 約 2h</div>
+          <div class="food-tip">附近：景山簡餐、護國寺小吃（王府井）。</div>
+          <a class="lbtn book" href="https://ticket.dpm.org.cn/" target="_blank" rel="noopener noreferrer">預約</a><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2/@12950000,4825000,13z?querytype=s&wd=%E6%95%85%E5%AE%AB%E5%8D%9A%E7%89%A9%E9%99%A2" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">14:15</div><div class="tl-body"><div class="tl-place">景山公園</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E6%99%AF%E5%B1%B1%E5%85%AC%E5%9B%AD&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E6%99%AF%E5%B1%B1%E5%85%AC%E5%9B%AD/@12950000,4825000,13z?querytype=s&wd=%E6%99%AF%E5%B1%B1%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">15:30</div><div class="tl-body"><div class="tl-place">王府井 · 稻香村</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E7%8E%8B%E5%BA%9C%E4%BA%95%E6%AD%A5%E8%A1%8C%E8%A1%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E7%8E%8B%E5%BA%9C%E4%BA%95%E6%AD%A5%E8%A1%8C%E8%A1%97/@12950000,4825000,13z?querytype=s&wd=%E7%8E%8B%E5%BA%9C%E4%BA%95%E6%AD%A5%E8%A1%8C%E8%A1%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">17:30</div><div class="tl-body"><div class="tl-place">四季民福故宮店 · ¥165</div>
+          <div class="food-tip">請取號。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%9B%9B%E5%AD%A3%E6%B0%91%E7%A6%8F%E7%83%A4%E9%B8%AD%E5%BA%97%20%E6%95%85%E5%AE%AB%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%9B%9B%E5%AD%A3%E6%B0%91%E7%A6%8F%E7%83%A4%E9%B8%AD%E5%BA%97%20%E6%95%85%E5%AE%AB%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%9B%9B%E5%AD%A3%E6%B0%91%E7%A6%8F%E7%83%A4%E9%B8%AD%E5%BA%97%20%E6%95%85%E5%AE%AB%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-body"><div class="tl-place">回管庄</div></div></div>
+      </div>
+    </div></div>
+
+    <div class="day-wrap" id="d3"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 3</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">🧱 慕田峪長城一日</div><div class="day-hd-date">2026 / 09 / 24 Thu</div></div></div>
+      <div class="day-note warn">票 ¥40｜擺渡 ¥15｜纜車雙程 ¥140。</div>
+      <div class="alpha-note"><strong>α：</strong> 回程後滴滴去湯泉。</div>
+      <div class="beta-note"><strong>β：</strong> 回城吃勇盛／瀟湘閣；湯泉改 D4。</div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">依訂單</div><div class="tl-body"><div class="tl-place">集合 → 慕田峪</div>
+          <div class="food-tip">午：景區／團餐；可自備零食。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E6%85%95%E7%94%B0%E5%B3%AA%E9%95%BF%E5%9F%8E&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E6%85%95%E7%94%B0%E5%B3%AA%E9%95%BF%E5%9F%8E/@12950000,4825000,13z?querytype=s&wd=%E6%85%95%E7%94%B0%E5%B3%AA%E9%95%BF%E5%9F%8E" target="_blank" rel="noopener noreferrer">百度</a>
+    </div>
+          <a class="lbtn book" href="https://www.klook.com/zh-TW/activity/14942-mutianyu-great-wall-day-tour-beijing/" target="_blank" rel="noopener noreferrer">Klook</a></div></div>
+        <div class="tl-row"><div class="tl-time">回城後</div><div class="tl-body"><div class="tl-place">α 湯泉｜β 晚餐</div>
+          <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99/@12950000,4825000,13z?querytype=s&wd=%E9%87%8D%E5%BA%86%E6%96%87%E8%AE%B0%E5%8B%87%E7%9B%9B%E7%89%9B%E8%82%89%E9%9D%A2%20%E7%BA%A2%E5%BA%99" target="_blank" rel="noopener noreferrer">百度</a>
+    </div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E9%80%9A%E5%B7%9E%E8%BF%90%E6%B2%B3%E8%8B%91%E6%B8%A9%E6%B3%89%E5%BA%A6%E5%81%87%E6%9D%91&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E9%80%9A%E5%B7%9E%E8%BF%90%E6%B2%B3%E8%8B%91%E6%B8%A9%E6%B3%89%E5%BA%A6%E5%81%87%E6%9D%91/@12950000,4825000,13z?querytype=s&wd=%E9%80%9A%E5%B7%9E%E8%BF%90%E6%B2%B3%E8%8B%91%E6%B8%A9%E6%B3%89%E5%BA%A6%E5%81%87%E6%9D%91" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+      </div>
+    </div></div>
+
+    <div class="day-wrap" id="d4"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 4</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">⛩ 胡同／湯泉 · 夜生活</div><div class="day-hd-date">2026 / 09 / 25 Fri</div></div></div>
+      <div class="alpha-note"><strong>α：</strong> 全日胡同＋夜店。</div>
+      <div class="beta-note"><strong>β：</strong> 白天湯泉 → 午後胡同 → 夜店至 00:00。</div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">09:45</div><div class="tl-body"><div class="tl-place">α 雍和宮（¥25）｜β 湯泉</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E9%9B%8D%E5%92%8C%E5%AE%AB&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E9%9B%8D%E5%92%8C%E5%AE%AB/@12950000,4825000,13z?querytype=s&wd=%E9%9B%8D%E5%92%8C%E5%AE%AB" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">12:45</div><div class="tl-body"><div class="tl-place">胡大飯館</div>
+          <div class="food-tip">附近：簋街、五道營咖啡。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E8%83%A1%E5%A4%A7%E9%A5%AD%E9%A6%86%20%E7%B0%8B%E8%A1%97%E6%80%BB%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E8%83%A1%E5%A4%A7%E9%A5%AD%E9%A6%86%20%E7%B0%8B%E8%A1%97%E6%80%BB%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E8%83%A1%E5%A4%A7%E9%A5%AD%E9%A6%86%20%E7%B0%8B%E8%A1%97%E6%80%BB%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">14:30</div><div class="tl-body"><div class="tl-place">五道營 → 南鑼 → 什剎海</div>
+          <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E4%BA%94%E9%81%93%E8%90%A5%E8%83%A1%E5%90%8C&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E4%BA%94%E9%81%93%E8%90%A5%E8%83%A1%E5%90%8C/@12950000,4825000,13z?querytype=s&wd=%E4%BA%94%E9%81%93%E8%90%A5%E8%83%A1%E5%90%8C" target="_blank" rel="noopener noreferrer">百度</a>
+    </div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E4%BB%80%E5%88%B9%E6%B5%B7&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E4%BB%80%E5%88%B9%E6%B5%B7/@12950000,4825000,13z?querytype=s&wd=%E4%BB%80%E5%88%B9%E6%B5%B7" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">19:00</div><div class="tl-body"><div class="tl-place">小街豬手或瀟湘閣</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%B0%8F%E8%A1%97%E7%8C%AA%E6%89%8B%20%E5%9B%A2%E7%BB%93%E6%B9%96%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%B0%8F%E8%A1%97%E7%8C%AA%E6%89%8B%20%E5%9B%A2%E7%BB%93%E6%B9%96%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%B0%8F%E8%A1%97%E7%8C%AA%E6%89%8B%20%E5%9B%A2%E7%BB%93%E6%B9%96%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">21:00</div><div class="tl-body"><div class="tl-place">三里屯／工體 · 可至 00:00</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E4%B8%89%E9%87%8C%E5%B1%AF%E5%A4%AA%E5%8F%A4%E9%87%8C&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E4%B8%89%E9%87%8C%E5%B1%AF%E5%A4%AA%E5%8F%A4%E9%87%8C/@12950000,4825000,13z?querytype=s&wd=%E4%B8%89%E9%87%8C%E5%B1%AF%E5%A4%AA%E5%8F%A4%E9%87%8C" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+      </div>
+    </div></div>
+
+    <div class="day-wrap" id="d5"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 5</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">📸 白塔寺 · 大柵欄 · 火鍋</div><div class="day-hd-date">2026 / 09 / 26 Sat</div></div></div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">11:00</div><div class="tl-body"><div class="tl-place">白塔寺東夾道</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%A6%99%E5%BA%94%E5%AF%BA%E7%99%BD%E5%A1%94&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%A6%99%E5%BA%94%E5%AF%BA%E7%99%BD%E5%A1%94/@12950000,4825000,13z?querytype=s&wd=%E5%A6%99%E5%BA%94%E5%AF%BA%E7%99%BD%E5%A1%94" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">12:45</div><div class="tl-body"><div class="tl-place">前門／大柵欄小吃</div>
+          <div class="food-tip">備選：慶豐包子、門框胡同鹵煮。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%A4%A7%E6%A0%85%E6%A0%8F&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%A4%A7%E6%A0%85%E6%A0%8F/@12950000,4825000,13z?querytype=s&wd=%E5%A4%A7%E6%A0%85%E6%A0%8F" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">14:00</div><div class="tl-body"><div class="tl-place">楊梅竹 → 大柵欄伴手禮</div>
+          <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E6%9D%A8%E6%A2%85%E7%AB%B9%E6%96%9C%E8%A1%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E6%9D%A8%E6%A2%85%E7%AB%B9%E6%96%9C%E8%A1%97/@12950000,4825000,13z?querytype=s&wd=%E6%9D%A8%E6%A2%85%E7%AB%B9%E6%96%9C%E8%A1%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%86%85%E8%81%94%E5%8D%87%20%E5%A4%A7%E6%A0%85%E6%A0%8F&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%86%85%E8%81%94%E5%8D%87%20%E5%A4%A7%E6%A0%85%E6%A0%8F/@12950000,4825000,13z?querytype=s&wd=%E5%86%85%E8%81%94%E5%8D%87%20%E5%A4%A7%E6%A0%85%E6%A0%8F" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">17:30</div><div class="tl-body"><div class="tl-place">南門涮肉正牌 · ¥101</div>
+          <div class="food-tip">備選：芈重山 ¥128、李串串。</div><div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8D%97%E9%97%A8%E6%B6%AE%E8%82%89%20%E5%A4%A9%E5%9D%9B%E5%BA%97&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8D%97%E9%97%A8%E6%B6%AE%E8%82%89%20%E5%A4%A9%E5%9D%9B%E5%BA%97/@12950000,4825000,13z?querytype=s&wd=%E5%8D%97%E9%97%A8%E6%B6%AE%E8%82%89%20%E5%A4%A9%E5%9D%9B%E5%BA%97" target="_blank" rel="noopener noreferrer">百度</a>
+    </div></div></div>
+        <div class="tl-row"><div class="tl-time">22:00</div><div class="tl-body"><div class="tl-place">回飯店</div></div></div>
+      </div>
+    </div></div>
+
+    <div class="day-wrap" id="d6"><div class="day-card">
+      <div class="day-hd"><div class="day-hd-num">Day 6</div><div class="day-hd-divider"></div>
+        <div class="day-hd-right"><div class="day-hd-title">🛫 早點 · 前往 PEK</div><div class="day-hd-date">2026 / 09 / 27 Sun</div></div></div>
+      <div class="day-note stay">10:30–11:00 出發趕 CA189 13:55。</div>
+      <div class="tl">
+        <div class="tl-row"><div class="tl-time">08:30</div><div class="tl-body"><div class="tl-place">飯店早餐</div></div></div>
+        <div class="tl-row"><div class="tl-time">10:30</div><div class="tl-body"><div class="tl-place">出發 PEK</div>
+          <div class="chips">
+      <a class="chip map" href="https://uri.amap.com/search?keyword=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA&src=bjtrip&callnative=0" target="_blank" rel="noopener noreferrer">高德</a>
+      <a class="chip ferry" href="https://map.baidu.com/search/%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA/@12950000,4825000,13z?querytype=s&wd=%E5%8C%97%E4%BA%AC%E9%A6%96%E9%83%BD%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener noreferrer">百度</a>
+    </div>
+          <a class="lbtn book" href="https://www.skyscanner.com.tw/transport/flights/tpe/pek/260922/260927/config/17075-2609221300--32690-0-15277-2609221615%7C15277-2609271355--32690-0-17075-2609271705?cabinclass=economy&adultsv2=1&outboundaltsenabled=false&inboundaltsenabled=false&ref=save2list" target="_blank" rel="noopener noreferrer">Skyscanner</a></div></div>
+        <div class="tl-row"><div class="tl-time">13:55</div><div class="tl-body"><div class="tl-place">CA189 → TPE ≈17:05</div></div></div>
+      </div>
+    </div></div>
+
+    <footer>
+      <p class="footer-note">
+        <strong>最終版 final（無圖）</strong> · 旅行筆記。<br>
+        價格與班次以官方／App 當日為準。同意後可上傳 s07362022.github.io · trip。
+      </p>
+    </footer>
+  </main>
+</div>
+<script>
+(function(){
+  const links=document.querySelectorAll('.sidebar a[href^="#"]');
+  const targets=[...links].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function u(){let c=targets[0];targets.forEach(el=>{if(window.scrollY+120>=el.offsetTop)c=el});
+  links.forEach(a=>a.classList.toggle('active',document.querySelector(a.getAttribute('href'))===c))}
+  window.addEventListener('scroll',u,{passive:true});u();
+})();
+</script>
+</body>
+</html>
