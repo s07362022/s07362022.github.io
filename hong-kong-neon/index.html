@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#FFF8F0" />
+  <title>2026 香港 · Neon 旅行筆記（Immersive）</title>
+  <meta name="description" content="2026年8月香港3天2夜沉浸版：淺杏紙本＋霓虹點綴、Three.js 維港剪影、GSAP 捲動；英皇駿景、Big Bus、葵涌廣場；航班8/7–8/9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="../hong-kong/images/hk-skyline.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+
+:root {
+  color-scheme: light only;
+  --paper:#FFF8F0; --paper2:#FFEFE3; --card:#FFFFFF;
+  --border:#E8D5C4; --border2:#F3E8DC;
+  --ink:#1A1520; --ink2:#4A4450; --muted:#8B7E72;
+  --neon-red:#E11D48; --neon-red-lt:#FDE8EE; --neon-red-dk:#9F1239;
+  --neon-gold:#D97706; --neon-gold-lt:#FEF3C7; --neon-gold-dk:#B45309;
+  --neon-cyan:#0891B2; --neon-cyan-lt:#E0F7FA; --neon-cyan-dk:#0E7490;
+  --teal:var(--neon-red); --teal-lt:var(--neon-red-lt); --teal-dk:var(--neon-red-dk);
+  --amber:var(--neon-gold); --amber-lt:var(--neon-gold-lt); --amber-dk:var(--neon-gold-dk);
+  --sky:var(--neon-cyan); --sky-lt:var(--neon-cyan-lt);
+  --moss:#1E8449; --moss-lt:#EAF7EF;
+  --ruby:var(--neon-red-dk); --ruby-lt:var(--neon-red-lt);
+  --shadow-sm:0 1px 4px rgba(26,21,32,.07);
+  --shadow-md:0 12px 32px rgba(26,21,32,.08);
+  --r:16px; --r-sm:10px;
+  --ease-sig:cubic-bezier(0.22, 1, 0.36, 1);
+  --font-display:"Instrument Serif",Georgia,serif;
+  --font-body:"Noto Sans TC",system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--paper);color-scheme:light only}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-height:1.7;font-size:.94rem;min-height:100vh}
+a{color:var(--neon-cyan-dk)}
+.topbar{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:.65rem 1.1rem;backdrop-filter:blur(10px);
+  background:rgba(255,248,240,.88);border-bottom:1.5px solid var(--border);
+}
+.topbar-brand{font-family:var(--font-display);font-size:1.15rem;color:var(--neon-red-dk);text-decoration:none}
+.topbar-nav{display:none;gap:.35rem;flex-wrap:wrap}
+@media(min-width:820px){.topbar-nav{display:flex}}
+.topbar-nav a{
+  font-size:.72rem;font-weight:600;text-decoration:none;color:var(--ink2);
+  padding:.28rem .55rem;border-radius:999px;border:1px solid transparent;
+}
+.topbar-nav a:hover,.topbar-nav a.active{border-color:var(--neon-red);color:var(--neon-red-dk);background:var(--neon-red-lt)}
+.lang-switch{display:inline-flex;gap:.25rem}
+.lang-switch button{
+  font-family:inherit;font-size:.72rem;font-weight:700;padding:.25rem .55rem;
+  border-radius:999px;border:1.5px solid var(--border);background:var(--card);cursor:pointer;color:var(--ink2);
+}
+.lang-switch button.active{background:var(--neon-red);color:#fff;border-color:var(--neon-red)}
+
+.hero{
+  position:relative;min-height:min(78vh,640px);display:grid;place-items:end stretch;
+  overflow:hidden;border-bottom:2px dashed var(--border);background:linear-gradient(180deg,#E8F4FC 0%,var(--paper) 72%);
+}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-overlay{
+  position:relative;z-index:2;padding:2.5rem 1.25rem 2.25rem;max-width:1060px;margin:0 auto;width:100%;
+  text-align:center;
+}
+.hero-badge{
+  display:inline-block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--neon-red);border:1.5px solid var(--neon-red);padding:.28rem .7rem;border-radius:999px;
+  background:rgba(255,255,255,.75);margin-bottom:.85rem;
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,6vw,3.4rem);
+  color:var(--neon-red-dk);line-height:1.15;margin-bottom:.4rem;
+}
+.hero-en{font-family:var(--font-display);font-style:italic;color:var(--muted);font-size:1.1rem;display:block;margin-bottom:1rem}
+.cover-meta{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin-bottom:1rem}
+.cover-pill{
+  display:inline-block;padding:.28rem .85rem;border-radius:999px;font-size:.76rem;font-weight:600;
+  border:1.5px solid var(--border);color:var(--ink2);background:rgba(255,255,255,.8);
+}
+.cover-date{
+  display:inline-block;background:var(--neon-red);color:#fff;padding:.32rem 1.1rem;border-radius:999px;
+  font-size:.8rem;font-weight:600;font-family:var(--font-mono);
+}
+.hero-cta{margin-top:1.1rem;display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap}
+.hero-cta a{
+  text-decoration:none;font-weight:700;font-size:.82rem;padding:.45rem 1rem;border-radius:999px;
+}
+.hero-cta .primary{background:var(--neon-gold);color:#fff}
+.hero-cta .ghost{border:1.5px solid var(--neon-cyan);color:var(--neon-cyan-dk);background:rgba(255,255,255,.7)}
+
+.shell{display:grid;max-width:1060px;margin:0 auto}
+@media(min-width:820px){.shell{grid-template-columns:200px 1fr}}
+.sidebar{display:none}
+@media(min-width:820px){
+  .sidebar{display:block;position:sticky;top:3.6rem;align-self:start;padding:1.5rem 1rem 1.5rem 1.25rem}
+  .sidebar-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:1.5px solid var(--border)}
+  .sidebar ul{list-style:none;display:flex;flex-direction:column;gap:.15rem}
+  .sidebar a{display:block;padding:.32rem .65rem;border-radius:7px;font-size:.8rem;color:var(--ink2);text-decoration:none;border-left:2.5px solid transparent}
+  .sidebar a:hover,.sidebar a.active{background:var(--neon-red-lt);color:var(--neon-red-dk);border-left-color:var(--neon-red)}
+  .sidebar .sep{height:1px;background:var(--border2);margin:.5rem 0}
+}
+.main{padding:2rem 1.25rem 5rem;min-width:0}
+@media(min-width:820px){.main{padding:2rem 2.5rem 5rem 1.5rem}}
+
+.mobile-nav{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem;margin-bottom:1.75rem;box-shadow:var(--shadow-sm)}
+@media(min-width:820px){.mobile-nav{display:none}}
+.mobile-nav-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.65rem}
+.mobile-pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.mobile-pills a{padding:.28rem .65rem;border-radius:999px;font-size:.76rem;font-weight:600;text-decoration:none;border:1.5px solid var(--border);color:var(--ink2)}
+
+.sec-head{display:flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);padding-bottom:.5rem;border-bottom:1.5px solid var(--border);margin:2.25rem 0 1.1rem;scroll-margin-top:4rem}
+.sec-head i{font-style:normal;font-size:.95rem}
+.sec-sub{font-size:.86rem;color:var(--ink2);margin:-.4rem 0 1rem}
+
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-bottom:.25rem}
+@media(min-width:540px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:.85rem 1rem;text-align:center;box-shadow:var(--shadow-sm)}
+.stat-icon{font-size:1.4rem;display:block;margin-bottom:.2rem}
+.stat-val{font-family:var(--font-display);font-size:1.55rem;font-weight:400;color:var(--neon-red-dk);line-height:1}
+.stat-lbl{font-size:.73rem;color:var(--muted);margin-top:.15rem}
+
+.verified-bar{display:grid;gap:.75rem;margin-bottom:.5rem}
+@media(min-width:560px){.verified-bar{grid-template-columns:1fr 1fr}}
+.verified-card{background:var(--neon-cyan-lt);border:1.5px solid #7dd3fc;border-radius:var(--r);padding:1rem 1.15rem;font-size:.84rem;color:#0c4a6e}
+.verified-card strong{color:#082f49}
+.ref-box{background:var(--paper2);border:1.5px dashed var(--neon-gold);border-radius:var(--r);padding:1rem 1.15rem;font-size:.82rem;color:var(--ink2);margin-bottom:1rem;line-height:1.6}
+.ref-box a{font-weight:600}
+.summary-box{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem;box-shadow:var(--shadow-sm);font-size:.86rem;color:var(--ink2)}
+.summary-box ul{padding-left:1.15rem;margin:.4rem 0 0}
+.summary-box li{margin-bottom:.35rem}
+.budget-total{background:var(--neon-gold-lt);border:2px solid var(--neon-gold);border-radius:var(--r);padding:1rem 1.25rem;margin-bottom:1rem;text-align:center}
+.budget-total .amt{font-family:var(--font-display);font-size:2.2rem;color:var(--neon-gold-dk)}
+.budget-note{font-size:.78rem;color:var(--ink2);margin-top:.35rem}
+
+.food-table{width:100%;border-collapse:collapse;font-size:.78rem;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:.75rem}
+.food-table thead tr{background:var(--neon-red);color:#fff}
+.food-table th,.food-table td{padding:.55rem .75rem;text-align:left;border-bottom:1px solid var(--border2);vertical-align:top}
+.food-table tbody tr:nth-child(odd){background:var(--paper2)}
+.food-table .must{color:var(--neon-gold-dk);font-weight:700;white-space:nowrap}
+.validate-list{font-size:.84rem;color:var(--ink2);padding-left:1.2rem;margin:0}
+.validate-list li{margin-bottom:.55rem;line-height:1.55}
+.validate-list strong{color:var(--neon-red-dk)}
+
+.day-wrap{margin-bottom:1.4rem;scroll-margin-top:4rem}
+.day-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-md)}
+.day-hd{display:flex;align-items:center;gap:.75rem;padding:.9rem 1.3rem;background:linear-gradient(90deg,var(--neon-red),#F43F5E 55%,var(--neon-gold));color:#fff}
+.day-hd-num{font-family:var(--font-display);font-size:1.7rem;line-height:1;white-space:nowrap}
+.day-hd-divider{width:1px;height:28px;background:rgba(255,255,255,.35)}
+.day-hd-title{font-size:.95rem;font-weight:700;line-height:1.3}
+.day-hd-date{font-family:var(--font-mono);font-size:.73rem;opacity:.9}
+.day-note{margin:.55rem 1.3rem;padding:.55rem .85rem;border-radius:var(--r-sm);font-size:.81rem;line-height:1.55}
+.day-note.stay{background:var(--neon-red-lt);border-left:3px solid var(--neon-red);color:var(--neon-red-dk)}
+.day-note.warn{background:var(--neon-gold-lt);border-left:3px solid var(--neon-gold);color:var(--neon-gold-dk)}
+.day-note.tip{background:var(--moss-lt);border-left:3px solid var(--moss);color:#1e5631}
+.day-budget-bar{margin:.55rem 1.3rem;padding:.55rem .85rem;border-radius:var(--r-sm);font-size:.82rem;background:var(--neon-gold-lt);border:1px solid #fcd34d;color:var(--neon-gold-dk)}
+.tl{padding:.3rem 0 .4rem}
+.tl-row{display:grid;grid-template-columns:4.2rem 1fr;gap:.45rem .9rem;padding:.72rem 1.3rem;border-bottom:1px dashed var(--border2);align-items:start}
+.tl-row:last-child{border-bottom:none}
+.tl-time{font-family:var(--font-mono);font-size:.79rem;font-weight:500;color:var(--neon-red);text-align:right;padding-top:.18rem}
+.tl-budget{font-size:.74rem;color:var(--neon-gold-dk);margin-bottom:.15rem;font-family:var(--font-mono)}
+.tl-place{font-weight:700;font-size:.94rem;margin-bottom:.2rem}
+.tl-dur{font-size:.77rem;color:var(--muted);margin-bottom:.35rem}
+.tl-info{font-size:.79rem;color:var(--ink2);margin-bottom:.3rem;line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:.28rem;margin-bottom:.35rem}
+.chip{display:inline-flex;padding:.19rem .58rem;border-radius:999px;font-size:.72rem;font-weight:600;border:1px solid;text-decoration:none;line-height:1.4}
+.chip.mtr{background:var(--neon-cyan-lt);border-color:#7dd3fc;color:#0c4a6e}
+.chip.ferry{background:var(--moss-lt);border-color:#9dce91;color:#2e5426}
+.chip.walk{background:var(--paper2);border-color:var(--border);color:var(--ink2)}
+.chip.taxi{background:var(--neon-gold-lt);border-color:#f5c98a;color:var(--neon-gold-dk)}
+.chip.bus{background:#F3E8FF;border-color:#C4B5FD;color:#5B21B6}
+.chip.fly{background:var(--neon-red-lt);border-color:#fda4af;color:#9f1239}
+.links{display:flex;flex-wrap:wrap;gap:.28rem}
+.lbtn{display:inline-flex;padding:.22rem .58rem;border-radius:6px;font-size:.72rem;font-weight:700;text-decoration:none;border:1px solid}
+.lbtn.map{background:var(--neon-red-lt);border-color:#fda4af;color:var(--neon-red-dk)}
+.lbtn.book{background:var(--neon-gold-lt);border-color:#f5c98a;color:var(--neon-gold-dk)}
+.tips-grid{display:grid;gap:.75rem}
+@media(min-width:560px){.tips-grid{grid-template-columns:1fr 1fr}}
+.tip-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.15rem;box-shadow:var(--shadow-sm)}
+.tip-card h4{font-size:.86rem;font-weight:700;color:var(--neon-red-dk);margin-bottom:.5rem}
+.tip-card ul{padding-left:1.1rem;font-size:.81rem;color:var(--ink2)}
+.tip-card li{margin-bottom:.28rem}
+.img-grid{display:grid;gap:.75rem;margin:1rem 0 1.25rem}
+@media(min-width:560px){.img-grid.two{grid-template-columns:1fr 1fr}}
+figure.spot-fig{margin:0;border-radius:var(--r);overflow:hidden;border:1.5px solid var(--border);background:var(--card);box-shadow:var(--shadow-sm)}
+figure.spot-fig img,.spot-img,figure.spot-fig svg.sp-img,figure.spot-fig svg.spot-img{display:block;width:100%;height:auto;min-height:140px;max-height:280px;object-fit:cover;background:#FFEFE3}
+figure.spot-fig img[src$=".svg"],.spot-img[src$=".svg"],figure.spot-fig svg.spot-img{max-height:320px;min-height:180px;object-fit:contain;background:linear-gradient(180deg,#E8F4FC,#FFF8F0)}
+figure.spot-fig figcaption{font-size:.72rem;color:var(--muted);padding:.45rem .65rem;text-align:center}
+.food-nearby{display:grid;gap:.65rem;margin:.75rem 1.3rem 1rem}
+@media(min-width:560px){.food-nearby{grid-template-columns:1fr 1fr}}
+.nearby-card{background:var(--paper2);border:1.5px solid var(--border);border-radius:var(--r-sm);padding:.85rem .95rem;font-size:.81rem}
+.nearby-card h4{font-size:.88rem;color:var(--neon-red-dk);margin:0 0 .35rem}
+.nearby-card .dist{font-size:.72rem;color:var(--muted);margin-bottom:.35rem}
+.nearby-card p{margin:0 0 .45rem;color:var(--ink2);line-height:1.5}
+.transport-box{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1.15rem 1.25rem;margin-bottom:1rem;box-shadow:var(--shadow-sm)}
+.transport-box h3{font-size:.95rem;color:var(--neon-red-dk);margin:0 0 .65rem}
+.transport-box h4{font-size:.84rem;color:var(--ink);margin:1rem 0 .4rem}
+.transport-box p,.transport-box li{font-size:.82rem;color:var(--ink2);line-height:1.6}
+.transport-box ul{padding-left:1.15rem;margin:.35rem 0}
+.transport-box li{margin-bottom:.35rem}
+.time-table{width:100%;border-collapse:collapse;font-size:.78rem;margin:.5rem 0}
+.time-table th,.time-table td{padding:.45rem .6rem;border:1px solid var(--border2);text-align:left}
+.time-table th{background:var(--paper2);color:var(--neon-red-dk)}
+.score-grid{display:grid;gap:.75rem;margin-bottom:1rem}
+@media(min-width:560px){.score-grid{grid-template-columns:1fr 1fr}}
+.score-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.15rem;box-shadow:var(--shadow-sm)}
+.score-card h4{font-size:.88rem;color:var(--neon-red-dk);margin:0 0 .5rem}
+.score-bar{height:8px;background:var(--border2);border-radius:999px;overflow:hidden;margin-bottom:.35rem}
+.score-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--neon-red),var(--neon-gold));border-radius:999px}
+.score-val{font-family:var(--font-display);font-size:1.35rem;color:var(--neon-red-dk)}
+.score-total{text-align:center;background:var(--neon-red-lt);border:2px solid var(--neon-red);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem}
+.score-total .big{font-family:var(--font-display);font-size:3rem;color:var(--neon-red-dk);line-height:1}
+.checklist{display:grid;gap:.65rem}
+@media(min-width:560px){.checklist.two{grid-template-columns:1fr 1fr}}
+.check-group{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.15rem;box-shadow:var(--shadow-sm)}
+.check-group h4{font-size:.88rem;color:var(--neon-red-dk);margin:0 0 .55rem;padding-bottom:.4rem;border-bottom:1px dashed var(--border2)}
+.check-group ul{list-style:none;padding:0;margin:0;font-size:.81rem;color:var(--ink2)}
+.check-group li{margin-bottom:.35rem;padding-left:1.2rem;position:relative}
+.check-group li::before{content:"☐";position:absolute;left:0;color:var(--neon-red)}
+footer{margin-top:2.5rem;padding-top:1.25rem;border-top:1.5px dashed var(--border);font-size:.78rem;color:var(--muted);text-align:center}
+.footer-note{margin-bottom:.5rem;line-height:1.6}
+.reveal{opacity:0;transform:translateY(28px);will-change:transform,opacity}
+.reveal.is-in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+  </style>
+</head>
+<body>
+  <header class="topbar" role="banner">
+    <a class="topbar-brand" href="#top">HK Neon · 2026</a>
+    <nav class="topbar-nav" aria-label="快速導覽">
+      <a href="#summary">摘要</a>
+      <a href="#d1">D1</a>
+      <a href="#d2">D2</a>
+      <a href="#d3">D3</a>
+      <a href="#bars">酒吧</a>
+      <a href="#budget">預算</a>
+      <a href="#tips">提醒</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="active" data-lang="zh">中文</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <section class="hero" id="top" aria-label="Hero">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-overlay">
+      <div class="hero-badge">Immersive · Paper + Neon</div>
+      <h1 data-i18n="cover.title" data-i18n-html>2026 香港<br>3 天 2 夜旅行筆記</h1>
+      <span class="hero-en">Kwai Chung Plaza · Big Bus · Victoria Harbour</span>
+      <div class="cover-meta">
+        <span class="cover-pill" data-i18n="cover.pill1">🍢 葵涌廣場掃街</span>
+        <span class="cover-pill" data-i18n="cover.pill2">🚌 Big Bus 維港</span>
+        <span class="cover-pill" data-i18n="cover.pill3">🥟 點心／街頭</span>
+        <span class="cover-pill">🍸 酒吧</span>
+        <span class="cover-pill">⏱ 09:00</span>
+        <span class="cover-pill" data-i18n="cover.pill4">🌊 星光大道</span>
+      </div>
+      <span class="cover-date">✈ 2026 / 08 / 07 — 08 / 09</span>
+      <div class="hero-cta">
+        <a class="primary" href="#d1">開始 Day 1</a>
+        <a class="ghost" href="../hong-kong/">看舊版紙本頁</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <aside class="sidebar" aria-label="行程導覽" data-i18n-aria-zh="行程導覽" data-i18n-aria-en="Trip navigation">
+      <div class="sidebar-label" data-i18n="nav.label">行程導覽</div>
+      <ul>
+        <li><a href="#summary"><span data-i18n="nav.summary">📋 摘要前提</span></a></li>
+        <li><a href="#first-timer"><span data-i18n="nav.firsttimer">🆕 新手注意</span></a></li>
+        <li><a href="#checklist"><span data-i18n="nav.checklist">🎒 旅行清單</span></a></li>
+        <div class="sep"></div>
+        <li><a href="#d1"><span data-i18n="nav.d1">Day 1 · 8/7</span></a></li>
+        <li><a href="#d2"><span data-i18n="nav.d2">Day 2 · Big Bus</span></a></li>
+        <li><a href="#d3"><span data-i18n="nav.d3">Day 3 · 葵廣→機場</span></a></li>
+        <div class="sep"></div>
+        <li><a href="#transport-101"><span data-i18n="nav.transport">🚇 交通小白</span></a></li>
+        <li><a href="#food-kcp"><span data-i18n="nav.food">🍢 葵涌13間</span></a></li>
+        <li><a href="#maps-hub">🗺 Maps 總表</a></li>
+        <li><a href="#bars">🍸 酒吧推薦</a></li>
+        <li><a href="#budget"><span data-i18n="nav.budget">💰 預算總表</span></a></li>
+        <li><a href="#cash-pay"><span data-i18n="nav.cash">💵 現金支付</span></a></li>
+        <li><a href="#validate"><span data-i18n="nav.validate">✅ 合理性</span></a></li>
+        <li><a href="#score"><span data-i18n="nav.score">⭐ 行程評分</span></a></li>
+        <li><a href="#tips"><span data-i18n="nav.tips">💡 提醒</span></a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <div class="img-grid two reveal">
+        <figure class="spot-fig">
+          <img class="spot-img" src="../hong-kong/images/hk-skyline.jpg" alt="Victoria Harbour Hong Kong" width="960" height="540" loading="eager" fetchpriority="high" onerror="this.onerror=null;this.src='../hong-kong/images/hk-skyline.svg';" />
+          <figcaption><span data-i18n="img.harbour">維多利亞港 · Victoria Harbour</span></figcaption>
+        </figure>
+        <figure class="spot-fig">
+          <img class="spot-img" src="../hong-kong/images/star-ferry.jpg" alt="Star Ferry Hong Kong" width="960" height="640" loading="eager" onerror="this.onerror=null;this.src='../hong-kong/images/star-ferry.svg';" />
+          <figcaption><span data-i18n="img.ferry">天星小輪 · Star Ferry</span></figcaption>
+        </figure>
+      </div>
+
+      <nav class="mobile-nav" aria-label="快速跳轉">
+        <div class="mobile-nav-label" data-i18n="mobile.label">快速跳轉</div>
+        <div class="mobile-pills">
+          <a href="#summary">📋</a>
+          <a href="#first-timer">🆕</a>
+          <a href="#checklist">🎒</a>
+          <a href="#d1">D1</a><a href="#d2">D2</a><a href="#d3">D3</a>
+          <a href="#maps-hub">🗺</a>
+          <a href="#bars">🍸</a>
+          <a href="#budget">💰</a>
+          <a href="#tips">💡</a>
+        </div>
+      </nav>
+
+<div class="sec-head" id="summary"><i>📋</i> <span data-i18n="sec.summary">摘要 · 前提 · 概要</span></div>
+    <p class="sec-sub" data-i18n="sec.sub.summary">第一次香港 · 3 天 2 夜 · 只有背包不托運 · 灣仔英皇駿景連住 · 美食（點心／街頭／葵廣）＋ Big Bus 維港</p>
+
+    <div class="stats-grid">
+      <div class="stat-card reveal"><span class="stat-icon">📅</span><div class="stat-val">3</div><div class="stat-lbl" data-i18n="stat.days">天數</div></div>
+      <div class="stat-card reveal"><span class="stat-icon">🏨</span><div class="stat-val" data-i18n="stat.wanchai">灣仔</div><div class="stat-lbl" data-i18n="stat.hotel">英皇駿景</div></div>
+      <div class="stat-card reveal"><span class="stat-icon">🎒</span><div class="stat-val" data-i18n="stat.backpack.val">背包</div><div class="stat-lbl" data-i18n="stat.backpack">不托運</div></div>
+      <div class="stat-card reveal"><span class="stat-icon">💰</span><div class="stat-val">1.5K+</div><div class="stat-lbl" data-i18n="stat.budget">HKD／人 在地</div></div>
+    </div>
+
+    <div class="verified-bar" id="verified">
+      <div class="verified-card reveal">
+        <strong data-i18n="verified.flight">✈ 航班（已核實）</strong><br />
+        <span data-i18n-en="Outbound Aug 7 (Fri) 17:40 TPE → 19:35 HKG<br />Return Aug 9 (Sun) 18:40 HKG → 20:30 TPE">去程 8/7（五）17:40 台北 TPE → 19:35 香港 HKG<br />
+        回程 8/9（日）18:40 香港 HKG → 20:30 台北 TPE</span>
+      </div>
+      <div class="verified-card reveal">
+        <strong data-i18n="verified.hotel">🏨 英皇駿景酒店 The Emperor Hotel</strong><br />
+        <span data-i18n="verified.hoteladdr">灣仔皇后大道東 373 號 · 8/7–8/9 連住兩晚</span>
+        <div class="links" style="margin-top:.5rem">
+          <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=The+Emperor+Hotel+373+Queen%27s+Road+East+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Hotel">📍 飯店</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary-box reveal">
+      <h3 data-i18n="summary.core">🎯 行程核心（三句話）</h3>
+      <ul>
+        <li data-i18n="summary.d1"><strong>Day 1</strong>：晚抵港 → 機場快線＋的士入住 → 飯店旁宵夜（不趕行程）。</li>
+        <li><strong>Day 2</strong>：上午新興食家＋中環半山散步 → 下午海濱（祥興記→Big Bus→星光大道→天星小輪→灣仔日落）。</li>
+        <li><strong>Day 3</strong>：澳洲牛奶公司 → 佳佳甜品 → 葵涌廣場掃 4–6 間 → 16:10 到機場。</li>
+      </ul>
+      <div class="summary-pills">
+        <span class="summary-pill">🍢 葵涌 13 間</span>
+        <span class="summary-pill">🚌 Big Bus 藍線</span>
+        <span class="summary-pill">🥟 點心／街頭</span>
+        <span class="summary-pill">🌅 下午海濱</span>
+        <span class="summary-pill">🍸 灣仔酒吧</span>
+        <span class="summary-pill">⏱ 09:00 出發</span>
+        <span class="summary-pill">💵 現金 HK$800–1200</span>
+      </div>
+    </div>
+
+    <div class="ref-box reveal" style="margin-bottom:1.25rem">
+      <strong>👫 朋友行程整合說明</strong>：以下已併入 Day 2–3 主線（每景點約 <strong>1 小時</strong>，海濱／街區類 2 小時）。未排入者列為備選，時間充裕或想換口味可改。
+      <table class="time-table" style="margin-top:.65rem">
+        <thead><tr><th>狀態</th><th>朋友推薦</th><th>安排</th></tr></thead>
+        <tbody>
+          <tr><td>✅ 主線</td><td>新興食家、半山扶梯→善慶街→藝穗會、祥興記、Big Bus、星光大道、天星小輪、中環街市、9 號碼頭、灣仔海濱日落、澳洲牛奶公司、佳佳甜品</td><td>Day 2–3</td></tr>
+          <tr><td>📌 備選</td><td>堅尼地城籃球場、Winstons、士丹利街叉燒、Slowood／兆成行、紅茶冰室、九龍寨城公園、福元湯圓、海港城誠品咖啡窗、落日飛車、香港大學</td><td>見各日「可替換」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="budget-total reveal" style="margin-bottom:1.25rem">
+      <div data-i18n="budget.quick.title">在地預算快覽（1 人 · 不含機票／飯店）</div>
+      <div class="amt">HK$ 1,500 – 2,200</div>
+      <div class="budget-note"><span data-i18n="budget.quick.note">Day 1 約 HK$245–315 · Day 2 約 HK$620–850 · Day 3 約 HK$280–420 · 詳見各日下方與</span> <a href="#budget" data-i18n="budget.link">預算總表</a></div>
+    </div>
+
+    <div class="sec-head" id="first-timer"><i>🆕</i> <span data-i18n="sec.firsttimer">第一次去香港 · 注意事項</span></div>
+    <div class="tips-grid">
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🛂 Entry &amp; documents">🛂 入境與證件</h4>
+        <ul>
+          <li data-i18n-en="Taiwan passport holders generally enter visa-free (stay per entry stamp, usually enough for 3 days).">持<strong>台灣護照</strong>入境香港一般免簽（停留期依入境章，通常足夠 3 天）。</li>
+          <li data-i18n-en="Passport valid 6+ months recommended; keep flight &amp; hotel confirmations (phone screenshots OK).">護照效期建議剩 6 個月以上；保留去回程機票、飯店訂單（手機截圖即可）。</li>
+          <li data-i18n-en="Arrival forms are mostly electronic — follow on-site instructions.">入境卡多已電子化，依現場指示填寫即可。</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🔌 Power &amp; connectivity">🔌 電力與網路</h4>
+        <ul>
+          <li data-i18n-en="UK Type G three-pin plugs, 220V — bring an adapter.">插座為英規<strong>三脚扁型（Type G）</strong>，220V；務必帶轉接頭。</li>
+          <li data-i18n-en="SIM/eSIM: buy at airport or 7-Eleven; or use roaming.">SIM／eSIM：機場或 7-11 買短期上網卡；或開漫遊。</li>
+          <li data-i18n-en="Google Maps works well — <strong>download offline</strong> maps for HK Island, Kowloon &amp; Kwai Tsing before departure.">Google Maps 在香港很好用，出發前<strong>離線下載</strong>港島＋九龍＋葵青。</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🚇 Transport etiquette">🚇 交通禮儀</h4>
+        <ul>
+          <li data-i18n-en="Escalators: <strong>stand right</strong>, walk on the left.">電扶梯<strong>靠右站</strong>，左側讓人通行。</li>
+          <li data-i18n-en="No eating on MTR; keep volume low.">地鐵車廂<strong>禁止飲食</strong>；音量保持小聲。</li>
+          <li data-i18n-en="Red taxis = urban; fares mostly <strong>cash</strong> HKD; Day 1 late night: Airport Express + taxi (see <a href=&quot;#transport-101&quot;>Transport 101</a>).">的士紅色＝市區；車資以港幣<strong>現金</strong>為主；Day 1 深夜建議機場快線＋的士（詳 <a href="#transport-101">交通小白</a>）。</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🌡 August weather &amp; clothing">🌡 8 月天氣與穿著</h4>
+        <ul>
+          <li data-i18n-en="Hot &amp; humid outdoors (~28–33°C) — sunscreen, water, small towel.">戶外<strong>高溫潮濕</strong>（約 28–33°C），防曬、補水、小毛巾必備。</li>
+          <li data-i18n-en="Malls/MTR are <strong>heavily air-conditioned</strong> — light jacket or shawl.">商場／地鐵<strong>冷氣很強</strong>，帶薄外套或披肩。</li>
+          <li data-i18n-en="Afternoon showers possible — pack a foldable umbrella or raincoat.">午後可能陣雨，折疊傘或雨衣放背包。</li>
+          <li data-i18n-en="Wear <strong>comfortable shoes</strong>; Day 2 involves lots of waterfront walking.">穿<strong>好走的鞋</strong>；Day 2 海濱步行多。</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🍽 Dining customs">🍽 用餐習慣</h4>
+        <ul>
+          <li data-i18n-en="Cha chaan teng: order drinks first, then mains; <strong>no tipping</strong> usually.">茶餐廳：入坐後先點飲料再點主餐；一般<strong>不用小費</strong>。</li>
+          <li data-i18n-en="Stalls &amp; KCP vendors may be <strong>cash only</strong> (see <a href=&quot;#cash-pay&quot;>Cash &amp; Pay</a>).">排檔、魚蛋檔、葵廣小攤可能<strong>只收現金</strong>（詳 <a href="#cash-pay">現金支付</a>）。</li>
+          <li data-i18n-en="Shared tables (&quot;daap toi&quot;) with strangers is normal when busy.">食肆繁忙時可能「搭枱」（與陌生人併桌），屬正常現象。</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🆘 Safety &amp; emergencies">🆘 安全與緊急</h4>
+        <ul>
+          <li data-i18n-en="Emergency: <strong>999</strong> (police, ambulance, fire).">緊急電話：<strong>999</strong>（警察／救護／消防）。</li>
+          <li data-i18n-en="Crowded areas: zip your backpack; phone &amp; wallet in front pockets.">人多處注意背包拉鍊；手機、錢包放前袋。</li>
+          <li data-i18n-en="Use crosswalks; traffic drives on the left — look <strong>right</strong> first, then left.">過馬路走斑馬線；香港車輛靠左，先看<strong>右</strong>再看左。</li>
+          <li data-i18n-en="Back up passport, tickets &amp; hotel booking to email or cloud.">備份護照、機票、飯店訂單至 Email 或雲端。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-head" id="checklist"><i>🎒</i> <span data-i18n="sec.checklist">旅行清單 · 出發前勾選</span></div>
+    <div class="day-note tip" style="margin-bottom:1rem" data-i18n="checklist.intro" data-i18n-html>你是<strong>背包客、不托運</strong> → 全部放進一個背包即可；出發前逐項打勾。</div>
+    <div class="checklist two">
+      <div class="check-group reveal">
+        <h4 data-i18n-en="📄 Documents &amp; bookings">📄 證件與訂單</h4>
+        <ul>
+          <li data-i18n-en="Passport (6+ months validity)">護照（效期 6 個月以上）</li>
+          <li data-i18n-en="Outbound Aug 7 17:40 TPE→HKG ticket">去程 8/7 17:40 TPE→HKG 機票</li>
+          <li data-i18n-en="Return Aug 9 18:40 HKG→TPE ticket">回程 8/9 18:40 HKG→TPE 機票</li>
+          <li data-i18n-en="Emperor Hotel confirmation (2 nights Aug 7–9)">英皇駿景酒店訂房確認（8/7–8/9 兩晚）</li>
+          <li data-i18n-en="Big Bus e-ticket QR (pre-book recommended)">Big Bus 電子票 QR code（建議預購）</li>
+          <li data-i18n-en="Save this itinerary HTML on phone (offline)">本行程 HTML 存手機（離線可看）</li>
+        </ul>
+      </div>
+      <div class="check-group reveal">
+        <h4 data-i18n-en="💰 Money">💰 金錢</h4>
+        <ul>
+          <li data-i18n-en="HKD cash HK$800–1,200">港幣現金 HK$800–1,200</li>
+          <li data-i18n-en="Credit card (Visa/Master; notify bank for overseas use)">信用卡（Visa／Master，通知銀行海外消費）</li>
+          <li data-i18n-en="Octopus card (buy at airport 7-Eleven)">八達通（到機場 7-11 購買）</li>
+        </ul>
+      </div>
+      <div class="check-group reveal">
+        <h4 data-i18n-en="📱 Tech &amp; comms">📱 3C 與通訊</h4>
+        <ul>
+          <li data-i18n-en="Phone + cable, UK Type G adapter">手機＋充電線、英規 Type G 轉接頭</li>
+          <li data-i18n-en="Power bank (&lt;100Wh for carry-on)">行動電源（100Wh 以下可登機）</li>
+          <li data-i18n-en="eSIM/SIM or roaming">eSIM／SIM 卡或開漫遊</li>
+          <li data-i18n-en="Google Maps offline (HK Island, Kowloon, Kwai Tsing)">Google Maps 離線地圖（港島、九龍、葵青）</li>
+        </ul>
+      </div>
+      <div class="check-group reveal">
+        <h4 data-i18n-en="👕 Clothing (August)">👕 衣物（8 月）</h4>
+        <ul>
+          <li data-i18n-en="Breathable tees ×3, shorts ×2, light jacket (AC)">透氣 T 恤 × 3、短褲 × 2、薄外套（冷氣）</li>
+          <li data-i18n-en="Comfortable sneakers, foldable umbrella, underwear &amp; socks">好走的運動鞋、折疊傘、內著襪子</li>
+        </ul>
+      </div>
+      <div class="check-group reveal">
+        <h4 data-i18n-en="🧴 Toiletries &amp; sun care">🧴 盥洗與防曬</h4>
+        <ul>
+          <li data-i18n-en="SPF50+ sunscreen, small towel, personal meds">防曬乳 SPF50+、小毛巾、個人藥品</li>
+          <li data-i18n-en="Insect repellent, liquids bag (&lt;100ml)">防蚊液、100ml 以下 liquids 透明袋</li>
+        </ul>
+      </div>
+      <div class="check-group reveal">
+        <h4 data-i18n-en="🎒 Backpack essentials">🎒 背包必備</h4>
+        <ul>
+          <li data-i18n-en="Backpack, waist pouch (Octopus + cash + phone)">後背包、腰包（八達通＋現金＋手機）</li>
+          <li data-i18n-en="Reusable bag, empty bottle, pen, earphones">環保袋、空瓶、筆、耳機</li>
+        </ul>
+      </div>
+    </div>
+    <div class="day-note tip" style="margin-bottom:1.5rem" data-i18n="checklist.final" data-i18n-html>✅ <strong>登機前最後檢查</strong>：護照、機票、錢包、手機、轉接頭、行動電源 — 六樣放同一小袋。</div>
+
+    <div class="sec-head" id="itinerary"><i>📅</i> <span data-i18n="sec.itinerary">3 天 2 夜 · 逐日行程</span></div>
+    <p class="sec-sub" data-i18n="sec.sub.itinerary" data-i18n-html>每個時段標示<strong>預算</strong>、說明與 Maps 連結；<strong>每日 09:00 出發</strong>（Day 1 抵達日除外）；每景點約 1 小時（海濱 2 小時）。</p>
+
+    <!-- DAY 1 -->
+    <div class="day-wrap reveal" id="d1">
+      <div class="day-card">
+        <div class="day-hd">
+          <div class="day-hd-num">Day 1</div>
+          <div class="day-hd-divider"></div>
+          <div>
+            <div class="day-hd-title" data-i18n="day1.title">✈ 抵達 · Check-in · 灣仔宵夜</div>
+            <div class="day-hd-date">2026 / 08 / 07 &nbsp;Fri</div>
+          </div>
+        </div>
+        <div class="day-note stay" data-i18n-en="🏨 Emperor Hotel (2 consecutive nights)">🏨 英皇駿景酒店（連住兩晚）</div>
+        <div class="day-note tip" data-i18n-en="Arrival day: transport + check-in + nearby supper only; heavy food crawl saved for Days 2–3.">抵達日僅安排交通＋入住＋附近宵夜；高強度掃街留 Day 2–3。</div>
+        <div class="day-budget-bar" data-i18n="day1.budget" data-i18n-html>💰 <strong>Day 1 預算合計</strong>：約 HK$245–315／人（交通＋宵夜；八達通首次購買另計 HK$200 含可退押金）</div>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-time">19:35</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$115 · Octopus">💰 HK$115 · 八達通</div>
+              <div class="tl-place" data-i18n-en="✈ Hong Kong International Airport T1">✈ 香港國際機場 T1</div>
+              <div class="tl-dur" data-i18n-en="Immigration · baggage (approx. 40–70 min)">入境 · 提行李（約 40–70 分）</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Hong+Kong+International+Airport&destination=Hong+Kong+Station&travelmode=transit" target="_blank" rel="noopener noreferrer" data-i18n-en="🚇 Airport Express → Hong Kong Station (~24 min)">🚇 機場快線 → 香港站（約 24 分）</a>
+              </div>
+              <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Airport">📍 機場</a></div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">21:00</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$80–120 · cash">💰 HK$80–120 · 現金</div>
+              <div class="tl-place" data-i18n-en="🏨 Emperor Hotel check-in">🏨 英皇駿景 Check-in</div>
+              <div class="tl-dur" data-i18n-en="Hong Kong Station → taxi to Wan Chai (~15–25 min)">香港站 → 的士至灣仔（約 15–25 分）</div>
+              <div class="chips">
+                <a class="chip taxi" href="https://www.google.com/maps/dir/?api=1&origin=Hong+Kong+Station&destination=The+Emperor+Hotel+373+Queen%27s+Road+East+Wan+Chai&travelmode=driving" target="_blank" rel="noopener noreferrer" data-i18n-en="🚕 Taxi route">🚕 的士路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">21:45</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$50–80 · cash">💰 HK$50–80 · 現金</div>
+              <div class="tl-place" id="d1-late-food" data-i18n-en="🍜 Late-night food near hotel (5–12 min walk)">🍜 飯店附近宵夜（步行 5–12 分鐘）</div>
+              <div class="tl-info" data-i18n-en="No need to cross districts after check-in; all below within walking distance of Emperor Hotel. See <a href=&quot;https://hk.trip.com/guide/food/%E7%81%A3%E4%BB%94%E5%AE%B5%E5%A4%9C.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Trip.com Wan Chai late-night food</a>. In-hotel <strong>Emperor Restaurant</strong> dinner Mon–Fri until ~22:00; if too late, pick a 24h spot.">Check-in 後不必跨區；以下皆在英皇駿景步行範圍，參考 <a href="https://hk.trip.com/guide/food/%E7%81%A3%E4%BB%94%E5%AE%B5%E5%A4%9C.html" target="_blank" rel="noopener noreferrer">Trip.com 灣仔宵夜</a>。酒店內 <strong>駿景軒</strong> 週一至五晚餐約 22:00 結束，若來不及可先選 24 小時店。</div>
+            </div>
+          </div>
+        </div>
+        <div class="food-nearby">
+          <div class="nearby-card reveal">
+            <h4 data-i18n-en="🍱 SUKIYA (Japanese beef bowl)">🍱 SUKIYA すき家</h4>
+            <div class="dist" data-i18n-en="~8 min walk · 24 hours">步行約 8 分 · 24 小時</div>
+            <p data-i18n-en="Japanese beef bowls; fast service, reliable seating — great hot food + AC after a late arrival.">日式牛肉飯／丼飯，出餐快、坐席穩定；深夜抵港想「熱食＋冷氣」很適合。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Sukiya+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Map">📍 地圖</a></div>
+          </div>
+          <div class="nearby-card reveal">
+            <h4 data-i18n-en="🍢 Sun Hung Kee (fish balls &amp; offal)">🍢 新豐記魚蛋牛什大王</h4>
+            <div class="dist" data-i18n-en="~7 min · Jaffe Rd area · until ~02:00">步行約 7 分 · 謝斐道一帶 · 至約 02:00</div>
+            <p data-i18n-en="Curry fish balls, beef offal, radish — classic HK <strong>street supper</strong>, ~HK$40–60/person.">咖喱魚蛋、牛雜、蘿蔔；典型港式<strong>街頭宵夜</strong>，人均約 HK$40–60。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Sun+Hung+Kee+Fish+Ball+Beef+Offal+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Map">📍 地圖</a></div>
+          </div>
+          <div class="nearby-card reveal">
+            <h4 data-i18n-en="🍜 Chiu Hing (Teochew fish ball noodles)">🍜 潮興魚蛋粉</h4>
+            <div class="dist" data-i18n-en="~6 min · usually 07:00–late night">步行約 6 分 · 多為 07:00–凌晨</div>
+            <p data-i18n-en="Teochew fish ball noodles, beef ball soup — light broth, quieter than stalls; good first meal.">潮州魚蛋粉、牛丸湯粉；湯頭清爽，比排檔安靜一點，適合第一餐不要太重。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Chiu+Hing+Fish+Ball+Noodle+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Map">📍 地圖</a></div>
+          </div>
+          <div class="nearby-card reveal">
+            <h4 data-i18n-en="🥣 Ho Jue Do (congee &amp; noodles)">🥣 靠得住粥麵小館</h4>
+            <div class="dist" data-i18n-en="~5 min · Lockhart Rd · until ~01:00">步行約 5 分 · 駱克道 · 至約 01:00</div>
+            <p data-i18n-en="Congee, wonton noodles, cheung fun — classic congee shop vibe; some hours cash only.">及第粥、雲吞麵、腸粉；想體驗「粥麵店」氛圍可選，記得部分時段只收現金。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Ho+Jue+Do+Congee+Noodle+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Map">📍 地圖</a></div>
+          </div>
+          <div class="nearby-card reveal">
+            <h4>🍮 C DESSERT</h4>
+            <div class="dist" data-i18n-en="~6 min · Johnston Rd · until ~02:00">步行約 6 分 · 莊士敦道 · 至約 02:00</div>
+            <p data-i18n-en="HK/Western desserts &amp; tong sui — good finale if still hungry after mains.">港式／西式甜品、燉品；主餐後仍餓或想喝糖水可以來這裡收尾。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=C+Dessert+Johnston+Road+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Map">📍 地圖</a></div>
+          </div>
+          <div class="nearby-card reveal">
+            <h4 data-i18n-en="☕ 24h McCafé / convenience stores">☕ 24 小時 McCafé／便利店</h4>
+            <div class="dist" data-i18n-en="3–10 min walk · backup">步行 3–10 分 · 備案</div>
+            <p data-i18n-en="If full or shops closed: 7-Eleven &amp; OK stores are everywhere in Wan Chai — bread, milk, oden.">若太飽或店已打烊：7-Eleven、OK 便利店在灣仔很密集，可買麵包、牛奶、關東煮。</p>
+            <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=7-Eleven+Queen%27s+Road+East+Wan+Chai" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Nearest 7-Eleven">📍 最近 7-11</a></div>
+          </div>
+        </div>
+        <div class="day-note tip" style="margin:0 1.3rem 1rem" data-i18n-en="💡 <strong>Suggested order</strong>: quick → SUKIYA; HK flavour → Sun Hung Kee or Chiu Hing; congee/noodles → Ho Jue Do; still hungry → C DESSERT. Walk back to hotel ~5–10 min. <strong>Optional</strong>: if still awake, one drink at <a href=&quot;#bars&quot;>Dragonfly</a> (Wan Chai, ~8 min walk) — skip if tired.">💡 <strong>建議順序</strong>：想快 → SUKIYA；想港味 → 新豐記或潮興；要粥麵 → 靠得住；還有胃 → C DESSERT。回飯店約 5–10 分。<strong>可選</strong>：若還不累，灣仔 <a href="#bars">Dragonfly</a> 一杯（步行約 8 分）— 太累就省略。</div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-wrap reveal" id="d2">
+      <div class="day-card">
+        <div class="day-hd">
+          <div class="day-hd-num">Day 2</div>
+          <div class="day-hd-divider"></div>
+          <div>
+            <div class="day-hd-title">🥟 上午早餐散步 · 下午海濱 · Big Bus</div>
+            <div class="day-hd-date">2026 / 08 / 08 &nbsp;Sat</div>
+          </div>
+        </div>
+        <div class="day-note tip">⏱ <strong>上午</strong>：早餐＋港島陸地散步（不排海濱）。<strong>下午起</strong>：尖沙咀海濱 → Big Bus → 星光大道 → 天星小輪 → 灣仔日落。每站約 1 hr，海濱 2 hr。</div>
+        <div class="links" style="margin:0 1.3rem 1rem">
+          <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Wan+Chai+Station&destination=Dragonfly+Bar+60+Wyndham+Street+Wan+Chai&waypoints=Sun+Hing+Restaurant+Kennedy+Town|Central+Mid+Levels+Escalator|Sing+Hing+Kee+Tsim+Sha+Tsui|Avenue+of+Stars+Hong+Kong|Tsim+Sha+Tsui+Star+Ferry+Pier|Central+Market+Hong+Kong|Wan+Chai+Temporary+Harbourfront+Promenade&travelmode=transit" target="_blank" rel="noopener noreferrer">🗺 Day 2 全日路線（Maps）</a>
+          <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=The+Emperor+Hotel+373+Queen%27s+Road+East+Wan+Chai&destination=Dragonfly+Bar+60+Wyndham+Street&travelmode=walking" target="_blank" rel="noopener noreferrer">🚶 飯店→Dragonfly</a>
+        </div>
+        <div class="img-grid two" style="margin:0 1.3rem 1rem">
+          <figure class="spot-fig reveal">
+            <img class="spot-img" src="../hong-kong/images/dim-sum.jpg" alt="Hong Kong dim sum har gow" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/dim-sum.svg';" />
+            <figcaption>新興食家 · 點心早茶<br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Har_gow.jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 2.0</small></figcaption>
+          </figure>
+          <figure class="spot-fig reveal">
+            <img class="spot-img" src="../hong-kong/images/mid-levels.jpg" alt="Central Mid-Levels Escalator Hong Kong" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/mid-levels.svg';" />
+            <figcaption>半山扶梯 · 上午散步<br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Central-Mid-levels_escalator.jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 3.0</small></figcaption>
+          </figure>
+        </div>
+        <div class="day-note warn">🎫 Big Bus 請<strong>事先購票</strong>；9:00 出發版建議搭 <strong>13:00 前後</strong> 班次。若新興食家 09:30 前排隊 &gt;40 分，改備選：<a href="https://www.google.com/maps/search/?api=1&query=One+Dim+Sum+Causeway+Bay">灣仔點心</a>。</div>
+        <div class="day-budget-bar">💰 <strong>Day 2 預算合計</strong>：約 HK$620–850／人＋酒吧可選 HK$120–250／杯</div>
+        <figure class="spot-fig reveal" style="margin:0 1.3rem 1rem">
+          <img class="spot-img" src="../hong-kong/images/bruce-lee.jpg" alt="Avenue of Stars Bruce Lee" width="960" height="720" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/bruce-lee.svg';" />
+          <figcaption><span data-i18n="img.bruce">星光大道 · Avenue of Stars</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Statue_of_Bruce_Lee.JPG" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 3.0</small></figcaption>
+        </figure>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-time">09:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$15–25 · 八達通</div>
+              <div class="tl-place">🚇 灣仔 → 堅尼地城 · 出發</div>
+              <div class="tl-dur">港島線 · 約 20–25 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Wan+Chai+Station&destination=Kennedy+Town+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">09:25</div>
+            <div>
+              <div class="tl-budget">💰 HK$80–120 · 現金</div>
+              <div class="tl-place">🥟 新興食家 · 點心（朋友推薦）</div>
+              <div class="tl-dur">停留 1 hr · 鳳爪必吃</div>
+              <div class="tl-info">9:00 出發版：<strong>週六 09:25 到可能已有人潮</strong>，若排隊過長立刻改灣仔／銅鑼灣點心，不要硬等。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Sun+Hing+Restaurant+Kennedy+Town" target="_blank" rel="noopener noreferrer">📍 新興食家</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">10:30</div>
+            <div>
+              <div class="tl-budget">💰 HK$15–25 · 八達通</div>
+              <div class="tl-place">🚇 堅尼地城 → 中環</div>
+              <div class="tl-dur">港島線 · 約 15–20 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Kennedy+Town+Station&destination=Central+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">10:45</div>
+            <div>
+              <div class="tl-budget">💰 HK$40–80 · 可選咖啡</div>
+              <div class="tl-place">🚶 半山扶梯 → 善慶街 → 士丹頓街 → 藝穗會</div>
+              <div class="tl-dur">停留 1 hr · 陸地散步（上午專區）</div>
+              <div class="tl-info">朋友路線精簡版：<strong>不靠近海</strong>，沿扶梯到超市層走進善慶街，旁有原創方文藝小店；士丹頓街拍照、藝穗會外圍打卡。可選 EN 咖啡小坐。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Central+Mid+Levels+Escalator&destination=Fringe+Club+2+Lower+Albert+Road&waypoints=Shin+Hing+Street+Central|Staunton+Street+Central&travelmode=walking" target="_blank" rel="noopener noreferrer">📍 散步路線</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Original+Square+Shin+Hing+Street" target="_blank" rel="noopener noreferrer">📍 原創方</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Fringe+Club+Central" target="_blank" rel="noopener noreferrer">📍 藝穗會</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">11:45</div>
+            <div>
+              <div class="tl-budget">💰 HK$15–25 · 八達通</div>
+              <div class="tl-place">🚇 中環 → 尖沙咀</div>
+              <div class="tl-dur">荃灣線 · 約 15–20 分 · <strong>下午起進入海濱動線</strong></div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Central+Station&destination=Tsim+Sha+Tsui+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">12:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$50–80 · 現金</div>
+              <div class="tl-place">🥟 祥興記 · 生煎包（朋友必吃）</div>
+              <div class="tl-dur">停留 1 hr · 尖沙咀 · 海濱區前最後一頓陸地餐</div>
+              <div class="tl-info">朋友 Day 2 首站美食；生煎包為主。吃完步行往星光大道 Big Bus 上車點。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Sing+Hing+Kee+Shanghai+Pan-fried+Buns+Tsim+Sha+Tsui" target="_blank" rel="noopener noreferrer">📍 祥興記生煎包</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">13:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$450–580 · 官網刷卡</div>
+              <div class="tl-place">🚌 Big Bus · 九龍游（藍線）</div>
+              <div class="tl-dur">停留 2 hr · 16 站李小龍像 · 車程約 80 分</div>
+              <div class="tl-info">搭 <strong>13:00 前後班次</strong>；沿九龍＋西九＋維港，可隨上隨下。下車後續玩星光大道。</div>
+              <div class="chips">
+                <a class="chip bus" href="https://www.bigbustours.com/zh-hant/hong-kong/blue-kowloon-route-hong-kong/" target="_blank" rel="noopener noreferrer">🚌 藍線地圖</a>
+              </div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Bruce+Lee+Statue+Avenue+of+Stars" target="_blank" rel="noopener noreferrer">📍 上車 16 站</a>
+                <a class="lbtn book" href="https://www.bigbustours.com/zh-hant/hong-kong/" target="_blank" rel="noopener noreferrer">🎫 購票</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">15:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$0–80 · 可選</div>
+              <div class="tl-place">⭐ 星光大道 ＋ 尖沙咀海濱</div>
+              <div class="tl-dur">停留 2 hr · 下午海濱主時段</div>
+              <div class="tl-info">李小龍／梅艷芳像、維港全景。可選：鐘樓 L6 觀景台、透明階梯、海港城誠品 3F 咖啡窗（朋友路線，同一帶）。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong" target="_blank" rel="noopener noreferrer">📍 星光大道</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Clock+Tower+Tsim+Sha+Tsui" target="_blank" rel="noopener noreferrer">📍 鐘樓觀景（可選）</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Harbour+City+Eslite+Tsim+Sha+Tsui" target="_blank" rel="noopener noreferrer">📍 海港城誠品（可選）</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">17:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$5–10 · 八達通／現金</div>
+              <div class="tl-place">🚢 天星小輪 · 尖沙咀 → 中環</div>
+              <div class="tl-dur">航程約 10 分 · 含等船 1 hr 區塊</div>
+              <div class="tl-info">朋友經典動線；下船後沿天橋至中環碼頭／街市。</div>
+              <div class="chips">
+                <a class="chip ferry" href="https://www.google.com/maps/dir/?api=1&origin=Tsim+Sha+Tsui+Star+Ferry+Pier&destination=Central+Star+Ferry+Pier+7&travelmode=transit" target="_blank" rel="noopener noreferrer">🚢 天星小輪路線</a>
+              </div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Tsim+Sha+Tsui+Star+Ferry+Pier" target="_blank" rel="noopener noreferrer">📍 尖沙咀碼頭</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">17:45</div>
+            <div>
+              <div class="tl-budget">💰 HK$0–50 · 可選</div>
+              <div class="tl-place">🎡 中環 9 號碼頭 ＋ 中環街市</div>
+              <div class="tl-dur">停留 45 min · 摩天輪全景 ＋ 快逛</div>
+              <div class="tl-info">9 號碼頭拍<strong>整顆摩天輪</strong>；中環街市 1F 冰箱貼、2F Slowood、Select 18／兆成行（朋友愛店）。可選：落日飛車（摩天輪）需另排時間。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Central+Pier+9+Hong+Kong+Observation+Wheel" target="_blank" rel="noopener noreferrer">📍 9 號碼頭</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Central+Market+93+Queen%27s+Road+Central" target="_blank" rel="noopener noreferrer">📍 中環街市</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Siu+Hang+Hong+Central+Market" target="_blank" rel="noopener noreferrer">📍 兆成行</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Hong+Kong+Observation+Wheel+Tickets" target="_blank" rel="noopener noreferrer">🎡 摩天輪票</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figure class="spot-fig reveal" style="margin:0 1.3rem 1rem">
+          <img class="spot-img" src="../hong-kong/images/central-market.jpg" alt="Central Market Hong Kong" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/central-market.svg';" />
+          <figcaption>中環街市 · Central Market<br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Central_Market_entry_26-06-2023.jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
+        </figure>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-time">18:30</div>
+            <div>
+              <div class="tl-budget">💰 HK$10–15 · 八達通</div>
+              <div class="tl-place">🚇 中環 → 灣仔</div>
+              <div class="tl-dur">港島線 · 約 5–8 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Central+Station&destination=Wan+Chai+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">18:40</div>
+            <div>
+              <div class="tl-budget">💰 HK$0 · 免費</div>
+              <div class="tl-place">🌅 灣仔臨時海濱公園 · 日落</div>
+              <div class="tl-dur">停留 1 hr · 距飯店步行約 10–15 分</div>
+              <div class="tl-info">朋友推薦看日落；比尖沙咀更靠近英皇駿景。8 月日落約 18:45–19:15。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Wan+Chai+Temporary+Harbourfront+Promenade" target="_blank" rel="noopener noreferrer">📍 灣仔海濱</a>
+                <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Wan+Chai+Temporary+Harbourfront+Promenade&destination=The+Emperor+Hotel+373+Queen%27s+Road+East&travelmode=walking" target="_blank" rel="noopener noreferrer">🚶 海濱→飯店</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">20:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$60–100 · 現金</div>
+              <div class="tl-place">🍜 晚餐 · 飯店旁或灣仔</div>
+              <div class="tl-dur">停留 1 hr</div>
+              <div class="tl-info">建議輕食即可，留胃給酒吧小食。飯店旁：新豐記、SUKIYA、靠得住。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Sun+Hung+Kee+Fish+Ball+Wan+Chai" target="_blank" rel="noopener noreferrer">📍 新豐記</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">21:15</div>
+            <div>
+              <div class="tl-budget">💰 HK$120–250 · 刷卡／現金</div>
+              <div class="tl-place">🍸 酒吧 · 灣仔／中環（見下方推薦）</div>
+              <div class="tl-dur">停留 1–1.5 hr · 步行或 MTR 1 站</div>
+              <div class="tl-info"><strong>首選</strong>：Dragonfly、The Pawn（灣仔步行）。<strong>進階</strong>：Coa、Quinary（中環 SoHo，建議預約）。詳見 <a href="#bars">🍸 酒吧推薦</a>。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Dragonfly+60+Wyndham+Street+Wan+Chai" target="_blank" rel="noopener noreferrer">📍 Dragonfly</a>
+                <a class="lbtn map" href="#bars">🍸 全部酒吧</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">23:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$0</div>
+              <div class="tl-place">🏨 步行回英皇駿景</div>
+              <div class="tl-info">Day 3 要早起＋機場，建議 23:30 前回飯店。</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-wrap reveal" id="d3">
+      <div class="day-card">
+        <div class="day-hd">
+          <div class="day-hd-num">Day 3</div>
+          <div class="day-hd-divider"></div>
+          <div>
+            <div class="day-hd-title">🍳 佐敦早餐 → 葵涌廣場 → 機場</div>
+            <div class="day-hd-date">2026 / 08 / 09 &nbsp;Sun</div>
+          </div>
+        </div>
+        <div class="day-note tip">✅ <strong>地理順向</strong>：灣仔 → 佐敦早餐（澳洲牛奶公司、佳佳甜品）→ 葵芳掃街 → 機場（約 25 分），一路向西、不折返。</div>
+        <div class="links" style="margin:0 1.3rem 1rem">
+          <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Wan+Chai+Station&destination=Hong+Kong+International+Airport&waypoints=Australia+Dairy+Company+Jordan|Kai+Kai+Dessert+Jordan|Kwai+Chung+Plaza&travelmode=transit" target="_blank" rel="noopener noreferrer">🗺 Day 3 全日路線（Maps）</a>
+        </div>
+        <div class="day-note warn" data-i18n-en="⚠ Return 18:40 · <strong>backpack only, no check-in bag</strong> → <strong>arrive airport 16:10</strong> (2.5h early); leisurely 4–6 KCP stalls.">⚠ 18:40 回程 · 你<strong>只有背包不托運</strong> → <strong>16:10 到機場剛好</strong>（提前 2.5 小時）；葵廣可悠閒掃 4–6 間。</div>
+        <div class="day-budget-bar" data-i18n="day3.budget" data-i18n-html>💰 <strong>Day 3 預算合計</strong>：約 HK$280–420／人（MTR×3＋佐敦早餐＋葵廣現金）</div>
+        <div class="tl">
+          <div class="tl-row">
+            <div class="tl-time">09:00</div>
+            <div>
+              <div class="tl-budget">💰 HK$0</div>
+              <div class="tl-place">🏨 退房 · 帶背包出發</div>
+              <div class="tl-info">只有背包；09:00 出發往佐敦早餐，再西行至葵芳。Day 3 不排酒吧。</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">09:10</div>
+            <div>
+              <div class="tl-budget">💰 HK$10–15 · 八達通</div>
+              <div class="tl-place">🚇 灣仔 → 佐敦</div>
+              <div class="tl-dur">荃灣線 · 約 12–15 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Wan+Chai+Station&destination=Jordan+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">09:25</div>
+            <div>
+              <div class="tl-budget">💰 HK$60–90 · 現金</div>
+              <div class="tl-place">🍳 澳洲牛奶公司（朋友推薦）</div>
+              <div class="tl-dur">停留 1 hr · 排隊名店</div>
+              <div class="tl-info">炒蛋多士／燉奶；通常只收現金。若隊伍太長改 <strong>紅茶冰室</strong>（油麻地，朋友備選）。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Australia+Dairy+Company+Jordan" target="_blank" rel="noopener noreferrer">📍 澳洲牛奶公司</a>
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Red+Tea+Restaurant+Yau+Ma+Tei" target="_blank" rel="noopener noreferrer">📍 紅茶冰室（備選）</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">10:45</div>
+            <div>
+              <div class="tl-budget">💰 HK$40–60 · 現金</div>
+              <div class="tl-place">🍮 佳佳甜品（朋友推薦）</div>
+              <div class="tl-dur">停留 1 hr · 佐敦</div>
+              <div class="tl-info">芝麻糊／楊枝甘露等；與澳洲牛奶公司同區，步行可達。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Kai+Kai+Dessert+Jordan" target="_blank" rel="noopener noreferrer">📍 佳佳甜品</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">11:50</div>
+            <div>
+              <div class="tl-budget">💰 HK$20–30 · 八達通</div>
+              <div class="tl-place">🚇 佐敦 → 葵芳</div>
+              <div class="tl-dur">荃灣線 · 約 20–25 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Jordan+Station&destination=Kwai+Fong+Station&travelmode=transit" target="_blank" rel="noopener noreferrer">🚇 地鐵路線</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">12:15</div>
+            <div>
+              <div class="tl-budget">💰 HK$150–250 · 現金</div>
+              <div class="tl-place">🍢 葵涌廣場 · 13 間掃街</div>
+              <div class="tl-dur">停留約 3 hr · 掃 4–6 間 · 見下方 <a href="#food-kcp">清單</a></div>
+              <div class="tl-info" data-i18n-en="Indoor AC, no sun — more time than old plan; try <strong>takoyaki</strong>, <strong>pudding bake</strong>, <strong>A Jia noodles</strong>, then 2–3 more by appetite. See <a href=&quot;https://www.youtube.com/shorts/qbrJ8IdsOM8&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Shorts video</a> for picks.">室內冷氣、不用日曬；時間比舊版充裕，可慢慢試 <strong>章魚燒</strong>、<strong>布丁燒</strong>、<strong>阿佳拌麵</strong>，再依胃容量加 2–3 家。參考 <a href="https://www.youtube.com/shorts/qbrJ8IdsOM8" target="_blank" rel="noopener noreferrer">Shorts 影片</a> 選店。</div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Kwai+Chung+Plaza" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Kwai Chung Plaza">📍 葵涌廣場</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">15:20</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$0">💰 HK$0</div>
+              <div class="tl-place" data-i18n-en="🚶 Leave KCP → Kwai Fong MTR">🚶 離開葵廣 → 葵芳站</div>
+              <div class="tl-dur" data-i18n-en="~2 min walk · Exit D">步行約 2 分 · D 出口</div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">15:35</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$25–30 · Octopus">💰 HK$25–30 · 八達通</div>
+              <div class="tl-place" data-i18n-en="🚇 Kwai Fong → Hong Kong International Airport">🚇 葵芳 → 香港國際機場</div>
+              <div class="tl-dur" data-i18n-en="Tung Chung line · ~25–30 min">東涌線 · 約 25–30 分</div>
+              <div class="chips">
+                <a class="chip mtr" href="https://www.google.com/maps/dir/?api=1&origin=Kwai+Fong+Station&destination=Hong+Kong+International+Airport&travelmode=transit" target="_blank" rel="noopener noreferrer" data-i18n-en="🚇 MTR → airport">🚇 地鐵→機場</a>
+              </div>
+            </div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-time">16:10</div>
+            <div>
+              <div class="tl-budget" data-i18n-en="💰 HK$0 · included in ticket">💰 HK$0 · 已含在機票</div>
+              <div class="tl-place" data-i18n-en="✈ Airport · check-in &amp; security">✈ 機場 · 報到安檢</div>
+              <div class="tl-dur" data-i18n-en="18:40 flight · allow <strong>2.5 hours</strong>">18:40 航班 · 預留 <strong>2.5 小時</strong></div>
+              <div class="tl-info" data-i18n-en="<strong>Backpack only</strong>: skip bag drop, online check-in then security; 16:10 arrival for 18:40 flight is <strong>comfortable</strong>. See <a href=&quot;#transport-101&quot;>Transport 101</a>."><strong>只有背包</strong>：不用托運櫃台，線上 check-in 後直接安檢；16:10 抵達對 18:40 班機<strong>充裕</strong>。詳見 <a href="#transport-101">交通小白</a>。</div>
+              <div class="chips"><span class="chip fly" data-i18n-en="✈ Return flight">✈ 回程</span></div>
+              <div class="links">
+                <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1+departure" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Airport departures">📍 機場出境</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head" id="maps-hub"><i>🗺</i> Maps 與資訊連結總表</div>
+    <p class="sec-sub">一鍵開啟 Google Maps 導航或官方頁；出發前建議離線下載港島＋九龍＋葵青。</p>
+    <table class="food-table reveal" style="margin-bottom:1.25rem">
+      <thead><tr><th>類別</th><th>地點</th><th>連結</th></tr></thead>
+      <tbody>
+        <tr><td>🏨 住宿</td><td>英皇駿景酒店</td><td><a href="https://www.google.com/maps/search/?api=1&query=The+Emperor+Hotel+373+Queen%27s+Road+East+Wan+Chai" target="_blank" rel="noopener noreferrer">Maps</a> · <a href="https://www.emperorhotel.com/" target="_blank" rel="noopener noreferrer">官網</a></td></tr>
+        <tr><td>🥟 Day 2 早</td><td>新興食家</td><td><a href="https://www.google.com/maps/search/?api=1&query=Sun+Hing+Restaurant+Kennedy+Town" target="_blank" rel="noopener noreferrer">Maps</a></td></tr>
+        <tr><td>🚶 Day 2 上午</td><td>半山扶梯→藝穗會</td><td><a href="https://www.google.com/maps/dir/?api=1&origin=Central+Mid+Levels+Escalator&destination=Fringe+Club+2+Lower+Albert+Road&waypoints=Shin+Hing+Street+Central|Staunton+Street+Central&travelmode=walking" target="_blank" rel="noopener noreferrer">步行路線</a></td></tr>
+        <tr><td>🥟 Day 2 午</td><td>祥興記生煎</td><td><a href="https://www.google.com/maps/search/?api=1&query=Sing+Hing+Kee+Shanghai+Pan-fried+Buns+Tsim+Sha+Tsui" target="_blank" rel="noopener noreferrer">Maps</a></td></tr>
+        <tr><td>🚌 票券</td><td>Big Bus 藍線</td><td><a href="https://www.bigbustours.com/zh-hant/hong-kong/" target="_blank" rel="noopener noreferrer">購票</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bruce+Lee+Statue+Avenue+of+Stars" target="_blank" rel="noopener noreferrer">16 站上車</a></td></tr>
+        <tr><td>🌊 海濱</td><td>星光大道／灣仔海濱</td><td><a href="https://www.google.com/maps/search/?api=1&query=Avenue+of+Stars+Hong+Kong" target="_blank" rel="noopener noreferrer">星光大道</a> · <a href="https://www.google.com/maps/search/?api=1&query=Wan+Chai+Temporary+Harbourfront+Promenade" target="_blank" rel="noopener noreferrer">灣仔海濱</a></td></tr>
+        <tr><td>🍳 Day 3</td><td>澳洲牛奶公司／佳佳甜品</td><td><a href="https://www.google.com/maps/search/?api=1&query=Australia+Dairy+Company+Jordan" target="_blank" rel="noopener noreferrer">ADC</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kai+Kai+Dessert+Jordan" target="_blank" rel="noopener noreferrer">佳佳</a></td></tr>
+        <tr><td>🍢 Day 3</td><td>葵涌廣場</td><td><a href="https://www.google.com/maps/search/?api=1&query=Kwai+Chung+Plaza+7+Kwai+Foo+Road" target="_blank" rel="noopener noreferrer">Maps</a> · <a href="https://www.youtube.com/shorts/qbrJ8IdsOM8" target="_blank" rel="noopener noreferrer">Shorts</a></td></tr>
+        <tr><td>✈ 機場</td><td>HKG T1 出境</td><td><a href="https://www.google.com/maps/search/?api=1&query=Hong+Kong+International+Airport+Terminal+1+departure" target="_blank" rel="noopener noreferrer">Maps</a></td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-head" id="bars"><i>🍸</i> 酒吧推薦 · 晚間</div>
+    <figure class="spot-fig reveal" style="margin-bottom:1rem">
+      <img class="spot-img" src="../hong-kong/images/wan-chai-harbour.jpg" alt="Wan Chai harbour sunset" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/wan-chai-harbour.svg';" />
+      <figcaption>Day 2：海濱日落後 → 21:15 酒吧 · 23:00 回飯店<br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:HK_Wan_Chai_North_Waterfront_Promenade_Public_piers_stairs_n_Victoria_Harbour_sea_February_2021_SS2_01.jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
+    </figure>
+    <p class="sec-sub">Day 2 主場在 <strong>21:15</strong> 後；Day 1 抵達日可選一杯。皆距英皇駿景可步行或 MTR 1 站。雞尾酒約 HK$120–250／杯，熱門店建議 IG／官網預約。</p>
+    <div class="food-nearby">
+      <div class="nearby-card reveal">
+        <h4>🦋 Dragonfly · 灣仔</h4>
+        <div class="dist">步行約 8 分 · Day 2 首選</div>
+        <p> Tiffany 玻璃蜻蜓裝置＋創意調酒；氣氛華麗、適合觀光客第一杯，不用搭車。</p>
+        <div class="links">
+          <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Dragonfly+60+Wyndham+Street+Wan+Chai" target="_blank" rel="noopener noreferrer">📍 地圖</a>
+          <a class="lbtn book" href="https://www.dragonfly.hk/" target="_blank" rel="noopener noreferrer">🔗 官網</a>
+          <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=The+Emperor+Hotel+373+Queen%27s+Road+East&destination=Dragonfly+60+Wyndham+Street&travelmode=walking" target="_blank" rel="noopener noreferrer">🚶 從飯店</a>
+        </div>
+      </div>
+      <div class="nearby-card reveal">
+        <h4>♟ The Pawn · 灣仔</h4>
+        <div class="dist">步行約 6 分 · 英式 Pub</div>
+        <p> 老唐樓改裝，啤酒＋經典雞尾酒；比 Dragonfly 悠閒，適合兩人聊天。</p>
+        <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=The+Pawn+62+Johnston+Road+Wan+Chai" target="_blank" rel="noopener noreferrer">📍 地圖</a><a class="lbtn book" href="https://www.thepawnbrewing.com/" target="_blank" rel="noopener noreferrer">🔗 官網</a></div>
+      </div>
+      <div class="nearby-card reveal">
+        <h4>🧪 Quinary · 中環</h4>
+        <div class="dist">MTR 灣仔→中環 1 站 · 世界 50 Best</div>
+        <p> 分子調酒、風味層次強；想喝「有記憶點的一杯」可來，建議預約。</p>
+        <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Quinary+56+Hollywood+Road+Central" target="_blank" rel="noopener noreferrer">📍 地圖</a><a class="lbtn book" href="https://www.quinary.hk/" target="_blank" rel="noopener noreferrer">🔗 官網</a></div>
+      </div>
+      <div class="nearby-card reveal">
+        <h4>🌵 Coa · 中環 SoHo</h4>
+        <div class="dist">MTR ＋ 步行 uphill · 常居 Asia Top</div>
+        <p> Mezcal／龍舌蘭專門，風格墨西哥＋精緻；<strong>週六晚常要排隊</strong>，能預約就先約。</p>
+        <div class="links">
+          <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Coa+Bar+Shin+Hing+Street+Central" target="_blank" rel="noopener noreferrer">📍 地圖</a>
+          <a class="lbtn book" href="https://coa.bar/" target="_blank" rel="noopener noreferrer">🔗 官網</a>
+        </div>
+      </div>
+      <div class="nearby-card reveal">
+        <h4>📖 The Old Man · 中環</h4>
+        <div class="dist">SoHo · 海明威主題</div>
+        <p> 經典雞尾酒重新詮釋，世界排名常客；與 Coa 同區，可二選一。</p>
+        <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=The+Old+Man+Lower+Bridge+Street+Central" target="_blank" rel="noopener noreferrer">📍 地圖</a><a class="lbtn book" href="https://www.theoldman.com/" target="_blank" rel="noopener noreferrer">🔗 官網</a></div>
+      </div>
+      <div class="nearby-card reveal">
+        <h4>🥃 Stockton · 中環</h4>
+        <div class="dist">蘭桂坊外圍 · 威士忌／調酒</div>
+        <p> 暗色調、座位舒適；若 Quinary／Coa 客滿的備案。</p>
+        <div class="links"><a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Stockton+Bar+Wyndham+Street+Central" target="_blank" rel="noopener noreferrer">📍 地圖</a></div>
+      </div>
+    </div>
+    <div class="day-note tip" style="margin-bottom:1.5rem">💡 <strong>怎麼選</strong>：走累 → <strong>Dragonfly／The Pawn</strong>（灣仔走路就到）。想喝有名的 → <strong>Coa 或 Quinary</strong>（各 1–2 杯即可）。Day 3 要趕機場，<strong>別喝到太晚</strong>，23:30 前回飯店較保險。</div>
+
+    <div class="sec-head" id="transport-101"><i>🚇</i> <span data-i18n="sec.transport">交通小白 · 第一次去香港必讀</span></div>
+    <div class="day-note tip" style="margin-bottom:1rem" data-i18n-en="Maps buttons on this page open navigation; follow this section on Day 1.">本頁 Maps 按鈕可一鍵導航；Day 1 照此段操作即可。</div>
+    <div class="transport-box reveal">
+      <h3 data-i18n-en="🎫 Octopus card (strongly recommend buying Day 1)">🎫 八達通（強烈建議第一天就買）</h3>
+      <p data-i18n-en="HK transit card; works on MTR, buses, convenience stores; <strong>Airport Express too</strong>.">香港版悠遊卡；地鐵、巴士、便利店可用；<strong>機場快線也能刷</strong>。</p>
+      <ul>
+        <li data-i18n-en="<strong>Where to buy</strong>: airport 7-Eleven / MTR customer service; HK$50 deposit refundable."><strong>哪裡買</strong>：機場 7-Eleven／地鐵客務中心；押金 HK$50 可退。</li>
+        <li data-i18n-en="<strong>Top up</strong>: any 7-Eleven or customer service centre, cash."><strong>加值</strong>：任何 7-11 或客務中心，用現金。</li>
+      </ul>
+    </div>
+    <div class="transport-box reveal">
+      <h3 data-i18n-en="🚇 MTR · four steps">🚇 港鐵 MTR · 搭法四步驟</h3>
+      <table class="time-table">
+        <thead><tr><th data-i18n-en="Line">路線</th><th data-i18n-en="Use">用途</th></tr></thead>
+        <tbody>
+          <tr><td data-i18n-en="Airport Express">機場快線</td><td data-i18n-en="Day 1 airport → Hong Kong Station (~24 min)">Day 1 機場 → 香港站（~24 分）</td></tr>
+          <tr><td data-i18n-en="Island line">港島線</td><td>Day 2 灣仔↔堅尼地城、中環↔灣仔</td></tr>
+          <tr><td data-i18n-en="Tsuen Wan line">荃灣線</td><td>Day 2 堅尼地城→尖沙咀、Day 3 灣仔→佐敦→葵芳</td></tr>
+          <tr><td data-i18n-en="Star Ferry">天星小輪</td><td>Day 2 尖沙咀→中環（約 HK$5–10）</td></tr>
+          <tr><td data-i18n-en="Tung Chung line">東涌線</td><td data-i18n-en="Day 3 Kwai Fong → airport (~25–30 min)">Day 3 葵芳 → 機場（~25–30 分）</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li data-i18n-en="Check line map for direction → tap Octopus → follow signs for transfers (usually stay in paid area) → use Maps if unsure.">看站內路線圖確認方向 → 八達通刷閘 → 轉乘跟指標走（通常不出閘）→ 不確定用 Maps。</li>
+      </ul>
+      <div class="links"><a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Hong+Kong+International+Airport&destination=Hong+Kong+Station&travelmode=transit" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Airport → Hong Kong Station">📍 機場→香港站</a></div>
+    </div>
+    <div class="transport-box reveal">
+      <h3 data-i18n-en="🚕 Taxi · 🚌 Big Bus · ✈ To airport">🚕 的士 · 🚌 Big Bus · ✈ 去機場</h3>
+      <ul>
+        <li data-i18n-en="<strong>Day 1 taxi</strong>: Hong Kong Station → Wan Chai HK$80–120, cash."><strong>Day 1 的士</strong>：香港站→灣仔 HK$80–120，現金。</li>
+        <li><strong>Day 2</strong>：<strong>09:00 出發</strong> → 13:00 Big Bus → 18:40 灣仔日落 → 21:15 酒吧；官網預購 QR。</li>
+        <li data-i18n-en="<strong>Day 3 airport</strong>: arrive T1 by 16:10 (18:40 flight, backpack only, 2.5hr early)."><strong>Day 3 機場</strong>：16:10 到 T1（18:40 班機、只有背包、提前 2.5hr）。</li>
+      </ul>
+    </div>
+
+    <div class="sec-head" id="food-kcp"><i>🍢</i> <span data-i18n="sec.food">葵涌廣場 · 13 間掃街清單</span></div>
+    <div class="ref-box reveal" data-i18n-en="Refs: <a href=&quot;https://www.youtube.com/shorts/qbrJ8IdsOM8&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>YouTube Shorts</a>, <a href=&quot;https://hk.trip.com/hot/articles/%E8%91%B5%E6%B6%8C%E5%BB%A3%E5%A0%B4.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Trip.com KCP guide</a>. <strong>Some stalls cash only — confirm hours before go.</strong>">
+      參考 <a href="https://www.youtube.com/shorts/qbrJ8IdsOM8" target="_blank" rel="noopener noreferrer">YouTube Shorts</a>、
+      <a href="https://hk.trip.com/hot/articles/%E8%91%B5%E6%B6%8C%E5%BB%A3%E5%A0%B4.html" target="_blank" rel="noopener noreferrer">Trip.com 葵廣攻略</a>。
+      <strong>部分小店只收現金；出發前確認營業時間。</strong>
+    </div>
+    <table class="food-table reveal">
+      <thead><tr><th>#</th><th data-i18n-en="Shop">店名</th><th data-i18n-en="Signature">招牌</th><th data-i18n-en="Floor">樓層</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>屯の大阪章魚燒</td><td data-i18n-en="Takoyaki">章魚燒</td><td>3F · <span class="must" data-i18n-en="Must try">必試</span></td></tr>
+        <tr><td>2</td><td>呦呦鹿鳴布丁燒</td><td data-i18n-en="Pudding bake">布丁燒</td><td>3F</td></tr>
+        <tr><td>3</td><td>阿佳拌麵</td><td data-i18n-en="Minced pork noodles">肉燥拌麵</td><td>3F</td></tr>
+        <tr><td>4</td><td>又一戟</td><td data-i18n-en="Pancake + ice cream">班戟＋雪糕</td><td>2F</td></tr>
+        <tr><td>5</td><td>真・章魚無雙</td><td data-i18n-en="Mentaiko takoyaki">明太子章魚燒</td><td>2F</td></tr>
+        <tr><td>6</td><td>Hong Kong Burger</td><td data-i18n-en="Handmade burger">手打漢堡</td><td>—</td></tr>
+        <tr><td>7</td><td>迷日食堂</td><td data-i18n-en="Cheese tteok">芝士年糕</td><td>—</td></tr>
+        <tr><td>8</td><td>#湯。雞</td><td data-i18n-en="Clay pot wonton chicken">砂鍋雲吞雞</td><td>—</td></tr>
+        <tr><td>9</td><td>孖寶車仔麵</td><td data-i18n-en="3-topping cart noodles">三餸車仔麵</td><td>—</td></tr>
+        <tr><td>10</td><td>慧食貓</td><td data-i18n-en="Scallion pancake">手抓餅</td><td>—</td></tr>
+        <tr><td>11</td><td>怒茶巷</td><td data-i18n-en="Hand-shaken milk tea">手搖奶茶</td><td>—</td></tr>
+        <tr><td>12</td><td>問卷手卷專門店</td><td data-i18n-en="Hand roll">手卷</td><td>—</td></tr>
+        <tr><td>13</td><td>沖繩味之賞</td><td data-i18n-en="Oden">關東煮</td><td>1F</td></tr>
+      </tbody>
+    </table>
+    <div class="links" style="margin-bottom:.5rem">
+      <a class="lbtn map" href="https://www.google.com/maps/search/?api=1&query=Kwai+Chung+Plaza+7+Kwai+Foo+Road" target="_blank" rel="noopener noreferrer" data-i18n-en="📍 Kwai Chung Plaza">📍 葵涌廣場</a>
+      <a class="lbtn map" href="https://www.google.com/maps/dir/?api=1&origin=Kwai+Fong+Station&destination=Kwai+Chung+Plaza+7+Kwai+Foo+Road&travelmode=walking" target="_blank" rel="noopener noreferrer" data-i18n-en="🚶 Kwai Fong D → KCP">🚶 葵芳 D→葵廣</a>
+    </div>
+    <figure class="spot-fig reveal" style="margin-bottom:1.25rem">
+      <img class="spot-img" src="../hong-kong/images/kowloon-food.jpg" alt="Kwai Chung Plaza" width="960" height="540" loading="lazy" onerror="this.onerror=null;this.src='../hong-kong/images/kowloon-food.svg';" />
+      <figcaption><span data-i18n="img.kcp">葵涌廣場 · Kwai Chung Plaza</span><br /><small>Photo: <a href="https://commons.wikimedia.org/wiki/File:Kwai_Chung_Plaza_(Hong_Kong).jpg" target="_blank" rel="noopener noreferrer">Wikimedia</a> · CC BY-SA 4.0</small></figcaption>
+    </figure>
+
+    <div class="sec-head" id="validate"><i>✅</i> <span data-i18n="sec.validate">行程合理性驗證</span></div>
+    <ul class="validate-list">
+      <li data-i18n-en="<strong>Day 1</strong>: land 19:35 → check-in ~21:00 is reasonable; no KCP/Big Bus — avoid late cross-district trips."><strong>Day 1</strong>：19:35 降落 → 21:00 前後入住合理；不排葵涌／Big Bus，避免深夜跨區。</li>
+      <li><strong>Day 2</strong>：<strong>09:00 出發</strong>仍趕得上 18:40 灣仔日落；新興食家週六可能排隊，備案灣仔點心。21:15 酒吧後 23:30 前回飯店。</li>
+      <li><strong>Day 3</strong>：<strong>09:00 退房</strong> → 佐敦早餐 → 12:15 葵廣 3 hr → <strong>16:10</strong> 機場；不飲酒、不熬夜。</li>
+      <li><strong>Big Bus</strong>：藍線 10:00–17:00；Day 2 建議 <strong>12:00</strong> 班次，下午星光大道＋天星小輪。</li>
+      <li><strong>朋友路線</strong>：士丹利街叉燒、半山扶梯、九龍寨城、福元湯圓、落日飛車等列為備選，主線已滿不宜硬塞。</li>
+      <li data-i18n-en="<strong>KCP</strong>: matches Shorts &quot;13 stalls&quot; theme; 4–6 stalls is enough — don&apos;t rush."><strong>葵涌廣場</strong>：與 Shorts「13 間」主題呼應；實際掃 4–6 間即可，避免趕場。</li>
+      <li data-i18n-en="<strong>August</strong>: hot humid afternoons → Day 2 waterfront + Day 3 indoor KCP = balanced pace."><strong>8 月</strong>：戶外午後悶熱 → Day 2 海濱＋ Day 3 室內葵廣，節奏適中。</li>
+    </ul>
+
+    <div class="sec-head" id="score"><i>⭐</i> <span data-i18n="sec.score">行程評分（2026/7/22 更新）</span></div>
+    <div class="score-total reveal">
+      <div class="big">88 / 100</div>
+      <div style="font-size:.88rem;color:var(--teal-dk);margin-top:.35rem" data-i18n="score.sub">適合第一次香港 · 3 天 2 夜 · 背包客 · 美食＋維港</div>
+    </div>
+    <div class="score-grid">
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Route logic">地理動線</h4>
+        <div class="score-bar"><span style="width:95%"></span></div>
+        <div class="score-val">19 / 20</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0">Day 2 堅尼地城→九龍→天星小輪→中環→灣仔海濱；Day 3 佐敦→葵芳→機場一路向西。</p>
+      </div>
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Pace &amp; energy">節奏體力</h4>
+        <div class="score-bar"><span style="width:90%"></span></div>
+        <div class="score-val">18 / 20</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0" data-i18n-en="Day 1 light, Day 2 harbour main, Day 3 indoor crawl; backpack only is easier.">Day 1 輕、Day 2 維港主菜、Day 3 室內掃街；只有背包更輕鬆。</p>
+      </div>
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Food fit">美食契合</h4>
+        <div class="score-bar"><span style="width:92%"></span></div>
+        <div class="score-val">18.5 / 20</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0">融合朋友推薦：新興食家、祥興記、澳洲牛奶公司、佳佳甜品＋葵廣 13 間主題。</p>
+      </div>
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Transport feasible">交通可行</h4>
+        <div class="score-bar"><span style="width:88%"></span></div>
+        <div class="score-val">17.5 / 20</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0" data-i18n-en="MTR-focused + Day 1 taxi; 16:10 airport comfortable for backpackers.">MTR 為主＋Day 1 的士；16:10 到機場對背包客充裕。</p>
+      </div>
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Beginner-friendly">新手友善</h4>
+        <div class="score-bar"><span style="width:90%"></span></div>
+        <div class="score-val">9 / 10</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0" data-i18n-en="Transport 101 section, one-tap Maps, hotel-area supper list.">交通小白段落、Maps 一鍵連結、飯店旁宵夜清單。</p>
+      </div>
+      <div class="score-card reveal">
+        <h4 data-i18n-en="Room to improve">可改進空間</h4>
+        <div class="score-bar"><span style="width:55%"></span></div>
+        <div class="score-val" data-i18n-en="−6 pts">−6 分</div>
+        <p style="font-size:.78rem;color:var(--muted);margin:0" data-i18n-en="Aug heat, Big Bus pre-book, some cash-only stalls — confirm hours before go.">8 月悶熱、Big Bus 需預購、部分小店只收現金；出發前再確認營業時間。</p>
+      </div>
+    </div>
+    <div class="day-note tip" data-i18n-en="💡 <strong>Overall</strong>: A solid first-HK trip — not overpacked, smart routing, themed food. Backpack only makes Day 3 timing (16:10 airport vs old 13:30) more reasonable — enjoy KCP slowly.">💡 <strong>總評</strong>：這是一趟「第一次香港」很穩的行程——不貪多、動線聰明、美食有主題。你只有背包，Day 3 時間比原本 13:30 到機場更合理，葵廣可以慢慢吃。</div>
+
+    <div class="sec-head" id="budget"><i>💰</i> <span data-i18n="sec.budget">預算總表（不含機票・飯店）</span></div>
+    <div class="day-note tip" style="margin-bottom:1rem" data-i18n-en="Local spend reference for <strong>two travellers, backpacks only</strong> (HKD); flights Aug 7–9 &amp; Emperor Hotel 2 nights excluded. Rough rate <strong>1 HKD ≈ 4.1 TWD</strong> (check before go).">以下為<strong>兩人同行、只有背包</strong>之在地花費參考（港幣 HKD）；機票 8/7–8/9 與英皇駿景兩晚房費請另計。匯率粗抓 <strong>1 HKD ≈ 4.1 TWD</strong>（出發前再查）。</div>
+
+    <table class="food-table reveal">
+      <thead><tr><th data-i18n-en="Item">項目</th><th data-i18n-en="Est. (HKD)">估計（HKD）</th><th data-i18n-en="Notes">說明</th><th data-i18n-en="Payment">支付方式</th></tr></thead>
+      <tbody>
+        <tr><td data-i18n-en="Octopus (incl. deposit)">八達通（含押金）</td><td>200–250</td><td data-i18n-en="HK$50 deposit (refundable) + ~150–200 top-up">押金 HK$50（可退）＋加值約 150–200</td><td><span class="pay-oct pay-badge" data-i18n-en="Octopus">八達通</span></td></tr>
+        <tr><td data-i18n-en="Airport Express (one way)">機場快線（單程）</td><td>~115</td><td data-i18n-en="Day 1 airport → Hong Kong Station">Day 1 機場 → 香港站</td><td><span class="pay-oct pay-badge" data-i18n-en="Octopus">八達通</span></td></tr>
+        <tr><td data-i18n-en="Day 1 taxi">Day 1 的士</td><td>80–120</td><td data-i18n-en="Hong Kong Station → Wan Chai hotel (with backpack)">香港站 → 灣仔飯店（拖背包）</td><td><span class="pay-cash pay-badge" data-i18n-en="Cash">現金</span></td></tr>
+        <tr><td data-i18n-en="MTR (3 days)">地鐵 MTR（3 日）</td><td>90–130</td><td>Day 2 港島＋過海×4、Day 3 佐敦＋葵芳＋機場</td><td><span class="pay-oct pay-badge" data-i18n-en="Octopus">八達通</span></td></tr>
+        <tr><td>天星小輪</td><td>5–10</td><td>Day 2 尖沙咀→中環</td><td><span class="pay-oct pay-badge">八達通</span></td></tr>
+        <tr><td data-i18n-en="Big Bus blue route (1 day)">Big Bus 藍線（1 日）</td><td>450–580</td><td data-i18n-en="Pre-book online better; check day-of price">官網預購較優；以當日官網價為準</td><td><span class="pay-card pay-badge" data-i18n-en="Online card">線上刷卡</span></td></tr>
+        <tr><td data-i18n-en="Day 1 supper">Day 1 宵夜</td><td>50–80</td><td data-i18n-en="Fish balls / rice bowl / noodles, 1 meal/person">魚蛋／丼飯／粥麵 1 人 1 餐</td><td><span class="pay-cash pay-badge" data-i18n-en="Cash">現金</span><span data-i18n-en=" mostly"> 為主</span></td></tr>
+        <tr><td>Day 2 美食</td><td>280–450</td><td>新興食家＋祥興記＋咖啡＋晚餐</td><td>混合</td></tr>
+        <tr><td>Day 3 佐敦早餐</td><td>100–150</td><td>澳洲牛奶公司＋佳佳甜品</td><td><span class="pay-cash pay-badge">現金</span> 為主</td></tr>
+        <tr><td data-i18n-en="Day 3 KCP">Day 3 葵涌廣場</td><td>150–250</td><td data-i18n-en="4–6 stalls, ~HK$80–120/person">掃 4–6 間，人均約 HK$80–120</td><td><span class="pay-cash pay-badge" data-i18n-en="Cash">現金</span><span data-i18n-en=" essential"> 必備</span></td></tr>
+        <tr><td>Day 2 酒吧（可選）</td><td>120–500</td><td>1–2 杯／人；Dragonfly 或 Coa 等</td><td>刷卡／現金</td></tr>
+        <tr><td data-i18n-en="Drinks / convenience">飲料／便利店</td><td>50–80</td><td data-i18n-en="7-Eleven, bubble tea etc.">7-11、手搖等</td><td data-i18n-en="Mixed">混合</td></tr>
+        <tr><td data-i18n-en="Emergency buffer">緊急備用</td><td>100–200</td><td data-i18n-en="Unexpected transit, top-up, small purchases">突發交通、加值、小額採買</td><td><span class="pay-cash pay-badge" data-i18n-en="Cash">現金</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="budget-total reveal">
+      <div data-i18n-en="Local total (1 person)">在地花費合計（1 人）</div>
+      <div class="amt" data-i18n-en="~ HK$ 1,500 – 2,200">約 HK$ 1,500 – 2,200</div>
+      <div class="budget-note" data-i18n-en="≈ TWD <strong>6,200 – 9,000</strong>/person · two people ~<strong>12,400 – 18,000</strong>">≈ 台幣 <strong>6,200 – 9,000 元</strong>／人 · 兩人約 <strong>12,400 – 18,000 元</strong></div>
+    </div>
+    <div class="day-note warn" data-i18n-en="⚠ <strong>Excludes</strong>: flights, hotel, souvenirs, Big Bus night tour (if added). Upscale dim sum or extra shopping — add your own buffer.">⚠ 此表<strong>不含</strong>：機票、飯店、伴手禮、Big Bus 夜遊（若加購）。豪華早茶或額外購物請自行加 buffer。</div>
+
+    <div class="sec-head" id="cash-pay"><i>💵</i> <span data-i18n="sec.cash">現金 vs 電子支付 · 怎麼準備</span></div>
+    <div class="transport-box reveal">
+      <h3 data-i18n-en="Suggested cash: HK$800 – 1,200/person">建議攜帶現金：HK$ 800 – 1,200／人</h3>
+      <p data-i18n-en="Digital pay is common in HK, but this trip has <strong>cash-only stalls</strong> (Wan Chai supper, KCP crawl).">香港電子支付很普及，但本行程有多處<strong>小店只收現金</strong>（灣仔宵夜魚蛋檔、葵涌廣場掃街）。</p>
+      <table class="time-table">
+        <thead><tr><th data-i18n-en="Scenario">場景</th><th data-i18n-en="Cash">現金</th><th data-i18n-en="Octopus">八達通</th><th data-i18n-en="Card / Apple Pay">信用卡／Apple Pay</th></tr></thead>
+        <tbody>
+          <tr><td data-i18n-en="Airport taxi, some supper stalls">機場的士、部分宵夜檔</td><td data-i18n-en="✅ Essential">✅ 必備</td><td>—</td><td data-i18n-en="Some accept">少數支援</td></tr>
+          <tr><td data-i18n-en="MTR, bus, Star Ferry">地鐵、巴士、天星小輪</td><td>—</td><td data-i18n-en="✅ Best">✅ 首選</td><td data-i18n-en="Some gates">部分閘門可感應</td></tr>
+          <tr><td data-i18n-en="Chain cha chaan teng, malls">連鎖茶餐廳、商場</td><td data-i18n-en="OK">可</td><td>✅</td><td data-i18n-en="✅ Common">✅ 普遍</td></tr>
+          <tr><td data-i18n-en="KCP stalls">葵涌廣場小攤</td><td data-i18n-en="✅ Strongly recommended">✅ 強烈建議</td><td data-i18n-en="Some">部分可</td><td data-i18n-en="Mostly no">多數不行</td></tr>
+          <tr><td data-i18n-en="Big Bus online">Big Bus 官網購票</td><td>—</td><td>—</td><td data-i18n-en="✅ Online card">✅ 線上刷卡</td></tr>
+          <tr><td>酒吧（Day 2 可選）</td><td>—</td><td>—</td><td>✅ 刷卡／Apple Pay 普遍</td></tr>
+          <tr><td data-i18n-en="Hotel (Emperor)">飯店（英皇駿景）</td><td>—</td><td>—</td><td data-i18n-en="✅ Usually yes">✅ 通常可</td></tr>
+        </tbody>
+      </table>
+      <h4 data-i18n-en="Exchange &amp; ATM">換匯與提領</h4>
+      <ul>
+        <li data-i18n-en="<strong>Before leaving Taiwan</strong>: exchange some HKD (~HK$500) + TWD cash backup."><strong>台灣出發前</strong>：銀行換少量 HKD（約 HK$500）＋帶台幣現金備用。</li>
+        <li data-i18n-en="<strong>HK airport</strong>: money changers &amp; ATMs after arrival (HKD withdrawal, check fees)."><strong>香港機場</strong>：入境後有找換店、ATM（可提 HKD，留意手續費）。</li>
+        <li data-i18n-en="<strong>In city</strong>: 7-Eleven tops up Octopus (cash); no need to exchange too much at once."><strong>市區</strong>：7-11 可幫八達通加值（現金）；不必一次換太多。</li>
+        <li data-i18n-en="<strong>Change</strong>: keep HK$10/$20 coins for stalls &amp; taxis."><strong>找零</strong>：備一些 HK$10、$20 硬幣，小攤與的士常用。</li>
+      </ul>
+      <h4 data-i18n-en="Octopus quick notes">八達通快速記</h4>
+      <ul>
+        <li data-i18n-en="Buy at airport 7-Eleven or MTR; HK$50 deposit refundable on exit (~HK$11 card cost non-refundable).">機場 7-11 或地鐵站買，押金 HK$50（離境前可退卡取回，卡片本身費用約 HK$11 不退）。</li>
+        <li data-i18n-en="Low balance: top up at any 7-Eleven or MTR customer service.">餘額不足時：任何 7-11、地鐵客務中心加值。</li>
+        <li data-i18n-en="Apple Pay Octopus works too, but physical card is easiest for beginners.">Apple Pay「香港八達通」也可，但新手實體卡最直覺。</li>
+      </ul>
+    </div>
+
+    <div class="sec-head" id="tips"><i>💡</i> <span data-i18n="sec.tips">行前提醒</span></div>
+    <div class="tips-grid">
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🎫 Big Bus">🎫 Big Bus</h4>
+        <ul>
+          <li data-i18n-en="Pre-book: <a href=&quot;https://www.bigbustours.com/en/hong-kong/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>bigbustours.com</a>">官網預購：<a href="https://www.bigbustours.com/zh-hant/hong-kong/" target="_blank" rel="noopener noreferrer">bigbustours.com</a></li>
+          <li data-i18n-en="Blue route boarding: Bruce Lee statue, Avenue of Stars">藍線上車：星光大道李小龍銅像旁</li>
+          <li data-i18n-en="Check <a href=&quot;https://www.bigbustours.com/en/hong-kong/service-information&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>service updates</a> before go">出發前查 <a href="https://www.bigbustours.com/zh-hant/hong-kong/service-information" target="_blank" rel="noopener noreferrer">服務更新</a></li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🍢 Kwai Chung Plaza">🍢 葵涌廣場</h4>
+        <ul>
+          <li data-i18n-en="Kwai Fong MTR Exit D, cross road">葵芳站 D 出口過馬路即達</li>
+          <li data-i18n-en="Some stalls cash/Octopus only">部分小店只收現金／八達通</li>
+          <li data-i18n-en="Don&apos;t confuse with &quot;Kwai Fong Plaza&quot;">別與「葵芳廣場」搞混</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="💳 Payment">💳 支付</h4>
+        <ul>
+          <li data-i18n-en="See <a href=&quot;#cash-pay&quot;>Cash &amp; Pay</a> above">詳見上方 <a href="#cash-pay">現金支付</a> 段落</li>
+          <li data-i18n-en="Food crawl: HK$200–400 pocket cash">掃街區必備 HK$200–400 零用現金</li>
+          <li data-i18n-en="Octopus + some cash = safest combo">八達通＋少量現金＝最穩組合</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4>🍸 酒吧</h4>
+        <ul>
+          <li>Day 2 <strong>21:15</strong> 後；Day 3 不飲酒</li>
+          <li>首選 <a href="#bars">Dragonfly</a>（灣仔步行）</li>
+          <li>Coa／Quinary 建議預約</li>
+        </ul>
+      </div>
+      <div class="tip-card reveal">
+        <h4 data-i18n-en="🗺 Maps">🗺 地圖</h4>
+        <ul>
+          <li data-i18n-en="Offline download HK Island + Kowloon + Kwai Tsing">離線下載港島＋九龍＋葵青</li>
+          <li data-i18n-en="All links on this page use Google Maps API format">本頁連結均為 Google Maps API 格式</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>
+      <p class="footer-note">
+        <span data-i18n-en="Food refs: <a href=&quot;https://www.youtube.com/shorts/qbrJ8IdsOM8&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>YouTube Shorts</a> · KCP shops: <a href=&quot;https://hk.trip.com/hot/articles/%E8%91%B5%E6%B6%8C%E5%BB%A3%E5%A0%B4.html&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Trip.com</a> · Big Bus: <a href=&quot;https://www.bigbustours.com/en/hong-kong/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>Official</a><br />">美食參考：<a href="https://www.youtube.com/shorts/qbrJ8IdsOM8" target="_blank" rel="noopener noreferrer">YouTube Shorts</a> ·
+        </span>
+        <span data-i18n="footer.note">航班／飯店為已核實資料；其餘為建議動線，出發前請確認營業時間與票券。</span><br />
+        <small style="color:var(--muted)">Neon 版：2026-08-03 · 內容沿用行程筆記 · 圖片共用 ../hong-kong/images · 舊版：<a href="../hong-kong/">/hong-kong/</a></small>
+      </p>
+    </footer>
+  
+    </main>
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="i18n.js"></script>
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Three.js hero (WebGL for Pages compatibility) ---------- */
+  (function initHero() {
+    var canvas = document.getElementById("hero-canvas");
+    if (!canvas || typeof THREE === "undefined") return;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    var parent = canvas.parentElement;
+    var w = parent.clientWidth, h = parent.clientHeight;
+    renderer.setSize(w, h, false);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(42, w / h, 0.1, 100);
+    camera.position.set(0, 2.4, 10);
+    scene.add(new THREE.AmbientLight(0xb8d4e8, 0.7));
+    var sun = new THREE.DirectionalLight(0xfff0e0, 1.15);
+    sun.position.set(5, 8, 4);
+    scene.add(sun);
+    var mat = new THREE.MeshStandardMaterial({ color: 0x2a3544, roughness: 0.88 });
+    var neon = [
+      new THREE.MeshStandardMaterial({ color: 0xe11d48, emissive: 0xe11d48, emissiveIntensity: 0.4 }),
+      new THREE.MeshStandardMaterial({ color: 0xd97706, emissive: 0xd97706, emissiveIntensity: 0.35 }),
+      new THREE.MeshStandardMaterial({ color: 0x0891b2, emissive: 0x0891b2, emissiveIntensity: 0.4 })
+    ];
+    var group = new THREE.Group();
+    var heights = [1.4, 2.8, 1.8, 3.4, 2.2, 3.0, 1.6, 2.5, 2.0, 2.9, 1.5, 2.3];
+    for (var i = 0; i < heights.length; i++) {
+      var geo = new THREE.BoxGeometry(0.58, heights[i], 0.58);
+      var mesh = new THREE.Mesh(geo, i % 4 === 0 ? neon[i % 3] : mat);
+      mesh.position.set((i - 5.5) * 0.72, heights[i] / 2 - 1.0, (i % 2) * -0.35);
+      group.add(mesh);
+    }
+    scene.add(group);
+    var water = new THREE.Mesh(
+      new THREE.PlaneGeometry(16, 5),
+      new THREE.MeshStandardMaterial({ color: 0x7eb8d4, metalness: 0.55, roughness: 0.35, transparent: true, opacity: 0.55 })
+    );
+    water.rotation.x = -Math.PI / 2;
+    water.position.y = -1.0;
+    scene.add(water);
+    var t0 = performance.now();
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      if (!reduce) {
+        group.rotation.y = Math.sin(t * 0.28) * 0.14;
+        camera.position.x = Math.sin(t * 0.15) * 0.35;
+        camera.lookAt(0, 0.6, 0);
+      }
+      renderer.render(scene, camera);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    window.addEventListener("resize", function () {
+      w = parent.clientWidth; h = parent.clientHeight;
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+      renderer.setSize(w, h, false);
+    }, { passive: true });
+  })();
+
+  /* ---------- GSAP ScrollTrigger reveals ---------- */
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined" && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray(".reveal").forEach(function (el, i) {
+      gsap.fromTo(el,
+        { y: 28, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.48, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
+          delay: (i % 4) * 0.04
+        }
+      );
+    });
+    gsap.from(".hero-overlay > *", {
+      y: 24, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out", delay: 0.15
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ---------- Sidebar scroll spy ---------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".sidebar a[href^='#'], .topbar-nav a[href^='#']"));
+  var map = {};
+  links.forEach(function (a) {
+    var id = a.getAttribute("href").slice(1);
+    if (id) map[id] = map[id] || [];
+    if (id) map[id].push(a);
+  });
+  var sections = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  function onScroll() {
+    var y = window.scrollY + 120;
+    var cur = null;
+    sections.forEach(function (sec) {
+      if (sec.offsetTop <= y) cur = sec.id;
+    });
+    links.forEach(function (a) { a.classList.remove("active"); });
+    if (cur && map[cur]) map[cur].forEach(function (a) { a.classList.add("active"); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
