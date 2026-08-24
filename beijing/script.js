@@ -56,8 +56,8 @@ const itinerary = [
   {
     id: "d2",
     date: "9/24（四）",
-    title: "天壇、南門涮肉、前門大柵欄、楊梅竹斜街、北京坊伴手禮",
-    summary: "10:00 出門，先走天壇，再吃南門涮肉。下午用前門、大柵欄、楊梅竹斜街串成胡同/老字號/文創伴手禮線，晚上四季民福前門店。",
+    title: "天壇、南門涮肉、前門楊梅竹、北京坊下午茶",
+    summary: "鬆中帶吃的一天：天壇控制 2 小時，南門涮肉午餐，下午前門/楊梅竹斜街/北京坊控制 2 小時，中間留咖啡或茶，不硬逛到腿酸。",
     stats: ["10:00出發", "胡同小巷", "伴手禮"],
     stops: [
       {
@@ -81,7 +81,7 @@ const itinerary = [
         status: "verified",
         price: "旺季聯票 ¥34；大門票 ¥15",
         route: "天壇東門/天橋站 → 祈年殿 → 回音壁 → 圜丘 → 南門",
-        eta: "2-2.5 小時",
+        eta: "2 小時",
         description: "北京旅遊網列天壇旺季聯票 ¥34、門票 ¥15；週一核心景點可能受限，所以排週四。",
         transit: "園內步行，最後從南門出接南門涮肉。",
         booking: "建議買聯票，否則核心景點進不去。",
@@ -104,16 +104,16 @@ const itinerary = [
       },
       {
         time: "15:30",
-        title: "前門大街、大柵欄、楊梅竹斜街",
+        title: "前門、大柵欄、楊梅竹斜街、北京坊下午茶",
         category: "hutong",
         status: "verified",
         price: "街區免費；咖啡/文創依店家",
         route: "天橋/珠市口 → 前門 → 大柵欄 → 楊梅竹斜街 → 北京坊",
-        eta: "3-3.5 小時",
-        description: "Trip.com 胡同攻略與 2026 楊梅竹斜街 Citywalk 文都把大柵欄、楊梅竹斜街列為胡同慢逛路線。",
+        eta: "2-2.5 小時",
+        description: "Trip.com 胡同攻略與 2026 楊梅竹斜街 Citywalk 文都把大柵欄、楊梅竹斜街列為胡同慢逛路線；這版只抓精華，再加北京坊/書店/茶飲坐一下。",
         transit: "地鐵到珠市口或前門後步行。楊梅竹斜街從珠市口 C 口約 10 分。",
         booking: "不需預約。",
-        note: "伴手禮可看北京坊、北京禮物、稻香村、吳裕泰/張一元茶葉。文創冰箱貼不要急著第一家買。",
+        note: "伴手禮可看北京坊、北京禮物、稻香村、吳裕泰/張一元茶葉。累了就直接找茶飲或咖啡坐下。",
         place: "楊梅竹斜街",
       },
       {
@@ -136,13 +136,13 @@ const itinerary = [
   {
     id: "d3",
     date: "9/25（五）",
-    title: "故宮、景山、五道營/國子監、小街豬手、三里屯或目的地",
-    summary: "故宮日改成週五，避開週一閉館。10 點左右出發會到得稍晚，所以故宮路線走中軸線+珍寶/鐘錶擇一，不硬塞國博。",
-    stats: ["故宮必排", "夜生活日", "可到00:00"],
+    title: "天安門、故宮精華、景山、漂亮晚餐或夜生活",
+    summary: "必去日：天安門廣場 1 小時、故宮精華 3-3.5 小時、景山 1 小時。這天是緊湊日，五道營/咖啡只當有體力才加。",
+    stats: ["必去緊湊日", "故宮天安門", "可到00:00"],
     stops: [
       {
         time: "09:45",
-        title: "飯店出發往故宮",
+        title: "飯店出發往天安門/故宮",
         category: "transport",
         status: "planned",
         price: "地鐵約 ¥6-7；DD 約依出租車標準與路況估算 ¥80-130",
@@ -150,27 +150,41 @@ const itinerary = [
         eta: "地鐵+步行約 65-80 分；DD 約 45-70 分",
         description: "你想 9:30-10:00 出發，故宮日建議 09:45 前出門，避免午門排隊壓縮參觀。",
         transit: "地鐵優先；若天氣差或想省腳力，DD 到管制區外再步行。",
-        booking: "故宮票 9/18 20:00 搶 9/25；官方規則為參觀前 7 日 20:00 起預約。",
-        note: "證件原件一定要帶。故宮當日不售票。",
-        place: "故宮博物院午門"
+        booking: "故宮票 9/18 20:00 搶 9/25；天安門廣場也需提前 1-7 日實名預約。",
+        note: "證件原件一定要帶。天安門安檢嚴，打火機、刀具、大型噴霧不要帶。",
+        place: "天安門廣場"
       },
       {
-        time: "11:00",
+        time: "10:55",
+        title: "天安門廣場、天安門城樓外觀",
+        category: "heritage",
+        status: "verified",
+        price: "廣場免費；天安門城樓若入內需另行官方預約購票",
+        route: "天安門東/西 → 廣場 → 長安街外觀拍照 → 午門",
+        eta: "1-1.25 小時",
+        description: "天安門地區管委會公告：天安門廣場個人與團隊均須提前 1-7 日透過官方平台實名預約。只拍外觀與廣場就好，不追升旗。",
+        transit: "全程步行與安檢動線。",
+        booking: "用天安門廣場預約參觀平台/微信小程序，預約上午或下午時段；若故宮預約可通行仍以現場要求為準。",
+        note: "這段只抓 1 小時，不加國博、不看升旗，避免拖垮故宮。",
+        place: "天安門廣場"
+      },
+      {
+        time: "12:15",
         title: "故宮博物院",
         category: "heritage",
         status: "verified",
         price: "旺季大門票 ¥60；珍寶館/鐘錶館各 ¥10",
         route: "午門 → 太和殿 → 中軸線 → 乾清宮 → 珍寶館/鐘錶館擇一 → 神武門",
-        eta: "4.5-5 小時",
+        eta: "3-3.5 小時",
         description: "故宮官方票務政策列 4/1-10/31 旺季大門票 ¥60，珍寶館與鐘錶館各 ¥10；週一閉館。",
         transit: "園內步行，最後神武門出接景山。",
         booking: "最重要預約。護照/台胞證資訊先填好。",
-        note: "你這天出發較晚，不建議再加天安門廣場深逛或國博。",
+        note: "故宮是本日例外，不壓成 1 小時；但只走精華，不加國博或城樓入內。",
         place: "故宮博物院",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Forbidden%20City%2C%20as%20viewed%20from%20Jingshan.jpg?width=900"
       },
       {
-        time: "16:15",
+        time: "15:50",
         title: "景山公園俯瞰紫禁城",
         category: "heritage",
         status: "planned",
@@ -185,17 +199,17 @@ const itinerary = [
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/The%20Forbidden%20City%20-%20View%20from%20Coal%20Hill.jpg?width=900"
       },
       {
-        time: "17:30",
-        title: "五道營胡同、國子監街",
+        time: "17:10",
+        title: "咖啡備選：五道營 Metal Hands / Barista",
         category: "hutong",
         status: "verified",
-        price: "街區免費；小魔王酒吧 Klook 方案約 ¥50 起",
-        route: "景山/北海北 → 雍和宮站 → 五道營胡同 → 國子監街",
-        eta: "1.5-2 小時",
-        description: "五道營被多個旅遊頁列為咖啡、酒吧、手作小店聚集的文藝胡同，建議停留 1-3 小時。",
+        price: "咖啡約 ¥30-60；街區免費",
+        route: "景山/北海北 → 雍和宮站 → 五道營胡同",
+        eta: "1-1.5 小時，可直接刪",
+        description: "Metal Hands 五道營店在 Trip.com/Tripadvisor 評分高，Barista Specialty Coffee Roasters 也在五道營胡同；這段是故宮後的坐下回血，不是硬景點。",
         transit: "地鐵或 DD 到雍和宮站，再步行。",
-        booking: "不需；若想小魔王酒吧可看 Klook 套餐。",
-        note: "比南鑼鼓巷安靜，適合買小禮物與拍灰牆紅門。",
+        booking: "不需；如果故宮走太久，直接跳到晚餐。",
+        note: "這就是鬆弛感的開關：累就坐咖啡，不累才逛國子監街。",
         place: "五道營胡同",
       },
       {
@@ -283,13 +297,13 @@ const itinerary = [
   {
     id: "d5",
     date: "9/27（日）",
-    title: "頤和園、圓明園、五道口/望京瀟湘閣、養生按摩備選",
-    summary: "北京西北園林日。頤和園很大，只走精華；圓明園看西洋樓遺址。晚餐用瀟湘閣望京 SOHO，或回東邊做足療/養生。",
-    stats: ["10:00出發", "園林", "養生備選"],
+    title: "頤和園鬆弛版、五道口咖啡、瀟湘閣或漂亮晚餐",
+    summary: "這天改成鬆弛園林日：頤和園只走昆明湖/長廊/石舫精華 2 小時，圓明園降為備選，把下午留給咖啡、五道口或望京晚餐。",
+    stats: ["鬆弛日", "園林2小時", "咖啡備選"],
     stops: [
       {
         time: "10:00",
-        title: "飯店出發往頤和園",
+        title: "飯店出發往頤和園，路上當休息",
         category: "transport",
         status: "planned",
         price: "地鐵約 ¥7-8；DD 跨城可能 ¥120-190+",
@@ -298,50 +312,50 @@ const itinerary = [
         description: "東邊住到西北景點較遠，這天交通時間最長。若想省腳力，可 DD 到地鐵換乘少的站再進城。",
         transit: "地鐵優先，回程可 DD。",
         booking: "無。",
-        note: "穿最舒服的鞋，頤和園比想像大。",
+        note: "這天不早起趕路，交通時間就當休息；穿舒服鞋。",
         place: "頤和園北宮門"
       },
       {
         time: "11:30",
-        title: "頤和園精華路線",
+        title: "頤和園精華 2 小時：昆明湖、長廊、石舫",
         category: "park",
         status: "verified",
         price: "官方旺季門票 ¥30；聯票 ¥60；遊船多條線約 ¥30-40/人",
-        route: "北宮門 → 蘇州街 → 佛香閣 → 長廊 → 石舫 → 昆明湖",
-        eta: "3.5-4 小時",
+        route: "西苑/北宮門 → 長廊 → 石舫 → 昆明湖湖邊 → 近出口",
+        eta: "2-2.5 小時",
         description: "頤和園官網列旺季門票 ¥30、聯票 ¥60；遊船官方列多條航線，票價約 ¥30-40。",
         transit: "園內步行；可用船減少折返。",
         booking: "建議提前 1-7 天購票，視平台規則。",
-        note: "不追全園，走精華才會舒服。",
+        note: "不爬佛香閣、不追全園；天氣好可加短程遊船，天氣差就早點撤。",
         place: "頤和園",
         image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kunming%20Lake%20%28Summer%20Palace%2C%20Beijing%29%20in%20summer.JPG?width=900"
       },
       {
-        time: "15:45",
-        title: "圓明園遺址公園",
-        category: "park",
+        time: "15:00",
+        title: "下午茶/備案：五道口咖啡或圓明園西洋樓",
+        category: "food",
         status: "planned",
-        price: "門票與西洋樓遺址區依官方/現場查詢",
-        route: "頤和園 → 圓明園 → 西洋樓遺址",
-        eta: "1.5-2 小時",
-        description: "和頤和園同區，適合接續看皇家園林與歷史遺址。",
+        price: "咖啡約 ¥30-70；若進圓明園依官方/現場門票",
+        route: "頤和園 → 五道口/圓明園 → 望京或管莊",
+        eta: "1-1.5 小時",
+        description: "頤和園後先坐下喝咖啡。若體力很好再去圓明園西洋樓 1 小時；如果累了，直接去五道口或回東邊。",
         transit: "地鐵/短程 DD。",
-        booking: "出發前查暢遊公園或現場。",
-        note: "如果頤和園太累，圓明園只看西洋樓重點即可。",
-        place: "圓明園"
+        booking: "圓明園屬備選，當天看腿決定。",
+        note: "這天的目標是鬆弛，不是打卡數量。",
+        place: "五道口 / 圓明園"
       },
       {
-        time: "18:30",
-        title: "瀟湘閣（望京 SOHO 店）或五道口晚餐",
+        time: "17:45",
+        title: "瀟湘閣望京 SOHO 店，或 gaga/花家怡園漂亮飯",
         category: "food",
         status: "verified",
         price: "攜程列瀟湘閣望京 SOHO 店人均 ¥80；10:30-21:30",
-        route: "圓明園/五道口 → 望京 SOHO → 飯店",
+        route: "五道口/圓明園 → 望京 SOHO → 飯店",
         eta: "地鐵/ DD 約 45-70 分；望京回管莊約 35-55 分",
         description: "瀟湘閣望京 SOHO 店資料列地址為阜安東路望京 SOHO T3 下沉廣場，營業 10:30-21:30。",
         transit: "這段跨區，建議依疲勞程度選 DD。",
         booking: "可先電話/平台排隊。",
-        note: "吃湖南菜後若還想養生，可改回東邊做足療或湯泉。",
+        note: "如果這幾天已吃很多重口，這晚可改 gaga 三里屯漂亮飯或花家怡園四合院京味菜。",
         place: "瀟湘閣望京SOHO店"
       },
       {
@@ -363,46 +377,74 @@ const itinerary = [
   {
     id: "d6",
     date: "9/28（一）",
-    title: "退房、先寄湯泉行李、北京環球影城",
-    summary: "週一多數博物館不適合排，安排離管莊較順的環球影城。專家版改成先到水裹寄行李，再去環球，晚上直接回湯泉睡，隔天清晨去 PEK。",
-    stats: ["退房日", "環球", "湯泉睡"],
+    title: "退房、798 藝術區、亮馬河散步、湯泉過夜",
+    summary: "不去環球後，9/28 改成鬆弛東北線：先寄湯泉行李，再去 798 看展喝咖啡，傍晚亮馬河/藍色港灣散步，晚上回水裹湯泉睡。",
+    stats: ["鬆弛日", "咖啡看展", "湯泉睡"],
     stops: [
       {
         time: "09:30",
         title: "退房、DD 到水裹寄行李",
         category: "rest",
         status: "needs",
-        price: "水裹 Klook 寫明可免費寄存行李；若改環球官方寄物，普通行李 ¥90/件、小件 ¥20/件",
-        route: "飯店退房 → 水裹四惠店寄行李 → 北京環球",
-        eta: "退房 30 分；飯店到水裹 DD 約 20-35 分；水裹到環球約 35-50 分",
-        description: "專家修正版：不要把行李留飯店等晚上折返。先把大行李放到當晚要睡的湯泉，再帶小包去環球，動線更穩。",
-        transit: "DD 優先，因為帶行李且要控制環球入園時間。",
+        price: "水裹 Klook 寫明可免費寄存行李；寄完只帶小包 citywalk",
+        route: "飯店退房 → 水裹四惠店寄行李 → 798 藝術區",
+        eta: "退房 30 分；飯店到水裹 DD 約 20-35 分；水裹到 798 約 30-45 分",
+        description: "專家修正版：先把大行李放到當晚要睡的湯泉，再去 798/亮馬河。這樣不折返飯店，也不用拖行李逛街。",
+        transit: "DD 優先，因為帶行李且要控制下午節奏。",
         booking: "前一晚確認水裹可用護照/台胞證登記、可寄行李、夜間票最早/最晚入場。",
         note: "分出湯泉小包：換洗衣物、證件、充電器、耳塞、隔天機場用品。",
         place: "北京傳媒大學管莊地鐵站亞朵酒店"
       },
       {
-        time: "11:45",
-        title: "北京環球度假區",
-        category: "theme",
+        time: "11:30",
+        title: "798 藝術區：展覽、街拍、工業風咖啡",
+        category: "hutong",
         status: "verified",
-        price: "官方票務頁顯示影城 ¥350 起價格日曆；Klook/Trip.com 即時價格另查",
-        route: "水裹四惠店 → 北京環球度假區",
-        eta: "DD/地鐵約 35-50 分；含安檢與入園抓到 12:15",
-        description: "官方 App 可查門票、地圖、排隊時間、演出時間；2026 秋季“驚彩”環球晚間體驗於部分週四至週一開放，9/28 屬週一但仍要查日曆。",
-        transit: "從管莊到環球比進市中心順，地鐵或 DD 都可。",
-        booking: "出發前查 9/28 官方營運時間與門票；想玩多就考慮優速通。",
-        note: "9/28 週一仍可能因驚彩環球夜間活動變熱門。隔天早班機，建議 19:00-19:30 離園，不要硬玩到閉園。",
-        place: "北京環球度假區",
+        price: "園區免費；看展/咖啡依店家，Trip.com 顯示建議停留 3-5 小時，可縮成 2 小時精華",
+        route: "水裹四惠店 → 798 藝術區（酒仙橋路4號）",
+        eta: "DD 約 30-45 分；園區慢逛 2-2.5 小時",
+        description: "Trip.com/永安資訊列 798 藝術區免費、地址酒仙橋路4號；這裡比環球輕鬆很多，適合拍照、看展、喝 GREYBOX/FISHEYE 或園區咖啡。",
+        transit: "DD 最順；園區內步行。",
+        booking: "園區不需門票；若要特定展覽，當天查展館是否週一營業。",
+        note: "這天不追很多點，798 只抓精華 2 小時，留體力給湯泉和早班機。",
+        place: "798藝術區",
       },
       {
-        time: "20:15",
+        time: "15:15",
+        title: "亮馬河、藍色港灣、河邊下午茶",
+        category: "park",
+        status: "verified",
+        price: "河岸散步免費；亮馬河遊船 Trip.com 顯示約 HK$58 起，營業 14:00-18:30、19:00-22:00",
+        route: "798 → 亮馬河/藍色港灣 → 三里屯或水裹",
+        eta: "DD 約 20-35 分；散步/下午茶 1.5-2 小時",
+        description: "亮馬河水岸有步道、餐廳、咖啡與藍色港灣商圈；若想多一點儀式感，可加 40 分鐘左右遊船，否則只散步拍照也很 chill。",
+        transit: "DD 或短程地鐵+步行；傍晚若塞車就用地鐵到亮馬橋/農展館一帶再走。",
+        booking: "遊船需看亮馬河國際風情水岸微信/Trip.com 當日票；不坐船則不需預約。",
+        note: "這段是環球替代主菜：好拍、好坐、好撤退，天氣不好可改僑福芳草地室內藝術商場。",
+        place: "亮馬河國際風情水岸",
+      },
+      {
+        time: "18:00",
+        title: "漂亮飯二選一：gaga 三里屯 / Le Café Louis Vuitton",
+        category: "food",
+        status: "verified",
+        price: "gaga/三里屯漂亮飯約 ¥100-200+；LV Café 屬高價位，需訂位與當日菜單確認",
+        route: "亮馬河 → 三里屯太古里 → 水裹四惠店",
+        eta: "亮馬河到三里屯 DD 約 10-20 分；用餐 1.5 小時",
+        description: "Trip Moments 把 gaga 三里屯形容成垂直空中花園，漂亮飯、果茶適合拍照；LV 官方列北京三里屯店有 Le Café Louis Vuitton，可做高預算漂亮飯備案。",
+        transit: "短程 DD；吃完直接 DD 回水裹。",
+        booking: "gaga 可現場排；LV Café 建議先查官方訂位。",
+        note: "如果想吃更北京味，把漂亮飯換成花家怡園四合院總店或胡大簋街。",
+        place: "三里屯太古里",
+      },
+      {
+        time: "20:30",
         title: "水裹·湯泉生活（北京四惠店）過夜",
         category: "wellness",
         status: "verified",
         price: "Klook 列週日至週四夜間票+過夜費+自助早餐；實際價格按日期顯示",
-        route: "環球 → 水裹四惠店 → 9/29 清晨 PEK T3",
-        eta: "環球到四惠/高碑店約 35-55 分；隔天去 PEK 約 45-70 分",
+        route: "三里屯/亮馬河 → 水裹四惠店 → 9/29 清晨 PEK T3",
+        eta: "三里屯/亮馬河回水裹約 25-45 分；隔天去 PEK 約 45-70 分",
         description: "Klook 頁面列水裹四惠店有泡湯、休息區、書吧、遊戲區，並標示前台有免費行李寄存。",
         transit: "DD 最穩。隔天 05:10 左右叫車去機場。",
         booking: "預訂夜間票+過夜費；確認護照登記、最晚入場、早餐時間。",
@@ -485,7 +527,7 @@ const expertAudit = [
   {
     title: "總評：可玩，但屬中高強度",
     score: "強度 7.5/10",
-    body: "這版不是鬆散觀光，是城市精華密集版。最大優點是故宮、長城、胡同、湯泉、環球分散在不同天，沒有硬把閉館日塞進去；最大風險是 9/25、9/26、9/28 三天需要守時間。"
+    body: "這版改成幾天緊、一兩天鬆。故宮天安門與長城是必去緊湊日；天壇、頤和園、798、亮馬河都拆成 1-2 小時小行程，走累就坐咖啡。"
   },
   {
     title: "熱門程度：故宮、長城、四季民福最高",
@@ -508,14 +550,14 @@ const expertAudit = [
     body: "飯店到東直門跨區且早上要趕集合，地鐵雖便宜但轉乘與安檢風險高。這天建議 DD 到東直門 B1，回市區後胡大若排隊太久，就改李串串或簋街附近備案。"
   },
   {
-    title: "9/27 西北園林日：晚餐別太執著望京",
-    score: "可調",
-    body: "頤和園+圓明園本身腳程很長。瀟湘閣望京店是你清單裡的好選項，但從海淀繞去望京再回管莊較耗體力；若當天累，五道口晚餐會更順。"
+    title: "9/27 頤和園鬆弛版：只抓湖邊精華",
+    score: "鬆",
+    body: "頤和園不走全園，抓昆明湖、長廊、石舫 2 小時即可。圓明園降為備選，把下午留給五道口咖啡或早點吃瀟湘閣，這天負責恢復體力。"
   },
   {
-    title: "9/28 環球+湯泉：先寄湯泉最順",
-    score: "已修正",
-    body: "不要把行李寄飯店後晚上再折返。水裹 Klook 頁面寫有免費行李寄存，所以專家版改成退房後先 DD 到水裹寄行李，再去環球，晚上直接回水裹睡。"
+    title: "9/28 798+亮馬河+湯泉：鬆弛替代環球",
+    score: "已改鬆",
+    body: "不要去環球後，最順的是先到水裹寄大行李，再去 798 看展喝咖啡、亮馬河散步，晚上直接回水裹睡。這天是全程可撤退的 chill day。"
   },
   {
     title: "9/29 早班機：05:10 出發",
@@ -548,12 +590,12 @@ const compareCards = [
   {
     title: "9/28 行李動線採修正版",
     label: "修正",
-    body: "舊版偏向直接泡湯休息，新版一度安排環球後再去湯泉。現在合併成最佳解：退房後先到水裹寄大行李，再去環球，晚上直接回湯泉睡。"
+    body: "舊版偏向直接泡湯休息，新版一度安排環球後再去湯泉。現在按你的新偏好改成最佳解：退房後先到水裹寄大行李，再去 798/亮馬河，晚上直接回湯泉睡。"
   },
   {
     title: "舊版價格表已升級",
     label: "升級",
-    body: "舊版有預算概念但缺即時匯率與平台波動提醒。新版用人民幣區間、台幣粗估與『是否可省』標籤，方便你決定要不要加優速通、夜店、伴手禮。"
+    body: "舊版有預算概念但缺即時匯率與平台波動提醒。新版用人民幣區間、台幣粗估與『是否可省』標籤，並把環球大筆票價改成咖啡、漂亮飯和湯泉預算。"
   },
   {
     title: "舊版安全提醒已補強",
@@ -567,7 +609,7 @@ const budgetItems = [
     title: "景點門票",
     cny: "¥180-320",
     twd: "約 NT$865-1,535",
-    note: "故宮、天壇、頤和園、景山/圓明園等；不含環球與長城纜車。"
+    note: "故宮、天安門、天壇、頤和園、景山等；不含長城纜車。"
   },
   {
     title: "長城一日",
@@ -576,10 +618,10 @@ const budgetItems = [
     note: "MuBus 往返 ¥80 + 門票 ¥40 + 纜車/滑道約 ¥140；午餐/平台 tour 會讓總額上浮。"
   },
   {
-    title: "北京環球",
-    cny: "¥350-1,200+",
-    twd: "約 NT$1,680-5,760+",
-    note: "官方票務頁用價格日曆；若加優速通或熱門日票價會明顯上升。"
+    title: "798/亮馬河/咖啡",
+    cny: "¥160-420",
+    twd: "約 NT$770-2,020",
+    note: "798 園區免費，主要花在咖啡甜點、亮馬河遊船或下午茶；比環球省很多。"
   },
   {
     title: "餐食",
@@ -613,9 +655,9 @@ const budgetItems = [
   },
   {
     title: "總預估，不含機票住宿",
-    cny: "¥3,020-6,760+",
-    twd: "約 NT$14,500-32,450+",
-    note: "省錢版不加優速通、少喝酒；舒適版加 DD、環球加速、湯泉與伴手禮。匯率以 1 RMB ≈ NT$4.8 粗估。"
+    cny: "¥2,830-5,980+",
+    twd: "約 NT$13,600-28,700+",
+    note: "省錢版少喝酒、少 DD；舒適版加 DD、漂亮飯、湯泉與伴手禮。匯率以 1 RMB ≈ NT$4.8 粗估。"
   }
 ];
 
@@ -648,7 +690,7 @@ const taiwanPrep = [
   {
     title: "網路與地圖",
     label: "必備",
-    body: "準備中國可用 eSIM/漫遊方案，並預裝高德地圖、滴滴/高德打車、北京環球 App、Klook/Trip.com。Google 服務在大陸不穩，行程頁雖有 Google 地圖，也要同時用高德搜尋。"
+    body: "準備中國可用 eSIM/漫遊方案，並預裝高德地圖、滴滴/高德打車、Klook/Trip.com。Google 服務在大陸不穩，行程頁雖有 Google 地圖，也要同時用高德搜尋。"
   },
   {
     title: "現金與提款",
@@ -731,6 +773,54 @@ const foodList = [
     bestFor: "胡大排隊太久時的辣味備選",
     source: "https://m.dianping.com/shop/128043320?msource=applemaps",
     map: "李串串老店 北京"
+  },
+  {
+    title: "Metal Hands 五道營店",
+    area: "五道營胡同",
+    price: "咖啡約 ¥30-60；Trip.com 4.7/5",
+    bestFor: "故宮後回血、胡同精品咖啡",
+    source: "https://hk.trip.com/restaurant/china/beijing/detail/metal-hands-30984368/",
+    map: "Metal Hands 五道營店"
+  },
+  {
+    title: "Barista Specialty Coffee Roasters",
+    area: "五道營胡同47號",
+    price: "咖啡約 ¥30-60；TimeOut/Blogger 有地址與營業資訊",
+    bestFor: "安靜坐一下，替代硬逛國子監",
+    source: "https://www.timeoutcn.com/m/timeOutStoreDetail.html?id=581",
+    map: "Barista Specialty Coffee Roasters 五道營"
+  },
+  {
+    title: "798 咖啡備選：FISHEYE / GREYBOX",
+    area: "798藝術區",
+    price: "咖啡甜點約 ¥40-90",
+    bestFor: "9/28 不去環球後的工業風下午茶",
+    source: "https://hk.trip.com/moments/theme/poi-798-art-district-87890-restaurant-993134/",
+    map: "798藝術區 GREYBOX FISHEYE"
+  },
+  {
+    title: "gaga 三里屯旗艦店",
+    area: "三里屯太古里",
+    price: "漂亮飯/果茶約 ¥100-200+",
+    bestFor: "漂亮飯、網紅感、9/28 亮馬河後晚餐",
+    source: "https://hk.trip.com/moments/detail/beijing-1-140150032/",
+    map: "gaga 三里屯"
+  },
+  {
+    title: "花家怡園四合院總店",
+    area: "簋街/東直門內大街235號",
+    price: "Trip.com 列 $$-$$$，11:00-14:00、17:00-翌日02:00",
+    bestFor: "四合院京味菜、烤鴨，漂亮又有北京感",
+    source: "https://hk.trip.com/restaurant/china/beijing/detail/hua-s-restaurant-11084496/",
+    map: "花家怡園四合院總店"
+  },
+  {
+    title: "Le Café Louis Vuitton 北京三里屯",
+    area: "三里屯",
+    price: "高預算漂亮飯，需看官方訂位與菜單",
+    bestFor: "想拍高級感下午茶/晚餐時使用",
+    source: "https://www.louisvuitton.cn/zhs-cn/magazine/articles/maison-louis-vuitton-beijing-sanlitun",
+    map: "Le Café Louis Vuitton 北京三里屯"
   }
 ];
 
@@ -785,15 +875,15 @@ const nightList = [
 const tips = [
   {
     title: "實名預約與證件",
-    body: "故宮、恭王府、部分景點與環球都可能需要證件資訊。護照/台胞證原件每天帶，照片備份放手機。"
+    body: "故宮、天安門、恭王府、部分景點都可能需要證件資訊。護照/台胞證原件每天帶，照片備份放手機。"
   },
   {
     title: "週一閉館習慣",
-    body: "故宮、恭王府等博物館類常週一閉館，所以 9/28 週一排環球與湯泉，不排博物館。"
+    body: "故宮、恭王府等博物館類常週一閉館，所以 9/28 週一排 798 外街區、亮馬河與湯泉；若特定 798 展館週一閉館，就只逛園區與咖啡。"
   },
   {
     title: "支付與 App",
-    body: "支付寶/微信支付、DD/高德/百度地圖、北京環球官方 App 先裝好。台灣手機收驗證碼若不穩，出發前先測。"
+    body: "支付寶/微信支付、DD/高德/百度地圖、Klook/Trip.com 先裝好。台灣手機收驗證碼若不穩，出發前先測。"
   },
   {
     title: "安檢很多",
@@ -891,28 +981,40 @@ const researchSources = [
     takeaways: ["Klook 列週日至週四夜間票+過夜費+自助早餐。", "頁面標示有休息區、書吧、遊戲區與免費行李寄存。"]
   },
   {
-    type: "Universal",
-    title: "北京環球度假區官方票務與 App",
-    url: "https://www.universalbeijingresort.com/zh_CN/tickets-offers",
-    takeaways: ["官方票務頁顯示影城使用 ¥350 起價格日曆。", "官方 App 可查地圖、排隊時間、演出與活動時間。"]
-  },
-  {
-    type: "Universal",
-    title: "北京環球度假區寄存服務",
-    url: "https://www.universalbeijingresort.com/zh_CN/service/jicunfuwu-0",
-    takeaways: ["官方列日間遊客可付費寄存一般物品與小件物品。", "官方頁列普通行李 ¥90/件，小件物品 ¥20/件；若能先寄水裹更省錢省折返。"]
-  },
-  {
-    type: "Universal",
-    title: "北京環球度假區營運時間",
-    url: "https://www.universalbeijingresort.com/zh_CN/park-schedule",
-    takeaways: ["9/28 的精確開閉園時間要用官方營運日曆或 App 再查。", "2026 驚彩環球夜間活動可能拉高晚間人潮。"]
-  },
-  {
     type: "Official",
     title: "故宮開放與停止入館時間",
     url: "https://www.dpm.org.cn/Visit.html",
     takeaways: ["故宮官方導覽頁列入館 8:30、停止入館 16:00、閉館 17:00。", "11:00 入館仍可走精華，但不適合加國博或天安門深逛。"]
+  },
+  {
+    type: "Official",
+    title: "天安門廣場預約參觀",
+    url: "https://tamgw.beijing.gov.cn/zhengwugongkai/tzgg/202509/t20250922_4207260.html",
+    takeaways: ["天安門地區管委會公告：個人與旅遊團均須提前 1-7 日透過預約平台實名預約。", "本行程只排 1 小時外觀與廣場，不追升旗。"]
+  },
+  {
+    type: "Chill",
+    title: "798 藝術區",
+    url: "https://www.trip.com/travel-guide/attraction/beijing/798-art-zone-87890/",
+    takeaways: ["Trip.com 列 798 Art Zone 免費入場、全年開放；許多展館與咖啡店另有個別營業時間。", "本行程用 2-2.5 小時精華，不照建議 3-5 小時走滿。"]
+  },
+  {
+    type: "Chill",
+    title: "亮馬河國際風情水岸",
+    url: "https://english.beijing.gov.cn/travellinginbeijing/attractions/202603/t20260323_4563863.html",
+    takeaways: ["北京官方英文站列日航 15:00-18:30、夜航 19:00-23:00。", "成人日航 CNY 50、夜航 CNY 80；不坐船也可免費河岸散步。"]
+  },
+  {
+    type: "Cafe",
+    title: "Metal Hands 五道營",
+    url: "https://www.trip.com/moments/poi-metal-hands-30984368/",
+    takeaways: ["Trip.com 旅遊資訊列地址 No.61 Wudaoying Hutong，評分 4.7/5。", "適合故宮後坐下回血，替代硬逛。"]
+  },
+  {
+    type: "Cafe",
+    title: "gaga Central 三里屯旗艦店",
+    url: "https://hk.trip.com/restaurant/china/beijing/detail/restaurant-110763413/",
+    takeaways: ["Trip.com 列地址三里屯路19號院太古里南區5號樓3層30號，評分 5.0/5。", "作為 9/28 亮馬河後漂亮飯備選。"]
   },
   {
     type: "Taiwan",
@@ -953,18 +1055,18 @@ const researchSources = [
 ];
 
 const checklistItems = [
-  { id: "palace-ticket", title: "9/18 20:00 搶 9/25 故宮票", detail: "大門票+珍寶館/鐘錶館擇一；證件資料先準備。" },
+  { id: "palace-ticket", title: "9/18 起處理 9/25 故宮與天安門預約", detail: "故宮 20:00 搶票；天安門提前 1-7 日實名預約，證件資料先準備。" },
   { id: "permit", title: "檢查台胞證效期與證件照片", detail: "台胞證、護照、身分證都帶；拍照備份放雲端與手機。" },
   { id: "mac-register", title: "填國人赴陸港澳動態登錄", detail: "填航班、飯店、行程與緊急聯絡人，家人留一份行程連結。" },
   { id: "payment-test", title: "支付寶/微信支付小額測試", detail: "綁卡、實名、付款碼與收款碼都先測；準備 ¥500-1,000 現金備用。" },
-  { id: "network", title: "準備中國可用網路與 App", detail: "eSIM/漫遊、高德、滴滴/高德打車、北京環球 App、Klook/Trip.com。" },
+  { id: "network", title: "準備中國可用網路與 App", detail: "eSIM/漫遊、高德、滴滴/高德打車、Klook/Trip.com。" },
   { id: "mutianyu-tour", title: "預訂 9/26 慕田峪 tour", detail: "主案 MuBus 10:00；若想晚起改 13:00 但長城停留變短。" },
   { id: "siji", title: "四季民福前門店取號/訂位", detail: "9/24 晚餐。可接受排隊就保留，不想排就改附近老字號。" },
   { id: "xiaojie", title: "小街豬手晚餐備案", detail: "9/25 接三里屯/工體夜生活，先看等位。" },
-  { id: "universal-ticket", title: "查 9/28 環球票價與營運時間", detail: "官方 App/小程序查排隊、演出、晚間活動日曆。" },
+  { id: "chill-day", title: "查 9/28 798 展覽與亮馬河船票", detail: "798 園區可直接逛；若要特定展覽或亮馬河遊船，出發前再確認營業與票價。" },
   { id: "bath-ticket", title: "預訂 9/28 水裹四惠夜間過夜方案", detail: "確認護照登記、最晚入場、早餐與寄存。" },
-  { id: "hotel-luggage", title: "問亞朵 9/28 退房後寄存", detail: "若不能寄，改帶到湯泉或環球寄物。" },
-  { id: "apps", title: "安裝支付/地圖/DD/北京環球 App", detail: "台灣手機註冊驗證碼先測，必要時用微信/支付寶小程序。" },
+  { id: "hotel-luggage", title: "確認 9/28 水裹可寄行李", detail: "主案是退房後先到水裹寄大行李，再去 798/亮馬河。" },
+  { id: "apps", title: "安裝支付/地圖/DD/訂票 App", detail: "台灣手機註冊驗證碼先測，必要時用微信/支付寶小程序。" },
   { id: "souvenir", title: "伴手禮最後兩天買", detail: "稻香村糕點、吳裕泰/張一元茶葉、北京坊文創。" },
   { id: "airport", title: "9/29 設雙鬧鐘與 PEK T3 目的地", detail: "05:10 從湯泉出發，目標 06:00 前後到 T3。" }
 ];
