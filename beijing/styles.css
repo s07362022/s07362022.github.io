@@ -306,6 +306,7 @@ img {
 }
 
 .planner-layout,
+.departure-section,
 .bath-section,
 .source-section,
 .food-section,
@@ -313,7 +314,6 @@ img {
 .tips-section,
 .route-section,
 .audit-section,
-.compare-section,
 .budget-section,
 .taiwan-section,
 .prep-card {
@@ -431,6 +431,12 @@ img {
   color: var(--charcoal);
   font-size: 13px;
   font-weight: 700;
+}
+
+.soft-badge.ready {
+  border-color: rgba(84, 107, 90, 0.55);
+  background: rgba(84, 107, 90, 0.16);
+  color: var(--cypress);
 }
 
 .timeline {
@@ -647,17 +653,58 @@ img {
 }
 
 .source-grid,
+.departure-grid,
 .food-grid,
 .night-grid,
 .tips-grid,
 .route-grid,
 .audit-grid,
-.compare-grid,
 .budget-grid,
 .taiwan-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
+}
+
+.departure-grid {
+  align-items: stretch;
+}
+
+.departure-grid .button {
+  width: fit-content;
+  margin-top: 8px;
+}
+
+.reminder-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.reminder-item {
+  display: grid;
+  grid-template-columns: 118px minmax(180px, 0.42fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fffdf8;
+  padding: 12px;
+}
+
+.reminder-item span {
+  color: var(--lake);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.reminder-item strong {
+  line-height: 1.3;
+}
+
+.reminder-item small {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .source-card ul {
@@ -870,12 +917,12 @@ textarea {
   }
 
   .source-grid,
+  .departure-grid,
   .food-grid,
   .night-grid,
   .tips-grid,
   .route-grid,
   .audit-grid,
-  .compare-grid,
   .budget-grid,
   .taiwan-grid,
   .photo-strip {
@@ -904,15 +951,24 @@ textarea {
   .status-board,
   .photo-strip,
   .source-grid,
+  .departure-grid,
   .food-grid,
   .night-grid,
   .tips-grid,
   .route-grid,
   .audit-grid,
-  .compare-grid,
   .budget-grid,
   .taiwan-grid {
     grid-template-columns: 1fr;
+  }
+
+  .departure-grid .button {
+    width: 100%;
+  }
+
+  .reminder-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .section-heading,

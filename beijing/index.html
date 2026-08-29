@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="2026 北京自由行行程工作台：依照 CA186/CA185 航班、管莊亞朵住宿與第六晚湯泉需求整理。"
+      content="2026 北京自由行手機出發包：離線行程、預約清單與 .ics 行事曆提醒。"
     />
-    <title>2026 北京自由行行程工作台</title>
+    <meta name="theme-color" content="#2d332f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="北京出發包" />
+    <title>2026 北京自由行出發包</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.svg" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232d332f'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='%23f8efe2' font-family='Georgia'%3E北%3C/text%3E%3C/svg%3E"
@@ -27,9 +32,9 @@
 
         <nav class="nav-links" aria-label="頁面導覽">
           <a href="#overview">總覽</a>
+          <a href="#departure-pack">出發包</a>
           <a href="#itinerary">每日行程</a>
           <a href="#audit">專家檢查</a>
-          <a href="#compare">版本比較</a>
           <a href="#budget">價格預估</a>
           <a href="#taiwan">台灣出發</a>
           <a href="#bath">第六晚湯泉</a>
@@ -58,22 +63,22 @@
         <section class="mini-card">
           <p class="label">作息</p>
           <strong>09:30-10:00 出發</strong>
-          <span>長城日因 tour 集合，建議 09:00 例外出門</span>
+          <span>9/24 KKday 06:15 出門；其餘日 09:30-10:00</span>
         </section>
       </aside>
 
       <main class="workspace">
         <section class="hero-grid" id="overview">
           <div class="hero-copy">
-            <p class="eyebrow">Research-backed itinerary</p>
-            <h1>北京自由行重新排版：故宮天安門、長城、胡同咖啡、798 與湯泉睡。</h1>
+            <p class="eyebrow">手機出發包</p>
+            <h1>北京 6 晚：KKday 長城園林、故宮、胡同、798 與湯泉過夜。</h1>
             <p>
-              這版把實際遊記常見路線拆開，再配合你的管莊住宿和早班回程：
-              這版拿掉環球，改成幾天緊、一兩天鬆：故宮天安門和長城是必去緊湊日，其餘用 1-2 小時小行程、咖啡、漂亮飯和湯泉收尾。
+              把會用到的資訊放在手機上：離線可看每日行程、預約清單與備註；
+              另可下載 .ics，把故宮搶票、KKday 9/24 一日團、環球備案、湯泉與返程提醒加入行事曆。
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#itinerary">看每日行程</a>
-              <a class="button ghost" href="#bath">先看湯泉方案</a>
+              <a class="button ghost" href="#departure-pack">下載行事曆</a>
             </div>
           </div>
 
@@ -94,9 +99,9 @@
               <small>管莊適合東邊線；市中心景點集中成整日。</small>
             </article>
             <article>
-              <span class="kicker">最重要提醒</span>
+              <span class="kicker">出發包</span>
               <strong>故宮/天安門 9/18 起處理</strong>
-              <small>故宮 20:00 搶票；天安門提前 1-7 日預約。</small>
+              <small>下載 .ics 後，手機行事曆會提醒搶票、tour、湯泉和返程。</small>
             </article>
           </div>
         </section>
@@ -133,10 +138,36 @@
           </figure>
         </section>
 
+        <section class="departure-section" id="departure-pack">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">出發包</p>
+              <h2>手機離線與行事曆</h2>
+            </div>
+            <span class="soft-badge" id="offlineStatus">離線快取準備中</span>
+          </div>
+          <div class="departure-grid">
+            <article class="info-card dark">
+              <h3>下載 .ics 提醒</h3>
+              <p>包含故宮搶票、長城 tour、環球備案、湯泉過夜與返程鬧鐘。</p>
+              <button class="button primary" type="button" id="downloadCalendar">下載行事曆</button>
+            </article>
+            <article class="info-card">
+              <h3>加到手機桌面</h3>
+              <p>開啟本頁後加入主畫面。之後即使沒有網路，也能看行程、勾清單、寫備註。</p>
+            </article>
+            <article class="info-card">
+              <h3>出發前最後檢查</h3>
+              <p>先打開一次本頁，等離線狀態變成已快取，再測一次行事曆下載。</p>
+            </article>
+          </div>
+          <div class="reminder-list" id="reminderList" aria-label="行事曆提醒列表"></div>
+        </section>
+
         <section class="planner-layout" id="itinerary">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Day board</p>
+              <p class="eyebrow">每日行程</p>
               <h2>每日行程</h2>
             </div>
             <div class="filter-row" aria-label="行程分類篩選">
@@ -149,7 +180,7 @@
               <button class="filter-chip" type="button" data-filter="food">餐廳</button>
               <button class="filter-chip" type="button" data-filter="night">夜生活</button>
               <button class="filter-chip" type="button" data-filter="wellness">養生</button>
-              <button class="filter-chip" type="button" data-filter="tour">Tour</button>
+              <button class="filter-chip" type="button" data-filter="tour">一日遊</button>
               <button class="filter-chip" type="button" data-filter="rest">休息</button>
             </div>
           </div>
@@ -163,7 +194,7 @@
             </section>
 
             <aside class="inspector" aria-label="行程細節">
-              <p class="eyebrow">Selected stop</p>
+              <p class="eyebrow">行程細節</p>
               <h3 id="detailTitle">選一個行程點</h3>
               <p id="detailMeta"></p>
               <dl class="detail-list">
@@ -188,7 +219,7 @@
         <section class="route-section" id="routes">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Route checks</p>
+              <p class="eyebrow">交通速查</p>
               <h2>交通與價格速查</h2>
             </div>
             <span class="soft-badge">地鐵優先；跨區/深夜用 DD</span>
@@ -199,7 +230,7 @@
         <section class="audit-section" id="audit">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Expert audit</p>
+              <p class="eyebrow">專家檢查</p>
               <h2>自由行專家檢查</h2>
             </div>
             <span class="soft-badge">熱門度 / 美食 / 交通 / 時間緩衝</span>
@@ -207,21 +238,10 @@
           <div class="audit-grid" id="auditGrid"></div>
         </section>
 
-        <section class="compare-section" id="compare">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Version compare</p>
-              <h2>參考舊版後的取捨</h2>
-            </div>
-            <span class="soft-badge">舊版手冊感 + 新版互動行程板</span>
-          </div>
-          <div class="compare-grid" id="compareGrid"></div>
-        </section>
-
         <section class="budget-section" id="budget">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Budget range</p>
+              <p class="eyebrow">預算</p>
               <h2>價格預估與現金配置</h2>
             </div>
             <span class="soft-badge">以 1 RMB ≈ NT$4.8 粗估</span>
@@ -232,7 +252,7 @@
         <section class="taiwan-section" id="taiwan">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Taiwan departure</p>
+              <p class="eyebrow">台灣出發</p>
               <h2>台灣人赴大陸出發前提醒</h2>
             </div>
             <span class="soft-badge">證件 / 支付 / 網路 / 安全</span>
@@ -243,7 +263,7 @@
         <section class="bath-section" id="bath">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Final night</p>
+              <p class="eyebrow">第六晚</p>
               <h2>第六晚湯泉睡方案</h2>
             </div>
             <span class="soft-badge">9/28（一）晚間入住，9/29（二）清晨去 PEK</span>
@@ -252,17 +272,17 @@
           <div class="bath-grid">
             <article class="recommend-card">
               <span class="recommend-label">推薦主案</span>
-              <h3>水裹·湯泉生活｜北京四惠店</h3>
+              <h3>水裹+湯泉生活｜北京合生匯店</h3>
               <p>
-                適合從 798、亮馬河、三里屯回到東四環一帶後過夜。Klook 頁面列有夜間票＋過夜費＋自助早餐，
+                適合從 798、亮馬河、三里屯回到九龍山/合生匯一帶後過夜。Klook 頁面列有夜間票＋過夜費＋自助早餐，
                 並標示前台有行李寄存；對你最後一晚「不再訂酒店、洗完睡、清晨出發」最貼近。
               </p>
               <ul class="clean-list">
-                <li>優點：東邊動線順、可寄行李、湯池與休息區完整。</li>
-                <li>風險：清晨仍要叫車去首都機場，建議抓 50-70 分鐘含等車緩衝。</li>
+                <li>優點：環境比四惠店新、蜂巢休息間、水果飲料自助。</li>
+                <li>風險：到 PEK T3 車程略長，清晨建議 05:10 出發、抓 50-75 分鐘含等車緩衝。</li>
                 <li>操作：9/28 白天先把大行李寄在飯店或直接帶到湯泉；離開前確認護照與登機證。</li>
               </ul>
-              <a class="button primary" href="https://www.klook.com/zh-TW/activity/138965-water-wrap-soup-spa-life-beijing-gaobeidian/" target="_blank" rel="noopener noreferrer">
+              <a class="button primary" href="https://www.klook.com/zh-TW/activity/190601-shuiguo-plus-beijing-heshenghui/" target="_blank" rel="noopener noreferrer">
                 查看 Klook 方案
               </a>
             </article>
@@ -279,7 +299,7 @@
             <article class="option-card">
               <h3>城市型備案：水酷湯泉雙井店</h3>
               <p>
-                Trip Moments 標示雙井店 24 小時營業，設施多、適合想吃喝休息的人；但它比四惠更偏市區，
+                Trip Moments 標示雙井店 24 小時營業，設施多、適合想吃喝休息的人；但它比合生匯更偏市區南邊，
                 清晨去 PEK 的車程不確定性較高，排在備案。
               </p>
               <a href="https://hk.trip.com/moments/poi-shuiku-hot-spring-139042174/" target="_blank" rel="noopener noreferrer">看旅客資訊</a>
@@ -290,7 +310,7 @@
         <section class="food-section" id="food">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Food map</p>
+              <p class="eyebrow">餐廳</p>
               <h2>餐廳安排與備選</h2>
             </div>
             <span class="soft-badge">只列已查到地址/營業資訊者</span>
@@ -301,7 +321,7 @@
         <section class="night-section" id="night">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">After dark</p>
+              <p class="eyebrow">夜間</p>
               <h2>夜生活、酒吧、Club、養生館</h2>
             </div>
             <span class="soft-badge">22:00 收尾；夜店日可到 00:00</span>
@@ -312,7 +332,7 @@
         <section class="tips-section" id="tips">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Before you go</p>
+              <p class="eyebrow">行前提醒</p>
               <h2>行前通知與北京習慣</h2>
             </div>
           </div>
@@ -322,8 +342,8 @@
         <section class="source-section" id="sources">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Research notes</p>
-              <h2>這版行程怎麼從別人的行程整理出來</h2>
+              <p class="eyebrow">參考來源</p>
+              <h2>資料來源</h2>
             </div>
           </div>
           <div class="source-grid" id="sourceGrid"></div>
@@ -331,13 +351,13 @@
 
         <section class="prep-grid" id="prep">
           <div class="prep-card">
-            <p class="eyebrow">Booking checklist</p>
+            <p class="eyebrow">預約清單</p>
             <h2>預約與出發前清單</h2>
             <div class="checklist" id="checklist"></div>
           </div>
 
           <div class="prep-card">
-            <p class="eyebrow">Trip note</p>
+            <p class="eyebrow">備註</p>
             <h2>自己的備註</h2>
             <textarea id="tripNotes" rows="10" placeholder="例如：想吃的烤鴨店、不能太早起的日子、同行者偏好..."></textarea>
           </div>
