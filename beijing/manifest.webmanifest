@@ -1,0 +1,19 @@
+{
+  "name": "2026 北京自由行出發包",
+  "short_name": "北京出發包",
+  "description": "北京自由行離線行程、預約清單與行事曆提醒。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5efe4",
+  "theme_color": "#2d332f",
+  "lang": "zh-Hant",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
