@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="2026 東京自由行手機出發包：離線行程、預約清單與 .ics 行事曆提醒。"
+    />
+    <meta name="theme-color" content="#2c3e5a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="東京出發包" />
+    <title>2026 東京自由行出發包</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232c3e5a'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-size='34' fill='%23f7f3eb' font-family='Georgia'%3E東%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="side-panel" aria-label="旅程總覽">
+        <a class="brand" href="#overview" aria-label="回到總覽">
+          <span class="brand-mark">東</span>
+          <span>
+            <strong>東京 4 晚</strong>
+            <small>10/23-10/27</small>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="頁面導覽">
+          <a href="#overview">總覽</a>
+          <a href="#prep-briefing">行前說明</a>
+          <a href="#trip-visual">行程地圖</a>
+          <a href="#itinerary">每日行程</a>
+          <a href="#transit-guide">交通圖解</a>
+          <a href="#budget">價格預估</a>
+          <a href="#life">生活感</a>
+          <a href="#food">餐廳</a>
+          <a href="#night">夜景</a>
+          <a href="#sources">參考來源</a>
+        </nav>
+
+        <section class="mini-card">
+          <p class="label">航班</p>
+          <strong>SL394 / SL395</strong>
+          <span>TPE ⇄ NRT 成田第1航廈</span>
+        </section>
+
+        <section class="mini-card">
+          <p class="label">住宿</p>
+          <strong>ギャラリー平和の森館 101（中野）</strong>
+          <span>10/23-10/27，共 4 晚</span>
+        </section>
+
+                <section class="mini-card">
+          <p class="label">作息</p>
+          <strong>10:00 出門</strong>
+          <span>10/27 返程日 14:00 出發去 NRT</span>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <section class="hero-grid" id="overview">
+          <div class="hero-copy">
+            <p class="eyebrow">手機出發包</p>
+            <h1>東京 4 晚：秋葉原、明治神宮、鎌倉江之島與澀谷 Sky（20 代友善路線）。</h1>
+            <p>
+              把會用到的資訊放在手機上：離線可看每日行程、預約清單與備註；
+              含行程視覺化地圖、交通 Step 教學；可下載 .ics 加入行事曆。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#prep-briefing">行前說明</a>
+              <a class="button ghost" href="#itinerary">每日行程</a>
+              <a class="button ghost" href="#transit-guide">交通教學</a>
+            </div>
+          </div>
+
+          <div class="status-board" aria-label="旅行關鍵資訊">
+            <article>
+              <span class="kicker">去程</span>
+              <strong>10/23（五）12:10-16:30</strong>
+              <small>泰國獅航 SL394，TPE → NRT</small>
+            </article>
+            <article>
+              <span class="kicker">回程</span>
+              <strong>10/27（二）17:25-20:30</strong>
+              <small>泰國獅航 SL395，NRT → TPE</small>
+            </article>
+            <article>
+              <span class="kicker">動線策略</span>
+              <strong>中野基地，秋葉原僅 D1</strong>
+              <small>10/23 晚秋葉原；D2 起明治神宮・澀谷。</small>
+            </article>
+            <article>
+              <span class="kicker">出發包</span>
+              <strong>澀谷 Sky、鎌倉、返程</strong>
+              <small>下載 .ics 後，手機行事曆會提醒預約、一日遊與 14:00 出發去機場。</small>
+            </article>
+          </div>
+        </section>
+
+        <section class="prep-briefing-section" id="prep-briefing">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">行前說明</p>
+              <h2>出發前必讀（先看這裡）</h2>
+            </div>
+            <span class="soft-badge ready" id="offlineStatus">可下載 .ics</span>
+          </div>
+          <p class="section-lead">
+            護照、Suica、澀谷 Sky 預約、分階段檢查清單與東京習慣——出發前掃一次，路上就不慌。
+          </p>
+
+          <div class="departure-grid briefing-quick">
+            <article class="info-card dark">
+              <h3>下載 .ics 行事曆</h3>
+              <p>澀谷 Sky、鎌倉周遊券、秋葉原主行程與 10/27 14:00 出發去機場提醒。</p>
+              <button class="button primary" type="button" id="downloadCalendar">下載行事曆</button>
+            </article>
+            <article class="info-card">
+              <h3>建議順序</h3>
+              <p>① 下載 .ics → ② 勾完下方 14天/3天/當天檢查 → ③ 預約清單 → ④ 設鬧鐘測試。</p>
+            </article>
+            <article class="info-card">
+              <h3>20 代熱門店提醒</h3>
+              <p>澀谷 Sky、牛かつもとむら需排隊或預約；扭蛋會館、Uobei 通常現場即可。</p>
+            </article>
+          </div>
+          <div class="reminder-list" id="reminderList" aria-label="行事曆提醒列表"></div>
+
+          <h3 class="subsection-title">台灣出發必備</h3>
+          <div class="taiwan-grid" id="taiwanGrid"></div>
+
+          <h3 class="subsection-title">分階段行前檢查（可勾選、會記住）</h3>
+          <div class="prep-grid briefing-prep">
+            <div class="prep-card prep-card-wide">
+              <div id="preDepartureGroups"></div>
+            </div>
+            <div class="prep-card">
+              <p class="eyebrow">預約清單</p>
+              <h3>預約與出發前清單</h3>
+              <div class="checklist" id="checklist"></div>
+            </div>
+            <div class="prep-card">
+              <p class="eyebrow">備註</p>
+              <h3>自己的備註</h3>
+              <textarea id="tripNotes" rows="8" placeholder="例如：秋葉原想買的模型、牛かつ要不要排隊、同行者想去的店..."></textarea>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">東京習慣與行前提醒</h3>
+          <div class="tips-grid" id="tipsGrid"></div>
+          <div class="fold-toolbar" aria-label="區塊展開控制">
+            <span class="fold-hint">次要區塊可點標題收合，減少捲動</span>
+            <button class="button ghost" type="button" id="expandAllFolds">全部展開</button>
+            <button class="button ghost" type="button" id="collapseAllFolds">全部收合</button>
+          </div>
+        </section>
+
+        <details class="fold-section" data-mobile-only="true">
+          <summary class="fold-summary">
+            <span class="eyebrow">照片</span>
+            <strong>行程主題照片</strong>
+          </summary>
+          <section class="photo-strip" aria-label="行程主題照片">
+            <figure>
+              <img src="images/akihabara.jpg" alt="秋葉原電気街夜景" loading="lazy" />
+              <figcaption>秋葉原</figcaption>
+            </figure>
+            <figure>
+              <img src="images/meiji.jpg" alt="明治神宮鳥居" loading="lazy" />
+              <figcaption>明治神宮</figcaption>
+            </figure>
+            <figure>
+              <img src="images/shibuya.jpg" alt="澀谷十字路口" loading="lazy" />
+              <figcaption>澀谷 Sky 一帶</figcaption>
+            </figure>
+            <figure>
+              <img src="images/enoshima.jpg" alt="江之島" loading="lazy" />
+              <figcaption>鎌倉・江之島</figcaption>
+            </figure>
+          </section>
+        </details>
+
+
+        <section class="trip-visual-section" id="trip-visual">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">行程視覺化</p>
+              <h2>行程小地圖</h2>
+            </div>
+            <span class="soft-badge">依真實方位繪製・中野為圓心</span>
+          </div>
+          <p class="section-lead">山手線環狀、湘南方向與每日路線色線標示。虛線圈 = 山手線；藍色區塊 = 湘南／鎌倉方向。</p>
+
+          <h3 class="subsection-title">總覽小地圖（5 日路線）</h3>
+          <div class="hub-canvas-wrap">
+            <svg id="tripHubCanvas" class="trip-hub-canvas" viewBox="0 0 500 400" role="img" aria-label="東京行程總覽小地圖"></svg>
+            <ul class="hub-legend">
+              <li><span class="leg d1"></span>D1 抵達・秋葉原</li>
+              <li><span class="leg d2"></span>D2 明治神宮・澀谷</li>
+              <li><span class="leg d3"></span>D3 鎌倉・新宿夜</li>
+              <li><span class="leg d4"></span>D4 泡湯日</li>
+              <li><span class="leg d5"></span>D5 返程</li>
+            </ul>
+          </div>
+
+          <h3 class="subsection-title">每日小地圖</h3>
+          <div class="trip-day-tree-grid" id="tripDayTreeGrid"></div>
+        </section>
+
+        <section class="trip-visual-section planner-layout" id="itinerary">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">每日行程</p>
+              <h2>每日行程</h2>
+            </div>
+            <div class="filter-row" aria-label="行程分類篩選">
+              <button class="filter-chip active" type="button" data-filter="all">全部</button>
+              <button class="filter-chip" type="button" data-filter="transport">交通</button>
+              <button class="filter-chip" type="button" data-filter="heritage">古蹟</button>
+              <button class="filter-chip" type="button" data-filter="food">餐廳</button>
+              <button class="filter-chip" type="button" data-filter="night">夜景</button>
+              <button class="filter-chip" type="button" data-filter="wellness">泡湯</button>
+              <button class="filter-chip" type="button" data-filter="tour">一日遊</button>
+            </div>
+          </div>
+
+          <div class="day-tabs" id="dayTabs" role="tablist" aria-label="選擇日期"></div>
+
+          <div class="planner-grid">
+            <section class="timeline-panel" aria-live="polite">
+              <div class="day-summary" id="daySummary"></div>
+              <div class="timeline" id="timeline"></div>
+            </section>
+
+            <aside class="inspector" aria-label="行程細節">
+              <p class="eyebrow">行程細節</p>
+              <h3 id="detailTitle">選一個行程點</h3>
+              <p id="detailMeta"></p>
+              <dl class="detail-list">
+                <div>
+                  <dt>交通</dt>
+                  <dd id="detailTransit">-</dd>
+                </div>
+                <div>
+                  <dt>預約</dt>
+                  <dd id="detailBooking">-</dd>
+                </div>
+                <div>
+                  <dt>備註</dt>
+                  <dd id="detailNote">-</dd>
+                </div>
+              </dl>
+              <div class="detail-actions" id="detailActions"></div>
+            </aside>
+          </div>
+        </section>
+
+        <details class="fold-section" id="routes">
+          <summary class="fold-summary">
+            <span class="eyebrow">交通速查</span>
+            <strong>交通與價格速查</strong>
+            <span class="soft-badge">JR 為主；成田用 N'EX</span>
+          </summary>
+          <div class="fold-body route-section">
+            <div class="route-grid" id="routeGrid"></div>
+          </div>
+        </details>
+
+        <section class="transit-guide-section" id="transit-guide">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">交通圖解</p>
+              <h2>地鐵圖・每日路線・Suica 速查</h2>
+            </div>
+            <span class="soft-badge">點圖可放大；路線圖連官方最新版</span>
+          </div>
+
+          <p class="section-lead">
+            新手先看「圖文教學」學會買票與刷卡；再對照路線示意與地鐵全圖。實戰以 Google Maps 月台資訊為準。
+          </p>
+
+          <details class="fold-section fold-nested">
+            <summary class="fold-summary"><strong>圖文教學：機場→市區、Suica 刷卡</strong></summary>
+            <div class="fold-body">
+              <div class="transit-tutorial-grid" id="transitTutorialGrid"></div>
+            </div>
+          </details>
+
+          <details class="fold-section fold-nested">
+            <summary class="fold-summary"><strong>每日路線一圖懂</strong></summary>
+            <div class="fold-body">
+              <div class="route-diagram-grid" id="routeDiagramGrid"></div>
+            </div>
+          </details>
+
+          <details class="fold-section fold-nested">
+            <summary class="fold-summary"><strong>Suica / 搭車小抄</strong></summary>
+            <div class="fold-body">
+              <div class="transit-tip-grid" id="transitTipGrid"></div>
+            </div>
+          </details>
+
+          <details class="fold-section fold-nested">
+            <summary class="fold-summary"><strong>官方路線圖（可放大）</strong></summary>
+            <div class="fold-body">
+              <div class="transit-map-grid" id="transitMapGrid"></div>
+            </div>
+          </details>
+        </section>
+
+        <details class="fold-section" id="budget">
+          <summary class="fold-summary">
+            <span class="eyebrow">預算</span>
+            <strong>價格預估與現金配置</strong>
+            <span class="soft-badge">以 1 JPY ≈ NT$0.22 粗估</span>
+          </summary>
+          <div class="fold-body budget-section">
+            <div class="budget-grid" id="budgetGrid"></div>
+          </div>
+        </details>
+
+        <details class="fold-section" id="life">
+          <summary class="fold-summary">
+            <span class="eyebrow">生活感</span>
+            <strong>喫茶、立飲、錢湯與商店街</strong>
+            <span class="soft-badge">秋葉原僅 D1 晚上</span>
+          </summary>
+          <div class="fold-body bath-section">
+            <div class="bath-grid">
+            <article class="recommend-card">
+              <span class="recommend-label">秋葉原</span>
+              <h3>GiGO・扭蛋會館・Super Potato</h3>
+              <p>
+                D1 晚唯一一天主行程。20 代常逛 GiGO 1 號館、扭蛋會館、Super Potato 中古遊戲；
+                拍照可加神田明神。中野 Broadway 是住宿旁懷舊挖寶備案。
+              </p>
+            </article>
+
+            <article class="option-card">
+              <h3>谷中銀座 + 神保町喫茶（D4）</h3>
+              <p>
+                下町肉丸與草鞋燒，轉神保町古書街喝咖啡。週一部分店休，以散步為主。
+              </p>
+            </article>
+
+            <article class="option-card">
+              <h3>光明泉・中野湯田泡湯（D4 必去）</h3>
+              <p>
+                住宿旁錢湯主行程。下午回中野泡湯，結束後在站前晚餐。週一可能公休，出發前查官網；刺青政策各店不同。
+              </p>
+            </article>
+          </div>
+          </div>
+        </details>
+
+        <details class="fold-section" id="food">
+          <summary class="fold-summary">
+            <span class="eyebrow">餐廳</span>
+            <strong>餐廳安排與備選</strong>
+            <span class="soft-badge">只列已查到地址/營業資訊者</span>
+          </summary>
+          <div class="fold-body food-section">
+            <div class="food-grid" id="foodGrid"></div>
+          </div>
+        </details>
+
+        <details class="fold-section" id="night">
+          <summary class="fold-summary">
+            <span class="eyebrow">夜間</span>
+            <strong>夜景、居酒屋、錢湯</strong>
+            <span class="soft-badge">22:00 收尾；夜店日可到 00:00</span>
+          </summary>
+          <div class="fold-body night-section">
+            <div class="night-grid" id="nightGrid"></div>
+          </div>
+        </details>
+
+        <details class="fold-section" id="sources">
+          <summary class="fold-summary">
+            <span class="eyebrow">參考來源</span>
+            <strong>資料來源</strong>
+          </summary>
+          <div class="fold-body source-section">
+            <div class="source-grid" id="sourceGrid"></div>
+          </div>
+        </details>
+
+        <footer class="page-footer">
+          <span>資料更新：2026-09-02。澀谷 Sky 票價與時段、明治神宮關門時間、鎌倉周遊券價格、餐廳營業與航班資訊請在出發前再次確認。</span>
+        </footer>
+      </main>
+    </div>
+
+    <nav class="mobile-quick-nav" aria-label="手機快速導覽">
+      <a href="#prep-briefing">行前</a>
+      <a href="#itinerary">行程</a>
+      <a href="#trip-visual">地圖</a>
+      <a href="#transit-guide">交通</a>
+    </nav>
+
+    <script src="script.js"></script>
+  </body>
+</html>
