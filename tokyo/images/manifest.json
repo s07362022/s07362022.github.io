@@ -1,0 +1,23 @@
+{
+  "narita": "images/narita.jpg",
+  "akihabara": "images/akihabara.jpg",
+  "meiji": "images/meiji.jpg",
+  "shibuya": "images/shibuya.jpg",
+  "kamakura": "images/kamakura.jpg",
+  "enoshima": "images/enoshima.jpg",
+  "yanaka": "images/yanaka.jpg",
+  "koenji": "images/koenji.jpg",
+  "takeshita": "images/takeshita.jpg",
+  "kamakuraHigh": "images/kamakuraHigh.jpg",
+  "metroZh": "images/metroZh.png",
+  "yamanote": "images/yamanote.png",
+  "greaterTokyo": "images/greaterTokyo.png",
+  "nexTrain": "images/nexTrain.jpg",
+  "suica": "images/suica.png",
+  "ticketGate": "images/ticketGate.jpg",
+  "shinjuku": "images/shinjuku.jpg",
+  "onsen": "images/onsen.jpg",
+  "ticketMachine": "images/ticketMachine.jpg",
+  "naritaStation": "images/naritaStation.jpg",
+  "hero": "images/hero.jpg"
+}
