@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="慧榮科技 Silicon Motion CAD Engineer 面試準備：Synthesis、STA、文字處理 Scripting、LEC、LowPower、APR、3D IC 與 CAD Automation 高頻題庫"/>
+<title>慧榮 SMI CAD 面試準備 2026</title>
+<style>
+:root{
+  --bg:#12181f;--panel:#1b2330;--card:#202c3a;--border:#2a3a4a;
+  --ink:#dde6ee;--sub:#8aabb8;--accent:#3fa7d6;--accent2:#f59e2a;
+  --green:#2ecc71;--red:#e74c3c;--purple:#9b59b6;--teal:#1abc9c;
+  --radius:10px;--r-sm:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","PingFang TC",Arial,sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{background:#0d1318;border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:100;}
+nav a{color:var(--accent);font-size:12.5px;text-decoration:none;padding:4px 10px;border-radius:4px;border:1px solid transparent;}
+nav a:hover{background:var(--accent);color:#fff;}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#162030 0%,#1a2d3a 60%,#0d2336 100%);padding:40px 24px 30px;border-bottom:1px solid var(--border);}
+.hero h1{font-size:26px;font-weight:900;margin-bottom:6px;}
+.hero h1 span{color:var(--accent);}
+.hero .tagline{color:var(--sub);font-size:14px;margin-bottom:18px;}
+.badges{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;}
+.badge-b{background:#1a3a4e;color:var(--accent);}
+.badge-g{background:#1a3a2a;color:var(--green);}
+.badge-o{background:#3a2a0a;color:var(--accent2);}
+.badge-p{background:#2a1a3a;color:var(--purple);}
+
+/* LAYOUT */
+main{max-width:1180px;margin:0 auto;padding:28px 20px 60px;}
+section{margin-bottom:40px;scroll-margin-top:70px;}
+h2{font-size:18px;font-weight:800;color:var(--accent);margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+h3{font-size:15px;font-weight:700;color:var(--accent2);margin:18px 0 8px;}
+
+/* JD TABLE */
+.jd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
+.jd-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
+.jd-card h4{font-size:14px;font-weight:800;color:var(--accent);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.jd-card ul{padding-left:1.2em;font-size:13px;color:var(--sub);line-height:1.8;}
+.jd-card li span{color:var(--ink);font-weight:600;}
+
+/* SKILLS TABLE */
+table{width:100%;max-width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);border-radius:var(--radius);overflow-x:auto;display:block;-webkit-overflow-scrolling:touch;}
+table tbody{display:table;width:100%;min-width:620px;}
+th{background:#1e3040;color:var(--accent);padding:9px 12px;text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.5px;}
+td{padding:9px 12px;border-top:1px solid var(--border);vertical-align:top;}
+tr:hover td{background:#1e2d3d;}
+.tag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:700;margin:1px;}
+.t-b{background:#1a3a4e;color:var(--accent);}
+.t-g{background:#1a3a2a;color:var(--green);}
+.t-o{background:#3a2a0a;color:var(--accent2);}
+.t-p{background:#2a1a3a;color:var(--purple);}
+.t-r{background:#2d1a1a;color:var(--red);}
+
+/* Q&A */
+.qa-list{display:grid;gap:14px;}
+.qa{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.qa-q{background:var(--panel);padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.qa-q .qnum{color:var(--accent);font-weight:800;font-size:13px;flex-shrink:0;}
+.qa-q .qtxt{flex:1;min-width:0;font-size:14px;font-weight:600;overflow-wrap:anywhere;}
+.qa-q .arrow{color:var(--sub);font-size:16px;flex-shrink:0;transition:.2s;}
+.qa-a{display:none;padding:14px 16px;font-size:13.5px;color:var(--sub);line-height:1.75;border-top:1px solid var(--border);overflow:hidden;}
+.qa-a.open{display:block;}
+.qa-a h4{color:var(--accent2);font-size:13px;margin:10px 0 4px;}
+.qa-a ul{padding-left:1.3em;margin:4px 0;}
+.qa-a li{margin:3px 0;}
+.qa-a code{background:#1a2d3a;color:#7ec8e3;padding:1px 6px;border-radius:3px;font-size:12px;font-family:Consolas,monospace;}
+.qa-a .key{color:var(--green);font-weight:700;}
+.qa-a .warn{color:var(--accent2);font-weight:700;}
+.qa-a .ans-box{background:#12202d;border-left:3px solid var(--accent);padding:10px 12px;margin:8px 0;border-radius:0 var(--r-sm) var(--r-sm) 0;}
+.qa:hover .qa-q{background:#1e2d3d;}
+
+/* role filter tabs */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.tab{padding:6px 16px;border-radius:20px;border:1px solid var(--border);background:var(--panel);color:var(--sub);font-size:12.5px;cursor:pointer;font-weight:700;}
+.tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* STAR */
+.star-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px;}
+.star-card h4{color:var(--accent2);font-size:14px;font-weight:800;margin-bottom:10px;}
+.star-row{display:grid;grid-template-columns:60px 1fr;gap:8px;margin:4px 0;}
+.star-label{color:var(--accent);font-weight:800;font-size:12px;padding-top:2px;}
+.star-text{font-size:13px;color:var(--sub);}
+
+/* ENGLISH TEST */
+.en-section{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
+.en-q{margin:8px 0;font-size:13.5px;}
+.en-a{color:var(--teal);font-size:13px;padding-left:1.2em;margin-top:3px;}
+
+/* FLOW */
+.flow{display:flex;gap:0;flex-wrap:wrap;}
+.step{background:var(--card);border:1px solid var(--border);padding:14px 16px;flex:1;min-width:160px;position:relative;}
+.step:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:18px;z-index:1;}
+.step-n{font-size:10px;color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.5px;}
+.step-t{font-size:13px;font-weight:700;margin:2px 0;}
+.step-d{font-size:11.5px;color:var(--sub);}
+
+/* HIGH-PROBABILITY REVIEW */
+.priority-banner{background:linear-gradient(135deg,#182938,#2b2113);border:1px solid #4a3a20;border-left:4px solid var(--accent2);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;}
+.priority-banner strong{color:var(--accent2);}
+.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0;}
+.concept-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;min-width:0;min-height:150px;}
+.concept-card h4{font-size:13px;color:var(--accent);margin-bottom:7px;}
+.concept-card p,.concept-card li{font-size:12.5px;color:var(--sub);}
+.concept-card ul{padding-left:1.2em;}
+.formula{background:#111c27;border:1px solid var(--border);border-radius:var(--r-sm);padding:8px 10px;margin:7px 0;color:#9bd6eb;font:12px/1.6 Consolas,monospace;overflow-x:auto;}
+.wave{display:grid;grid-template-columns:82px minmax(0,1fr);gap:6px 10px;background:#111c27;border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;margin:9px 0;font:12px/1.55 Consolas,monospace;overflow-x:auto;}
+.wave .label{color:var(--accent2);font-weight:700;}
+.wave .signal{color:#9bd6eb;white-space:pre;}
+.code-block{display:block;background:#0f1923;border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;margin:8px 0;color:#9bd6eb;font:12px/1.55 Consolas,monospace;white-space:pre-wrap;overflow-x:auto;}
+.freq-table td:first-child{font-weight:700;color:var(--accent);white-space:nowrap;}
+
+/* MISC */
+.tip-box{background:#1a2d1a;border:1px solid #2a4a2a;border-radius:var(--r-sm);padding:10px 14px;font-size:13px;color:#a8d4a0;margin:8px 0;}
+.warn-box{background:#2d1a0a;border:1px solid #4a2a0a;border-radius:var(--r-sm);padding:10px 14px;font-size:13px;color:#d4a050;margin:8px 0;}
+footer{text-align:center;color:var(--sub);font-size:12px;padding:20px;border-top:1px solid var(--border);}
+@media(max-width:900px){.concept-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:680px){nav{padding:8px 14px;}nav a{padding:4px 7px;}.hero{padding:30px 20px 24px;}.hero h1{font-size:24px;overflow-wrap:anywhere;}.badge{max-width:100%;}.flow{flex-direction:column;}.step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-16px;}.concept-grid{grid-template-columns:1fr;}.wave{grid-template-columns:62px minmax(0,1fr);}.wave .signal{min-width:330px;}main{padding-left:14px;padding-right:14px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#jd">JD 拆解</a>
+  <a href="#cad-vs-apr">CAD vs APR</a>
+  <a href="#tools">工具對照</a>
+  <a href="#high-prob">高頻核心</a>
+  <a href="#must-study">必考精讀</a>
+  <a href="#mock-apr">APR 實戰六題</a>
+  <a href="#qor">QoR 是什麼</a>
+  <a href="#qa-syn">Synthesis Q&A</a>
+  <a href="#qa-sta">STA Q&A</a>
+  <a href="#qa-lec">LEC/LP Q&A</a>
+  <a href="#qa-apr">APR Q&A</a>
+  <a href="#qa-ai">AI CAD Q&A</a>
+  <a href="#qa-script">Script Q&A</a>
+  <a href="#qa-hr">行為題</a>
+  <a href="#english">英文測驗</a>
+  <a href="#flow">面試流程</a>
+</nav>
+
+<div class="hero">
+  <h1>慧榮科技 <span>SMI</span> — CAD Engineer 面試準備</h1>
+  <p class="tagline">NAND Flash 控制晶片龍頭｜竹北 HQ / 新店辦公室｜STA × Text Processing × APR 高頻題強化版</p>
+  <div class="badges">
+    <span class="badge badge-b">Synthesis / Cadence Genus</span>
+    <span class="badge badge-g">STA / PrimeTime / Tweaker</span>
+    <span class="badge badge-o">LEC / LowPower / Conformal</span>
+    <span class="badge badge-p">APR CAD / Innovus</span>
+    <span class="badge badge-b">AI-driven / Cerebrus</span>
+    <span class="badge badge-g">Tcl / Python / Perl</span>
+    <span class="badge badge-o">STA / Text Processing</span>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══ JD ═══ -->
+<section id="jd">
+<h2>📋 JD 重點拆解（三條線路）</h2>
+<div class="jd-grid">
+  <div class="jd-card">
+    <h4>線路 A — Synthesis / STA / LEC / LowPower</h4>
+    <ul>
+      <li><span>主軸：</span>Frontend flow 開發、CAD utility 自動化</li>
+      <li><span>Synthesis：</span>Cadence Genus RTL 合成 QoR</li>
+      <li><span>STA：</span>PrimeTime、Tweaker、PrimeClosure 時序收斂</li>
+      <li><span>LEC：</span>Conformal 等效性驗證、function ECO debug</li>
+      <li><span>LowPower：</span>UPF/CPF、isolation、retention FF、power-aware verify</li>
+      <li><span>節點：</span>多 process node，65nm 為必要，28nm/12nm 加分</li>
+      <li><span>學歷：</span>碩士以上，1.5+ 年經驗</li>
+      <li><span>語言：</span>英文中等（有英文測驗）</li>
+    </ul>
+  </div>
+  <div class="jd-card">
+    <h4>線路 B — APR CAD Engineer（Design Platform）</h4>
+    <ul>
+      <li><span>主軸：</span>Cadence Innovus Backend APR flow</li>
+      <li><span>技能：</span>APR flow 從 netlist → DRC/LVS tapeout</li>
+      <li><span>腳本：</span>Tcl Script，EDA tool 客製化開發</li>
+      <li><span>語言：</span>Python、Perl、Linux Shell</li>
+      <li><span>節點：</span>65/55nm 為必，28/40nm 以下加分</li>
+      <li><span>經驗：</span>4+ 年 APR 經驗（Manager 要 10+ 年）</li>
+      <li><span>地點：</span>竹北 HQ，步行可達高鐵新竹站</li>
+      <li><span>開缺：</span>3–4 positions open（2026 LinkedIn）</li>
+    </ul>
+  </div>
+  <div class="jd-card">
+    <h4>線路 C — AI-driven CAD / Cerebrus</h4>
+    <ul>
+      <li><span>主軸：</span>Cerebrus 整合 Synthesis + APR flow</li>
+      <li><span>ML：</span>機器學習 QoR 探索與優化</li>
+      <li><span>工具：</span>Cadence Cerebrus、Genus、Innovus</li>
+      <li><span>腳本：</span>Tcl、Python、Perl</li>
+      <li><span>地點：</span>新店（台北縣）、竹北 HQ 兩個辦公室</li>
+      <li><span>加分：</span>ML/AI 經驗、QoR 調優 know-how</li>
+      <li><span>學歷：</span>碩士以上</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ═══ CAD vs APR ═══ -->
+<section id="cad-vs-apr">
+<h2>⚖️ CAD 工程師 vs APR 工程師 — 差別在哪？</h2>
+
+<table>
+<tr><th>面向</th><th>CAD 工程師</th><th>APR 工程師</th></tr>
+<tr>
+  <td><b>核心任務</b></td>
+  <td>建立、維護、自動化 EDA <b>流程工具</b>（Flow / Script / Methodology）</td>
+  <td>實際執行晶片的 <b>實體佈局佈線</b>（Floorplan → Route → Tapeout）</td>
+</tr>
+<tr>
+  <td><b>工作對象</b></td>
+  <td>Flow script、EDA tool、PDK rule、QoR 數據</td>
+  <td>特定設計的 netlist、macro、timing constraint、物理 layout</td>
+</tr>
+<tr>
+  <td><b>產出</b></td>
+  <td>可重複使用的 Tcl/Python 腳本、自動化 pipeline、方法論文件</td>
+  <td>每顆晶片的 DEF、GDS、timing signoff report</td>
+</tr>
+<tr>
+  <td><b>關鍵技能</b></td>
+  <td>Scripting（Tcl/Python/Perl）、EDA tool 客製化、flow regression</td>
+  <td>物理設計直覺、timing closure 經驗、congestion debug</td>
+</tr>
+<tr>
+  <td><b>SMI 主要工具</b></td>
+  <td>Genus（syn）、PrimeTime（STA）、Conformal（LEC）、Cerebrus（AI）</td>
+  <td>Cadence Innovus（APR）、Voltus（IR drop）、Calibre（DRC/LVS）</td>
+</tr>
+<tr>
+  <td><b>工作節奏</b></td>
+  <td>長期維護 + 跨 project 支援；改一次 script 受益多顆晶片</td>
+  <td>以晶片 tapeout 為週期；每顆晶片都要重新跑一遍</td>
+</tr>
+<tr>
+  <td><b>與誰合作</b></td>
+  <td>所有設計 team（前端、後端、DFT、Signoff）提供工具支援</td>
+  <td>主要和 CAD team、Synthesis team、PI/Signoff team 合作</td>
+</tr>
+<tr>
+  <td><b>學習路徑</b></td>
+  <td>EDA automation → 全流程 know-how → tool expert</td>
+  <td>APR 執行 → timing closure → 複雜 SoC → 帶 junior</td>
+</tr>
+</table>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+<div class="jd-card" style="border-left:3px solid var(--accent);">
+  <h4>🔵 CAD 工程師做的事（SMI JD A + C）</h4>
+  <ul>
+    <li><span>Flow 開發：</span>把 Synthesis → LEC → STA 包成一鍵跑完的 script</li>
+    <li><span>Utility 工具：</span>寫 timing report parser、QoR dashboard、alert bot</li>
+    <li><span>Project 支援：</span>設計師遇到 tool 問題來找 CAD team debug</li>
+    <li><span>新節點導入：</span>換 PDK、新工具版本時，CAD team 先測、再推廣</li>
+    <li><span>AI 自動化：</span>Cerebrus ML 探索，自動找最佳 synthesis strategy</li>
+  </ul>
+</div>
+<div class="jd-card" style="border-left:3px solid var(--purple);">
+  <h4>🟣 APR 工程師做的事（SMI JD B）</h4>
+  <ul>
+    <li><span>Floorplan：</span>決定 die 大小、macro 位置、power domain 劃分</li>
+    <li><span>PDN：</span>設計 VDD/VSS ring + stripe，確保 IR drop 合格</li>
+    <li><span>Place + CTS：</span>std-cell 擺放 + clock tree 插 buffer 平衡 skew</li>
+    <li><span>Route：</span>global → detail routing，解 DRC、timing violation</li>
+    <li><span>Signoff：</span>跑 PrimeTime / Calibre，確認 WNS=0、DRC clean 才 tapeout</li>
+  </ul>
+</div>
+</div>
+
+<div class="tip-box" style="margin-top:14px;">
+  <b>面試口條（30 秒版）：</b><br>
+  「CAD 工程師像是<b>基礎建設工人</b>，負責蓋好道路（flow + script）讓所有晶片都能快速通過；APR 工程師是<b>開車的人</b>，用這條路把每一顆晶片送到 tapeout。SMI 的 CAD team 兩種都有，前端 CAD 負責 Synthesis/STA/LEC flow，後端 APR CAD 負責 Innovus 的佈局流程。」
+</div>
+<div class="warn-box">
+  <b>面試常見陷阱：</b>有人把 CAD 講成「只是跑 tool」，其實 CAD 的核心價值是 <b>flow automation + methodology</b>，讓每個 project 都能更快、更穩地跑完整條設計流程。
+</div>
+</section>
+
+<!-- ═══ TOOLS ═══ -->
+<section id="tools">
+<h2>🔧 工具對照表（SMI 用到 vs 你會的）</h2>
+<table>
+<tr><th>功能</th><th>SMI 要求工具</th><th>競品 / 可對比</th><th>對應 JD</th></tr>
+<tr><td>RTL 合成</td><td><span class="tag t-b">Cadence Genus</span></td><td>Synopsys DC / Fusion Compiler</td><td>A、C</td></tr>
+<tr><td>STA</td><td><span class="tag t-g">PrimeTime</span> <span class="tag t-g">Tweaker</span> <span class="tag t-g">PrimeClosure</span></td><td>Tempus（Cadence）</td><td>A</td></tr>
+<tr><td>LEC</td><td><span class="tag t-o">Conformal</span></td><td>Synopsys Formality</td><td>A</td></tr>
+<tr><td>APR P&R</td><td><span class="tag t-p">Cadence Innovus</span></td><td>Synopsys ICC2 / FC</td><td>B、C</td></tr>
+<tr><td>AI 調優</td><td><span class="tag t-b">Cadence Cerebrus</span></td><td>Synopsys DSO.ai</td><td>C</td></tr>
+<tr><td>PV 實體驗證</td><td>未明列（Mentor / Synopsys IC Validator）</td><td>Calibre DRC/LVS</td><td>B</td></tr>
+<tr><td>LowPower</td><td><span class="tag t-o">UPF / CPF</span></td><td>相同業界標準</td><td>A</td></tr>
+<tr><td>腳本</td><td><span class="tag t-g">Tcl</span> <span class="tag t-g">Python</span> <span class="tag t-g">Perl</span></td><td>—</td><td>全線</td></tr>
+</table>
+</section>
+
+<!-- ═══ HIGH PROBABILITY CORE ═══ -->
+<section id="high-prob">
+<h2>🎯 面試情報：STA 觀念＋文字處理 Scripting＋APR 高頻題</h2>
+
+<div class="priority-banner">
+  <strong>準備優先順序：</strong>先能清楚回答 rise/fall time、setup/hold、slack、skew，再熟悉 APR full flow；最後練習用 Tcl／Python／grep／awk 從 report 找 WNS、TNS、endpoint 與 ERROR。這類職缺通常不是只問「會不會跑工具」，而是看你能不能理解 report、快速定位問題並自動化。
+</div>
+
+<div class="concept-grid">
+  <div class="concept-card">
+    <h4>1. Rise / Fall Time（訊號邊緣）</h4>
+    <p><b>Rise time</b> 是訊號由低到高所需時間，常以 10%→90% 衡量；<b>fall time</b> 則是 90%→10%。兩者合稱 transition time 或 slew。</p>
+    <div class="formula">Slow slew → gate delay↑、短路功耗↑、下一級 timing 變差</div>
+    <p>常見修法：upsizing driver、插 buffer、降低 fanout／load、縮短 wire。</p>
+  </div>
+  <div class="concept-card">
+    <h4>2. Setup / Hold（FF 採樣窗口）</h4>
+    <p><b>Setup</b>：clock edge 前 data 要先穩定，檢查 max delay；<b>Hold</b>：edge 後 data 要繼續穩定，檢查 min delay。</p>
+    <div class="formula">Setup fail = data 太慢<br>Hold fail = data 太快</div>
+    <p>Setup 常加速 data path；Hold 常插 delay buffer。降低頻率通常只幫 setup，不直接修 hold。</p>
+  </div>
+  <div class="concept-card">
+    <h4>3. Text Processing（CAD 基本功）</h4>
+    <p>工具每天產生大量 log/report，CAD 會用 scripting 自動抓錯誤、彙整 QoR、比較 regression。</p>
+    <div class="formula">grep：篩選行<br>awk：取欄位／統計<br>sed：取代文字<br>Tcl/Python：完整 flow 與 parser</div>
+    <p>面試常要求：找最差 slack、統計 violation、列出 endpoint、掃描 ERROR/WARNING。</p>
+  </div>
+</div>
+
+<div class="wave" aria-label="Setup 與 hold 的概念時序圖">
+  <span class="label">Clock</span><span class="signal">____/‾‾‾‾‾‾‾\____    ↑ capture edge</span>
+  <span class="label">Data</span><span class="signal">──穩定──[ setup ][hold ]──可變化──</span>
+  <span class="label">記法</span><span class="signal">edge 前看 setup；edge 後看 hold</span>
+</div>
+
+<h3>APR 最常被問的題目地圖</h3>
+<table class="freq-table">
+  <tr><th>主題</th><th>面試官可能問法</th><th>回答一定要出現</th></tr>
+  <tr><td>Full flow</td><td>從 netlist 到 GDS 怎麼跑？</td><td>Import → Floorplan → PDN → Placement → CTS → Route → Signoff</td></tr>
+  <tr><td>Timing</td><td>Setup/Hold 怎麼修？</td><td>先看 path 與 stage；setup 加速、hold 加 delay；確認跨 corner 影響</td></tr>
+  <tr><td>CTS</td><td>Skew、latency、useful skew 是什麼？</td><td>arrival time 差、source/insertion latency、setup/hold trade-off</td></tr>
+  <tr><td>Routing</td><td>Congestion 怎麼改善？</td><td>macro/channel、density、blockage、cell spreading、layer/route 調整</td></tr>
+  <tr><td>Signal integrity</td><td>Crosstalk 如何影響 timing？</td><td>aggressor/victim、coupling、delay/noise、spacing/shielding</td></tr>
+  <tr><td>Manufacturing</td><td>Antenna effect 是什麼？</td><td>plasma charge、gate oxide、diode/jumper/layer hopping</td></tr>
+  <tr><td>Power integrity</td><td>IR drop、EM 怎麼改善？</td><td>R×I、current density、加寬/加密 stripe、via、decap</td></tr>
+  <tr><td>Signoff</td><td>Tapeout 前檢查什麼？</td><td>STA、DRC、LVS、antenna、IR/EM、SI、density</td></tr>
+</table>
+
+<h3>APR 工具指令速查（概念對照）</h3>
+<div class="warn-box">指令名稱會隨工具版本與公司 wrapper 改變。面試重點是知道每個 stage 的輸入、輸出與檢查項目，不要宣稱所有版本都用完全相同的 command。</div>
+<table>
+  <tr><th>階段</th><th>Cadence Innovus 常見指令</th><th>Synopsys ICC2 常見指令</th></tr>
+  <tr><td>Import / Setup</td><td><code>read_mmmc</code>、<code>read_physical</code>、<code>read_netlist</code>、<code>init_design</code></td><td><code>create_lib</code>、<code>read_verilog</code>、<code>link_block</code></td></tr>
+  <tr><td>Floorplan</td><td><code>floorPlan</code></td><td><code>initialize_floorplan</code></td></tr>
+  <tr><td>Power plan</td><td><code>addRing</code>、<code>addStripe</code>、<code>sroute</code></td><td><code>create_pg_*_pattern</code>、<code>compile_pg</code></td></tr>
+  <tr><td>Placement</td><td><code>place_opt_design</code></td><td><code>place_opt</code></td></tr>
+  <tr><td>CTS</td><td><code>ccopt_design</code></td><td><code>clock_opt</code></td></tr>
+  <tr><td>Routing</td><td><code>routeDesign</code></td><td><code>route_auto</code></td></tr>
+  <tr><td>Post-route opt</td><td><code>optDesign -postRoute</code>、<code>-hold</code></td><td><code>route_opt</code></td></tr>
+  <tr><td>Check / Report</td><td><code>timeDesign -postRoute</code>、<code>verifyConnectivity</code>、<code>verify_drc</code></td><td><code>report_timing</code>、<code>check_routes</code>、<code>check_lvs</code></td></tr>
+</table>
+</section>
+
+<!-- ═══ MUST STUDY DEEP DIVE ═══ -->
+<section id="must-study">
+<h2>📚 必考精讀：CAD / APR 面試核心觀念</h2>
+
+<div class="priority-banner">
+  <strong>A+ 必考：</strong>APR flow、setup/hold/slack、timing report、floorplan、power network、CTS、DRC/LVS、IR/EM、antenna、文字處理 scripting。<br>
+  <strong>A 級高頻：</strong>MMMC/OCV、congestion、crosstalk、timing ECO、constraints、LEC/UPF、flow regression。<br>
+  <strong>B 級加分：</strong>3D IC/chiplet、AI-driven PPA exploration、advanced-node variation。面試時間有限時，先把 A+ 題練到能不看稿回答。
+</div>
+
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K01</span>
+    <span class="qtxt">如何讀一條 Timing Path？WNS、TNS、Slack 各代表什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      一條 register-to-register path 可拆成：<b>launch clock path → launch FF clock-to-Q → combinational cell/net delay → capture FF setup/hold requirement → capture clock path</b>。讀 report 時先確認 scenario 與 path group，再看 startpoint、endpoint、path type、arrival time、required time、slack，最後才決定修法。
+    </div>
+    <table style="font-size:12.5px;">
+      <tr><th>欄位</th><th>意義</th><th>面試重點</th></tr>
+      <tr><td>Arrival time</td><td>Data 實際到達 endpoint 的時間</td><td>由 launch clock、C2Q、cell delay、net delay 組成</td></tr>
+      <tr><td>Required time</td><td>Data 必須到達或保持的界線</td><td>受 period、setup/hold、capture clock、uncertainty 影響</td></tr>
+      <tr><td>Slack</td><td>Timing margin</td><td>負值是 violation；setup 常寫 required−arrival，hold 由工具依 min check 計算</td></tr>
+      <tr><td>WNS</td><td>Worst Negative Slack</td><td>最嚴重單一路徑的 violation</td></tr>
+      <tr><td>TNS</td><td>Total Negative Slack</td><td>所有負 slack endpoint 的總和，反映問題廣度</td></tr>
+    </table>
+    <h4>Debug 順序</h4>
+    <ol style="padding-left:1.3em;">
+      <li>確認 clock、mode、corner、exception 與 path type 是否正確。</li>
+      <li>判斷主要是 cell delay、net delay、clock skew、uncertainty 還是 SI delta delay。</li>
+      <li>看 logic depth、fanout、transition、capacitance、route length 與 congestion。</li>
+      <li>找共同 root cause：同一 driver、同一 macro channel、同一 clock branch 或同一 endpoint group。</li>
+    </ol>
+    <div class="tip-box"><b>面試加分：</b>WNS 好但 TNS 很差，代表最差路徑不深，卻有大量 endpoint fail；只修 top-1 path 不一定能有效收斂。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K02</span>
+    <span class="qtxt">Clock latency、skew、uncertainty、jitter 與 CTS 的關係是什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">Source latency</span>：clock source 到 design clock definition point 的延遲。</li>
+      <li><span class="key">Network / insertion latency</span>：clock definition point 到 FF clock pin 的延遲。</li>
+      <li><span class="key">Skew</span>：launch FF 與 capture FF 的 clock arrival 差。</li>
+      <li><span class="key">Jitter</span>：clock edge 隨時間變動；通常被納入 clock uncertainty。</li>
+      <li><span class="key">Uncertainty</span>：為 jitter、modeling margin、variation 等保留的 timing budget。</li>
+    </ul>
+    <div class="ans-box">
+      Pre-CTS 常用 ideal clock 加估計 latency/uncertainty；CTS 後使用 propagated clock，實際 clock cells、wire RC 與 skew 會進入 timing。Positive skew，也就是 capture clock 較晚到，通常幫 setup但傷 hold；negative skew 通常相反。
+    </div>
+    <h4>CTS 不只追求 skew 最小</h4>
+    <ul>
+      <li>控制 insertion delay、clock transition、capacitance、fanout、duty cycle 與 clock power</li>
+      <li>處理 clock gating cell、generated clock、macro clock pin 與不同 skew group</li>
+      <li>Useful skew 可借 timing margin，但必須同時驗證 setup/hold 與所有 corners</li>
+    </ul>
+    <div class="warn-box">回答「CTS 就是讓所有 clock 同時到」太簡化。真實 CTS 是 timing、power、skew、latency、DRV 與 routing resource 的多目標最佳化。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K03</span>
+    <span class="qtxt">PVT、RC Corner、MMMC、OCV、AOCV/POCV、CPPR 分別是什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <table style="font-size:12.5px;">
+      <tr><th>名詞</th><th>作用</th></tr>
+      <tr><td>PVT</td><td>Process、Voltage、Temperature 改變 cell delay 與 leakage。</td></tr>
+      <tr><td>RC corner</td><td>不同金屬 R/C 條件改變 net delay；setup/hold 的 worst RC 不一定相同。</td></tr>
+      <tr><td>MMMC</td><td>Multi-Mode Multi-Corner，同時驗證 functional/test modes、PVT、RC 與 constraints。</td></tr>
+      <tr><td>OCV</td><td>以 early/late derate 模擬晶片內局部 variation。</td></tr>
+      <tr><td>AOCV</td><td>Derate 依 path depth 與 physical distance 調整，比固定 OCV 少一些不必要悲觀。</td></tr>
+      <tr><td>POCV</td><td>用統計 variation 模型計算 delay sigma，advanced node 常見。</td></tr>
+      <tr><td>CPPR</td><td>移除 launch/capture clock 共用路徑被重複套用 early/late variation 的悲觀量。</td></tr>
+    </table>
+    <div class="ans-box">Slow corner 通常讓 setup較 tight，fast corner 通常讓 hold較 tight；但 temperature inversion、clock/data derate、RC、SI 與 path topology 都可能改變實際 worst scenario，因此 signoff 要看完整 MMMC，而不是只背 SS/FF。</div>
+    <h4>檢查重點</h4>
+    <ul><li>每個 active scenario 是否有正確 library、RC corner、SDC 與 operating condition</li><li>是否存在 unconstrained endpoints 或錯誤 disable timing</li><li>APR 與 signoff STA 的 WNS/TNS 是否可合理 correlation</li></ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K04</span>
+    <span class="qtxt">Floorplan 為什麼重要？Utilization、macro placement 與 congestion 怎麼取捨？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">Floorplan 決定後續 PPA 的上限。Macro、IO、power domain 與 routing channel 一旦規劃不佳，後面即使換 cell 或重跑 optimization，也可能無法解決長線、壅塞與供電問題。</div>
+    <h4>核心考量</h4>
+    <ul>
+      <li><b>Core utilization：</b>過高會缺乏 buffer/ECO 空間並造成 congestion；過低則增加 area、wire length 與 clock/power cost。</li>
+      <li><b>Macro placement：</b>依 data flow、pin direction、power pin、clock/reset 關係安排，不是固定「全部靠邊」就最好。</li>
+      <li><b>Halo/channel：</b>保留 std-cell 與 routing 空間；channel 寬度要考慮兩側 pin density 與可用 layers。</li>
+      <li><b>Pin placement：</b>依 connectivity 與 package/interface 位置減少 crossing、feedthrough 與 detour。</li>
+      <li><b>Blockage：</b>hard/soft/partial blockage 用來控制合法擺放與局部 density。</li>
+    </ul>
+    <h4>Congestion debug</h4>
+    <ol style="padding-left:1.3em;"><li>看 global-route overflow 與 heat map。</li><li>區分 macro channel、pin access、high fanout、placement density 或 PG blockage。</li><li>調 macro/orientation/channel、降低局部 density、spread cells、改 pin、buffer tree 或 layer usage。</li><li>重跑 timing，因 detour 與 spreading 可能改變 setup/hold。</li></ol>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K05</span>
+    <span class="qtxt">Power Network 怎麼規劃？IR Drop 與 EM 分析應該看什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">PDN 通常由 package bump/pad、top-level mesh、ring、stripe、macro PG pin、standard-cell rail 與 vias 組成。目標是在可接受的 routing resource 與 area 下，把電壓穩定送到每顆 cell，並確保金屬與 via 的 current density 不超標。</div>
+    <table style="font-size:12.5px;">
+      <tr><th>分析</th><th>在看什麼</th><th>常見根因</th></tr>
+      <tr><td>Static IR</td><td>平均／穩態 current 下的 voltage drop</td><td>stripe 太疏、路徑太長、via/PG 漏接</td></tr>
+      <tr><td>Dynamic IR</td><td>瞬間 simultaneous switching 與 dI/dt</td><td>clock edge 集中、局部高 activity、decap 不足</td></tr>
+      <tr><td>EM</td><td>wire/via current density 與 lifetime</td><td>線寬不足、via 數太少、電流集中</td></tr>
+    </table>
+    <h4>改善方法與副作用</h4>
+    <ul>
+      <li>加寬／加密 stripe、增加 vias、改善 bump/pad 分布，可降低 R 並分流。</li>
+      <li>加入 decap 可支援瞬間電流，但會占 placement area並增加 leakage。</li>
+      <li>重新分散高功耗 cells 或調 macro，可改善 hotspot，但可能影響 timing/congestion。</li>
+      <li>增加 PG metal 會吃掉 signal-routing tracks，因此修 IR/EM 後必須重查 congestion、DRC 與 timing。</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K06</span>
+    <span class="qtxt">Routing、RC Extraction、Crosstalk 與 Physical Signoff 如何串起來？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ol style="padding-left:1.3em;">
+      <li><b>Global routing：</b>估算每區 routing demand/capacity、layer 使用與 overflow。</li>
+      <li><b>Detail routing：</b>實際配置 tracks、vias、spacing，滿足 foundry rules。</li>
+      <li><b>RC extraction：</b>從 layout 抽取每條 net 的 resistance、ground capacitance 與 coupling capacitance。</li>
+      <li><b>SI-aware STA：</b>依 aggressor switching window 計算 victim 的 delta delay 與 noise。</li>
+      <li><b>Physical signoff：</b>檢查 DRC、LVS、antenna、density、ERC，以及 STA、IR/EM。</li>
+    </ol>
+    <div class="ans-box">Crosstalk 來自 coupling capacitance：反向切換常使 victim變慢而傷 setup，同向切換可能使 victim變快而傷 hold；quiet victim 也可能產生 glitch。常見修法是 spacing、shielding、換 layer、減少平行長度、buffer、driver sizing 或 reroute。</div>
+    <h4>Route 後常見修復</h4>
+    <ul><li>Timing ECO：size/buffer、route optimization、useful skew</li><li>DRV：max transition/cap/fanout repair</li><li>DRC：reroute、via change、spacing/enclosure repair</li><li>Antenna：diode、jumper/layer hopping、reroute</li></ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K07</span>
+    <span class="qtxt">SDC Constraints、False Path、Multicycle Path、CDC 與 Recovery/Removal 有什麼關係？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><b>Clock：</b><code>create_clock</code>、generated clock、uncertainty、latency、transition 定義 timing基準。</li>
+      <li><b>IO constraints：</b>input/output delay、driving cell、load 描述 block 外部環境。</li>
+      <li><b>False path：</b>功能上不需 timing 的 path；不能只因 timing 難修就設 false。</li>
+      <li><b>Multicycle path：</b>功能規格允許多個 cycles；setup放寬後通常要配套設定 hold。</li>
+      <li><b>CDC：</b>非同步 clock domain 要靠 synchronizer/FIFO/handshake；STA exception不能取代 CDC verification。</li>
+      <li><b>Recovery/Removal：</b>async reset/set 相對 clock edge 的檢查，概念類似 setup/hold。</li>
+    </ul>
+    <div class="warn-box">最危險的不是 violation，而是 unconstrained path 或錯誤 exception，因為工具可能顯示 timing clean，但真實晶片沒有被正確檢查。</div>
+    <h4>面試回答順序</h4>
+    <p>先說功能意圖 → 再說 constraint → 用 CDC/STA report 驗證 → 最後做 exception review。不要從「消除 violation」倒推 exception。</p>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K08</span>
+    <span class="qtxt">Synthesis、LEC 與 Low-Power Verification 在 CAD flow 中如何銜接？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">Synthesis 把 RTL 依 library 與 SDC 映射成 gate-level netlist；LEC 確認 RTL 與 netlist 在允許的轉換下功能等效；Low-power flow 再依 UPF/CPF 插入或驗證 isolation、level shifter、retention 與 power state 行為。</div>
+    <h4>常見交付與檢查</h4>
+    <ul>
+      <li>Synthesis：mapped netlist、SDC、QoR、area/power report、scan/clock-gating資訊</li>
+      <li>LEC：compare points、unmapped/abort points、black box、constant與renaming setup</li>
+      <li>UPF：power domain、supply set、power switch、isolation strategy、retention strategy、PST</li>
+      <li>APR handoff：確認 physical-only cells、tie cells、spare cells 與 low-power cells 的處理規則</li>
+    </ul>
+    <div class="tip-box"><b>CAD 角色：</b>把上述工具串成可重複、可追蹤、能在不同 node/project 切換的 flow，並建立 regression 保證工具升版後結果沒有異常漂移。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K09</span>
+    <span class="qtxt">Timing ECO 的完整流程是什麼？為什麼不能只看修前修後 Slack？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ol style="padding-left:1.3em;">
+      <li>鎖定 signoff scenario、violating path group 與 root cause。</li>
+      <li>選擇最小影響修法：setup 用 size/LVT/buffer/route/useful skew；hold 用 delay cell/downsize/HVT/detour。</li>
+      <li>將 ECO 變更落實到 APR database，legalize、route 並重新 extraction。</li>
+      <li>重跑 MMMC STA、SI、DRV、power/congestion、DRC 與必要的 IR/EM。</li>
+      <li>若改到邏輯功能或 netlist connectivity，重跑 LEC/Formality/Conformal。</li>
+      <li>輸出 ECO script、change list、before/after QoR 與可回溯版本。</li>
+    </ol>
+    <div class="warn-box">Local slack 變好不代表 ECO 成功：新增 buffer 可能造成 routing congestion、power 上升、另一個 corner 的 hold fail、max transition 或 DRC。Signoff看的是整體 closure。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">K10</span>
+    <span class="qtxt">一個可靠的 CAD Automation Flow 應該有哪些設計？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">可靠的 flow 不只是把 commands 串起來，而是能重現、能失敗得清楚、能比較版本差異，並讓不同 project/node 用設定檔切換而不必複製整套 script。</div>
+    <ul>
+      <li><b>Configuration：</b>design/node/tool version/corner 與路徑集中管理，避免 hard-code。</li>
+      <li><b>Pre-check：</b>檔案、library、license、disk、constraint 與 environment sanity check。</li>
+      <li><b>Stage contract：</b>每一 stage 有明確 input/output、done marker、return code 與 restart機制。</li>
+      <li><b>Log/report parser：</b>擷取 ERROR/FATAL、WNS/TNS、area、power、congestion、runtime、memory。</li>
+      <li><b>Regression：</b>與 golden baseline 比較，設定合理 threshold，避免工具升版造成 silent regression。</li>
+      <li><b>Traceability：</b>Git commit、tool version、command line、host、timestamp、config snapshot 全部可回溯。</li>
+      <li><b>Testing：</b>parser unit test、小設計 smoke test、代表性 blocks nightly regression。</li>
+    </ul>
+    <h4>語言分工</h4>
+    <p>Tcl 操作 EDA database；Python 做複雜 parsing、JSON/CSV、資料分析與 dashboard；Shell/awk 做 job control、檔案與快速 filter。選工具依工作，不需要全部塞進同一支 script。</p>
+  </div>
+</div>
+
+</div><!-- end qa-list must study -->
+</section>
+
+<!-- ═══ APR MOCK INTERVIEW SIX ═══ -->
+<section id="mock-apr">
+<h2>🔥 APR 實戰六題：面試官問法與完整回答</h2>
+<div class="priority-banner">
+  <strong>回答策略：</strong>先用一句話下定義，再說分析方法與修法，最後補一句 trade-off 或驗證方式。遇到「你有沒有遇過」這類經驗題，務必使用自己的真實專案／課程經驗替換範例，不要捏造數字。
+</div>
+
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M01</span>
+    <span class="qtxt">請你詳細描述 APR flow。</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      APR 是把 synthesis 產生的 gate-level netlist，經過實體規劃、擺放、clock tree、繞線與 signoff，最後輸出可 tapeout 的 GDS/OASIS。我的回答會依序說明每個 stage 的輸入、目標與檢查項目。
+    </div>
+    <ol style="padding-left:1.3em;">
+      <li><b>Design Import / Setup：</b>讀入 netlist、SDC、Liberty、LEF、RC tech、UPF 與 MMMC views；先做 library、link、unconstrained path 和 connectivity sanity check。</li>
+      <li><b>Floorplan：</b>決定 die/core size、aspect ratio、utilization、macro／IO placement、halo、channel、blockage 與 voltage domain。</li>
+      <li><b>Power Planning：</b>建立 VDD/VSS ring、stripe、rail、power via 與 macro PG connection；先做 PG connectivity、early IR drop 與 EM 檢查。</li>
+      <li><b>Placement / Pre-CTS Optimization：</b>擺放 standard cells，處理 legality、density、congestion、max transition/cap/fanout 與 setup timing。此時 clock 通常仍以 ideal clock 分析。</li>
+      <li><b>CTS：</b>插入 clock buffer/inverter，控制 skew、insertion delay、transition、capacitance 與 clock power；CTS 後改用 propagated clock，開始重點檢查 hold。</li>
+      <li><b>Routing：</b>先 global route 評估資源，再 detail route 形成實際金屬與 vias；處理 DRC、SI/crosstalk、antenna 與 timing。</li>
+      <li><b>Post-route Optimization：</b>以 extracted RC 做 setup/hold ECO、SI repair、DRV repair，並確認修一個 corner 不會破壞其他 scenario。</li>
+      <li><b>Signoff / Tapeout：</b>完成 STA、DRC、LVS、antenna、IR/EM、density、DFM 與 equivalence 檢查，最後輸出 GDS/OASIS。</li>
+    </ol>
+    <div class="tip-box"><b>30 秒版：</b>Import → Floorplan → Power Plan → Placement → CTS → Routing → Post-route ECO → Signoff。每一站都持續追 timing、congestion、power integrity 與 physical verification，而不是到最後才一次檢查。</div>
+    <h4>可能追問</h4>
+    <ul><li>Pre-CTS 與 post-CTS timing 有什麼差？</li><li>每個 stage 你會看哪些 QoR 指標？</li></ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M02</span>
+    <span class="qtxt">在 Power Network 階段有沒有遇到什麼困難？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>示範答題骨架：</b>我曾在 macro density 較高的區域看到 early IR map 出現局部 hotspot。問題不只是 stripe 數量不足，而是 macro channel 較窄、power via 數量有限，加上該區 switching current 集中，使等效電阻與電流密度都偏高。
+    </div>
+    <h4>我的分析步驟</h4>
+    <ol style="padding-left:1.3em;">
+      <li>先排除 VDD/VSS 漏接、錯接與 floating PG pin。</li>
+      <li>比對 IR heat map、current-density map、stripe/via 分布及 macro power-pin 位置。</li>
+      <li>判斷根因是供電路徑太長、金屬太窄、via bottleneck，還是 simultaneous switching。</li>
+      <li>局部加寬／加密 stripe、增加 via array，必要時調整 macro 位置、power bump 分布或加入 decap。</li>
+      <li>重跑 IR/EM，並確認新增 PG metal 沒有讓 signal-routing congestion 惡化。</li>
+    </ol>
+    <div class="warn-box"><b>請替換成真實結果：</b>例如「worst IR drop 從 X mV 降至 Y mV，並通過 foundry limit」。沒有實務經驗時，可以誠實說這是 lab/project 的處理流程，不要假裝做過 tapeout。</div>
+    <h4>可能追問</h4>
+    <ul><li>Static IR 與 dynamic IR 差在哪裡？</li><li>為什麼不能無限制增加 power stripes？</li></ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M03</span>
+    <span class="qtxt">如果使用 worst-case corner 做 STA，對 setup time 或 hold time會比較 loose 還是 tight？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      要先問清楚是 <b>setup worst corner</b> 還是 <b>hold worst corner</b>，因為沒有一個 corner 對兩者都一定最差。一般直覺是：slow corner 讓 data path 變慢，因此 setup 較 <b>tight</b>、hold 通常較 <b>loose</b>；fast corner 讓 data 太早到，因此 hold 較 <b>tight</b>、setup通常較 <b>loose</b>。
+    </div>
+    <table style="font-size:12.5px;">
+      <tr><th>Corner 直覺</th><th>Setup</th><th>Hold</th><th>原因</th></tr>
+      <tr><td>Slow process / low voltage</td><td><span class="warn">較 tight</span></td><td>通常較 loose</td><td>Data path delay 增加，較難在下一個 capture edge 前到達</td></tr>
+      <tr><td>Fast process / high voltage</td><td>通常較 loose</td><td><span class="warn">較 tight</span></td><td>Data path delay 減少，新資料可能太早抵達</td></tr>
+    </table>
+    <div class="warn-box">這是基本直覺，不是 signoff 的唯一規則。實際 worst scenario 還會受到 clock/data derate、RC corner、temperature inversion、AOCV/POCV、SI 與 launch/capture path 關係影響，應以 MMMC 定義及實際 slack 為準。</div>
+    <div class="tip-box"><b>推薦回答：</b>「Worst case 是 check-specific。Slow corner 通常 setup tight、hold loose；fast corner 通常 hold tight、setup loose，但 advanced node 必須依 MMMC 與 variation model 判斷。」</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M04</span>
+    <span class="qtxt">DRC、LVS 是什麼？兩者有什麼不同？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <table style="font-size:12.5px;">
+      <tr><th>檢查</th><th>比較對象</th><th>主要檢查</th><th>常見錯誤</th></tr>
+      <tr><td><b>DRC</b><br>Design Rule Check</td><td>Layout geometry vs foundry rules</td><td>版圖是否能被可靠製造</td><td>Minimum width/spacing、enclosure、via、density</td></tr>
+      <tr><td><b>LVS</b><br>Layout Versus Schematic</td><td>Layout extracted netlist vs schematic/golden netlist</td><td>連接與元件是否符合設計</td><td>Open、short、missing/extra device、pin mismatch</td></tr>
+    </table>
+    <div class="ans-box">DRC 回答「畫得合不合法」，LVS 回答「畫出來的電路是不是原本那個電路」。DRC clean 不代表 LVS 一定 clean，兩者都要通過才能 tapeout。</div>
+    <h4>可能追問</h4>
+    <ul><li>什麼是 open、short？</li><li>為什麼 metal fill 後要重新做 DRC/LVS 或 extraction？</li></ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M05</span>
+    <span class="qtxt">請解釋 IR drop 和 Antenna effect，並提出解決方法。</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <h4>IR drop</h4>
+    <div class="ans-box">
+      電流流過具有電阻的 power network 會產生 <code>Vdrop = I × R</code>。Cell 實際拿到的電壓降低後，delay 會增加，嚴重時可能造成 setup failure 或功能錯誤。Static IR 偏向平均/穩態負載；dynamic IR 則關注大量 cell 同時切換造成的瞬間壓降。
+    </div>
+    <ul>
+      <li>降低 R：加寬／加密 power stripe、縮短供電路徑、增加 vias</li>
+      <li>降低或分散 peak I：調整 placement、加入 decap、改善 power bump/pad 分布</li>
+      <li>修完重跑 IR/EM，確認 congestion 與 area trade-off</li>
+    </ul>
+    <h4>Antenna effect</h4>
+    <div class="ans-box">
+      在 plasma etching 製造期間，長金屬累積電荷並透過 MOS gate 放電，可能破壞 gate oxide。這是製造階段的可靠度問題，不是晶片操作時的無線天線效應。
+    </div>
+    <ul>
+      <li>插入 antenna diode，提供安全放電路徑</li>
+      <li>使用 jumper／layer hopping 將長金屬分段</li>
+      <li>Reroute 或調整連接順序，再跑 antenna rule check</li>
+    </ul>
+    <div class="tip-box"><b>一句話區分：</b>IR drop 是晶片運作時供電網路上的電壓損失；antenna 是晶圓製造期間金屬充電可能傷害 gate oxide。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">M06</span>
+    <span class="qtxt">若 Setup time 與 Hold time violation，你會如何解決？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      我不會一看到負 slack 就直接換 cell。第一步會先確認 constraint、clock、corner 與 path type 正確，再把 delay 拆成 cell delay、net delay、clock skew 與 uncertainty，找出真正瓶頸。
+    </div>
+    <table style="font-size:12.5px;">
+      <tr><th>Violation</th><th>本質</th><th>常見修法</th></tr>
+      <tr><td><b>Setup</b></td><td>Data 太晚到，max-delay check fail</td><td>Upsize／LVT、buffer high-fanout、縮短 route、logic restructuring、減少 congestion、useful skew；架構層可 pipeline 或降低頻率</td></tr>
+      <tr><td><b>Hold</b></td><td>Data 太早到，min-delay check fail</td><td>插 delay cell/buffer、downsize／HVT、route detour、調整 useful skew；通常不靠降低頻率解決</td></tr>
+    </table>
+    <h4>修完一定要檢查</h4>
+    <ul>
+      <li>Setup fix 是否在 fast corner 製造 hold violation；hold fix 是否傷到 setup</li>
+      <li>所有 MMMC scenarios、SI、OCV、recovery/removal 是否仍 clean</li>
+      <li>Max transition/cap/fanout、power、congestion、legal placement 與 DRC</li>
+    </ul>
+    <div class="warn-box">常見錯誤：只背「setup 換大 cell、hold 加 buffer」。面試官更想聽到你會先定位 cell delay、net delay、skew、constraint 或 congestion 根因，並做跨 corner 回歸。</div>
+  </div>
+</div>
+
+</div><!-- end qa-list mock apr -->
+</section>
+
+<!-- ═══ Q&A SYNTHESIS ═══ -->
+<section id="qa-syn">
+<h2 id="qor">📊 QoR 到底在看什麼？（面試必懂）</h2>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:18px;">
+
+<p style="color:var(--sub);font-size:13.5px;margin-bottom:14px;">QoR = <b style="color:var(--ink)">Quality of Results</b>，量化「這顆晶片設計結果好不好」的成績單。核心是 <b style="color:var(--accent2)">PPA：Power、Performance、Area</b> 三個互相拉扯的目標。</p>
+
+<!-- PPA 三角 -->
+<div style="text-align:center;margin:14px 0;">
+  <svg viewBox="0 0 360 180" width="360" style="max-width:100%;" xmlns="http://www.w3.org/2000/svg">
+    <!-- triangle -->
+    <polygon points="180,18 30,162 330,162" fill="none" stroke="#2a3a4a" stroke-width="2"/>
+    <!-- arrows on edges -->
+    <line x1="180" y1="18" x2="30" y2="162" stroke="#3fa7d6" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <line x1="180" y1="18" x2="330" y2="162" stroke="#f59e2a" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <line x1="30" y1="162" x2="330" y2="162" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <!-- labels at corners -->
+    <text x="180" y="12" text-anchor="middle" font-size="14" font-weight="800" fill="#3fa7d6" font-family="Microsoft JhengHei,sans-serif">Performance</text>
+    <text x="180" y="26" text-anchor="middle" font-size="11" fill="#3fa7d6" font-family="sans-serif">WNS / TNS / Freq</text>
+    <text x="12" y="172" text-anchor="middle" font-size="14" font-weight="800" fill="#f59e2a" font-family="Microsoft JhengHei,sans-serif">Power</text>
+    <text x="14" y="184" text-anchor="start" font-size="11" fill="#f59e2a" font-family="sans-serif">Leakage / Dynamic</text>
+    <text x="348" y="172" text-anchor="end" font-size="14" font-weight="800" fill="#2ecc71" font-family="Microsoft JhengHei,sans-serif">Area</text>
+    <text x="350" y="184" text-anchor="end" font-size="11" fill="#2ecc71" font-family="sans-serif">µm² / Gate count</text>
+    <!-- trade-off labels on edges -->
+    <text x="95" y="86" font-size="10" fill="#8aabb8" transform="rotate(-52 95 86)" font-family="sans-serif">快→大cell→漏電↑</text>
+    <text x="250" y="60" font-size="10" fill="#8aabb8" transform="rotate(52 265 86)" font-family="sans-serif">快→大cell→面積↑</text>
+    <text x="180" y="158" text-anchor="middle" font-size="10" fill="#8aabb8" font-family="sans-serif">省電→HVT cell→timing 變差</text>
+  </svg>
+</div>
+
+<!-- metric table -->
+<table style="margin-top:10px;">
+<tr><th>指標</th><th>看什麼</th><th>單位</th><th>合格條件</th><th>屬於</th></tr>
+<tr>
+  <td><b style="color:#3fa7d6">WNS</b><br><span style="font-size:11px;color:var(--sub)">Worst Negative Slack</span></td>
+  <td>最差那條 path 有沒有違規</td>
+  <td>ps</td>
+  <td><span style="color:#2ecc71">≥ 0</span>（才能 tapeout）</td>
+  <td><span class="tag t-b">Performance</span></td>
+</tr>
+<tr>
+  <td><b style="color:#3fa7d6">TNS</b><br><span style="font-size:11px;color:var(--sub)">Total Negative Slack</span></td>
+  <td>所有違規 path 的 slack 加總</td>
+  <td>ps</td>
+  <td><span style="color:#2ecc71">= 0</span></td>
+  <td><span class="tag t-b">Performance</span></td>
+</tr>
+<tr>
+  <td><b style="color:#2ecc71">Area</b></td>
+  <td>佔多少矽面積</td>
+  <td>µm²</td>
+  <td>越小越好，需符合 die size budget</td>
+  <td><span class="tag t-g">Area</span></td>
+</tr>
+<tr>
+  <td><b style="color:#f59e2a">Leakage</b><br><span style="font-size:11px;color:var(--sub)">Static Power</span></td>
+  <td>靜止時的漏電（HVT vs LVT 差 10×）</td>
+  <td>µW</td>
+  <td>符合功耗規格</td>
+  <td><span class="tag t-o">Power</span></td>
+</tr>
+<tr>
+  <td><b style="color:#f59e2a">Dynamic Power</b></td>
+  <td>切換時 C×V²×f 的電流</td>
+  <td>mW</td>
+  <td>符合散熱與電池需求</td>
+  <td><span class="tag t-o">Power</span></td>
+</tr>
+<tr>
+  <td><b style="color:#9b59b6">Congestion</b></td>
+  <td>繞線塞車（routing overflow %）</td>
+  <td>%</td>
+  <td>= 0（&gt;5% 就需要重做 floorplan）</td>
+  <td><span class="tag t-p">實體</span></td>
+</tr>
+</table>
+
+<!-- trade-off 說明 -->
+<h3 style="margin-top:18px;">三個互相拉扯的例子</h3>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px;">
+  <div class="tip-box">
+    <b>要更快（WNS 收緊）</b><br>
+    → 用 LVT（低 Vt）大 cell<br>
+    → 漏電 ↑、面積 ↑
+  </div>
+  <div class="warn-box">
+    <b>要更省電（Leakage↓）</b><br>
+    → 換 HVT cell、clock gate<br>
+    → timing 可能違規（WNS↓）
+  </div>
+  <div class="tip-box">
+    <b>要更小（Area↓）</b><br>
+    → 共用資源、刪 buffer<br>
+    → timing 可能不過、congestion↑
+  </div>
+</div>
+
+<!-- CAD 的角色 -->
+<h3 style="margin-top:16px;">CAD 工程師如何改善 QoR</h3>
+<ul style="font-size:13.5px;color:var(--sub);line-height:1.9;padding-left:1.3em;">
+  <li><b style="color:var(--ink)">換 synthesis strategy</b>：調 effort level、mapping option、retiming</li>
+  <li><b style="color:var(--ink)">Cerebrus ML 探索</b>：自動跑上百種 strategy 組合，找 Pareto front</li>
+  <li><b style="color:var(--ink)">Multi-Vt 優化</b>：critical path 用 LVT，其餘換 HVT → timing 過 + 省電</li>
+  <li><b style="color:var(--ink)">SDC 品質</b>：constraint 不對，QoR 再好都是假的</li>
+  <li><b style="color:var(--ink)">Timing ECO</b>：在不動 function 的前提下局部 size up/down</li>
+</ul>
+
+<!-- 口條 -->
+<div class="ans-box" style="margin-top:14px;">
+  <b style="color:var(--accent2)">面試 20 秒口條：</b><br>
+  「QoR 就是 PPA 的量化成績——timing 看 WNS/TNS 有沒有違規、area 看面積有沒有超預算、power 看漏電跟動態功耗。三個互相拉扯，CAD 工程師的工作是在 constraint 範圍內找最好的平衡點，用 Genus 不同 strategy 或 Cerebrus 的 ML 探索找 Pareto-optimal 解。」
+</div>
+</div>
+
+<h2>🔵 Synthesis 面試題（Cadence Genus QoR 流程）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">S01</span>
+    <span class="qtxt">請描述你的 RTL Synthesis flow，從 RTL 到 netlist 你會怎麼跑？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      典型流程：<br>
+      1. <span class="key">RTL elaboration</span>（Genus <code>read_hdl</code>）→ 語法錯誤、unresolved ref 確認<br>
+      2. <span class="key">Constraint 載入</span>（<code>read_sdc</code>）：clock、input/output delay、false path、multicycle path<br>
+      3. <span class="key">Technology mapping</span>（<code>synthesize -to_mapped</code>）：generic → cell<br>
+      4. <span class="key">incremental 最佳化</span>：先修 hold，再修 setup<br>
+      5. <span class="key">Reports</span>：WNS、TNS、leakage power、area summary<br>
+      6. <span class="key">Gate-level netlist</span> + DDC/DEF 交 APR team
+    </div>
+    <h4>關鍵指標（QoR）</h4>
+    <ul>
+      <li><span class="warn">WNS（Worst Negative Slack）</span>：timing 是否滿足</li>
+      <li><span class="warn">TNS（Total Negative Slack）</span>：整體 slack 積欠量</li>
+      <li>Cell count、漏電（leakage）、動態功耗（dynamic power）</li>
+    </ul>
+    <h4>加分答：Genus 特有 hint</h4>
+    <ul>
+      <li>用 <code>set_db syn_generic_effort medium/high</code> 控制 effort</li>
+      <li>hierarchical synthesis：大 block 先分別 synthesize 再 top-level assemble</li>
+      <li>SDC 品質直接決定 QoR，constraint 錯比 tool 差更常見</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">S02</span>
+    <span class="qtxt">Synthesis 後 timing violation 如何 debug？你的 STA 分析步驟？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      1. 看 <code>report_timing -path_type full</code>：從 startpoint/endpoint 找 critical path<br>
+      2. 判斷 violation 類型：<span class="key">setup</span>（timing too slow）vs <span class="key">hold</span>（too fast）<br>
+      3. Setup violation 處理：<br>
+      　　(a) 增加 effort level → tool 自動 size up<br>
+      　　(b) Retiming / clock gating review<br>
+      　　(c) 跟 RTL designer 討論是否改架構 / 加 register stage<br>
+      4. Hold violation 處理：插 buffer，注意 CTS 後 hold 可能改善<br>
+      5. 看 attribute：multi-cycle path 有沒有 constraint 錯
+    </div>
+    <h4>面試加分點</h4>
+    <ul>
+      <li>能說出 CRPR（Common Path Pessimism Removal）減少 pessimism</li>
+      <li>OCV / AOCV / POCV 對 timing margin 的影響</li>
+      <li>timing ECO = 只改 sizing/buffer，不動 function</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">S03</span>
+    <span class="qtxt">什麼是 MMMC？在 Genus 怎麼設定多角落？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    MMMC = <span class="key">Multi-Mode Multi-Corner</span>。同一 netlist 在不同操作模式（功能模式、DFT scan 模式）及不同製程角落（SS/TT/FF + hot/cold）同時進行時序分析。
+    <div class="ans-box">
+      Genus MMMC 設定：<br>
+      <code>create_constraint_mode -name func -sdc_files func.sdc</code><br>
+      <code>create_delay_corner -name SS_cold -library_set ss_lib</code><br>
+      <code>create_analysis_view -name ss_cold_func -constraint func -delay_corner SS_cold</code><br>
+      <code>set_analysis_view -setup {ss_cold_func} -hold {ff_hot_func}</code>
+    </div>
+    <ul>
+      <li>Setup 用 <span class="warn">worst corner（SS, cold）</span>，hold 用 <span class="warn">best corner（FF, hot）</span></li>
+      <li>MMMC 讓一次 synthesis 同時滿足所有 mode + corner</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">S04</span>
+    <span class="qtxt">Synthesis 跑完 area 超出預算，你怎麼縮？有哪些手段？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">降低 effort</span>：減少 timing margin → tool 用較小 cell</li>
+      <li><span class="key">RTL 改寫</span>：shared resource（share multiplier）、RAM 推論</li>
+      <li><span class="key">Constant propagation</span>：確認 RTL 中 don't-care bit 是否正確</li>
+      <li><span class="key">資源共享</span>：用 <code>set_resource_sharing true</code></li>
+      <li><span class="key">放寬 timing constraint</span>：如果某條路設太緊，tool 用大 cell 也救不回</li>
+      <li>與設計師討論 <span class="warn">架構修改</span>（最根本，但最耗時）</li>
+    </ul>
+    <div class="tip-box">SMI 面試加分：「我會先用 <code>report_cell</code> 找最大的 cell 群，再配合 timing report 看哪些 size down 後 slack 仍安全。」</div>
+  </div>
+</div>
+
+</div><!-- end qa-list syn -->
+</section>
+
+<!-- ═══ Q&A STA ═══ -->
+<section id="qa-sta">
+<h2>🟢 STA 面試題（PrimeTime / Tweaker / PrimeClosure）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T01</span>
+    <span class="qtxt">Setup time 和 Hold time 的物理意義是什麼？violation 怎麼修？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>Setup time</b>：FF 採樣 clock edge 前，data 必須已經穩定的最短時間；它是 <span class="key">maximum-delay check</span>。<br>
+      　Violation → <span class="warn">data 太晚到</span>。修法：減少 logic depth、cell upsizing、換 LVT、插 buffer 改善大負載、縮短繞線、pipeline；架構允許時可增加 clock period／降低頻率。<br><br>
+      <b>Hold time</b>：FF 採樣 clock edge 後，data 必須繼續穩定的最短時間；它是 <span class="key">minimum-delay check</span>。<br>
+      　Violation → <span class="warn">新 data 太早到</span>。修法：加 delay buffer、cell downsizing／換 HVT、增加 route delay，並檢查 clock skew。
+    </div>
+    <ul>
+      <li>核心公式：<code>slack = required time − arrival time</code>；負 slack 就是 violation</li>
+      <li>Setup 受 clock period 影響；hold 是同一個 edge 附近的檢查，因此降低頻率通常不能直接修 hold</li>
+      <li>Positive skew（capture clock 較晚）通常幫 setup、傷 hold；negative skew 通常相反</li>
+    </ul>
+    <div class="warn-box">修 timing 不能只看單一 path：upsizing 雖可改善 setup，卻可能增加 power、congestion，甚至在其他 corner 製造 hold 問題。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T02</span>
+    <span class="qtxt">你用 PrimeTime 做 timing signoff，流程是什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      1. 讀入 netlist、parasitic（SPEF）、SDC<br>
+      2. 設定 MMMC：<code>create_scenario</code> 分 setup / hold 各 corner<br>
+      3. <code>update_timing</code> → <code>report_timing -slack_lesser_than 0</code> 找 violators<br>
+      4. 分析 path：startpoint → logic cells → endpoint → slack breakdown<br>
+      5. <span class="key">timing ECO</span>：用 <code>fix_eco_timing -setup</code>（PT-ECO 功能）或手動 ECO Tcl<br>
+      6. 收斂後：<code>report_qor</code> 確認 WNS/TNS / 全 scenario 均 clean<br>
+      7. Signoff 文件存 report、截圖 WNS=0
+    </div>
+    <h4>Tweaker / PrimeClosure 分工</h4>
+    <ul>
+      <li><span class="key">Tweaker</span>：在 place 完後、route 前，做 timing-driven 修改（cell sizing、buffer insertion）</li>
+      <li><span class="key">PrimeClosure</span>：post-route signoff-level closure，整合 PT 做最終 ECO iteration</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T03</span>
+    <span class="qtxt">什麼是 False Path 和 Multicycle Path？什麼時候用？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">False Path</span>：不存在功能上的時序關係。例如：不同 clock domain 的 CDC 路徑、test mode 路徑。<br>
+        <code>set_false_path -from [get_clocks CLK_A] -to [get_clocks CLK_B]</code></li>
+      <li><span class="key">Multicycle Path</span>：data 跨越多個 clock cycle 才 capture。例如：pipeline 中某條路允許 2 cycle。<br>
+        <code>set_multicycle_path 2 -setup -from FF_A -to FF_B</code><br>
+        <code>set_multicycle_path 1 -hold -from FF_A -to FF_B</code>（hold 要補回 1）</li>
+    </ul>
+    <div class="warn-box">常見錯誤：設 multicycle 忘記補 hold constraint → hold violation 大爆。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T04</span>
+    <span class="qtxt">Timing / Power ECO 怎麼做？你有沒有跑過 ECO 的經驗？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      ECO（Engineering Change Order）分三種：<br>
+      1. <span class="key">Timing ECO</span>：cell sizing up/down、buffer insertion/removal，不動 logic function<br>
+      2. <span class="key">Power ECO</span>：size down non-critical cell、swap to HVT（高 Vt，省電）<br>
+      3. <span class="key">Function ECO</span>：RTL 改變 → LEC 驗證等效性 → ECO patch 到 netlist
+    </div>
+    <h4>PT 做 Timing ECO 範例</h4>
+    <ul>
+      <li><code>fix_eco_timing -setup -end_point_clock_filter {CLK}</code></li>
+      <li>產出 <code>eco.tcl</code>，APR team 再 implement</li>
+      <li>ECO 後重跑 LEC 確認 function 不變</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T05</span>
+    <span class="qtxt">Rise time / Fall time 是什麼？和 Setup / Hold 有什麼不同？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>Rise time</b> 是訊號由低電位上升到高電位的 transition 時間，常見量測區間為 10%→90%；<b>fall time</b> 是 90%→10%。它們描述的是訊號邊緣快慢，也常稱為 <b>slew</b>。<br><br>
+      <b>Setup / Hold</b> 描述的是 flip-flop 在 clock edge 前後要求 data 穩定的時間窗口。也就是說，rise/fall 是「波形品質」，setup/hold 是「採樣時序要求」。
+    </div>
+    <h4>為什麼 slow transition 不好？</h4>
+    <ul>
+      <li>下一級 cell delay 增加，setup timing 可能變差</li>
+      <li>PMOS/NMOS 同時導通較久，short-circuit power 增加</li>
+      <li>可能超過 library 的 <code>max_transition</code> constraint</li>
+      <li>常見修法：upsize driver、插 buffer、減少 fanout/load、縮短 net</li>
+    </ul>
+    <div class="tip-box"><b>30 秒回答：</b>Rise/fall time 是 signal transition 的速度；setup/hold 是 FF 對 data 穩定窗口的要求。Slow slew 會增加 cell delay 與功耗，也可能造成 max-transition violation。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">T06</span>
+    <span class="qtxt">PVT、OCV、MMMC 為什麼需要？Setup 和 Hold 通常看哪些情境？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">PVT</span>：Process、Voltage、Temperature 會改變 cell 與 wire delay。</li>
+      <li><span class="key">OCV</span>：同一顆晶片不同位置也可能有 variation，launch/capture path 不會完全一起快或一起慢。</li>
+      <li><span class="key">MMMC</span>：Multi-Mode Multi-Corner，同時覆蓋 functional/test modes 與不同 RC/PVT corners。</li>
+      <li>傳統直覺是 setup 偏向 slow corner、hold 偏向 fast corner；但 advanced node 必須以 library、RC corner 與 signoff scenario 定義為準，不能只背 SS/FF。</li>
+    </ul>
+    <div class="ans-box">回答順序：先說 variation 來源 → 為何單一 corner 不夠 → MMMC 如何覆蓋 → 最後說用每個 scenario 的 WNS/TNS 和 unconstrained path 做 signoff。</div>
+  </div>
+</div>
+
+</div><!-- end qa-list sta -->
+</section>
+
+<!-- ═══ Q&A LEC/LP ═══ -->
+<section id="qa-lec">
+<h2>🟠 LEC / LowPower 面試題（Conformal / UPF）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">L01</span>
+    <span class="qtxt">LEC（Logical Equivalence Checking）的原理是什麼？什麼時候做？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      LEC = 形式驗證：把兩個設計版本（Golden vs Revised）做 Boolean equivalence check，<b>不用跑模擬</b>，窮舉所有輸入組合。<br><br>
+      <b>何時用 LEC：</b><br>
+      • Synthesis 後：RTL vs gate-level netlist<br>
+      • ECO 後：old netlist vs new netlist<br>
+      • Scan insertion 後：function 應不變
+    </div>
+    <h4>Conformal 基本 flow</h4>
+    <ul>
+      <li>讀 Golden（RTL）和 Revised（netlist）</li>
+      <li><code>set dofile setup.do</code> 設定 library、clock、constant</li>
+      <li><code>read design -Golden …; read design -Revised …</code></li>
+      <li><code>map points; verify</code> → <code>report verified</code></li>
+    </ul>
+    <h4>Mismatch debug</h4>
+    <ul>
+      <li>先看 <code>report not_mapped</code>：有 unmapped 通常是 clock cell 或 tie cell 問題</li>
+      <li>看 <code>report not_verified</code>：function mismatch，追 key point</li>
+      <li>常見原因：SDC false path 影響 LEC、ECO 套錯版本</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">L02</span>
+    <span class="qtxt">UPF low power design flow 解釋一下，有哪些特殊 cell？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    UPF（Unified Power Format）定義 power domain、電壓域切換、省電策略。
+    <div class="ans-box">
+      <b>關鍵 cell 類型：</b><br>
+      • <span class="key">Isolation cell</span>：domain 關閉時，把輸出箝位到安全值（0 or 1）<br>
+      • <span class="key">Level shifter</span>：不同電壓 domain 之間的訊號轉換（VDD1 → VDD2）<br>
+      • <span class="key">Retention FF</span>：power down 時保留 state，用 shadow latch + backup supply<br>
+      • <span class="key">Power switch（MTCMOS）</span>：實際斷電用的 header/footer cell<br>
+      • <span class="key">Always-on buffer</span>：even in power-down domain，確保 control path 存活
+    </div>
+    <h4>常見 debug</h4>
+    <ul>
+      <li>Isolation cell 放錯位置 → functional X propagation</li>
+      <li>Level shifter 方向錯（LH vs HL）→ signal corruption</li>
+      <li>Retention FF save/restore sequence 錯 → 值不對</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">L03</span>
+    <span class="qtxt">低功耗設計方法有哪些？Conformal LP check 在檢查什麼？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <h4>低功耗技術層次</h4>
+    <ul>
+      <li><span class="key">Clock gating</span>：關閉不必要 FF clock → 省動態功耗，最簡單</li>
+      <li><span class="key">Power gating</span>：整個 domain 斷電（MTCMOS），省靜態漏電</li>
+      <li><span class="key">Multi-Vt</span>：critical path 用 LVT（快），非 critical 用 HVT（低漏電）</li>
+      <li><span class="key">DVFS</span>：動態電壓頻率調整，需要硬體架構支援</li>
+      <li><span class="key">operand isolation</span>：ALU input 不改變時 gate 掉</li>
+    </ul>
+    <h4>Conformal Low Power Check 驗什麼</h4>
+    <ul>
+      <li>UPF 與 netlist 的 power domain 一致性</li>
+      <li>Isolation cell 是否覆蓋所有 cross-domain port</li>
+      <li>Level shifter 方向與位置正確</li>
+      <li>Retention FF save/restore protocol 合法性</li>
+    </ul>
+  </div>
+</div>
+
+</div><!-- end qa-list lec -->
+</section>
+
+<!-- ═══ Q&A APR ═══ -->
+<section id="qa-apr">
+<h2>🟣 APR CAD 面試題（Cadence Innovus 實體設計）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A01</span>
+    <span class="qtxt">APR full flow 從 netlist 到 tapeout，你會走哪些步驟？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      1. <span class="key">Import</span>：netlist、LEF（technology）、DEF、SDC<br>
+      2. <span class="key">Floorplan</span>：die/core size、IO ring、macro placement、voltage domain<br>
+      3. <span class="key">Power Plan（PDN）</span>：VDD/VSS ring、stripe、metal layer 選擇<br>
+      4. <span class="key">Placement</span>：std-cell 擺放、timing-driven、congestion-driven<br>
+      5. <span class="key">CTS（Clock Tree Synthesis）</span>：平衡 clock skew、插 buffer/inverter<br>
+      6. <span class="key">Routing</span>：global routing → detail routing → DRC clean<br>
+      7. <span class="key">Signoff</span>：STA（PT/Tempus）、IR drop（Voltus/RedHawk）、DRC/LVS（Calibre）<br>
+      8. <span class="key">Tapeout</span>：GDSII export
+    </div>
+    <div class="tip-box">SMI APR CAD focus：flow automation。說「我會包成 Tcl script，每一步 pass/fail 有 log check，自動 report QoR 並寄 email 通知」會加分。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A02</span>
+    <span class="qtxt">Floorplan 時你怎麼規劃 macro placement？有什麼原則？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">靠邊放</span>：macro 推到 die 四周，避免切斷 std-cell row</li>
+      <li><span class="key">Pin 對準</span>：macro pin 朝向 std-cell 區，減少 routing detour</li>
+      <li><span class="key">Halo / keepout</span>：macro 周圍保留空隙，防止 congestion</li>
+      <li><span class="key">同功能 macro 聚集</span>：減少 long wire，例如 SRAM 靠近 CPU</li>
+      <li><span class="key">Channel routing</span>：macro 之間留足夠 routing channel（尤其 metal 1–3）</li>
+      <li><span class="key">Power domain</span>：同 domain macro 放在一起，減少 isolation cell 數量</li>
+    </ul>
+    <div class="tip-box">可以提到昨天準備的示意圖：「macro 圍邊、std-cell 在中間」 → 這正是慧榮 SSD 控制晶片的典型 layout。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A03</span>
+    <span class="qtxt">CTS 的目標是什麼？Clock skew 和 clock latency 有什麼差？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>Clock latency</b>：clock 從 source 到 FF clock pin 的絕對延遲（source latency + insertion delay）<br><br>
+      <b>Clock skew</b>：同一 clock domain 不同 FF 的 latency 差值。<br>
+      　Local skew = |T_clk_A − T_clk_B|（相鄰 FF）<br>
+      　Global skew = max − min（整個 domain）<br><br>
+      <b>CTS 目標</b>：最小化 skew（通常 &lt; 100 ps at 28nm），同時控制 total capacitance（省 power）
+    </div>
+    <ul>
+      <li>Useful skew：故意讓 borrowing path 的 FF 晚一點，幫忙 setup</li>
+      <li>Skew 過大 → hold violation（需要補 buffer）</li>
+      <li>Innovus <code>ccopt_design</code> = concurrently optimize CTS + timing</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A04</span>
+    <span class="qtxt">IR drop 分析在什麼時機做？IR drop 太大怎麼改？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>時機：</b>Power plan 後做 static IR drop（快速），route 後做 dynamic IR drop（含 switching 電流）<br><br>
+      <b>Static IR drop</b>：用 Voltus / RedHawk，基於 DC 電流分佈<br>
+      <b>Dynamic IR drop</b>：模擬 clock edge 時 simultaneous switching → 瞬間 dI/dt
+    </div>
+    <h4>IR drop 過大修法</h4>
+    <ul>
+      <li>加 VDD/VSS <span class="key">stripe 密度</span>（更多金屬 bar）</li>
+      <li>換用 <span class="key">wider wire</span>（resistance↓）</li>
+      <li>加 <span class="key">decap cell</span>（局部電荷補充）</li>
+      <li>調整 clock 邊緣時序（減少同步切換）</li>
+      <li>重新 floorplan macro（讓 power pin 離 power ring 更近）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A05</span>
+    <span class="qtxt">什麼是 Crosstalk？它如何造成 delay 或 noise？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      相鄰且長距離平行的金屬線之間會形成 <b>coupling capacitance</b>。正在切換並造成干擾的 net 稱為 <b>aggressor</b>，被影響的 net 稱為 <b>victim</b>。<br><br>
+      <b>Delay effect</b>：兩者反向切換時，victim 常看到較大的有效電容而變慢，可能傷 setup；同向切換時可能變快，進而影響 hold。<br>
+      <b>Noise effect</b>：victim 原本靜止，aggressor 的切換仍可能耦合出 glitch，若超過 noise margin 就可能被錯誤判讀。
+    </div>
+    <h4>常見修法</h4>
+    <ul>
+      <li>增加 spacing、減少長距離平行走線</li>
+      <li>以 VDD/VSS shielding，或將 nets 分配到不同 layer</li>
+      <li>插 buffer 切短長 net、upsize victim driver、適度 downsize aggressor</li>
+      <li>重跑 SI-aware routing / timing analysis，確認所有 MMMC scenario</li>
+    </ul>
+    <div class="tip-box"><b>口訣：</b>先說 coupling，再分 delay/noise，最後說 spacing、shielding、buffer、reroute。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A06</span>
+    <span class="qtxt">Antenna effect 是什麼？為什麼是製造問題？怎麼修？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      Antenna effect 不是晶片操作時接收到無線訊號，而是 <b>plasma etching 製造期間</b>，長金屬累積電荷並經由 MOS gate 放電，可能破壞很薄的 gate oxide。Foundry 會用 metal area／perimeter 相對 gate area 的 antenna ratio 設限。
+    </div>
+    <ul>
+      <li><span class="key">Antenna diode</span>：提供安全放電路徑</li>
+      <li><span class="key">Jumper / layer hopping</span>：把長金屬切段，提早換到尚未形成的高層金屬</li>
+      <li><span class="key">Reroute</span>：縮短違規 metal，或調整連接順序讓 diffusion 先接上</li>
+    </ul>
+    <div class="warn-box">面試不要回答「加 shielding」：shielding 主要處理 crosstalk，不是 antenna violation 的標準修法。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A07</span>
+    <span class="qtxt">2.5D / 3D IC 是什麼？實體設計多了哪些挑戰？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>2.5D IC</b>：多顆 die 並排在 silicon interposer 上；<b>3D IC</b>：多顆 die 垂直堆疊，透過 TSV、micro-bump 或 hybrid bonding 連接。優點是 die-to-die 距離短、頻寬高，也能把不同 process node 的 chiplet 整合在一起。
+    </div>
+    <h4>APR / CAD 額外要處理</h4>
+    <ul>
+      <li>Die partition、bump/TSV planning 與跨 die connectivity</li>
+      <li>Die-to-die timing、clock synchronization、SI 與 power delivery</li>
+      <li>堆疊造成的 thermal hotspot、mechanical stress 與 IR drop</li>
+      <li>Known-good-die、DFT/test、封裝 parasitic 與整體 yield</li>
+    </ul>
+    <div class="tip-box"><b>30 秒回答：</b>3D IC 用垂直互連縮短距離並提高 bandwidth，但 CAD flow 必須把 package、thermal、power、跨 die timing 和 test 一起分析，不能只看單一 die。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A08</span>
+    <span class="qtxt">Placement 或 Routing congestion 怎麼判斷？怎麼改善？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      Congestion 是某區域 routing demand 大於可用 track capacity。常見現象是 global-route overflow、繞線 detour、DRC 增加、wire delay 變大，最後讓 timing 與 runtime 一起惡化。
+    </div>
+    <ul>
+      <li>先看 congestion map，確認是 macro channel、pin access、cell density 還是 high-fanout net</li>
+      <li>調整 macro placement／orientation，加寬 channel 與 halo</li>
+      <li>降低局部 placement density、cell spreading、加入 partial blockage</li>
+      <li>改善 pin placement、buffer tree 與 layer utilization，必要時增加 core area</li>
+    </ul>
+    <div class="warn-box">不要只回答「加大 die」；先找局部根因，因為加面積會直接傷 area/cost，也不一定能解決 macro pin access。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">A09</span>
+    <span class="qtxt">IR drop 和 Electromigration（EM）有什麼不同？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <table style="font-size:12.5px;margin-top:6px;">
+      <tr><th>問題</th><th>核心物理</th><th>可能後果</th><th>常見改善</th></tr>
+      <tr><td>IR drop</td><td><code>Vdrop = I × R</code></td><td>cell 實際電壓下降、delay 增加、功能失敗</td><td>加寬/加密 PG、更多 vias、decap、縮短供電路徑</td></tr>
+      <tr><td>EM</td><td>電流密度過高造成金屬原子遷移</td><td>void/hillock、長期可靠度失效</td><td>加寬 wire、加 vias、分流、降低 peak current</td></tr>
+    </table>
+    <div class="tip-box">兩者都和 current 有關，但 IR drop 偏向「電壓是否足夠」，EM 偏向「金屬長期能否承受該電流密度」。</div>
+  </div>
+</div>
+
+</div><!-- end qa-list apr -->
+</section>
+
+<!-- ═══ Q&A AI CAD ═══ -->
+<section id="qa-ai">
+<h2>🤖 AI-driven CAD 面試題（Cadence Cerebrus / ML QoR）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">AI01</span>
+    <span class="qtxt">Cadence Cerebrus 是什麼？它和傳統 Genus 的差異？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>Cerebrus</b>（舊稱 Genus Hybrid NetList Optimizer）：用強化學習（RL）自動探索 synthesis 的 strategy space（不同的 effort、mapping、重排選項），在同樣 timing constraint 下找 PPA 更優的解。<br><br>
+      <b>傳統 Genus</b>：單一 synthesis run，人工設定 effort level，QoR 取決於 CAD 工程師經驗。<br><br>
+      <b>Cerebrus 優勢</b>：自動跑數十至數百次 exploration，找出 Pareto-optimal QoR，不需要人工 tuning。
+    </div>
+    <ul>
+      <li>Cerebrus 整合 Genus + Innovus：synthesis 與 APR 協同優化</li>
+      <li>ML exploration：每次 run 回饋 reward（timing / area / power），更新策略</li>
+      <li><span class="warn">限制</span>：需要大量計算資源（多機並行），runtime 長</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">AI02</span>
+    <span class="qtxt">你怎麼評估 QoR 的好壞？有哪些 metric？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <h4>QoR（Quality of Results）指標</h4>
+    <table style="font-size:12.5px;margin-top:6px;">
+      <tr><th>指標</th><th>意義</th><th>越好是</th></tr>
+      <tr><td>WNS</td><td>最差 slack</td><td>越接近 0（且 &gt;0）</td></tr>
+      <tr><td>TNS</td><td>總 slack 欠量</td><td>越接近 0</td></tr>
+      <tr><td>Area</td><td>die 面積（µm²）</td><td>越小</td></tr>
+      <tr><td>Leakage power</td><td>靜態漏電（uW）</td><td>越小</td></tr>
+      <tr><td>Dynamic power</td><td>切換電流（mW）</td><td>越小（視 use case）</td></tr>
+      <tr><td>Congestion</td><td>routing 塞車程度</td><td>overflow → 0</td></tr>
+    </table>
+    <div class="tip-box">AI CAD 面試：「我會定義 reward function 權重，例如 timing 優先時 WNS×5 + TNS×2 + area×1，讓 Cerebrus 朝 timing-first 優化。」</div>
+  </div>
+</div>
+
+</div><!-- end qa-list ai -->
+</section>
+
+<!-- ═══ Q&A SCRIPT ═══ -->
+<section id="qa-script">
+<h2>📜 腳本與自動化面試題（Tcl / Python / Perl）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC01</span>
+    <span class="qtxt">你寫過哪些 Tcl script 用於 EDA flow automation？舉例說明。</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      <b>範例：Genus synthesis wrapper</b><br>
+      <code># 讀取 config、設 effort、跑 syn、parse report、判 pass/fail<br>
+      proc run_synthesis {design effort} {<br>
+      &nbsp;&nbsp;read_hdl -sv ${design}.sv<br>
+      &nbsp;&nbsp;read_sdc ${design}.sdc<br>
+      &nbsp;&nbsp;set_db syn_map_effort $effort<br>
+      &nbsp;&nbsp;synthesize -to_mapped<br>
+      &nbsp;&nbsp;report_timing > timing.rpt<br>
+      &nbsp;&nbsp;set wns [lindex [exec grep WNS timing.rpt] end]<br>
+      &nbsp;&nbsp;if {$wns &lt; 0} { send_mail FAIL }<br>
+      }</code>
+    </div>
+    <ul>
+      <li>Python 用來做 <span class="key">report parsing</span>：regex 抓 WNS/TNS，寫入 CSV，Pandas 畫 trend</li>
+      <li>Perl 用來做 <span class="key">file transformation</span>：netlist 格式轉換、SPEF merge</li>
+      <li>Shell：flow scheduling（qsub/LSF job submission）、環境設定</li>
+    </ul>
+    <div class="tip-box">SMI CAD 最看重 flow automation。說「我的 script 讓 synthesis → LEC → STA 全自動，overnight 跑完早上看 report」是加分關鍵。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC02</span>
+    <span class="qtxt">如何用 Python 解析 PrimeTime timing report 並找出最差 path？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+<pre style="font-size:12px;line-height:1.5;">import re
+
+def parse_timing_report(rpt_file):
+    paths = []
+    with open(rpt_file) as f:
+        text = f.read()
+    # 找每個 path block
+    blocks = re.split(r'Startpoint', text)[1:]
+    for block in blocks:
+        slack = re.search(r'slack\s*\(([A-Z]+)\)\s*([\-\d.]+)', block)
+        ep = re.search(r'Endpoint:\s*(\S+)', block)
+        if slack and ep:
+            paths.append({
+                'endpoint': ep.group(1),
+                'slack': float(slack.group(2)),
+                'type': slack.group(1)
+            })
+    paths.sort(key=lambda x: x['slack'])
+    return paths[:10]  # top 10 worst</pre>
+    </div>
+    <ul>
+      <li>Pandas 可以把多個 corner 的結果 merge，找跨 corner 的 worst case</li>
+      <li>用 matplotlib 畫 slack histogram 幫助 CAD 判斷是否需要 ECO</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC03</span>
+    <span class="qtxt">CAD flow 維護有哪些挑戰？你怎麼確保 flow 的 robustness？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ul>
+      <li><span class="key">版本控制</span>：flow script 放 Git，每次更新有 commit message、tag release</li>
+      <li><span class="key">Sanity check</span>：每步驟開始前 check input file 存在、格式正確</li>
+      <li><span class="key">Log parsing</span>：自動抓關鍵字（ERROR、WARNING、FAIL）發 alert</li>
+      <li><span class="key">Regression</span>：有 golden reference 數值，每次改 flow 都 diff QoR</li>
+      <li><span class="key">多節點支援</span>：用 config file 區分 28nm / 12nm / 5nm 的 lib、rule 差異，flow 本體不改</li>
+    </ul>
+    <div class="tip-box">SMI CAD JD 明確要「support different process nodes」，能講節點切換的模組化設計很加分。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC04</span>
+    <span class="qtxt">現場給你 timing report，怎麼用 grep / awk / sed 找 violation？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <h4>1. 掃描 flow log 的錯誤</h4>
+    <pre class="code-block">grep -nE 'ERROR|FATAL|FAIL' run.log
+grep -c 'slack (VIOLATED)' timing.rpt</pre>
+
+    <h4>2. 取出最差的 violation slack</h4>
+    <pre class="code-block">grep 'slack (VIOLATED)' timing.rpt \
+  | awk '{print $NF}' \
+  | sort -n \
+  | head -10</pre>
+
+    <h4>3. 同時保留 endpoint 與 slack</h4>
+    <pre class="code-block">awk '/^Endpoint:/{ep=$2}
+     /slack.*VIOLATED/{print $NF, ep}' timing.rpt \
+  | sort -n | head -10</pre>
+
+    <h4>4. 文字替換</h4>
+    <pre class="code-block">sed -E 's/old_corner/new_corner/g' run.tcl &gt; run_new.tcl</pre>
+    <div class="warn-box">Report 欄位會依工具與選項改變。正式 automation 要先驗證格式、處理空檔／NA／多行 path，並讓 parser 在格式不符時明確 fail，而不是默默產生錯誤數字。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC05</span>
+    <span class="qtxt">Tcl、Python、Shell 各適合做什麼？請寫一個 Tcl report parser。</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <table style="font-size:12.5px;">
+      <tr><th>語言</th><th>最適合的工作</th></tr>
+      <tr><td>Tcl</td><td>直接操作 EDA database、呼叫 tool command、串接 stage</td></tr>
+      <tr><td>Python</td><td>複雜 parser、CSV/JSON、資料分析、dashboard、測試</td></tr>
+      <tr><td>Shell / awk</td><td>job submission、檔案整理、快速 log filter 與 pipeline</td></tr>
+    </table>
+    <pre class="code-block">set fd [open "timing.rpt" r]
+set text [read $fd]
+close $fd
+
+set count 0
+set worst 0.0
+foreach line [split $text "\n"] {
+    if {[regexp {slack.*VIOLATED.*(-?[0-9.]+)$} $line -&gt; slack]} {
+        incr count
+        if {$count == 1 || $slack &lt; $worst} {
+            set worst $slack
+        }
+    }
+}
+puts "violations=$count worst_slack=$worst"</pre>
+    <div class="tip-box"><b>面試加分點：</b>除了寫出 parser，也主動提到 return code、exception handling、輸入檔檢查、unit test、regression baseline 與 machine-readable JSON/CSV output。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">SC06</span>
+    <span class="qtxt">文字處理題現場作答時，應該先確認哪些事情？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <ol style="padding-left:1.3em;">
+      <li>先看 5～10 行真實輸入，確認 delimiter、欄位位置與 path block 邊界。</li>
+      <li>確認輸出需求：只要 count、最差 N 筆，還是要保留 startpoint/endpoint/corner。</li>
+      <li>處理 corner cases：空檔、重複資料、科學記號、NA、壓縮檔、超大檔案。</li>
+      <li>小資料可一次讀入；大 report 優先逐行 streaming，避免不必要的記憶體占用。</li>
+      <li>最後用一小段 sample 驗證結果，並檢查 exit status。</li>
+    </ol>
+    <div class="ans-box"><b>推薦口條：</b>「我會先確認 report 格式與預期輸出，再選工具。一次性篩選用 grep/awk；需要跨行狀態、例外處理和回歸測試時，我會用 Python；需要直接控制 EDA database 時用 Tcl。」</div>
+  </div>
+</div>
+
+</div><!-- end qa-list script -->
+</section>
+
+<!-- ═══ Q&A HR ═══ -->
+<section id="qa-hr">
+<h2>💬 行為面試題（STAR 架構）</h2>
+<div class="qa-list">
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">HR01</span>
+    <span class="qtxt">你碰過最難解決的 timing closure 問題是什麼？怎麼解決的？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="star-card">
+      <h4>STAR 框架填空</h4>
+      <div class="star-row"><span class="star-label">S</span><span class="star-text">情境：什麼專案，什麼製程節點，tapeout 前幾周</span></div>
+      <div class="star-row"><span class="star-label">T</span><span class="star-text">任務：哪條 path WNS = ?ps，deadline 還有多久</span></div>
+      <div class="star-row"><span class="star-label">A</span><span class="star-text">行動：如何 debug（PT trace critical path、找 false path、coordination with RTL team）、做了哪些 ECO</span></div>
+      <div class="star-row"><span class="star-label">R</span><span class="star-text">結果：最終 WNS 收斂、如期 tapeout，學到什麼</span></div>
+    </div>
+    <div class="tip-box">面試官很喜歡聽「我主動找 RTL designer 討論把那條 path 加 register」— 展示主動溝通。</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">HR02</span>
+    <span class="qtxt">Design flow 出現工具 bug 或 PDK issue，你怎麼處理？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <div class="ans-box">
+      1. <span class="key">重現問題</span>：最小化 testcase（smallest design 能 repro）<br>
+      2. <span class="key">查 release note</span>：看工具版本是否有 known issue<br>
+      3. <span class="key">聯絡 FAE</span>（Cadence / Synopsys support）：提 SR，附 log + testcase<br>
+      4. <span class="key">暫時 workaround</span>：換工具版本、繞過問題功能、手動做那一步<br>
+      5. <span class="key">記錄</span>：寫在 team wiki，讓其他人不用重踩
+    </div>
+    <div class="tip-box">SMI 面試官看重：你是否有能力「獨立作業」和「有效溝通」— JD 原文：「work independently + communication skill」</div>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">HR03</span>
+    <span class="qtxt">你對慧榮 SSD 控制晶片有什麼了解？你為什麼選 SMI？</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    <h4>慧榮公司背景（必背）</h4>
+    <ul>
+      <li>1995 年成立，全球 NAND Flash 控制晶片龍頭之一</li>
+      <li>主要產品：SSD 控制晶片、eMMC/UFS、USB controller、SD controller</li>
+      <li>客戶：Kioxia、Micron、Samsung、SK Hynix、Western Digital、YMTC</li>
+      <li>應用：資料中心、PC、手機、IoT、車用</li>
+      <li>特色：對 NAND Flash 特性深入理解，每個世代 NAND 搭配客製 controller</li>
+    </ul>
+    <h4>你可以說的話</h4>
+    <ul>
+      <li>「SMI 的 SSD controller 是複雜 SoC，對 CAD flow 品質要求很高，正是我想深耕的領域」</li>
+      <li>「竹北辦公室交通方便，工作環境穩定，SMI 也在積極布局資料中心市場」</li>
+      <li>「SMI 的 Design Platform Team 有 APR CAD 工程師、Manager 一起，技術成長機會大」</li>
+    </ul>
+  </div>
+</div>
+
+<div class="qa">
+  <div class="qa-q" onclick="toggleQA(this)">
+    <span class="qnum">HR04</span>
+    <span class="qtxt">你能接受 Taipei training 3–6 個月嗎？（104 JD 有提到）</span>
+    <span class="arrow">▼</span>
+  </div>
+  <div class="qa-a">
+    JD 原文：「Based on the candidate's background and experience, initial onboarding or training in Taipei for 3–6 months may be arranged.」
+    <div class="ans-box">
+      建議回答：「可以。我了解初期可能需要在台北上手，等到對 flow 和 team 熟悉後再到竹北 HQ 長期發展。這段時間我會全力吸收 SMI 的 design methodology 和 PDK know-how。」
+    </div>
+    <div class="warn-box">不要說「沒辦法接受」除非你真的不行，這可能是個考驗靈活度的問題。</div>
+  </div>
+</div>
+
+</div><!-- end qa-list hr -->
+</section>
+
+<!-- ═══ ENGLISH ═══ -->
+<section id="english">
+<h2>🇺🇸 英文測驗 + 英文面試題（面試趣：先做英文測驗）</h2>
+<div class="en-section">
+  <div class="tip-box">面試趣顯示：「一開始會先做英文測驗，再問 design flow」。備好英文作答的能力。</div>
+
+  <h3>英文測驗常見題型</h3>
+  <ul style="font-size:13px;color:var(--sub);padding-left:1.2em;line-height:2;">
+    <li>填空（blank filling）：技術詞彙、grammar</li>
+    <li>閱讀理解（tech article passage）</li>
+    <li>技術術語縮寫（WNS、LEC、UPF 等）</li>
+  </ul>
+
+  <h3 style="margin-top:14px;">常見英文面試 Q&A</h3>
+
+  <div class="en-q">Q: Can you briefly describe your RTL synthesis experience?</div>
+  <div class="en-a">A: I have experience running RTL synthesis using Cadence Genus. My work included loading SDC constraints, running multi-mode synthesis, analyzing QoR reports such as WNS, TNS, and area, and coordinating with APR teams to hand off the gate-level netlist. I also wrote Tcl scripts to automate the synthesis flow and parse reports.</div>
+
+  <div class="en-q" style="margin-top:10px;">Q: What is the difference between static timing analysis and dynamic simulation?</div>
+  <div class="en-a">A: Static timing analysis, or STA, checks timing constraints for all possible paths without running actual simulation. It is exhaustive and fast. Dynamic simulation, such as RTL or gate-level simulation with VCS, applies specific test vectors to verify functional behavior. STA is used for sign-off; simulation is used for functional verification.</div>
+
+  <div class="en-q" style="margin-top:10px;">Q: Why do you want to join Silicon Motion?</div>
+  <div class="en-a">A: Silicon Motion is a leader in NAND Flash controller design, and your products are deployed across data centers, mobile, and industrial markets. The APR and CAD team at SMI works on complex, high-quality SoC implementations, which matches my career goal of deepening my physical design automation expertise. I am also very interested in the AI-driven implementation work with Cerebrus.</div>
+
+  <div class="en-q" style="margin-top:10px;">Q: How do you handle timing violations after place and route?</div>
+  <div class="en-a">A: After routing, I run PrimeTime with post-route SPEF parasitics to get accurate slack numbers. If there are setup violations, I first analyze the critical path to identify whether it is a logic depth issue or a high-drive-strength issue. Then I use timing ECO—cell sizing or buffer insertion—through PrimeClosure or manual ECO scripts. For hold violations, I insert delay buffers in the slack-positive paths, particularly checking that CTS skew is not causing new hold problems.</div>
+</div>
+</section>
+
+<!-- ═══ FLOW ═══ -->
+<section id="flow">
+<h2>🗺 面試流程（根據面試趣資料）</h2>
+<div class="flow">
+  <div class="step">
+    <div class="step-n">Step 1</div>
+    <div class="step-t">英文測驗</div>
+    <div class="step-d">現場紙本或線上，30–40 分鐘</div>
+  </div>
+  <div class="step">
+    <div class="step-n">Step 2</div>
+    <div class="step-t">技術面試</div>
+    <div class="step-d">Design flow、STA、LEC、LowPower、腳本</div>
+  </div>
+  <div class="step">
+    <div class="step-n">Step 3</div>
+    <div class="step-t">主管面試</div>
+    <div class="step-d">專案經驗、STAR 故事、工時、配合度</div>
+  </div>
+  <div class="step">
+    <div class="step-n">Step 4</div>
+    <div class="step-t">HR 面試</div>
+    <div class="step-d">薪資期望、可報到日、台北 training 意願</div>
+  </div>
+</div>
+
+<h3 style="margin-top:20px;">面試重點提醒</h3>
+<div class="tip-box">✅ 英文測驗先，別慌；技術問題以 Cadence 系列為主（SMI 主要用 Cadence）</div>
+<div class="tip-box">✅ 強調「flow automation」和「multi-node 經驗」，與 JD 完全吻合</div>
+<div class="warn-box">⚠ 面試趣評價：面試難度「高」、未錄取者通常倒在英文測驗或 Conformal/LP 題</div>
+<div class="warn-box">⚠ 台北 training 3–6 個月要有心理準備，HR 可能直接問</div>
+
+<h3 style="margin-top:16px;">薪資資訊（面試趣）</h3>
+<table>
+  <tr><th>職級</th><th>平均月薪</th><th>錄取率</th></tr>
+  <tr><td>CAD Engineer（一般）</td><td>~109K NTD/月</td><td>~48%</td></tr>
+  <tr><td>APR CAD Manager（LinkedIn）</td><td>未公開</td><td>—</td></tr>
+  <tr><td>AI-driven CAD（Cake）</td><td>未公開</td><td>—</td></tr>
+</table>
+</section>
+
+</main>
+
+<footer>
+  慧榮科技 SMI CAD 面試準備 · 2026-10-15 更新 · 僅供個人準備，薪資資料以實際協商為準
+</footer>
+
+<script>
+function toggleQA(el){
+  var ans=el.nextElementSibling;
+  var arrow=el.querySelector('.arrow');
+  if(ans.classList.contains('open')){
+    ans.classList.remove('open');
+    arrow.textContent='▼';
+  } else {
+    ans.classList.add('open');
+    arrow.textContent='▲';
+  }
+}
+// open first in each section by default
+document.querySelectorAll('section').forEach(function(sec){
+  var first=sec.querySelector('.qa-q');
+  if(first) toggleQA(first);
+});
+</script>
+</body>
+</html>
