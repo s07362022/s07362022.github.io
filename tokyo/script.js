@@ -957,18 +957,18 @@ const itinerary = [
         "place": "松坂屋上野店"
       },
       {
-        "time": "12:30",
-        "title": "午餐：上野站周邊",
+        "time": "11:45",
+        "title": "午餐：とんかつ山家 上野店",
         "category": "food",
         "status": "planned",
-        "price": "約 ¥1,500-2,500",
-        "route": "上野駅",
-        "eta": "約 45 分",
-        "description": "—",
+        "price": "約 ¥1,000-2,000",
+        "route": "松坂屋上野店 → 徒歩約 5 分",
+        "eta": "約 40 分",
+        "description": "翻桌快的炸豬排，趕 Skyliner 前吃最穩；12:45 前吃完走去京成上野拿行李。",
         "transit": "—",
         "booking": "—",
-        "note": "—",
-        "place": "上野駅"
+        "note": "只收現金；午餐 11:00–15:00。",
+        "place": "とんかつ山家 上野店"
       },
       {
         "time": "13:20",
