@@ -41,6 +41,7 @@ FEATURES = (
     "transit-guide",
     "food-and-night",
     "meals",
+    "mobile-fit",
 )
 # In-page anchors that are allowed to miss. Empty: #prep was retargeted to #prep-briefing.
 KNOWN_BROKEN_ANCHORS: set[str] = set()
@@ -114,6 +115,22 @@ def doctor() -> None:
         raise SystemExit(1)
 
 
+def viewport_size() -> tuple[int, int]:
+    """Read VERIFY_TOKYO_VIEWPORT, defaulting to the desktop 1280×900 recipe."""
+    raw = os.environ.get("VERIFY_TOKYO_VIEWPORT", "1280x900")
+    match = re.fullmatch(r"(\d+)x(\d+)", raw)
+    if not match:
+        fail(f"VERIFY_TOKYO_VIEWPORT must look like 390x844, got {raw}")
+    return int(match.group(1)), int(match.group(2))
+
+
+def evidence_dir(feature: str, width: int, height: int) -> Path:
+    """Desktop proof stays at /tmp/verify-tokyo-evidence/<feature>/. Other sizes get a prefix."""
+    if (width, height) == (1280, 900):
+        return EVIDENCE_ROOT / feature
+    return EVIDENCE_ROOT / f"{width}x{height}" / feature
+
+
 def drive(feature: str) -> None:
     """Exercise one mapped feature and write proof under /tmp/verify-tokyo-evidence."""
     report = doctor_report()
@@ -127,7 +144,8 @@ def drive(feature: str) -> None:
             "playwright is not installed. From any directory run: "
             "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 python3 -m pip install --user 'playwright==1.48.0'"
         )
-    evidence = EVIDENCE_ROOT / feature
+    width, height = viewport_size()
+    evidence = evidence_dir(feature, width, height)
     evidence.mkdir(parents=True, exist_ok=True)
     console_errors: list[str] = []
     page_errors: list[str] = []
@@ -139,8 +157,12 @@ def drive(feature: str) -> None:
             headless=True,
             args=["--no-sandbox", "--disable-dev-shm-usage"],
         )
+        narrow = width <= 680
         context = browser.new_context(
-            viewport={"width": 1280, "height": 900},
+            viewport={"width": width, "height": height},
+            device_scale_factor=3 if narrow else 1,
+            is_mobile=narrow,
+            has_touch=narrow,
             locale="zh-TW",
             accept_downloads=True,
         )
@@ -169,6 +191,7 @@ def drive(feature: str) -> None:
         checks = {
             "feature": feature,
             "url": PAGE_URL,
+            "viewport": f"{width}x{height}",
             "notes": notes,
             "consoleErrors": console_errors,
             "pageErrors": page_errors,
@@ -240,6 +263,8 @@ def run_feature(page, feature: str, evidence: Path) -> list[str]:
         return drive_food_and_night(page, evidence)
     if feature == "meals":
         return drive_meals(page, evidence)
+    if feature == "mobile-fit":
+        return drive_mobile_fit(page, evidence)
     fail(f"unknown feature {feature}")
     return []
 
@@ -356,7 +381,15 @@ def drive_transit_guide(page, evidence: Path) -> list[str]:
     page.wait_for_function(
         "() => document.querySelector('#transitTutorialGrid')?.textContent?.includes('成田機場')"
     )
-    if not tutorial.evaluate("el => el.open"):
+    narrow = (page.viewport_size or {}).get("width", 1280) <= 680
+    if narrow:
+        if tutorial.evaluate("el => el.open"):
+            fail("narrow viewport should start the airport tutorial closed")
+        summary.click()
+        page.wait_for_function(
+            "() => document.querySelector('#transit-guide details.fold-nested')?.open === true"
+        )
+    elif not tutorial.evaluate("el => el.open"):
         fail("desktop viewport should open the first transit tutorial")
     summary.click()
     page.wait_for_function(
@@ -366,18 +399,17 @@ def drive_transit_guide(page, evidence: Path) -> list[str]:
     page.wait_for_function(
         "() => document.querySelector('#transit-guide details.fold-nested')?.open === true"
     )
-    page.evaluate(
-        """() => {
-          document.querySelectorAll('#transitTutorialGrid img').forEach((img) => {
-            img.loading = 'eager';
-          });
-        }"""
-    )
+    for image in page.locator("#transitTutorialGrid img").all():
+        image.scroll_into_view_if_needed()
+        image.evaluate("el => { el.loading = 'eager'; }")
     page.wait_for_function(
         """() => [...document.querySelectorAll('#transitTutorialGrid img')].every(
           (img) => img.complete && img.naturalWidth > 0
         )"""
     )
+    route = page.locator("#transit-guide details.fold-nested").nth(1)
+    if not route.evaluate("el => el.open"):
+        route.locator("summary").click()
     diagram = page.locator("#routeDiagramGrid").inner_text()
     if "沼袋 → 原宿 → 澀谷" not in diagram:
         fail("route diagram is missing 沼袋 → 原宿 → 澀谷")
@@ -390,6 +422,8 @@ def drive_food_and_night(page, evidence: Path) -> list[str]:
     """Read restaurant and night cards, then collapse and expand the sections."""
     notes = []
     page.locator(".nav-links a[href='#food']").click()
+    open_if_closed(page, "#food")
+    open_if_closed(page, "#night")
     page.locator("#foodGrid").get_by_role("heading", name="よろにく", exact=True).wait_for()
     page.locator("#nightGrid").get_by_role("heading", name="澀谷 のんべい横丁").wait_for()
     page.locator("#food").screenshot(path=str(evidence / "01-food-open.png"))
@@ -409,11 +443,12 @@ def drive_food_and_night(page, evidence: Path) -> list[str]:
 def drive_meals(page, evidence: Path) -> list[str]:
     """Open several days and prove each rendered meal matches tokyo-food.md."""
     notes = []
-    page.wait_for_selector("#foodGrid [data-food-role='主選']")
+    page.wait_for_selector("#foodGrid [data-food-role='主選']", state="attached")
     rows = parse_food_markdown(http_text("/tokyo/tokyo-food.md"))
     if len(rows) < 11:
         fail(f"tokyo-food.md parsed to {len(rows)} rows")
     page.locator(".nav-links a[href='#food']").click()
+    open_if_closed(page, "#food")
     page.locator("#food").screenshot(path=str(evidence / "01-food-list.png"))
     notes.append(f"food grid rendered from {len(rows)} markdown rows")
     sample_dates = ["10/25（日）", "10/26（一）", "10/27（二）"]
@@ -425,6 +460,197 @@ def drive_meals(page, evidence: Path) -> list[str]:
     if mismatches:
         fail("food drift: " + "; ".join(mismatches))
     notes.append("every markdown restaurant is on its day timeline and in the food grid")
+    return notes
+
+
+def open_if_closed(page, selector: str) -> None:
+    """Open a details element when a narrow viewport left it closed."""
+    details = page.locator(selector)
+    if details.evaluate("el => el.tagName === 'DETAILS' && el.open === false"):
+        details.locator("summary").first.click()
+
+
+def settle_open_layout(page) -> None:
+    """Open every collapsible, then let images finish so scroll targets stay put."""
+    page.evaluate(
+        """async () => {
+          const root = document.documentElement;
+          const previous = root.style.scrollBehavior;
+          root.style.scrollBehavior = 'auto';
+          document.querySelectorAll('details').forEach((el) => { el.open = true; });
+          document.querySelectorAll('img').forEach((img) => { img.loading = 'eager'; });
+          for (let y = 0; y < root.scrollHeight; y += 800) window.scrollTo(0, y);
+          window.scrollTo(0, root.scrollHeight);
+          await Promise.all([...document.images].map((img) => (
+            img.complete
+              ? Promise.resolve()
+              : new Promise((resolve) => {
+                img.addEventListener('load', resolve, { once: true });
+                img.addEventListener('error', resolve, { once: true });
+              })
+          )));
+          window.scrollTo(0, 0);
+          root.style.scrollBehavior = previous;
+        }"""
+    )
+
+
+def drive_mobile_fit(page, evidence: Path) -> list[str]:
+    """Check overflow, the phone nav, the detail panel, and fold-button contrast."""
+    notes = []
+    width = (page.viewport_size or {}).get("width", 1280)
+    narrow = width <= 680
+    settle_open_layout(page)
+    overflow = page.evaluate(
+        "() => document.documentElement.scrollWidth - document.documentElement.clientWidth"
+    )
+    if overflow > 1:
+        fail(f"page overflows by {overflow}px with every collapsible open")
+    notes.append(f"scrollWidth matches the viewport with every section open ({width}px)")
+    nav_display = page.evaluate(
+        "() => getComputedStyle(document.querySelector('.mobile-quick-nav')).display"
+    )
+    if narrow:
+        if nav_display != "grid":
+            fail(f"mobile quick nav display is {nav_display}")
+        jumps = [
+            ("#prep-briefing", "行前"),
+            ("#itinerary", "行程"),
+            ("#trip-visual", "地圖"),
+            ("#transit-guide", "交通"),
+        ]
+        for href, label in jumps:
+            # The bar is position:fixed. A normal click would first scroll to its
+            # layout position at the end of the document and fight the hash jump.
+            page.locator(f".mobile-quick-nav a[href='{href}']").evaluate("el => el.click()")
+            target = href[1:]
+            page.wait_for_function(
+                """(id) => {
+                  const top = document.getElementById(id).getBoundingClientRect().top;
+                  const y = Math.round(window.scrollY);
+                  const state = window.__navState || {};
+                  window.__navState = state;
+                  if (state.id !== id || state.y !== y) {
+                    state.id = id;
+                    state.y = y;
+                    state.t = performance.now();
+                    return false;
+                  }
+                  return performance.now() - state.t > 400 && top >= -8 && top < 80;
+                }""",
+                arg=target,
+            )
+            notes.append(f"quick nav {label} lands on {href}")
+        page.screenshot(path=str(evidence / "01-quick-nav.png"))
+        page.evaluate(
+            """() => {
+              const root = document.documentElement;
+              const previous = root.style.scrollBehavior;
+              root.style.scrollBehavior = 'auto';
+              window.scrollTo(0, root.scrollHeight);
+              root.style.scrollBehavior = previous;
+            }"""
+        )
+        page.wait_for_function(
+            "() => Math.abs(window.scrollY + window.innerHeight - document.documentElement.scrollHeight) < 8"
+        )
+        covered = page.evaluate(
+            """() => {
+              const nav = document.querySelector('.mobile-quick-nav').getBoundingClientRect();
+              const covered = [];
+              document.querySelectorAll('a, button, summary, input, textarea, label.check-item').forEach((el) => {
+                if (el.closest('.mobile-quick-nav')) return;
+                const rect = el.getBoundingClientRect();
+                if (rect.width < 2 || rect.height < 2) return;
+                const overlap = Math.min(rect.bottom, nav.bottom) - Math.max(rect.top, nav.top);
+                if (overlap > 8) covered.push((el.innerText || el.id || el.tagName).replace(/\\s+/g, ' ').slice(0, 40));
+              });
+              return covered.slice(0, 8);
+            }"""
+        )
+        if covered:
+            fail(f"quick nav covers controls at the end of the page: {covered}")
+        page.screenshot(path=str(evidence / "02-page-end.png"))
+        notes.append("quick nav does not cover the last controls")
+    elif nav_display != "none":
+        fail(f"desktop quick nav should stay hidden, display is {nav_display}")
+    else:
+        notes.append("desktop hides the mobile quick nav")
+    page.locator(".nav-links a[href='#itinerary']").click()
+    page.locator("button[data-day='d2']").click()
+    page.locator("button.stop-card", has_text="明治神宮 參拜").click()
+    page.wait_for_function(
+        """() => {
+          const title = document.querySelector('#detailTitle')?.textContent;
+          const panel = document.querySelector('.inspector')?.getBoundingClientRect();
+          const actions = document.querySelector('#detailActions')?.getBoundingClientRect();
+          const nav = document.querySelector('.mobile-quick-nav');
+          const navTop = nav && getComputedStyle(nav).display !== 'none'
+            ? nav.getBoundingClientRect().top
+            : window.innerHeight;
+          if (!panel || !actions || title !== '明治神宮 參拜') return false;
+          return panel.top >= -2 && panel.top < window.innerHeight * 0.75
+            && actions.top >= 0 && actions.bottom <= navTop + 1;
+        }"""
+    )
+    page.locator(".inspector").screenshot(path=str(evidence / "03-inspector.png"))
+    notes.append("detail panel, map button, and booking info are in view after the stop tap")
+    contrast = page.evaluate(
+        """() => {
+          function parts(color) {
+            const match = String(color).match(/rgba?\\(([^)]+)\\)/);
+            if (!match) return null;
+            return match[1].split(',').map((value) => parseFloat(value));
+          }
+          function composite(fg, bg) {
+            const alpha = fg[3] === undefined ? 1 : fg[3];
+            return [
+              fg[0] * alpha + bg[0] * (1 - alpha),
+              fg[1] * alpha + bg[1] * (1 - alpha),
+              fg[2] * alpha + bg[2] * (1 - alpha)
+            ];
+          }
+          function rel(rgb) {
+            const lin = rgb.map((value) => {
+              const channel = value / 255;
+              return channel <= 0.04045 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+            });
+            return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+          }
+          function backgroundOf(el) {
+            const chain = [];
+            let node = el;
+            while (node) {
+              const parsed = parts(getComputedStyle(node).backgroundColor);
+              if (parsed) chain.push(parsed);
+              node = node.parentElement;
+            }
+            chain.push([247, 243, 235, 1]);
+            let acc = chain[chain.length - 1].slice(0, 3);
+            for (let index = chain.length - 2; index >= 0; index -= 1) acc = composite(chain[index], acc);
+            return acc;
+          }
+          return ['#expandAllFolds', '#collapseAllFolds'].map((selector) => {
+            const el = document.querySelector(selector);
+            const color = parts(getComputedStyle(el).color).slice(0, 3);
+            const bg = backgroundOf(el);
+            const hi = Math.max(rel(color), rel(bg));
+            const lo = Math.min(rel(color), rel(bg));
+            return {selector, text: el.innerText.trim(), ratio: Math.round(((hi + 0.05) / (lo + 0.05)) * 100) / 100};
+          });
+        }"""
+    )
+    low = [item for item in contrast if item["ratio"] < 4.5]
+    if low:
+        fail(f"fold buttons are below WCAG AA: {low}")
+    page.locator(".fold-toolbar").screenshot(path=str(evidence / "04-fold-buttons.png"))
+    notes.append("全部展開 and 全部收合 contrast is at least 4.5 (" + ", ".join(f"{item['text']} {item['ratio']}" for item in contrast) + ")")
+    link = page.locator("#transitTutorialGrid a[href='https://maps.app.goo.gl/atNgDQb1A8BMatWv7']")
+    if link.count() != 1 or link.inner_text().strip() != "地圖":
+        fail("airport step 4 should show a short 地圖 link")
+    if "atNgDQb1A8BMatWv7" in page.locator("#transitTutorialGrid").inner_text():
+        fail("the long maps URL is still visible text")
+    notes.append("airport step 4 uses a short 地圖 link and the page does not overflow")
     return notes
 
 

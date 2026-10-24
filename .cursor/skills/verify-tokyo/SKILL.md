@@ -60,9 +60,10 @@ python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive trip-map
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive transit-guide
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive food-and-night
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive meals
+python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive mobile-fit
 ```
 
-The script opens `http://127.0.0.1:8765/tokyo/index.html` in headless Chrome at 1280×900 with a new context, so desktop fold sections start open and storage is empty. Chrome is launched with `--no-sandbox` and `--disable-dev-shm-usage` because this environment's sandbox cannot start otherwise. Recipes and selectors live in `features/`. Stable handles are `data-day`, `data-filter`, `data-stop`, `data-pre`, `data-check`, and the section ids. Prefer those over coordinates.
+The script opens `http://127.0.0.1:8765/tokyo/index.html` in headless Chrome at 1280×900 with a new context, so desktop fold sections start open and storage is empty. Set `VERIFY_TOKYO_VIEWPORT` to `390x844` or `360x780` before `drive` to use that CSS viewport with touch, `isMobile`, and device scale 3. Widths at or below 680px start fold sections closed and show `.mobile-quick-nav`. Proof for those sizes is `/tmp/verify-tokyo-evidence/<width>x<height>/<feature>/`. The default 1280×900 proof stays at `/tmp/verify-tokyo-evidence/<feature>/`. Chrome is launched with `--no-sandbox` and `--disable-dev-shm-usage` because this environment's sandbox cannot start otherwise. Recipes and selectors live in `features/`. Stable handles are `data-day`, `data-filter`, `data-stop`, `data-pre`, `data-check`, and the section ids. Prefer those over coordinates.
 
 Every drive also fetches each `images/...` path referenced by `tokyo/index.html`, `tokyo/styles.css`, and `tokyo/script.js` and requires HTTP 200. Same-origin responses at 400 or above fail the drive. External hosts (Google Fonts, Google Maps, Tabelog, tenki.jp) are recorded and are not a pass condition.
 
@@ -74,6 +75,7 @@ Proof is written to `/tmp/verify-tokyo-evidence/<feature>/`. Cleanup must not de
 - `checks.json` records the feature id, assertion notes, console errors, page errors, same-origin failures, external failures, asset results, and missing in-page anchors.
 - A passing drive has no console errors, no page errors, no same-origin 404s, and no missing in-page anchors. The inspector link `預約清單` points at `#prep-briefing`.
 - `drive meals` parses `tokyo/tokyo-food.md` on its own and fails if any shop name, meal, or role is missing from `#foodGrid` or from that day's restaurant filter.
+- `drive mobile-fit` opens every collapsible and fails if the page is wider than the viewport. At 680px or below it requires `.mobile-quick-nav` to be `display: grid`, each of 行前／行程／地圖／交通 to land on its section, and the bar not to cover the last controls. After a stop tap, `.inspector` and `#detailActions` must sit in the viewport above that bar. `#expandAllFolds` and `#collapseAllFolds` need a contrast ratio of at least 4.5. The airport step 4 link text is `地圖`.
 - Mutation proof for notes is a reload, then the checkbox and textarea values. Calendar proof is the downloaded `tokyo-departure-pack.ics` file, which must contain `BEGIN:VCALENDAR` and `SL394`.
 - Broken images are not proof by their absence: `script.js` removes an image on `onerror`. Trust the asset HTTP check.
 

@@ -1105,7 +1105,7 @@ const transitTutorials = [
       {
         step: 4,
         title: "高田馬場 → 西武新宿線各停 → 沼袋",
-        body: "西武新宿線搭「各停」（急行不停沼袋），高田馬場末班約 00:20、約 00:29 到沼袋，徒歩 3 分。錯過末班：2 台計程車各約 ¥25,000 起。Maps：https://maps.app.goo.gl/atNgDQb1A8BMatWv7",
+        body: "西武新宿線搭「各停」（急行不停沼袋），高田馬場末班約 00:20、約 00:29 到沼袋，徒歩 3 分。錯過末班：2 台計程車各約 ¥25,000 起。<a href=\"https://maps.app.goo.gl/atNgDQb1A8BMatWv7\">地圖</a>",
         image: IMAGES.narita
       }
     ]
@@ -2070,6 +2070,15 @@ function updateOfflineStatus(message, ready = false) {
   elements.offlineStatus.classList.toggle("ready", ready);
 }
 
+/**
+ * On a phone, move the detail panel under the stop the traveler just tapped.
+ * @returns {void}
+ */
+function revealInspector() {
+  if (!window.matchMedia("(max-width: 680px)").matches) return;
+  document.querySelector(".inspector")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function bindEvents() {
   elements.dayTabs.addEventListener("click", (event) => {
     const button = event.target.closest("[data-day]");
@@ -2096,6 +2105,7 @@ function bindEvents() {
     state.activeStopKey = button.dataset.stop;
     renderTimeline();
     renderInspector();
+    revealInspector();
   });
 
   elements.checklist.addEventListener("change", saveChecklist);

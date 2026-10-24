@@ -30,6 +30,7 @@ Preconditions:
 ## Gotchas
 
 - Do not treat a shop name left in `script.js` as the meal. The rendered title is filled from `tokyo-food.md`. If the fetch fails, the timeline still shows the old placeholder and this drive fails.
+- Below 681px `#food` starts closed. The helper opens that summary before the list screenshot. The grid is already in the DOM.
 - The restaurant filter is `button[data-filter='food']`. The side-nav `餐廳` link only scrolls to `#food`.
 - `10/24` has no table row. The note in the markdown says to use a convenience store, and there is no meal stop to assert.
 - A card can include the backup name in a day's lunch stop and again in the dinner stop. Match `data-food-role`, not just the visible name.

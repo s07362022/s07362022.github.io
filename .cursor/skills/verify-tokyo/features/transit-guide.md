@@ -31,7 +31,7 @@ Preconditions:
 
 ## Gotchas
 
-- Below 681px the nested `details` start closed. The recipe assumes 1280×900. If the first tutorial is closed on arrival, the viewport precondition was missed; do not skip the toggle.
+- Below 681px the nested `details` start closed. With `VERIFY_TOKYO_VIEWPORT` at 680px or below, the helper expects that closed state, opens the tutorial, then closes and opens it again. At 1280×900 the tutorial starts open.
 - Step 2 (`買 Skyliner 指定席 + Suica`) and the ticket-gate step share `images/ticketGate.jpg`. The file is a gate photo. A 200 response does not mean the picture shows a ticket machine.
 - The Narita station steps use `images/narita.jpg`, which is the terminal exterior. Do not expect a platform photo.
 - `onerror` removes a broken step image. Assert `naturalWidth` and the asset HTTP check together.

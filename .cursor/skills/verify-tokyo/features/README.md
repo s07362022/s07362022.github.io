@@ -7,7 +7,7 @@ This directory is the maintained source for verifying the user-facing behavior o
 - Launch the static site from the repository root with `python3 -m http.server 8765 --bind 127.0.0.1`, or the helper `python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py launch`.
 - Open `http://127.0.0.1:8765/tokyo/index.html`.
 - Use a new browser context so `localStorage` keys `tokyoPreDeparture`, `tokyoChecklist`, and `tokyoTripNotes` are empty.
-- Use a 1280×900 viewport. Widths below 681px start fold sections closed.
+- Use a 1280×900 viewport unless `VERIFY_TOKYO_VIEWPORT` names another size, such as `390x844` or `360x780`. Widths below 681px start fold sections closed and show the bottom nav.
 - Run `python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py doctor` and require `ok: true`.
 - Never drive an instance that was not started by this verification run.
 
@@ -46,3 +46,4 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Transit guide](./transit-guide.md) covers the airport tutorial toggle and a route diagram.
 - [Food and night](./food-and-night.md) covers restaurant cards, night cards, and collapse or expand.
 - [Meals](./meals.md) covers each day's main pick and backup, and catches drift from `tokyo-food.md`.
+- [Mobile fit](./mobile-fit.md) covers page overflow, the bottom nav, the detail panel, and fold-button contrast.

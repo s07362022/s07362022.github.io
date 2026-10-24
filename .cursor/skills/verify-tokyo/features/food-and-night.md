@@ -32,6 +32,6 @@ Preconditions:
 ## Gotchas
 
 - `餐廳` is also the itinerary filter chip. The side-nav entry is `.nav-links a[href='#food']`, not `button[data-filter='food']`.
-- On a narrow viewport the sections start closed, so the headings are in the DOM and not visible until `全部展開` or the summary is chosen. Do not treat a hidden heading as missing data.
+- On a narrow viewport the sections start closed. The helper opens `#food` and `#night` before reading the headings, then still uses 全部收合 and 全部展開. A hidden heading is not missing data.
 - `全部展開` also opens the photo strip, which is `data-mobile-only` and starts closed on desktop. That strip is not this feature's proof.
 - External `來源` and `地圖` links are not fetched. A 200 on the card heading does not prove Tabelog is up.
