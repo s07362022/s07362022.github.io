@@ -1483,7 +1483,9 @@ textarea {
 .hub-legend .leg.d2 { background: #2d6a4f; }
 .hub-legend .leg.d3 { background: #4a6fa5; }
 .hub-legend .leg.d4 { background: #8b6f4e; }
-.hub-legend .leg.d5 { background: #2c5282; }
+.hub-legend .leg.d5 { background: #b5543c; }
+.hub-legend .leg.d6 { background: #6b4c9a; }
+.hub-legend .leg.d7 { background: #2c5282; }
 
 .trip-day-tree-grid {
   display: grid;

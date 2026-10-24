@@ -26,537 +26,978 @@ const mapUrl = (query) => `https://www.google.com/maps/search/?api=1&query=${enc
 
 const calendarReminders = [
   {
-    id: "shibuya-sky-book",
-    title: "預約澀谷 Sky 日落時段",
-    start: "20261010T200000",
-    end: "20261010T203000",
-    location: "SHIBUYA SKY 官網 / Klook",
-    description: "10/24 傍晚主案。官網通常提前約兩週開賣日落時段，建議 10/10 前後搶 17:00-18:30 入場。帶護照或實名資料。",
-    alarms: [1440, 120]
+    "id": "packing-d0",
+    "title": "D0 打包・回覆易遊網同意 SL394 改 17:05",
+    "start": "20261023T200000",
+    "end": "20261023T213000",
+    "location": "台灣・家中",
+    "description": "帶折傘、保暖衣物。",
+    "alarms": [
+      60
+    ]
   },
   {
-    id: "onepiece-reserve",
-    title: "確認 ONE PIECE BASE SHOP 抽籤／入場",
-    start: "20261020T200000",
-    end: "20261020T203000",
-    location: "ONE PIECE BASE App / baseshop.onepiece-base.com",
-    description: "10/25 回新宿後逛新宿丸井本館 4F。需 BASE CREW 帳號抽籤預約；確認 10/25 入場時段。",
-    alarms: [1440, 120]
+    "id": "outbound-flight",
+    "title": "SL394 桃園 → 成田（台灣 17:05 起飛）",
+    "start": "20261024T180500",
+    "end": "20261024T212500",
+    "location": "桃園國際機場 第一航廈",
+    "description": "日本時間 18:05＝台灣 17:05；21:25 抵達 NRT T1N。",
+    "alarms": [
+      1440,
+      300
+    ]
   },
   {
-    id: "hiyama-book",
-    title: "預約壽喜燒割烹 日山（人形町）午餐",
-    start: "20261015T120000",
-    end: "20261015T123000",
-    location: "https://hiyama-gr.com/sukiyaki/honten/",
-    description: "10/26（一）午餐。週日公休，務必訂週一。電話 03-3666-2901 或 Tabelog。",
-    alarms: [1440, 180]
+    "id": "checkin-numabukuro",
+    "title": "沼袋入住（深夜）",
+    "start": "20261025T001500",
+    "end": "20261025T004500",
+    "location": "東京都中野区新井4-26-2 101",
+    "description": "確認碼 HMPWSSD3ZE。",
+    "alarms": [
+      60
+    ]
   },
   {
-    id: "kamakura-prep",
-    title: "確認鎌倉・江之島周遊券與天氣",
-    start: "20261024T200000",
-    end: "20261024T203000",
-    location: "新宿站小田急窗口 / 自動售票機",
-    description: "10/25 一日遊。江之島・鎌倉周遊券約 ¥1,640（出發前再確認）。查颱風或大雨備案改市區。",
-    alarms: [1440, 60]
+    "id": "indoor-day",
+    "title": "雨天室內日：池袋 Sunshine → 秋葉原",
+    "start": "20261026T100000",
+    "end": "20261026T210000",
+    "location": "サンシャインシティ",
+    "description": "預報整天雨。",
+    "alarms": [
+      60
+    ]
   },
   {
-    id: "kamakura-day",
-    title: "鎌倉・江之島 → One Piece → 池袋あぶる",
-    start: "20261025T090000",
-    end: "20261025T220000",
-    location: "鎌倉 / 江之島 / 新宿丸井 / 池袋",
-    description: "白天鎌倉；回新宿逛 ONE PIECE BASE SHOP；晚餐燒肉あぶる。池袋。",
-    alarms: [720, 60]
+    "id": "move-day",
+    "title": "退房沼袋 11:00 → 入谷入住 15:00",
+    "start": "20261027T101500",
+    "end": "20261027T153000",
+    "location": "東京都台東区北上野2-23-2",
+    "description": "確認碼 HM5N242T99，Yoshi +81 80-3490-6745。",
+    "alarms": [
+      720,
+      30
+    ]
   },
   {
-    id: "akihabara-d1",
-    title: "10/23 秋葉原電気街（唯一一天）",
-    start: "20261023T203000",
-    end: "20261023T230000",
-    location: "秋葉原",
-    description: "宇奈とと中野店輕食後，20:30 起 GiGO、扭蛋會館、Super Potato。僅 D1。",
-    alarms: [1440, 90]
+    "id": "fuji-day",
+    "title": "河口湖一日（07:30 出門、Busta 新宿 08:15-08:35）",
+    "start": "20261028T073000",
+    "end": "20261028T190000",
+    "location": "バスタ新宿 / 河口湖",
+    "description": "主題看富士（紅葉祭 11/7-29）；巴士來回現在就訂。",
+    "alarms": [
+      720,
+      60
+    ]
   },
   {
-    id: "aburu-d3",
-    title: "燒肉あぶる。池袋（D3 晚餐）",
-    start: "20261025T190000",
-    end: "20261025T210000",
-    location: "豊島区池袋1-1-5 村田ビル1F",
-    description: "建議訂位。北口ドンキ附近。預算約 ¥5,000+/人。",
-    alarms: [1440, 120]
+    "id": "kamakura-day",
+    "title": "鎌倉・江之島 → 有樂町 新日の基",
+    "start": "20261029T100000",
+    "end": "20261029T203000",
+    "location": "鎌倉 / 江の島 / 有楽町",
+    "description": "傍晚可能下雨；新日の基 14:00 後電話訂位。",
+    "alarms": [
+      720,
+      60
+    ]
   },
   {
-    id: "return-airport",
-    title: "返程：出發去 NRT T1",
-    start: "20261027T140000",
-    end: "20261027T153000",
-    location: "成田國際機場 第1航廈 北 wing",
-    description: "14:00 從中野／沼袋出發。N'EX 或京成 Skyliner + 轉乘。國際線建議起飛前 3 小時到機場。",
-    alarms: [120, 30, 10]
+    "id": "checkout-ueno",
+    "title": "入谷退房 10:00",
+    "start": "20261030T093000",
+    "end": "20261030T100000",
+    "location": "東京都台東区北上野2-23-2",
+    "description": "雨天叫計程車到京成上野。",
+    "alarms": [
+      60,
+      15
+    ]
   },
   {
-    id: "return-flight",
-    title: "SL395 成田 NRT → 台北 TPE",
-    start: "20261027T172500",
-    end: "20261027T203000",
-    location: "成田國際機場 第1航廈",
-    description: "泰國獅航 SL395，NRT 17:25 → TPE 20:30。以航空公司與機場當日資訊為準。",
-    alarms: [180, 60]
+    "id": "skyliner-return",
+    "title": "Skyliner 京成上野 13:20 → 成田",
+    "start": "20261030T132000",
+    "end": "20261030T140300",
+    "location": "京成上野駅",
+    "description": "15:00 前完成報到。",
+    "alarms": [
+      60,
+      15
+    ]
+  },
+  {
+    "id": "return-flight",
+    "title": "SL395 成田 NRT → 桃園 TPE",
+    "start": "20261030T172500",
+    "end": "20261030T212000",
+    "location": "成田國際機場 第1航廈",
+    "description": "NRT 17:25 → TPE 20:20（台灣時間）。",
+    "alarms": [
+      180,
+      60
+    ]
   }
 ];
 
 const itinerary = [
   {
-    id: "d1",
-    date: "10/23（五）",
-    title: "抵達沼袋、宇奈とと、秋葉原（唯一一天）",
-    summary: "抵達日：成田 → N'EX 中野 → 步行／西武至沼袋入住 → 名代宇奈とと中野店 → 秋葉原主行程。秋葉原只排這一天。",
-    stats: ["抵達日", "秋葉原僅D1", "沼袋住宿"],
-    stops: [
+    "id": "d0",
+    "date": "10/23（五）",
+    "title": "台灣準備日：確認去程改 17:05、打包",
+    "summary": "去程 SL394 改 17:05 起飛、21:25 抵成田；需上易遊網『聯絡客服』回覆同意。10/24-26 東京預報有雨，帶折傘與防水外套。",
+    "stats": [
+      "台灣準備日",
+      "回覆同意",
+      "帶雨具"
+    ],
+    "stops": [
       {
-        time: "16:30",
-        title: "抵達成田 NRT 第1航廈（北）",
-        category: "transport",
-        status: "confirmed",
-        price: "機票已訂；N'EX 中野約 ¥3,070",
-        route: "NRT T1 北 → JR 成田站",
-        eta: "入境 60-90 分",
-        description: "SL394 抵達後：取行李 → 跟著「鉄道/JR」指標 → JR 售票區。詳見「交通圖解」Step。",
-        transit: "入境大廳往下到 B1 鐵路層。",
-        booking: "確認 SL394、住宿地址日文截圖。",
-        note: "先買 N'EX + Suica，再上車。",
-        place: "成田國際機場 第1旅客航廈",
-        image: IMAGES.narita
+        "time": "19:00",
+        "title": "回覆易遊網：同意 SL394 改 17:05",
+        "category": "transport",
+        "status": "needs",
+        "price": "—",
+        "route": "易遊網會員中心 → 聯絡客服",
+        "eta": "約 15 分",
+        "description": "ORD0030778555 已收異動通知：17:05 TPE T1 → 21:25 NRT T1N（SL394D）。LI（ORD0030778522）也請確認同班。",
+        "transit": "—",
+        "booking": "客服曹鳳欣 02-2516-3360 分機 1920。",
+        "note": "—",
+        "place": "易遊網"
       },
       {
-        time: "18:00",
-        title: "N'EX → 中野 → 沼袋公寓",
-        category: "transport",
-        status: "confirmed",
-        price: "N'EX 約 ¥3,070；Suica 押金 ¥500",
-        route: "成田機場站 → 中野站 → 沼袋／公寓",
-        eta: "約 80 分 + 末段 10-20 分",
-        description: "N'EX 直達中野。公寓：中野區新井 4-26-2 ギャラリー平和の森館 101。房東：西武新宿線沼袋駅徒歩 3 分；中野駅徒歩約 18 分。",
-        transit: "中野站北口出站後步行約 15-18 分，或轉西武新宿線各站停車至沼袋（急行不停沼袋）。",
-        booking: "Google Maps：https://maps.app.goo.gl/atNgDQb1A8BMatWv7",
-        note: "西武新宿線務必搭各站停車，急行不停沼袋。",
-        place: "ギャラリー平和の森館",
-        image: IMAGES.nexTrain
-      },
-      {
-        time: "19:30",
-        title: "名代宇奈とと 中野店（鰻魚飯）",
-        category: "food",
-        status: "planned",
-        price: "約 ¥900-1,800／人",
-        route: "公寓 → 中野駅周邊 中野5-52-1",
-        eta: "用餐 40-50 分",
-        description: "住宿旁平價鰻魚丼。官網：unatoto.com/shop/nakano/。備選：一風堂中野店、拉麵橫丁。",
-        transit: "步行或沼袋／中野短程。",
-        booking: "不需預約；熱門時段可能排隊。",
-        note: "秋葉原今晚是主行程，別吃太撐。",
-        place: "名代 宇奈とと 中野店",
-        tags: ["必吃", "中野"]
-      },
-      {
-        time: "20:30",
-        title: "秋葉原主行程：GiGO・扭蛋・Super Potato",
-        category: "theme",
-        status: "planned",
-        price: "逛街免費；扭蛋/遊戲依個人",
-        route: "中野 → JR 總武線 2 站 → 秋葉原",
-        eta: "車程 10 分；停留 2-2.5h",
-        description: "唯一一天秋葉原：GiGO 1 號館 → 扭蛋會館 5F → Super Potato → Radio Kaikan 外觀。可加神田明神。",
-        transit: "JR 中野 → 秋葉原（黃色總武線各站停車）。",
-        booking: "不需預約。",
-        note: "先逛再買；23:00 前搭 JR 回中野／沼袋。",
-        place: "秋葉原電気街",
-        tags: ["秋葉原", "必去", "僅D1"],
-        image: IMAGES.akihabara
-      },
-      {
-        time: "22:45",
-        title: "回中野／沼袋休息",
-        category: "rest",
-        status: "planned",
-        price: "—",
-        route: "秋葉原 → 中野 → 公寓",
-        eta: "車程 10 分 + 步行",
-        description: "搭 JR 回中野後回公寓。隔天 10:00 出門，不排秋葉原。",
-        transit: "總武線回中野；末段步行或西武各停至沼袋。",
-        booking: "—",
-        note: "戰利品先放公寓，輕裝出門。",
-        place: "ギャラリー平和の森館"
+        "time": "20:00",
+        "title": "打包 + 證件 + 下載 .ics",
+        "category": "rest",
+        "status": "planned",
+        "price": "—",
+        "route": "家中",
+        "eta": "約 90 分",
+        "description": "護照、兩間 Airbnb 日文地址截圖、離線地圖。折傘、防水外套；河口湖 10/28 早上約 4°C，要帶保暖衣物。",
+        "transit": "—",
+        "booking": "—",
+        "note": "免費託運「無」，大件行李先加購。",
+        "place": "台灣"
       }
     ]
   },
   {
-    id: "d2",
-    date: "10/24（六）",
-    title: "明治神宮、やまわらう、澀谷 Sky、Yoroniku",
-    summary: "不排秋葉原。明治神宮 → 表参道涮涮鍋やまわらう午餐 → 竹下通短逛 → 澀谷 Sky → Yoroniku 晚餐。",
-    stats: ["10:00出門", "涮涮鍋午餐", "燒肉晚餐"],
-    stops: [
+    "id": "d1",
+    "date": "10/24（六）",
+    "title": "17:05 飛東京 → 21:25 成田 → 深夜入住沼袋",
+    "summary": "東京預報曇のち雨（80%）。抵達後 Skyliner → 日暮里 → 山手線 → 高田馬場 → 西武各停 → 沼袋，約 00:00 入住，便利商店宵夜休息。",
+    "stats": [
+      "飛行日",
+      "深夜抵達",
+      "雨"
+    ],
+    "stops": [
       {
-        time: "10:00",
-        title: "中野 → 原宿（JR）",
-        category: "transport",
-        status: "planned",
-        price: "JR 約 ¥200",
-        route: "中野 → 新宿/代々木 → 原宿",
-        eta: "車程 25-30 分",
-        description: "搭 JR。週六上午建議 10:00 出發。",
-        transit: "山手線外回り往澀谷方向，或中央線轉乘。",
-        booking: "不需預約。",
-        note: "今天動線：原宿 → 表参道 → 澀谷 → 惠比壽一帶。",
-        place: "原宿駅"
+        "time": "14:00",
+        "title": "抵達桃園機場 T1 報到",
+        "category": "transport",
+        "status": "planned",
+        "price": "機捷約 NT$160",
+        "route": "台北 → 機場捷運 → A12",
+        "eta": "約 40-60 分",
+        "description": "起飛前 3 小時到櫃台。",
+        "transit": "—",
+        "booking": "可先線上 check-in。",
+        "note": "—",
+        "place": "桃園國際機場 第一航廈"
       },
       {
-        time: "10:45",
-        title: "明治神宮",
-        category: "heritage",
-        status: "needs",
-        price: "免費參拜",
-        route: "原宿站 → 表參道鳥居 → 本殿",
-        eta: "停留約 2h",
-        description: "森林步道參拜。10 月約 16:40 停止入內；午餐前離開即可。",
-        transit: "步行。",
-        booking: "不需門票。",
-        note: "御守排隊預留 15-20 分。",
-        place: "明治神宮",
-        tags: ["必去"],
-        image: IMAGES.meiji
+        "time": "17:05",
+        "title": "SL394 桃園 TPE T1 → 成田 NRT T1N",
+        "category": "transport",
+        "status": "confirmed",
+        "price": "機票已付",
+        "route": "TPE T1 → NRT T1",
+        "eta": "飛行約 3h20m",
+        "description": "17:05 起飛、21:25 抵達（日本時間）。",
+        "transit": "—",
+        "booking": "以易遊網最新行程單為準。",
+        "note": "—",
+        "place": "Narita International Airport Terminal 1",
+        "image": "images/narita.jpg"
       },
       {
-        time: "13:00",
-        title: "しゃぶしゃぶ やまわらう 表参道（午餐）",
-        category: "food",
-        status: "needs",
-        price: "約 ¥3,000-6,000／人（出發前再確認菜單）",
-        route: "明治神宮 → 表参道",
-        eta: "用餐 90-120 分",
-        description: "表参道涮涮鍋主案。Google Maps：Shabushabu yamawarau Omotesando（約 35.6675, 139.7110）。",
-        transit: "步行。",
-        booking: "建議 Tabelog／電話訂位（周六午餐熱門）。",
-        note: "下午留體力給 Sky；竹下通改短逛。",
-        place: "しゃぶしゃぶ やまわらう 表参道",
-        tags: ["必吃", "表参道"],
-        image: IMAGES.takeshita
+        "time": "21:25",
+        "title": "⚠ 入境 → Skyliner（22:20／22:40，末班約 23:00）",
+        "category": "transport",
+        "status": "needs",
+        "price": "Skyliner 約 ¥2,580",
+        "route": "成田空港 → 日暮里 → 高田馬場 → 沼袋",
+        "eta": "約 1h40m",
+        "description": "末班警示：入境＋行李約 45-70 分，到月台約 22:10-22:35，緩衝只剩 20-30 分。Skyliner 末班約 23:00；西武新宿線高田馬場末班約 00:20（約 00:29 到沼袋，搭各停）。",
+        "transit": "—",
+        "booking": "上飛機前先線上買 Skyliner 指定席。",
+        "note": "錯過末班：計程車固定車資每台約 ¥23,500-38,500（≈¥25,000 起），4 大人＋行李要 2 台或預約 Jumbo Taxi。",
+        "place": "京成 成田空港駅",
+        "image": "images/naritaStation.jpg"
       },
       {
-        time: "15:00",
-        title: "竹下通短逛 + 咖啡（可選）",
-        category: "hutong",
-        status: "optional",
-        price: "咖啡約 ¥500-700",
-        route: "表参道 → 竹下通 → 神宮前",
-        eta: "40-60 分",
-        description: "竹下通拍 15 分鐘即可；% Arabica 或 The Matcha Tokyo 可選。",
-        transit: "步行。",
-        booking: "不需預約。",
-        note: "為澀谷 Sky 保留體力。",
-        place: "% Arabica Tokyo 神宮前",
-        image: IMAGES.takeshita
+        "time": "00:15",
+        "title": "沼袋入住（中野區新井 4-26-2・101 室）",
+        "category": "rest",
+        "status": "confirmed",
+        "price": "住宿已付",
+        "route": "沼袋駅 徒歩 3 分",
+        "eta": "—",
+        "description": "Airbnb Shiryu，10/24-10/27，16:00 後入住、11:00 前退房，確認碼 HMPWSSD3ZE。",
+        "transit": "急行不停沼袋。",
+        "booking": "入住方式看房東信（密碼不寫在本頁）。",
+        "note": "已先告知房東 Shiryu：約午夜 00:00-00:30 入住。",
+        "place": "東京都中野区新井4-26-2"
       },
       {
-        time: "17:30",
-        title: "澀谷 Sky 夜景",
-        category: "night",
-        status: "needs",
-        price: "官網約 ¥2,700-3,400",
-        route: "原宿 → 澀谷 → Scramble Square 14F",
-        eta: "停留 1-1.5h",
-        description: "夜景主案。360 度露天展望，需提前線上購票。",
-        transit: "JR 原宿 → 澀谷 1 站。",
-        booking: "https://www.shibuya-sky.com/",
-        note: "風大帶外套；包包可能要寄櫃。",
-        place: "SHIBUYA SKY",
-        tags: ["必去", "夜景"],
-        image: IMAGES.shibuya
-      },
-      {
-        time: "19:30",
-        title: "Yoroniku（晚餐主案）",
-        category: "food",
-        status: "needs",
-        price: "約 ¥5,000-10,000／人（以現場為準）",
-        route: "澀谷 → 惠比壽／代官山一帶",
-        eta: "用餐 90-120 分",
-        description: "燒肉名店。Maps：Yoroniku（約 35.6602, 139.7176）。備選：牛かつもとむら、Uobei。",
-        transit: "JR／步行；回中野約 20-30 分。",
-        booking: "強烈建議提前訂位。",
-        note: "末班車約 00:30 前；連續牛肉日控制份量。",
-        place: "Yoroniku",
-        tags: ["必吃", "燒肉"],
-        image: IMAGES.shibuya
+        "time": "00:30",
+        "title": "便利商店宵夜 → 休息",
+        "category": "food",
+        "status": "optional",
+        "price": "約 ¥500-1,000",
+        "route": "沼袋站周邊",
+        "eta": "15 分",
+        "description": "買回住處吃。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "沼袋駅 コンビニ"
       }
     ]
   },
   {
-    id: "d3",
-    date: "10/25（日）",
-    title: "鎌倉・江之島 → One Piece → 池袋あぶる",
-    summary: "白天鎌倉江之島；回新宿逛 ONE PIECE BASE SHOP（丸井本館 4F）；晚餐池袋燒肉あぶる。日山週日公休，不排。",
-    stats: ["一日遊", "One Piece", "池袋燒肉"],
-    stops: [
+    "id": "d2",
+    "date": "10/25（日）",
+    "title": "明治神宮（上午）→ 原宿・表參道 → 澀谷室內商場",
+    "summary": "預報曇のち雨：上午 30% 先走戶外明治神宮與表參道，午後 80% 下雨轉進澀谷室內（Scramble Square、PARCO、MIYASHITA PARK）。晚餐燒肉。",
+    "stats": [
+      "戶外上午",
+      "室內下午",
+      "燒肉"
+    ],
+    "stops": [
       {
-        time: "10:00",
-        title: "中野出發 → 新宿轉小田急",
-        category: "transport",
-        status: "planned",
-        price: "周遊券約 ¥1,640（出發前確認）",
-        route: "中野 → 新宿 → 藤沢/鎌倉",
-        eta: "車程約 60-75 分",
-        description: "新宿小田急買「江之島・鎌倉周遊券」。",
-        transit: "JR 中野 → 新宿 → 小田急線。",
-        booking: "現場購買；假日提早出發。",
-        note: "颱風備案：新宿 One Piece + 池袋室內／あぶる。",
-        place: "新宿駅 小田急"
+        "time": "10:00",
+        "title": "出門：沼袋 → 高田馬場 → 原宿",
+        "category": "transport",
+        "status": "planned",
+        "price": "約 ¥200-300",
+        "route": "西武各停 → 山手線",
+        "eta": "約 30-35 分",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "原宿駅"
       },
       {
-        time: "11:30",
-        title: "鶴岡八幡宮 + 小町通",
-        category: "heritage",
-        status: "planned",
-        price: "參拜免費",
-        route: "鎌倉站 → 若宮大路",
-        eta: "90-120 分",
-        description: "鎌倉代表神社與商店街小吃。",
-        transit: "步行。",
-        booking: "不需預約。",
-        note: "週日人多，午餐錯開 12:30 高峰。",
-        place: "鶴岡八幡宮",
-        image: IMAGES.kamakura
+        "time": "10:40",
+        "title": "明治神宮 參拜",
+        "category": "heritage",
+        "status": "planned",
+        "price": "免費",
+        "route": "原宿駅 → 南參道",
+        "eta": "約 75 分",
+        "description": "趁上午還沒下雨先走參道與本殿。",
+        "transit": "—",
+        "booking": "—",
+        "note": "https://www.meijijingu.or.jp/",
+        "place": "明治神宮",
+        "image": "images/meiji.jpg"
       },
       {
-        time: "14:00",
-        title: "江之電：鎌倉高校前 → 江之島",
-        category: "transport",
-        status: "planned",
-        price: "含在周遊券",
-        route: "鎌倉 → 長谷 → 江之島",
-        eta: "每站 30-60 分",
-        description: "灌籃高手聖地注意車流。可跳過大佛直衝江之島。",
-        transit: "江之電。",
-        booking: "不需預約。",
-        note: "想省體力可跳過大佛。",
-        place: "鎌倉高校前駅",
-        tags: ["網紅", "灌籃高手"],
-        image: IMAGES.kamakuraHigh
+        "time": "12:15",
+        "title": "表參道午餐＋逛街（表參道 Hills 室內）",
+        "category": "theme",
+        "status": "planned",
+        "price": "午餐約 ¥1,500-3,000",
+        "route": "竹下通 → 表參道",
+        "eta": "約 2.5 小時",
+        "description": "竹下通快走，表參道 Hills 室內商場可避雨。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "表参道ヒルズ",
+        "image": "images/takeshita.jpg"
       },
       {
-        time: "16:00",
-        title: "江之島（燈塔/洞穴/海岸）",
-        category: "park",
-        status: "planned",
-        price: "展望台/洞穴聯票約 ¥1,000-1,500",
-        route: "江之島站 → 弁天橋 → 島上",
-        eta: "60-90 分",
-        description: "海邊段落；為回新宿預留時間，提早收。",
-        transit: "步行；可搭江之島電梯。",
-        booking: "現場購票。",
-        note: "約 17:00-17:30 開始回程。",
-        place: "江の島",
-        tags: ["必去"],
-        image: IMAGES.enoshima
+        "time": "15:00",
+        "title": "澀谷室內：Scramble Square・PARCO・MIYASHITA PARK",
+        "category": "theme",
+        "status": "planned",
+        "price": "免費入館",
+        "route": "表參道 → 銀座線 → 澀谷",
+        "eta": "約 3 小時",
+        "description": "PARCO（任天堂／寶可夢中心）、Scramble Square 地下美食。SHIBUYA SKY 改到 10/27 晴天傍晚。2026 話題：MilkyShop TOKYO（神南，外帶、可能排隊）。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "SHIBUYA PARCO",
+        "image": "images/shibuya.jpg"
       },
       {
-        time: "18:30",
-        title: "ONE PIECE BASE SHOP（新宿丸井本館 4F）",
-        category: "theme",
-        status: "needs",
-        price: "入場依抽籤／預約；購物另計",
-        route: "小田急回新宿 → 新宿3-30-13 丸井本館",
-        eta: "停留 45-75 分",
-        description: "官方旗艦店。需 ONE PIECE BASE App「BASE CREW」抽籤預約。https://baseshop.onepiece-base.com/",
-        transit: "JR／地鐵至新宿三丁目或新宿東口徒歩。",
-        booking: "App 抽籤；確認 10/25 時段。一人一日限入一次。",
-        note: "沒抽中改新宿逛街或直接去池袋晚餐。",
-        place: "ONE PIECE BASE SHOP 新宿マルイ本館",
-        tags: ["必去", "需預約"],
-        image: IMAGES.shinjuku
+        "time": "18:30",
+        "title": "晚餐：焼肉 よろにく（或備案）",
+        "category": "food",
+        "status": "needs",
+        "price": "每人 ¥15,000-21,500＋10% 服務費（4 人約 ¥70,000-90,000）",
+        "route": "澀谷 → 表參道",
+        "eta": "約 90 分",
+        "description": "很難訂、7 天前起收取消費。訂不到改平價：焼肉ライク 渋谷／牛かつもとむら，或回西武新宿吃 元ちゃん（70品＋3H飲み放題 ¥3,480-3,980）。",
+        "transit": "—",
+        "booking": "Tabelog 預約。",
+        "note": "—",
+        "place": "焼肉 よろにく"
       },
       {
-        time: "19:45",
-        title: "燒肉あぶる。池袋（晚餐）",
-        category: "food",
-        status: "needs",
-        price: "約 ¥5,000-6,000／人",
-        route: "新宿 → 池袋北口（山手線約 5-8 分）",
-        eta: "用餐 90-120 分",
-        description: "A5 黑毛和牛。地址：豊島区池袋1-1-5 村田ビル1F（北口ドンキ附近）。https://yakinikuabull.com/ikebukuro-store/",
-        transit: "JR 山手線新宿 → 池袋。",
-        booking: "建議訂位（Hot Pepper / 電話）。",
-        note: "思い出横丁改備選。21:30-22:00 前回沼袋／中野。",
-        place: "焼肉あぶる。池袋店",
-        tags: ["必吃", "燒肉", "池袋"],
-        image: IMAGES.shinjuku
+        "time": "20:30",
+        "title": "夜生活（可選）：澀谷 のんべい横丁",
+        "category": "night",
+        "status": "optional",
+        "price": "1 杯約 ¥600-1,000",
+        "route": "澀谷駅 JR 高架旁",
+        "eta": "約 60 分",
+        "description": "小酒館巷，雨天屋簷下就能喝。",
+        "transit": "—",
+        "booking": "—",
+        "note": "22:00 前回沼袋。",
+        "place": "渋谷 のんべい横丁"
       },
       {
-        time: "22:00",
-        title: "池袋 → 中野／沼袋（回住宿）",
-        category: "rest",
-        status: "planned",
-        price: "JR／西武約 ¥160-260",
-        route: "池袋 → 高田馬場／新宿 → 中野或沼袋",
-        eta: "約 20-30 分",
-        description: "回公寓休息。隔天壽喜燒 + 泡湯，早睡。",
-        transit: "山手線轉中央線，或西武轉乘（查 Google Maps）。",
-        booking: "不需預約。",
-        note: "西武回沼袋請搭各站停車。",
-        place: "ギャラリー平和の森館"
+        "time": "選配",
+        "title": "2026 話題：阿佐ヶ谷 たおや（銅鑼燒）",
+        "category": "food",
+        "status": "optional",
+        "price": "約 ¥300-600",
+        "route": "中野 → JR 中央線 1 站 → 阿佐ヶ谷",
+        "eta": "約 30 分",
+        "description": "ELLE 2026 第 1 名，繼承うさぎや；週一、週二休 → 只有今天能去，只收現金。可早上出門前或晚上回程繞去。",
+        "transit": "—",
+        "booking": "不訂位。",
+        "note": "https://www.elle.com/jp/gourmet/gourmet-restaurants-events/g71517719/ranking2026-2606/",
+        "place": "たおや 阿佐ヶ谷"
+      },
+      {
+        "time": "雨備",
+        "title": "雨天備案：上午直接改澀谷／新宿百貨地下街",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "若早上就下雨，明治神宮挪到 10/27 以外的空檔，先逛新宿伊勢丹地下美食。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "伊勢丹新宿店"
       }
     ]
   },
   {
-    id: "d4",
-    date: "10/26（一）",
-    title: "谷中短逛、日山壽喜燒、住宿旁泡湯",
-    summary: "上午谷中銀座短逛；午餐人形町壽喜燒割烹日山（週一可、週日休）；下午回中野泡光明泉／中野湯田；晚餐清淡。",
-    stats: ["日山午餐", "泡湯必去", "10:00出門"],
-    stops: [
+    "id": "d3",
+    "date": "10/26（一）",
+    "title": "全日室內：池袋 Sunshine City → 秋葉原 → 新宿",
+    "summary": "預報整天雨（90%、約 16mm），全排室內：池袋 Sunshine 水族館＋展望台、秋葉原電玩街，晚上新宿思い出横丁。",
+    "stats": [
+      "室內日",
+      "水族館",
+      "秋葉原"
+    ],
+    "stops": [
       {
-        time: "10:00",
-        title: "谷中銀座商店街（短逛）",
-        category: "hutong",
-        status: "planned",
-        price: "免費；小吃約 ¥500-1,000",
-        route: "中野 → 日暮里 → 谷中銀座",
-        eta: "車程 35 分；逛 60-75 分",
-        description: "下町氛圍與點心。為日山午餐提早離開。",
-        transit: "JR 中野 → 日暮里 → 步行。",
-        booking: "不需預約。",
-        note: "神保町改備選，今天主線是日山。",
-        place: "谷中銀座",
-        tags: ["生活感"],
-        image: IMAGES.yanaka
+        "time": "10:00",
+        "title": "出門：沼袋 → 高田馬場 → 池袋",
+        "category": "transport",
+        "status": "planned",
+        "price": "約 ¥200-300",
+        "route": "西武各停 → 山手線",
+        "eta": "約 25 分",
+        "description": "池袋東口地下通道可直達 Sunshine City，少淋雨。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "池袋駅"
       },
       {
-        time: "12:00",
-        title: "壽喜燒割烹 日山（人形町・午餐）",
-        category: "food",
-        status: "needs",
-        price: "午餐套餐約 ¥8,000-20,000＋／人（另服務費，以官網為準）",
-        route: "谷中 → 人形町",
-        eta: "用餐 90-120 分",
-        description: "老舖壽喜燒。中央区日本橋人形町2-5-1 日山ビル 2F。官網：hiyama-gr.com。週日公休。",
-        transit: "Metro 日比谷線等至人形町駅徒歩約 2 分。",
-        booking: "必訂：03-3666-2901 或 Tabelog。",
-        note: "高預算日；下午輕食即可再去泡湯。",
-        place: "すき焼割烹 日山",
-        tags: ["必吃", "壽喜燒", "需預約"]
+        "time": "10:30",
+        "title": "Sunshine City：水族館＋展望台てんぼうパーク＋寶可夢中心",
+        "category": "theme",
+        "status": "planned",
+        "price": "水族館 ¥2,600-3,200",
+        "route": "池袋東口 → 地下通道",
+        "eta": "約 3.5 小時（含午餐）",
+        "description": "水族館秋冬平日 10:00-18:00；ALPA 內有 Pokémon Center MEGA TOKYO、扭蛋店。",
+        "transit": "—",
+        "booking": "水族館官網可預約日時。",
+        "note": "https://sunshinecity.jp/aquarium/ticket/",
+        "place": "サンシャインシティ"
       },
       {
-        time: "14:30",
-        title: "回中野・準備泡湯",
-        category: "rest",
-        status: "planned",
-        price: "—",
-        route: "人形町 → 中野／沼袋",
-        eta: "車程約 30-40 分 + 休息",
-        description: "回公寓換洗衣物、帶毛巾。泡湯前勿過飽。",
-        transit: "Metro／JR 回中野。",
-        booking: "—",
-        note: "光明泉、中野湯田在中野站步行圈。",
-        place: "ギャラリー平和の森館"
+        "time": "14:30",
+        "title": "秋葉原：GiGO・扭蛋會館・Yodobashi Akiba",
+        "category": "theme",
+        "status": "planned",
+        "price": "—",
+        "route": "池袋 → 山手線 → 秋葉原",
+        "eta": "約 2.5 小時",
+        "description": "電玩、動漫、家電都在室內。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "秋葉原電気街",
+        "image": "images/akihabara.jpg"
       },
       {
-        time: "16:30",
-        title: "光明泉／中野湯田（住宿旁泡湯・必去）",
-        category: "wellness",
-        status: "needs",
-        price: "約 ¥500-1,000",
-        route: "中野站北口步行圈",
-        eta: "停留 90-120 分",
-        description: "錢湯主行程。推薦光明泉或中野湯田。",
-        transit: "從公寓步行。",
-        booking: "不需預約；週一查公休與刺青規定。",
-        note: "帶 ¥100 硬幣（置物櫃）。",
-        place: "光明泉 中野",
-        tags: ["泡湯", "必去", "住宿旁"],
-        image: IMAGES.onsen
+        "time": "18:30",
+        "title": "晚餐：新宿 思い出横丁",
+        "category": "food",
+        "status": "planned",
+        "price": "約 ¥2,500-4,500",
+        "route": "秋葉原 → 中央線 → 新宿",
+        "eta": "約 90 分",
+        "description": "串燒居酒屋，屋簷下有座。",
+        "transit": "—",
+        "booking": "不訂位。",
+        "note": "https://shinjuku-omoide.com/",
+        "place": "新宿 思い出横丁",
+        "image": "images/shinjuku.jpg"
       },
       {
-        time: "19:00",
-        title: "中野輕食晚餐（拉麵／便當）",
-        category: "food",
-        status: "planned",
-        price: "約 ¥900-2,000／人",
-        route: "中野站前",
-        eta: "45-60 分",
-        description: "中午已吃日山，晚上清淡即可。拉麵橫丁或便利店便當。",
-        transit: "步行。",
-        booking: "Walk-in。",
-        note: "隔天退房，控制酒量。",
-        place: "中野駅"
+        "time": "雨備",
+        "title": "2026 雨天替換：TAKANAWA GATEWAY CITY／MoN Takanawa",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "可替換池袋：MoN Takanawa（隈研吾設計，10/10-11/15「竜とそばかすの姫」live，每月第 2 個週二休）＋NEWoMan 高輪 MIMURE 美食＋PÂTISSERIE ASAKO IWAYANAGI；全室內。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "MoN Takanawa"
+      },
+      {
+        "time": "選配",
+        "title": "逛街選配：中野ブロードウェイ（室內，沼袋 1 站）",
+        "category": "theme",
+        "status": "optional",
+        "price": "—",
+        "route": "沼袋 → 中野",
+        "eta": "約 1.5 小時",
+        "description": "動漫、模型、中古鐘錶迷宮，雨天回住處前順路。",
+        "transit": "—",
+        "booking": "—",
+        "note": "https://www.nakano-broadway.com/",
+        "place": "中野ブロードウェイ"
+      },
+      {
+        "time": "20:30",
+        "title": "夜生活（可選）：新宿ゴールデン街",
+        "category": "night",
+        "status": "optional",
+        "price": "席料＋1 杯 ¥1,000-2,000",
+        "route": "新宿東口",
+        "eta": "約 60 分",
+        "description": "選標價清楚的店。",
+        "transit": "新宿 → 高田馬場 → 西武各停。",
+        "booking": "—",
+        "note": "—",
+        "place": "新宿ゴールデン街"
+      },
+      {
+        "time": "21:00",
+        "title": "夜生活（可選）：高輪SAUNAS 三溫暖",
+        "category": "night",
+        "status": "optional",
+        "price": "依方案",
+        "route": "山手線 → 高輪ゲートウェイ",
+        "eta": "約 2 小時",
+        "description": "2026/2 開幕，9 間三溫暖＋餐廳，營業至翌 2:00；雨夜好選擇。回沼袋注意西武末班 00:20。",
+        "transit": "—",
+        "booking": "官網確認方案。",
+        "note": "https://saunas-saunas.com/takanawa/",
+        "place": "高輪SAUNAS"
+      },
+      {
+        "time": "雨備",
+        "title": "其他室內備案：東京ドームシティ／teamLab Planets",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "東京ドームシティ（後樂園，遊樂設施＋Spa LaQua）；或豊洲 teamLab Planets（8:00-22:00，現場不售票，須網路預約）。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "東京ドームシティ"
       }
     ]
   },
   {
-    id: "d5",
-    date: "10/27（二）",
-    title: "中野最後半天、返程 NRT",
-    summary: "退房日：早午餐／伴手禮（可再訪宇奈とと），14:00 前出發，17:25 SL395。",
-    stats: ["14:00出發", "返程", "伴手禮"],
-    stops: [
+    "id": "d4",
+    "date": "10/27（二）",
+    "title": "搬家日：沼袋 → 上野・入谷 → アメ横・淺草",
+    "summary": "預報曇一時雨→午後轉晴（東京 40-70%）。11:00 前退房，行李寄放後逛アメ横，15:00 入住，傍晚淺草寺，晚餐上野燒肉。",
+    "stats": [
+      "搬家日",
+      "アメ横",
+      "淺草"
+    ],
+    "stops": [
       {
-        time: "09:00",
-        title: "中野早午餐 + 伴手禮",
-        category: "food",
-        status: "planned",
-        price: "約 ¥1,500-3,000",
-        route: "中野站 → Broadway／百貨",
-        eta: "90 分",
-        description: "東京香蕉、百貨地下、Broadway。可再吃宇奈とと（若 D1 沒吃到）。",
-        transit: "步行。",
-        booking: "不需預約。",
-        note: "10:30 前回公寓收行李。",
-        place: "中野駅 土産"
+        "time": "10:15",
+        "title": "退房沼袋 → 叫 1-2 台計程車直送入谷",
+        "category": "transport",
+        "status": "planned",
+        "price": "計程車約 ¥8,000-10,000（2 台）",
+        "route": "沼袋 → 上野・入谷",
+        "eta": "約 40-50 分",
+        "description": "4 人帶行李不搭電車；計程車門到門。",
+        "transit": "—",
+        "booking": "—",
+        "note": "11:00 前退房。",
+        "place": "上野駅"
       },
       {
-        time: "11:30",
-        title: "退房・最後整理",
-        category: "rest",
-        status: "confirmed",
-        price: "—",
-        route: "ギャラリー平和の森館",
-        eta: "30-45 分",
-        description: "垃圾分類、鑰匙、護照與充電器。",
-        transit: "—",
-        booking: "依房東規則。",
-        note: "大件行李前一晚秤重。",
-        place: "ギャラリー平和の森館"
+        "time": "11:15",
+        "title": "行李寄放：先問 Yoshi 提早寄放，不行改置物櫃／ecbo cloak",
+        "category": "rest",
+        "status": "needs",
+        "price": "大型置物櫃約 ¥700-1,000",
+        "route": "入谷住處 或 JR 上野駅",
+        "eta": "約 20 分",
+        "description": "入谷 15:00 才能入住，前一天就傳訊問 Yoshi 能否 11:30 先放行李。",
+        "transit": "—",
+        "booking": "房東 Yoshi +81 80-3490-6745。",
+        "note": "—",
+        "place": "JR上野駅 コインロッカー"
       },
       {
-        time: "14:00",
-        title: "出發往成田 NRT T1",
-        category: "transport",
-        status: "needs",
-        price: "N'EX 約 ¥3,070",
-        route: "中野 → 成田機場 第1航廈",
-        eta: "車程 75-100 分 + 緩衝",
-        description: "17:25 起飛 → 14:00-14:30 出發較穩。",
-        transit: "N'EX 中野直達。",
-        booking: "可提前買指定席。",
-        note: "SL395 以航空公司規定為準。",
-        place: "成田國際機場"
+        "time": "12:00",
+        "title": "上野アメ横：午餐＋逛街",
+        "category": "theme",
+        "status": "planned",
+        "price": "午餐約 ¥1,000-2,000",
+        "route": "上野 → 御徒町",
+        "eta": "約 2.5 小時",
+        "description": "高架下多有遮蔽。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "アメ横商店街"
       },
       {
-        time: "17:25",
-        title: "SL395 成田 → 台北",
-        category: "transport",
-        status: "confirmed",
-        price: "機票已訂",
-        route: "NRT T1 → TPE",
-        eta: "飛行約 4h",
-        description: "泰國獅航 SL395，17:25 → 20:30（以公告為準）。",
-        transit: "—",
-        booking: "線上 check-in 若開放可先做。",
-        note: "免稅補貨控制時間。",
-        place: "成田國際機場 第1旅客航廈"
+        "time": "15:00",
+        "title": "入住上野・入谷（台東區北上野 2-23-2）",
+        "category": "rest",
+        "status": "confirmed",
+        "price": "住宿已付",
+        "route": "上野 徒歩 10 分／入谷 徒歩 4 分",
+        "eta": "約 30 分",
+        "description": "Airbnb Yoshi，10/27-10/30，15:00 後入住、10:00 前退房，確認碼 HM5N242T99。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "東京都台東区北上野2-23-2"
+      },
+      {
+        "time": "15:45",
+        "title": "淺草寺・仲見世・雷門（可選：蔵前散步）",
+        "category": "heritage",
+        "status": "planned",
+        "price": "免費",
+        "route": "入谷 → 計程車／步行 20 分",
+        "eta": "約 1.5 小時",
+        "description": "午後轉晴；有時間順走蔵前（手作皮件、咖啡，離上野近）。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "浅草寺"
+      },
+      {
+        "time": "17:30",
+        "title": "SHIBUYA SKY 晴天傍晚（從 v4 的 10/25 移來）",
+        "category": "night",
+        "status": "optional",
+        "price": "約 ¥2,700-3,400",
+        "route": "上野 → 銀座線直達澀谷",
+        "eta": "約 1 小時",
+        "description": "10/27 午後轉晴，當天看天氣再買票；不去就留在淺草。去的話晚餐改在澀谷或回上野吃。",
+        "transit": "—",
+        "booking": "官網當天購票。",
+        "note": "https://www.shibuya-sky.com/",
+        "place": "SHIBUYA SKY"
+      },
+      {
+        "time": "18:45",
+        "title": "晚餐：焼肉上野太昌園 本店",
+        "category": "food",
+        "status": "needs",
+        "price": "約 ¥6,000-8,000",
+        "route": "淺草 → 銀座線 → 上野廣小路",
+        "eta": "約 90 分",
+        "description": "備案 焼肉陽山道、焼肉ライク 上野店（一人一爐 ¥1,000-2,000）、ホルモン青木 上野店。",
+        "transit": "—",
+        "booking": "Tabelog 訂位。",
+        "note": "—",
+        "place": "焼肉上野太昌園 本店"
+      },
+      {
+        "time": "20:30",
+        "title": "夜生活（可選）：淺草ホッピー通り／アメ横ガード下",
+        "category": "night",
+        "status": "optional",
+        "price": "約 ¥1,500-3,000",
+        "route": "—",
+        "eta": "約 60 分",
+        "description": "—",
+        "transit": "上野步行回住處。",
+        "booking": "—",
+        "note": "—",
+        "place": "ホッピー通り 浅草"
+      },
+      {
+        "time": "雨備",
+        "title": "雨天備案：東京國立博物館（上野公園）",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "週二開館（週一休）；全室內，從住處步行可到。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "東京国立博物館"
+      }
+    ]
+  },
+  {
+    "id": "d5",
+    "date": "10/28（三）",
+    "title": "郊區一日：富士山・河口湖（本週能見度最佳日）",
+    "summary": "主題：看富士山（紅葉祭 11/7-29 才開始，10/28 紅葉剛轉色、無點燈）。預報晴のち曇、上午降水 10%，搭 08:15-08:35 巴士早到。2 個大行程：大石公園＋天上山纜車（或新倉山浅間公園）。",
+    "stats": [
+      "郊區一日遊",
+      "富士晴天",
+      "早出門"
+    ],
+    "stops": [
+      {
+        "time": "07:30",
+        "title": "出門：入谷 → 上野 → JR 山手線 → 新宿（例外早出門）",
+        "category": "transport",
+        "status": "planned",
+        "price": "約 ¥210",
+        "route": "上野 → 山手線 → 新宿",
+        "eta": "約 35 分",
+        "description": "富士山上午最清楚、午後轉雲，今天提早出門。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "新宿駅"
+      },
+      {
+        "time": "08:15",
+        "title": "高速巴士 Busta 新宿 08:15-08:35 → 河口湖駅（現在就訂）",
+        "category": "transport",
+        "status": "needs",
+        "price": "單程約 ¥2,000-2,600",
+        "route": "バスタ新宿 4F → 河口湖駅",
+        "eta": "約 1h45m",
+        "description": "10/1 起需先訂位；回程訂 15:45-16:15。也可搭 JR 富士回遊號（新宿直通，需預約）。",
+        "transit": "—",
+        "booking": "高速バスネット。",
+        "note": "—",
+        "place": "バスタ新宿"
+      },
+      {
+        "time": "10:15",
+        "title": "河口湖：大石公園＋天上山纜車（看富士）",
+        "category": "park",
+        "status": "planned",
+        "price": "纜車往返約 ¥1,000；周遊巴士另計",
+        "route": "河口湖周遊巴士",
+        "eta": "約 3 小時",
+        "description": "中午前看富士倒影；もみじ回廊只當順路（紅葉祭 11/7 起）。早晚約 4°C，穿保暖。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "大石公園"
+      },
+      {
+        "time": "13:30",
+        "title": "午餐：ほうとう不動 東恋路店",
+        "category": "food",
+        "status": "planned",
+        "price": "約 ¥1,200-1,500",
+        "route": "河口湖駅周邊",
+        "eta": "約 60 分",
+        "description": "山梨南瓜味噌麵鍋。",
+        "transit": "—",
+        "booking": "不訂位。",
+        "note": "https://www.houtou-fudou.jp/",
+        "place": "ほうとう不動 東恋路店"
+      },
+      {
+        "time": "15:45",
+        "title": "巴士回新宿 → JR 回上野",
+        "category": "transport",
+        "status": "needs",
+        "price": "約 ¥2,600",
+        "route": "河口湖 → Busta 新宿 → 山手線 → 上野",
+        "eta": "約 2.5 小時",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "河口湖駅"
+      },
+      {
+        "time": "19:00",
+        "title": "晚餐：アメ横 大統領（もつ焼き）",
+        "category": "food",
+        "status": "planned",
+        "price": "約 ¥2,000-3,000",
+        "route": "上野 不忍口 徒歩 3 分",
+        "eta": "約 90 分",
+        "description": "1950 年創業高架下老店；10:00-23:30、不訂位、只收現金。",
+        "transit": "—",
+        "booking": "—",
+        "note": "https://tabelog.com/tokyo/A1311/A131101/13016740/",
+        "place": "大統領 上野"
+      },
+      {
+        "time": "20:45",
+        "title": "夜生活（可選）：立飲み たきおか",
+        "category": "night",
+        "status": "optional",
+        "price": "約 ¥1,000-2,000",
+        "route": "上野 6-9-14",
+        "eta": "約 45 分",
+        "description": "Cash-on 立飲，帶零錢。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "立飲み たきおか"
+      },
+      {
+        "time": "雨備",
+        "title": "雲多看不到富士：改室內 teamLab Planets",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "與 10/29 互換；或改豊洲 teamLab Planets（需網路預約）＋銀座三越地下美食。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "teamLab Planets TOKYO"
+      }
+    ]
+  },
+  {
+    "id": "d6",
+    "date": "10/29（四）",
+    "title": "郊區一日：鎌倉・江之島 → 有樂町ガード下",
+    "summary": "預報曇、白天降水 30%，傍晚 18:00 後可能下雨。上野東京ライン → 東京轉橫須賀線到鎌倉，2 個大行程：鎌倉＋江之島。傍晚前回到有樂町室內晚餐。",
+    "stats": [
+      "郊區一日遊",
+      "江之電",
+      "有樂町夜"
+    ],
+    "stops": [
+      {
+        "time": "10:00",
+        "title": "出門：上野 → 東京 → 鎌倉",
+        "category": "transport",
+        "status": "planned",
+        "price": "約 ¥1,000",
+        "route": "上野東京ライン → 東京轉橫須賀線",
+        "eta": "約 1h15m",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "氣溫約 11-16°C，帶外套。",
+        "place": "鎌倉駅"
+      },
+      {
+        "time": "11:15",
+        "title": "鎌倉：鶴岡八幡宮＋小町通",
+        "category": "heritage",
+        "status": "planned",
+        "price": "免費",
+        "route": "鎌倉駅東口",
+        "eta": "約 2.5 小時",
+        "description": "小町通吃吃喝喝當午餐。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "鶴岡八幡宮",
+        "image": "images/kamakura.jpg"
+      },
+      {
+        "time": "13:45",
+        "title": "江之電 → 鎌倉高校前 → 江之島",
+        "category": "park",
+        "status": "planned",
+        "price": "江之電約 ¥260-310",
+        "route": "鎌倉 → 江ノ島",
+        "eta": "約 2.5 小時",
+        "description": "平交道拍照（勿站馬路中央）、弁財天、Sea Candle。",
+        "transit": "—",
+        "booking": "—",
+        "note": "日落約 16:49，雨前離開。",
+        "place": "江の島",
+        "image": "images/enoshima.jpg"
+      },
+      {
+        "time": "16:45",
+        "title": "回程：藤澤 → 東海道線 → 新橋／有樂町",
+        "category": "transport",
+        "status": "planned",
+        "price": "約 ¥1,000",
+        "route": "藤澤 → 新橋",
+        "eta": "約 1h10m",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "有楽町駅"
+      },
+      {
+        "time": "18:30",
+        "title": "晚餐：有樂町 新日の基（鮮魚居酒屋）",
+        "category": "food",
+        "status": "needs",
+        "price": "約 ¥4,000-5,000",
+        "route": "有楽町駅 日比谷口 徒歩 1 分",
+        "eta": "約 90 分",
+        "description": "1946 年開業高架下；17:00-23:30、週日休、只收現金。",
+        "transit": "—",
+        "booking": "當日 14:00 後電話 03-3214-8021。",
+        "note": "https://tabelog.com/tokyo/A1301/A130102/13006216/",
+        "place": "新日の基 有楽町"
+      },
+      {
+        "time": "20:15",
+        "title": "夜生活（可選）：銀座・有樂町室內酒吧／六本木",
+        "category": "night",
+        "status": "optional",
+        "price": "—",
+        "route": "日比谷線直回入谷",
+        "eta": "約 60 分",
+        "description": "晚上有雨，選室內酒吧；GINZA SIX 頂樓花園雨天不建議。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "銀座"
+      },
+      {
+        "time": "雨備",
+        "title": "下雨備案：teamLab Planets＋銀座百貨地下街",
+        "category": "theme",
+        "status": "optional",
+        "price": "依館方",
+        "route": "—",
+        "eta": "—",
+        "description": "豊洲 teamLab Planets（新豊洲站 3 分，8:00-22:00）→ 銀座三越／松屋地下美食 → 有樂町晚餐。",
+        "transit": "—",
+        "booking": "—",
+        "note": "雨天或太累時替換當天戶外行程。",
+        "place": "teamLab Planets TOKYO"
+      }
+    ]
+  },
+  {
+    "id": "d7",
+    "date": "10/30（五）",
+    "title": "退房 → 上野百貨地下街 → 15:00 到成田 → SL395",
+    "summary": "預報雨（90%、約 15mm），全排室內：10:00 前退房，行李寄京成上野，松坂屋上野店地下美食與上野マルイ補伴手禮，13:20 Skyliner → 14:03 成田。",
+    "stats": [
+      "退房 10:00",
+      "室內購物",
+      "SL395"
+    ],
+    "stops": [
+      {
+        "time": "09:45",
+        "title": "退房入谷 → 京成上野寄放行李（雨天叫計程車）",
+        "category": "rest",
+        "status": "planned",
+        "price": "置物櫃約 ¥700-1,000",
+        "route": "入谷 → 京成上野",
+        "eta": "約 30 分",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "京成上野駅"
+      },
+      {
+        "time": "10:15",
+        "title": "松坂屋上野店 地下美食＋上野マルイ",
+        "category": "theme",
+        "status": "planned",
+        "price": "—",
+        "route": "上野廣小路",
+        "eta": "約 2 小時",
+        "description": "室內伴手禮與熟食；退稅帶護照。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "松坂屋上野店"
+      },
+      {
+        "time": "12:30",
+        "title": "午餐：上野站周邊",
+        "category": "food",
+        "status": "planned",
+        "price": "約 ¥1,500-2,500",
+        "route": "上野駅",
+        "eta": "約 45 分",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "上野駅"
+      },
+      {
+        "time": "13:20",
+        "title": "Skyliner 京成上野 → 成田空港",
+        "category": "transport",
+        "status": "needs",
+        "price": "約 ¥2,580",
+        "route": "京成上野 → 成田空港駅",
+        "eta": "約 43 分（14:03 到）",
+        "description": "晚一班 13:35 也可。",
+        "transit": "—",
+        "booking": "線上買指定席。",
+        "note": "15:00 前完成報到。",
+        "place": "京成上野駅"
+      },
+      {
+        "time": "17:25",
+        "title": "SL395 成田 NRT T1 → 桃園 TPE",
+        "category": "transport",
+        "status": "confirmed",
+        "price": "機票已付",
+        "route": "NRT T1 → TPE T1",
+        "eta": "—",
+        "description": "17:25 起飛、20:20 抵台（台灣時間）。",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "Narita International Airport Terminal 1",
+        "image": "images/narita.jpg"
       }
     ]
   }
@@ -564,69 +1005,73 @@ const itinerary = [
 
 
 const geoPlaces = {
-  nakano: { x: 148, y: 205, label: "中野／沼袋", sub: "住宿", kind: "hub" },
-  koenji: { x: 108, y: 198, label: "高圓寺", sub: "西", kind: "area" },
-  shinjuku: { x: 188, y: 172, label: "新宿", sub: "One Piece", kind: "area" },
-  ikebukuro: { x: 178, y: 128, label: "池袋", sub: "あぶる", kind: "area" },
-  harajuku: { x: 202, y: 218, label: "原宿", sub: "D2", kind: "area" },
-  shibuya: { x: 208, y: 262, label: "澀谷", sub: "Sky", kind: "area" },
-  ebisu: { x: 228, y: 278, label: "Yoroniku", sub: "D2 晚", kind: "area" },
-  akihabara: { x: 268, y: 188, label: "秋葉原", sub: "D1", kind: "area" },
-  yanaka: { x: 308, y: 158, label: "谷中", sub: "D4", kind: "area" },
-  ningyocho: { x: 292, y: 178, label: "人形町", sub: "日山", kind: "area" },
-  jimbocho: { x: 252, y: 168, label: "神保町", sub: "備選", kind: "area" },
-  onsen: { x: 138, y: 192, label: "光明泉", sub: "D4 泡湯", kind: "onsen" },
-  nrt: { x: 418, y: 88, label: "成田", sub: "NRT", kind: "airport" },
-  kamakura: { x: 72, y: 348, label: "鎌倉", sub: "D3", kind: "far" },
-  enoshima: { x: 48, y: 368, label: "江之島", sub: "海", kind: "far" }
+  nakano: { x: 148, y: 205, label: "沼袋", sub: "住宿 1", kind: "hub" },
+  shinjuku: { x: 188, y: 182, label: "新宿", sub: "D3 夜・D5 巴士", kind: "area" },
+  harajuku: { x: 202, y: 222, label: "原宿", sub: "明治神宮", kind: "area" },
+  shibuya: { x: 208, y: 262, label: "澀谷", sub: "D2", kind: "area" },
+  ueno: { x: 300, y: 160, label: "上野・入谷", sub: "住宿 2", kind: "hub" },
+  asakusa: { x: 335, y: 165, label: "淺草", sub: "D4", kind: "area" },
+  akihabara: { x: 290, y: 190, label: "秋葉原", sub: "D3", kind: "area" },
+  yurakucho: { x: 280, y: 232, label: "有樂町", sub: "D6 夜", kind: "area" },
+  nrt: { x: 440, y: 88, label: "成田", sub: "NRT", kind: "airport" },
+  kamakura: { x: 120, y: 360, label: "鎌倉", sub: "D6", kind: "far" },
+  enoshima: { x: 85, y: 375, label: "江之島", sub: "D6", kind: "far" },
+  fuji: { x: 30, y: 270, label: "河口湖", sub: "D5 富士", kind: "far" },
+  ikebukuro: { x: 180, y: 135, label: "池袋", sub: "D3 室內", kind: "area" },
+  toyosu: { x: 320, y: 270, label: "teamLab", sub: "雨備", kind: "area" }
 };
 
 const tripGeoOverview = {
   routes: [
-    { day: "d1", color: "#c4a574", width: 2.5, path: ["nrt", "nakano", "akihabara", "nakano"] },
-    { day: "d2", color: "#2d6a4f", width: 2.5, path: ["nakano", "harajuku", "shibuya", "ebisu", "nakano"] },
-    { day: "d3", color: "#4a6fa5", width: 2.5, path: ["nakano", "shinjuku", "kamakura", "enoshima", "shinjuku", "ikebukuro", "nakano"] },
-    { day: "d4", color: "#8b6f4e", width: 2.5, path: ["nakano", "yanaka", "ningyocho", "nakano", "onsen"] },
-    { day: "d5", color: "#2c5282", width: 2.5, path: ["nakano", "nrt"] }
+    { day: "d1", color: "#c4a574", width: 2.5, path: ["nrt", "ueno", "nakano"] },
+    { day: "d2", color: "#2d6a4f", width: 2.5, path: ["nakano", "harajuku", "shibuya", "nakano"] },
+    { day: "d3", color: "#4a6fa5", width: 2.5, path: ["nakano", "ikebukuro", "akihabara", "shinjuku", "nakano"] },
+    { day: "d4", color: "#8b6f4e", width: 2.5, path: ["nakano", "ueno", "asakusa", "ueno"] },
+    { day: "d5", color: "#b5543c", width: 2.5, path: ["ueno", "shinjuku", "fuji", "shinjuku", "ueno"] },
+    { day: "d6", color: "#6b4c9a", width: 2.5, path: ["ueno", "kamakura", "enoshima", "yurakucho", "ueno"] },
+    { day: "d7", color: "#2c5282", width: 2.5, path: ["ueno", "nrt"] }
   ],
-  activePlaces: ["nakano", "shinjuku", "ikebukuro", "harajuku", "shibuya", "ebisu", "akihabara", "yanaka", "ningyocho", "onsen", "nrt", "kamakura", "enoshima"]
+  activePlaces: Object.keys(geoPlaces)
 };
 
 const tripDayMaps = [
-  { day: "D1", date: "10/23", color: "#c4a574", title: "抵達・秋葉原", route: ["nrt", "nakano", "akihabara", "nakano"], note: "N'EX 直達中野，不經東京車站" },
-  { day: "D2", date: "10/24", color: "#2d6a4f", title: "明治・やまわらう・Yoroniku", route: ["nakano", "harajuku", "shibuya", "ebisu", "nakano"], note: "表参道涮涮鍋 + Sky + Yoroniku" },
-  { day: "D3", date: "10/25", color: "#4a6fa5", title: "鎌倉・One Piece・あぶる", route: ["nakano", "shinjuku", "kamakura", "enoshima", "shinjuku", "ikebukuro", "nakano"], note: "丸井 One Piece + 池袋燒肉" },
-  { day: "D4", date: "10/26", color: "#8b6f4e", title: "日山・泡湯", route: ["nakano", "yanaka", "ningyocho", "nakano", "onsen"], note: "人形町日山午餐 + 錢湯" },
-  { day: "D5", date: "10/27", color: "#2c5282", title: "返程", route: ["nakano", "nrt"], note: "N'EX 中野直達成田" }
+  { day: "D1", date: "10/24", color: "#c4a574", title: "深夜抵達・沼袋", route: ["nrt", "ueno", "nakano"], note: "SL394 21:25 抵達；Skyliner → 日暮里 → 高田馬場 → 沼袋" },
+  { day: "D2", date: "10/25", color: "#2d6a4f", title: "明治神宮・原宿・澀谷", route: ["nakano", "harajuku", "shibuya", "nakano"], note: "神宮 + 表參道逛街 + 澀谷；Yoroniku 燒肉" },
+  { day: "D3", date: "10/26", color: "#4a6fa5", title: "雨天室內：池袋・秋葉原", route: ["nakano", "ikebukuro", "akihabara", "shinjuku", "nakano"], note: "Sunshine 水族館 + 秋葉原 + 思い出横丁" },
+  { day: "D4", date: "10/27", color: "#8b6f4e", title: "搬家・アメ横・淺草", route: ["nakano", "ueno", "asakusa", "ueno"], note: "11:00 退房；15:00 入谷入住；太昌園燒肉" },
+  { day: "D5", date: "10/28", color: "#b5543c", title: "富士山・河口湖", route: ["ueno", "shinjuku", "fuji", "shinjuku", "ueno"], note: "上野 → JR 新宿 → Busta 巴士；本週最晴" },
+  { day: "D6", date: "10/29", color: "#6b4c9a", title: "鎌倉・江之島・有樂町", route: ["ueno", "kamakura", "enoshima", "yurakucho", "ueno"], note: "新日の基 鮮魚居酒屋" },
+  { day: "D7", date: "10/30", color: "#2c5282", title: "返程 SL395", route: ["ueno", "nrt"], note: "13:20 Skyliner → 17:25 起飛 → 20:20 抵台" }
 ];
+
 
 const transitTutorials = [
   {
-    title: "成田機場 → 中野（完整 Step）",
+    title: "成田機場 → 沼袋（Skyliner 完整 Step）",
     intro: "抵達當天照這個順序走，不會迷路。",
     steps: [
       {
         step: 1,
         title: "入境後找 JR 指標",
-        body: "跟著「Railway / 鉄道」→「JR East」往下到 B1。成田機場站與 JR 在同一層。",
+        body: "跟著「Railway / 鉄道」→「京成 Keisei / Skyliner」往下到 B1。",
         image: IMAGES.naritaStation
       },
       {
         step: 2,
-        title: "買 N'EX 車票 + Suica",
-        body: "綠色 JR 售票機可選中文。買「成田特快 N'EX 中野」+ 加購 Suica（押金 ¥500，餘額建議先充 ¥3,000）。或櫃台排隊一次辦好。",
+        title: "買 Skyliner 指定席 + Suica",
+        body: "最好上飛機前就線上買好 Skyliner（22:20／22:40，末班約 23:00）。Suica 用 iPhone 錢包或機場購買 Welcome Suica。",
         image: IMAGES.ticketMachine
       },
       {
         step: 3,
-        title: "搭 N'EX 成田特快",
-        body: "看月台螢幕確認「Narita Express → Nakano」。上車找座位，約 80 分鐘直達中野，不用轉車。",
+        title: "Skyliner → 日暮里 → 山手線 → 高田馬場",
+        body: "Skyliner 約 36 分到日暮里，轉 JR 山手線（外回り）到高田馬場。",
         image: IMAGES.nexTrain
       },
       {
         step: 4,
-        title: "中野站 → 沼袋公寓",
-        body: "房東：沼袋駅徒歩 3 分、中野駅徒歩約 18 分。可北口出站步行，或轉西武新宿線「各站停車」至沼袋（急行不停）。Maps：https://maps.app.goo.gl/atNgDQb1A8BMatWv7",
+        title: "高田馬場 → 西武新宿線各停 → 沼袋",
+        body: "西武新宿線搭「各停」（急行不停沼袋），高田馬場末班約 00:20、約 00:29 到沼袋，徒歩 3 分。錯過末班：2 台計程車各約 ¥25,000 起。Maps：https://maps.app.goo.gl/atNgDQb1A8BMatWv7",
         image: IMAGES.narita
       }
     ]
@@ -644,7 +1089,7 @@ const transitTutorials = [
       {
         step: 2,
         title: "找月台",
-        body: "進站後看藍色電子看板，找你的目的地與發車時間。中野去秋葉原 = 黃色總武線各站停車。",
+        body: "進站後看藍色電子看板，找你的目的地與發車時間。沼袋出發先搭西武線到高田馬場轉山手線。",
         image: IMAGES.yamanote
       },
       {
@@ -667,20 +1112,20 @@ const transitTutorials = [
     steps: [
       {
         step: 1,
-        title: "N'EX（成田↔中野）",
-        body: "D1 入境、D5 返程：買 N'EX 指定席票（可用 Suica 搭但需另購特快券，建議買套票最清楚）。",
+        title: "Skyliner（成田↔日暮里／上野）",
+        body: "D1 深夜（末班約 23:00）、D7 京成上野 13:20；線上先買指定席。",
         image: IMAGES.nexTrain
       },
       {
         step: 2,
-        title: "鎌倉周遊券（D3）",
-        body: "新宿小田急售票機買「江之島・鎌倉周遊券」約 ¥1,640，含往返 + 江之電無限搭。比單買划算。",
+        title: "鎌倉・江之島（D6 10/29）",
+        body: "從上野走 JR 上野東京ライン／橫須賀線（Suica 即可），江之電可買「のりおりくん」一日券。",
         image: IMAGES.kamakura
       },
       {
         step: 3,
         title: "景點門票",
-        body: "澀谷 Sky、江之島展望台等需官網預約/現場購票，不能用 Suica 代替。",
+        body: "澀谷 Sky、晴空塔、江之島展望台、河口湖高速巴士等需官網預約/現場購票，不能用 Suica 代替。",
         image: IMAGES.shibuya
       }
     ]
@@ -688,14 +1133,14 @@ const transitTutorials = [
 ];
 
 const routeCards = [
-  { title: "中野 ⇄ 秋葉原", price: "JR 總武線約 ¥160-200", route: "中野 → 秋葉原（2 站）", eta: "約 10 分", note: "秋葉原只在 D1 晚上；這條路線當天會用到。" },
-  { title: "中野 ⇄ 原宿/澀谷", price: "JR 約 ¥200-260", route: "中野 → 新宿/代々木 → 原宿/澀谷", eta: "25-35 分", note: "D2 明治神宮 + 澀谷 Sky 主線。" },
-  { title: "中野 ⇄ 新宿（小田急／One Piece）", price: "JR 約 ¥160", route: "中野 → 新宿", eta: "約 5-15 分", note: "D3 買周遊券 + ONE PIECE BASE SHOP（丸井本館）。" },
-  { title: "新宿 ⇄ 池袋（あぶる）", price: "JR 約 ¥160-200", route: "新宿 → 池袋", eta: "約 5-8 分", note: "D3 晚餐燒肉あぶる；北口ドンキ附近。" },
-  { title: "中野 ⇄ 日暮里／人形町", price: "JR／Metro 約 ¥200-300", route: "中野 → 日暮里 → 人形町", eta: "約 35-50 分", note: "D4 谷中短逛 + 日山午餐。" },
-  { title: "沼袋（住宿）", price: "西武各停", route: "中野 ↔ 沼袋", eta: "徒歩 3 分（沼袋）／18 分（中野）", note: "急行不停沼袋；務必搭各站停車。" },
-  { title: "中野 ⇄ 成田 NRT", price: "N'EX 約 ¥3,070", route: "中野 → 成田機場", eta: "約 80 分", note: "D1 入境與 D5 返程；可買指定席。" },
-  { title: "深夜回中野／沼袋", price: "JR 末班約 00:30 前後", route: "澀谷/池袋 → 中野", eta: "15-30 分", note: "喝酒後注意末班車；錯過計程車約 ¥5,000-7,000。" }
+  { title: "成田 → 沼袋（D1 深夜）", price: "Skyliner 約 ¥2,580 + JR/西武 約 ¥400", route: "成田空港 → 日暮里 → 高田馬場 → 沼袋", eta: "約 1h40m", note: "Skyliner 末班約 23:00、西武末班約 00:20；錯過 → 2 台計程車各約 ¥25,000 起。" },
+  { title: "沼袋 ⇄ 原宿/澀谷/新宿", price: "約 ¥200-300", route: "西武各停 → 高田馬場 → 山手線", eta: "25-35 分", note: "D2、D3 主線。" },
+  { title: "上野 → 新宿 → 河口湖", price: "JR ¥210 + 巴士約 ¥2,200-2,600", route: "山手線 → バスタ新宿 4F → 河口湖駅", eta: "約 2h15m", note: "D5 10/28；或 JR 富士回遊號（新宿直通）。" },
+  { title: "沼袋 → 上野（搬家）", price: "電車約 ¥400／計程車約 ¥8,000-10,000", route: "高田馬場 → 山手線 → 上野", eta: "約 40-50 分", note: "D4；大行李建議計程車。" },
+  { title: "沼袋 ⇄ 池袋／秋葉原", price: "約 ¥200-300", route: "西武各停 → 高田馬場 → 山手線", eta: "25-40 分", note: "D3 雨天室內日。" },
+  { title: "上野 ⇄ 鎌倉", price: "約 ¥1,000", route: "上野東京ライン → 東京 → 橫須賀線", eta: "約 1h15m", note: "D6；回程藤澤 → 東海道線 → 新橋。" },
+  { title: "入谷 ⇄ 銀座/有樂町/六本木", price: "約 ¥200-260", route: "日比谷線 直通", eta: "15-25 分", note: "D6 夜生活回家不用轉車。" },
+  { title: "上野 → 成田（返程）", price: "Skyliner 約 ¥2,580", route: "京成上野 → 成田空港", eta: "約 43 分", note: "D7 13:20 班 → 14:03。" }
 ];
 
 const transitMaps = [
@@ -711,89 +1156,25 @@ const transitMaps = [
     caption: "澀谷・新宿・原宿・秋葉原怎麼串",
     image: IMAGES.yamanote,
     link: "https://www.jreast.co.jp/multi/zh-CHT/",
-    note: "D2 用：中野 → 原宿 → 澀谷，山手線環狀一圈就懂。"
+    note: "D2（10/25）用：沼袋 → 高田馬場 → 原宿 → 澀谷，山手線環狀一圈就懂。"
   },
   {
     title: "關東鐵路概覽圖",
-    caption: "中野在東京西側、鎌倉在西南",
+    caption: "沼袋在東京西側、上野在東側、鎌倉在西南",
     image: IMAGES.greaterTokyo,
     link: "https://www.jreast.co.jp/",
-    note: "看大局：中野（住宿）→ 新宿 → 小田急往鎌倉；成田在東邊。"
+    note: "看大局：沼袋（住宿 1）／上野（住宿 2）→ 新宿巴士往河口湖、JR 往鎌倉；成田在東邊。"
   }
 ];
 
 const routeDiagrams = [
-  {
-    day: "D1",
-    title: "成田 NRT → 中野（抵達）",
-    line: "nex",
-    steps: [
-      { label: "NRT 第1航廈", sub: "SL394 入境", icon: "✈" },
-      { label: "N'EX 成田特快", sub: "約 80 分・可買指定席", icon: "🚄" },
-      { label: "中野／沼袋", sub: "徒歩或西武各停 → 公寓", icon: "🏠", hub: true }
-    ],
-    tips: ["機場買/綁 Suica", "西武急行不停沼袋", "Maps 存房東連結"]
-  },
-  {
-    day: "D1",
-    title: "中野 ⇄ 秋葉原（僅第一天晚上）",
-    line: "sobu",
-    steps: [
-      { label: "中野", sub: "宇奈とと後出發", icon: "🏠", hub: true },
-      { label: "→ 2 站", sub: "約 10 分", icon: "🟡" },
-      { label: "秋葉原", sub: "電気街・GiGO", icon: "🎮" }
-    ],
-    tips: ["黃色總武線各站停車", "不用轉車"]
-  },
-  {
-    day: "D2",
-    title: "中野 → 原宿 → 澀谷 → Yoroniku",
-    line: "yamanote",
-    steps: [
-      { label: "中野", sub: "JR 出發", icon: "🏠", hub: true },
-      { label: "原宿", sub: "明治・やまわらう", icon: "⛩" },
-      { label: "澀谷", sub: "Sky 夜景", icon: "🌃" },
-      { label: "Yoroniku", sub: "晚餐燒肉", icon: "🥩" }
-    ],
-    tips: ["不經秋葉原", "表参道涮涮鍋午餐", "Yoroniku 需訂位"]
-  },
-  {
-    day: "D3",
-    title: "鎌倉 → One Piece → 池袋あぶる",
-    line: "odakyu",
-    steps: [
-      { label: "中野", sub: "JR", icon: "🏠", hub: true },
-      { label: "新宿", sub: "買周遊券", icon: "🎫" },
-      { label: "鎌倉", sub: "八幡宮・江之島", icon: "🌊" },
-      { label: "丸井", sub: "ONE PIECE", icon: "🏴‍☠️" },
-      { label: "池袋", sub: "あぶる", icon: "🥩" },
-      { label: "沼袋", sub: "回住宿", icon: "🏠", hub: true }
-    ],
-    tips: ["One Piece 需 App 抽籤", "あぶる訂位", "西武回沼袋搭各停"]
-  },
-  {
-    day: "D4",
-    title: "谷中 → 日山 → 住宿旁泡湯",
-    line: "local",
-    steps: [
-      { label: "中野", sub: "出發", icon: "🏠", hub: true },
-      { label: "日暮里", sub: "谷中短逛", icon: "🐱" },
-      { label: "人形町", sub: "日山壽喜燒", icon: "🍲" },
-      { label: "光明泉", sub: "泡湯必去", icon: "♨" }
-    ],
-    tips: ["日山週日休、週一午餐", "必訂位", "泡湯後輕食即可"]
-  },
-  {
-    day: "D5",
-    title: "中野 → 成田（返程）",
-    line: "nex",
-    steps: [
-      { label: "公寓", sub: "14:00 出門", icon: "🏠", hub: true },
-      { label: "N'EX", sub: "約 80 分", icon: "🚄" },
-      { label: "NRT T1", sub: "SL395 17:25", icon: "✈" }
-    ],
-    tips: ["起飛前 3 小時到機場", "預留安檢排隊"]
-  }
+  { day: "D1", title: "成田 NRT → 沼袋（深夜）", line: "nex", steps: [ { label: "NRT T1", sub: "21:25 抵達", icon: "✈" }, { label: "Skyliner", sub: "22:20/22:40 末班 23:00", icon: "🚄" }, { label: "日暮里", sub: "轉山手線", icon: "🟢" }, { label: "高田馬場", sub: "轉西武各停", icon: "🚃" }, { label: "沼袋", sub: "徒歩 3 分", icon: "🏠", hub: true } ], tips: ["急行不停沼袋", "趕不上就計程車"] },
+  { day: "D2", title: "沼袋 → 原宿 → 澀谷", line: "yamanote", steps: [ { label: "沼袋", sub: "10:00", icon: "🏠", hub: true }, { label: "原宿", sub: "明治神宮", icon: "⛩" }, { label: "表參道", sub: "逛街", icon: "🛍" }, { label: "澀谷", sub: "PARCO", icon: "🌃" } ], tips: ["Yoroniku 需訂位", "のんべい横丁可選"] },
+  { day: "D3", title: "沼袋 → 池袋 → 秋葉原 → 新宿（室內）", line: "yamanote", steps: [ { label: "池袋", sub: "Sunshine", icon: "🐠" }, { label: "秋葉原", sub: "GiGO", icon: "🎮" }, { label: "新宿", sub: "思い出横丁", icon: "🏮" } ], tips: ["地下通道少淋雨", "全日雨備"] },
+  { day: "D4", title: "沼袋 → 上野（搬家）→ 淺草", line: "local", steps: [ { label: "沼袋", sub: "11:00 退房", icon: "🧳" }, { label: "上野", sub: "寄放・アメ横", icon: "🛍" }, { label: "入谷", sub: "15:00 入住", icon: "🏠", hub: true }, { label: "淺草", sub: "淺草寺", icon: "⛩" } ], tips: ["計程車搬行李最省力", "太昌園燒肉"] },
+  { day: "D5", title: "上野 → 新宿 → 河口湖（巴士）", line: "odakyu", steps: [ { label: "上野", sub: "08:30 山手線", icon: "🏠", hub: true }, { label: "バスタ新宿", sub: "08:15-08:35", icon: "🚌" }, { label: "河口湖", sub: "大石公園", icon: "🗻" }, { label: "上野", sub: "大統領", icon: "🏮" } ], tips: ["上午富士最清楚", "來回巴士先訂"] },
+  { day: "D6", title: "上野 → 鎌倉 → 江之島 → 有樂町", line: "odakyu", steps: [ { label: "上野", sub: "10:00", icon: "🏠", hub: true }, { label: "鎌倉", sub: "八幡宮", icon: "⛩" }, { label: "江之島", sub: "江之電・夕陽", icon: "🌊" }, { label: "有樂町", sub: "新日の基", icon: "🍶" } ], tips: ["東京站轉橫須賀線", "日比谷線直回入谷"] },
+  { day: "D7", title: "上野 → 成田（返程）", line: "nex", steps: [ { label: "入谷", sub: "10:00 前退房", icon: "🧳" }, { label: "京成上野", sub: "13:20 Skyliner", icon: "🚄" }, { label: "NRT T1", sub: "SL395 17:25", icon: "✈" } ], tips: ["15:00 前到機場", "20:20 抵台"] }
 ];
 
 const transitTips = [
@@ -803,9 +1184,9 @@ const transitTips = [
     body: "進站刷卡、出站刷卡。儲值機在車站；便利店也能加值。iPhone 錢包可綁定 Suica，少一張實體卡。"
   },
   {
-    title: "JR 總武線（中野的生命線）",
+    title: "西武新宿線（沼袋的生命線）",
     icon: "🟡",
-    body: "中野站的黃色各站停車，往秋葉原/御茶ノ水方向。去秋葉原只要 2 站，是這趟最常用路線。"
+    body: "沼袋只停各停，高田馬場轉山手線；西武新宿駅可直達新宿東口。"
   },
   {
     title: "山手線（環狀記法）",
@@ -818,82 +1199,90 @@ const transitTips = [
     body: "輸入目的地 → 選電車圖示 → 看「發車月台」與「第幾節車廂」。比只看路線圖更不容易搭錯。"
   },
   {
-    title: "成田 N'EX 購票",
+    title: "成田 Skyliner 購票",
     icon: "🎫",
-    body: "機場 JR 櫃台或售票機；也可預先在 Klook/JR East 網站買。中野可直達，不用轉車。"
+    body: "京成官網或 Klook 先買指定席；成田空港站京成櫃台也可。"
   },
   {
     title: "末班車提醒",
     icon: "⏰",
-    body: "JR 末班約 00:30 前後。D2 澀谷喝酒後，錯過末班計程車回中野約 ¥5,000-7,000。"
+    body: "西武新宿線末班約 00:20（D1-D3）；錯過末班計程車回沼袋約 ¥5,000-7,000。"
   }
 ];
 
 const budgetItems = [
-  { title: "交通（含鎌倉周遊券）", cny: "—", twd: "約 NT$2,500-4,500", note: "以 JPY 計：Suica 儲值 + 周遊券 ¥1,640 + N'EX 往返約 ¥6,000。" },
-  { title: "景點（澀谷 Sky 等）", cny: "—", twd: "約 NT$1,200-2,000", note: "澀谷 Sky 約 ¥2,700-3,400；江之島展望/洞穴另計。" },
-  { title: "餐食（5 日）", cny: "—", twd: "約 NT$8,000-15,000", note: "含燒肉、拉麵、居酒屋、咖啡；燒肉日預算拉高。" },
+  { title: "交通（含巴士、Skyliner）", cny: "—", twd: "約 NT$6,000-9,000", note: "以 JPY 計：Suica 儲值 + 河口湖巴士往返約 ¥5,000 + Skyliner 往返約 ¥5,200。" },
+  { title: "景點（澀谷 Sky 等）", cny: "—", twd: "約 NT$1,500-3,000", note: "澀谷 Sky（10/27 可選）約 ¥2,700-3,400；晴空塔（可選）約 ¥2,100-3,100；江之島、纜車另計。" },
+  { title: "餐食（7 日）", cny: "—", twd: "約 NT$11,000-20,000", note: "含燒肉、拉麵、居酒屋、咖啡；燒肉日預算拉高。" },
   { title: "購物/扭蛋/伴手禮", cny: "—", twd: "約 NT$3,000-8,000", note: "秋葉原與中野 Broadway 最易超支，先設上限。" },
-  { title: "總預估（不含機票住宿）", cny: "¥35,000-55,000", twd: "約 NT$7,500-12,000", note: "依 1 JPY ≈ NT$0.22 粗估；匯率與個人購物浮動大。" }
+  { title: "總預估（不含機票住宿）", cny: "¥80,000-140,000", twd: "約 NT$17,500-31,000", note: "依 1 JPY ≈ NT$0.22 粗估；匯率與個人購物浮動大。" }
 ];
 
 const taiwanPrep = [
   { title: "護照與簽證", label: "必做", body: "台灣護照赴日免簽 90 日。確認效期（建議 6 個月以上）、機票姓名與護照一致。" },
-  { title: "機票 SL394 / SL395", label: "核對", body: "泰國獅航行李與線上 check-in 規定以官網為準；廉航注意托運行李加購。" },
+  { title: "機票 SL394 / SL395", label: "已確認", body: "4 人同班：去 10/24 SL394 17:05→21:25，回 10/30 SL395 17:25→20:20。行程單免費託運行李皆「無」，請先加購。" },
   { title: "網路與 Suica", label: "必備", body: "eSIM/漫遊 + 入境後購或綁定 Suica/Pasmo。iPhone 錢包可綁定，實體卡機場也能買。" },
-  { title: "澀谷 Sky 預約", label: "高優先", body: "10/24 傍晚時段建議出發前兩週搶購；備案為澀谷 Hikarie 展望或地面十字路口。" },
-  { title: "住宿聯絡", label: "必做", body: "公寓入住方式、Wi-Fi、垃圾分類問清楚。地址日文版存 Google Maps 離線地圖。" },
+  { title: "澀谷 Sky 預約", label: "可選", body: "可選：改 10/27（二）晴天傍晚，當天看天氣再買；備案為澀谷 Hikarie 展望。" },
+  { title: "住宿聯絡", label: "必做", body: "沼袋 10/24-10/27、上野入谷 10/27-10/30；垃圾分類依房東說明。地址日文版存 Google Maps 離線地圖。" },
   { title: "旅遊保險", label: "建議", body: "海外醫療與班機延誤；鎌倉日步行多，扭傷理赔留意條款。" },
-  { title: "現金與信用卡", label: "備援", body: "日本仍有不少小店只收現金。帶 ¥20,000-30,000 現金，其餘 Suica/信用卡。" },
+  { title: "現金與信用卡", label: "備援", body: "日本仍有不少小店只收現金。帶 ¥30,000-40,000 現金，其餘 Suica/信用卡。" },
   { title: "禮儀提醒", label: "重要", body: "電車內不講電話、垃圾隨身帶回、排隊靠左（大阪靠右，東京樓梯靠左為多）。" }
 ];
 
 const foodList = [
-  { title: "名代宇奈とと 中野店", area: "中野", price: "約 ¥900-1,800", bestFor: "D1 抵達鰻魚飯主案", source: "https://www.unatoto.com/shop/nakano/", map: "名代 宇奈とと 中野店" },
-  { title: "しゃぶしゃぶ やまわらう 表参道", area: "表参道", price: "約 ¥3,000-6,000", bestFor: "D2 午餐主案", source: "https://tabelog.com/", map: "しゃぶしゃぶ やまわらう 表参道" },
-  { title: "Yoroniku", area: "惠比壽／澀谷", price: "約 ¥5,000-10,000", bestFor: "D2 晚餐主案（Sky 後）", source: "https://maps.google.com/?q=Yoroniku+Tokyo", map: "Yoroniku" },
-  { title: "燒肉あぶる。池袋", area: "池袋", price: "約 ¥5,000-6,000", bestFor: "D3 晚餐主案", source: "https://yakinikuabull.com/ikebukuro-store/", map: "焼肉あぶる。池袋店" },
-  { title: "壽喜燒割烹 日山（人形町）", area: "人形町", price: "約 ¥8,000-20,000+", bestFor: "D4 午餐主案（週日休）", source: "https://hiyama-gr.com/sukiyaki/honten/", map: "すき焼割烹 日山" },
-  { title: "一風堂 中野店", area: "中野", price: "約 ¥900-1,200", bestFor: "D1 備選拉麵", source: "https://www.ippudo.com/", map: "一風堂 中野" },
-  { title: "牛かつもとむら", area: "秋葉原/澀谷", price: "約 ¥1,200-1,800", bestFor: "D2 備選（Yoroniku 訂不到時）", source: "https://motomura.jp/", map: "牛かつもとむら 渋谷" },
-  { title: "% Arabica 神宮前", area: "原宿", price: "咖啡約 ¥500-700", bestFor: "D2 竹下通短逛", source: "https://arabicacoffee.jp/", map: "% Arabica Tokyo 神宮前" },
-  { title: "Uobei 渋谷", area: "澀谷", price: "約 ¥2,000-3,500", bestFor: "D2 備選快食壽司", source: "https://www.uobei.com/", map: "Uobei 渋谷" },
-  { title: "鎌倉小町通小吃", area: "鎌倉", price: "約 ¥500-1,500", bestFor: "D3 午餐散步", source: "https://www.kamakura-info.jp/", map: "鎌倉 小町通" },
-  { title: "谷中銀座 肉まん/草鞋燒", area: "谷中", price: "約 ¥300-800", bestFor: "D4 上午點心", source: "https://www.gotokyo.org/", map: "谷中銀座" },
-  { title: "中野站拉麵橫丁", area: "中野", price: "約 ¥900-1,400", bestFor: "D4 泡湯後輕食", source: "https://www.gotokyo.org/", map: "中野駅 ラーメン" },
-  { title: "神保町喫茶", area: "神保町", price: "咖啡 ¥600-1,000", bestFor: "D4 備選", source: "https://www.gotokyo.org/", map: "神保町 喫茶店" }
+  { title: "焼肉 よろにく（Yoroniku）", area: "表參道／南青山", price: "每人 ¥15,000-21,500＋10%", bestFor: "D2 燒肉晚餐（需訂位）", source: "https://tabelog.com/", map: "焼肉 よろにく 南青山" },
+  { title: "牛かつもとむら 渋谷", area: "澀谷", price: "約 ¥1,500-2,500", bestFor: "D2 備案", source: "https://motomura.jp/", map: "牛かつもとむら 渋谷" },
+  { title: "ほうとう不動", area: "河口湖", price: "約 ¥1,200-1,500", bestFor: "D5 河口湖午餐", source: "https://www.houtou-fudou.jp/", map: "ほうとう不動 東恋路店" },
+  { title: "思い出横丁 串燒", area: "新宿", price: "約 ¥2,500-4,500", bestFor: "D3 晚餐居酒屋", source: "https://shinjuku-omoide.com/", map: "思い出横丁" },
+  { title: "焼肉上野太昌園 本店", area: "上野", price: "約 ¥6,000-8,000", bestFor: "D4 燒肉晚餐", source: "https://tabelog.com/yakiniku/tokyo/A1311/rank/", map: "焼肉上野太昌園 本店" },
+  { title: "焼肉陽山道 上野広小路店", area: "上野", price: "約 ¥6,000-8,000", bestFor: "D4 燒肉備案（全席個室）", source: "https://tabelog.com/yakiniku/tokyo/A1311/rank/", map: "焼肉陽山道 上野広小路店" },
+  { title: "淺草 仲見世小吃", area: "淺草", price: "約 ¥300-800", bestFor: "D4 下午點心", source: "https://www.senso-ji.jp/", map: "仲見世通り" },
+  { title: "サンシャインシティ 飲食街", area: "池袋", price: "約 ¥1,000-2,000", bestFor: "D3 雨天午餐", source: "https://sunshinecity.jp/", map: "サンシャインシティ" },
+  { title: "松坂屋上野店 地下美食", area: "上野", price: "依店", bestFor: "D7 伴手禮", source: "https://www.matsuzakaya.co.jp/ueno/", map: "松坂屋上野店" },
+  { title: "大統領（アメ横）", area: "上野", price: "約 ¥2,000-3,000", bestFor: "D5 河口湖回來晚餐", source: "https://tabelog.com/tokyo/A1311/A131101/13016740/", map: "大統領 上野6-10-14" },
+  { title: "鎌倉小町通小吃", area: "鎌倉", price: "約 ¥500-1,500", bestFor: "D6 午餐散步", source: "https://www.kamakura-info.jp/", map: "鎌倉 小町通" },
+  { title: "ホルモン焼肉 縁 中野店", area: "中野（沼袋旁）", price: "90分食べ放題 ¥4,180-6,380", bestFor: "D1-D3 高CP燒肉", source: "https://www.ensyouji.co.jp/", map: "ホルモン焼肉 縁 中野" },
+  { title: "炭火焼肉 元ちゃん 新宿東口", area: "西武新宿 3 分", price: "¥3,480-3,980（含 3H 飲み放題）", bestFor: "D2-D3；西武線直回沼袋", source: "https://www.hotpepper.jp/strJ000651960/", map: "炭火焼肉 元ちゃん 新宿東口" },
+  { title: "天龍 新宿東口店", area: "西武新宿 0 分", price: "¥2,800-3,980 食べ放題", bestFor: "D2-D3 包廂", source: "https://www.hotpepper.jp/SA11/G008/g080/dncLT0089/U012/", map: "天龍 新宿東口店" },
+  { title: "焼肉ライク 上野店", area: "上野広小路", price: "¥1,000-2,000", bestFor: "D4-D7 一人一爐", source: "https://www.yakiniku-like.com/", map: "焼肉ライク 上野店" },
+  { title: "焼肉 やまだ", area: "上野広小路", price: "約 ¥4,000-6,000", bestFor: "D4-D6（只接電話預約）", source: "https://uyamaresort.com/column/ueno-yakiniku/", map: "焼肉 やまだ 上野" },
+  { title: "ホルモン本舗 炎 上野駅前店", area: "JR上野 1 分", price: "¥3,000-4,000", bestFor: "24 小時宵夜", source: "https://uyamaresort.com/column/ueno-yakiniku/", map: "ホルモン本舗 炎 上野駅前店" },
+  { title: "焼肉陽山道 上野本店 平日午餐", area: "御徒町", price: "午餐 ¥1,000-2,000", bestFor: "D4-D7 平日午餐 CP 最強", source: "https://tabelog.com/tokyo/A1311/A131101/13016717/", map: "焼肉陽山道 上野本店" },
+  { title: "たおや（銅鑼燒）", area: "阿佐ヶ谷", price: "約 ¥300-600", bestFor: "D2 10/25（週一二休、現金）", source: "https://www.elle.com/jp/gourmet/gourmet-restaurants-events/g71517719/ranking2026-2606/", map: "たおや 阿佐ヶ谷" },
+  { title: "新日の基（Andy's）", area: "有樂町", price: "約 ¥4,000-5,000", bestFor: "D6 晚餐鮮魚居酒屋（週日休）", source: "https://tabelog.com/tokyo/A1301/A130102/13006216/", map: "新日の基 有楽町2-4-4" }
 ];
 
 const nightList = [
-  { title: "澀谷 Sky", type: "展望台", hours: "依預約時段", price: "約 ¥2,700-3,400", route: "澀谷 Scramble Square 14F", source: "https://www.shibuya-sky.com/", note: "D2 夜景主案；需提前購票。" },
-  { title: "MIYASHITA PARK 屋上", type: "夜景/酒吧", hours: "依店舗", price: "免費入場；酒吧另計", route: "D2 澀谷 Sky 前後", source: "https://www.shibuya-scramble-square.com/", note: "年輕人愛的複合商場，屋上綠洲拍照。" },
-  { title: "秋葉原電気街夜景", type: "散步", hours: "店舖約至 21:00-22:00", price: "免費", route: "D1 唯一一天", source: "https://www.gotokyo.org/", note: "霓虹與扭蛋，不必購物也可感受氛圍。" },
-  { title: "澀谷居酒屋橫丁", type: "居酒屋", hours: "17:00-23:00", price: "約 ¥3,000-6,000", route: "D2 晚餐圈", source: "https://tabelog.com/", note: "周六熱門，建議訂位或早到。" },
-  { title: "ONE PIECE BASE SHOP", type: "旗艦店", hours: "約 11:00-20:00（以官網為準）", price: "需抽籤預約", route: "D3 新宿丸井本館 4F", source: "https://baseshop.onepiece-base.com/", note: "BASE App 抽籤；沒抽中改逛街。" },
-  { title: "燒肉あぶる。池袋", type: "燒肉晚餐", hours: "D3 19:45 起", price: "約 ¥5,000-6,000", route: "新宿 → 池袋北口", source: "https://yakinikuabull.com/ikebukuro-store/", note: "D3 晚餐主案；建議訂位。" },
-  { title: "新宿思い出横丁（備選）", type: "夜景/居酒屋", hours: "彈性", price: "約 ¥2,000-4,000", route: "あぶる訂不到時", source: "https://www.gotokyo.org/", note: "本版主線改池袋あぶる。" },
-  { title: "光明泉／中野湯田", type: "錢湯", hours: "D4 16:30 起", price: "約 ¥500-1,000", route: "中野站步行 10 分", source: "https://www.gotokyo.org/", note: "泡湯日主行程；刺青規定先查。" },
+  { title: "澀谷 のんべい横丁", type: "小酒館巷", hours: "約 18:00-深夜", price: "1 杯約 ¥600-1,000", route: "D2 澀谷", source: "https://www.gotokyo.org/", note: "店小，一兩杯就換。" },
+  { title: "SHIBUYA SKY", type: "展望台", hours: "依預約時段", price: "約 ¥2,700-3,400", route: "D4 10/27 晴天傍晚", source: "https://www.shibuya-sky.com/", note: "當天看天氣再買。" },
+  { title: "新宿 思い出横丁", type: "串燒居酒屋", hours: "多數 17:00-24:00", price: "約 ¥2,500-4,500", route: "D3 室內日晚餐", source: "https://shinjuku-omoide.com/", note: "晚餐兼夜生活。" },
+  { title: "新宿ゴールデン街", type: "小酒吧街", hours: "約 20:00-深夜", price: "席料＋1 杯約 ¥1,000-2,000", route: "D3 可選", source: "https://www.gotokyo.org/", note: "看清楚座位費。" },
+  { title: "淺草 ホッピー通り", type: "燉煮露天酒場", hours: "白天-22:00 前後", price: "約 ¥1,500-3,000", route: "D4 淺草", source: "https://www.gotokyo.org/", note: "淺草寺西側。" },
+  { title: "立飲み たきおか", type: "立飲み", hours: "07:00-23:30", price: "約 ¥1,000-2,000", route: "D5 上野", source: "https://tabelog.com/tokyo/A1311/A131101/13024952/", note: "Cash-on，帶零錢。" },
+  { title: "秋葉原電気街夜逛", type: "散步", hours: "店舖約至 21:00-22:00", price: "免費", route: "D3 室內日", source: "https://www.gotokyo.org/", note: "扭蛋、GiGO。" },
+  { title: "有樂町ガード下", type: "高架下居酒屋", hours: "17:00-23:30", price: "約 ¥3,000-5,000", route: "D6 鎌倉回程", source: "https://shin-hinomoto.jp/", note: "新日の基週日休。" },
+  { title: "高輪SAUNAS", type: "三溫暖（2026 新）", hours: "11:00-翌2:00", price: "依方案", route: "D3 雨夜可選", source: "https://saunas-saunas.com/takanawa/", note: "回沼袋注意西武末班 00:20。" },
+  { title: "高円寺 小酒館／古著街", type: "在地酒場", hours: "傍晚-深夜", price: "約 ¥1,500-3,000", route: "D1-D3（中央線近沼袋）", source: "https://www.gotokyo.org/", note: "古著＋live house。" },
+  { title: "六本木", type: "夜店/酒吧", hours: "深夜", price: "依店", route: "D6 可選（日比谷線直回入谷）", source: "https://www.gotokyo.org/", note: "注意拉客店家。" }
 ];
 
 const tips = [
-  { title: "10:00 出門節奏", body: "多數日 10:00 離開公寓，每點 1-2 小時。D5 例外要 14:00 去機場。" },
-  { title: "Suica 先儲值", body: "機場或中野站儲值 ¥5,000。7-11、地鐵都能加值。" },
-  { title: "明治神宮關門", body: "10 月約 16:40 停止入內。D2 已不排秋葉原，時間較充裕。" },
-  { title: "鎌倉颱風備案", body: "大雨改池袋/新宿室內 + 拉麵/咖啡，周遊券可改日（視票種規定）。" },
-  { title: "垃圾帶回", body: "街上垃圾桶少。便利店可丟小垃圾，公寓依房東分類。" },
-  { title: "不經東京車站", body: "這趟 N'EX 中野直達、轉乘用新宿/原宿/澀谷。不必特地去東京駅。" },
-  { title: "D4 泡湯準備", body: "帶毛巾或現場買；¥100 硬幣給置物櫃。泡完喝牛奶是儀式感。" },
-  { title: "D3 晚上", body: "鎌倉回來：ONE PIECE（需抽籤）→ 池袋あぶる → 回沼袋。西武搭各停。" },
-  { title: "訂位優先", body: "日山、Yoroniku、やまわらう、あぶる、澀谷 Sky、One Piece 抽籤——出發前依序處理。" },
-  { title: "沼袋交通", body: "西武新宿線急行不停沼袋；回住宿請搭各站停車。中野徒歩約 18 分。" },
-  { title: "拍照禮儀", body: "鎌倉高校前勿站馬路中央；神社與電車內避免擋路架腳架。" }
+  { title: "去程改 17:05", body: "SL394 改為 17:05 起飛、21:25 抵成田（易遊網 10/23 通知，需回覆同意）。D1 只剩入境、移動、宵夜、休息。" },
+  { title: "兩段住宿", body: "10/24-10/27 沼袋（退房 11:00）；10/27-10/30 上野・入谷（入住 15:00、退房 10:00）。" },
+  { title: "依天氣排", body: "10/24-26 雨 → 室內為主；10/28 本週最晴 → 河口湖；10/29 曇 → 鎌倉江之島；10/30 雨 → 百貨地下街。出發前一晚再看 tenki.jp。" },
+  { title: "輕井澤（候選，不計入預算）", body: "暫不排入。若 10/29 鎌倉下雨可改輕井澤 Outlet（室內多）：上野 10:39 はくたか → 11:36，約 ¥5,390 起；川上庵 本店午餐。" },
+  { title: "10:00 出門・21:00 休息", body: "每天 10:00 出門（河口湖日 08:30），21:00 前後回住處；夜生活都標「可選」。" },
+  { title: "沼袋交通", body: "西武新宿線急行不停沼袋，請搭各站停車；轉乘多在高田馬場。" },
+  { title: "免費託運「無」", body: "伴手禮多就在泰國獅航官網先加購。" },
+  { title: "現金", body: "大統領、たきおか、新日の基都只收現金。帶 ¥30,000-40,000。" },
+  { title: "訂位優先", body: "河口湖巴士 10/28（08:15-08:35）→ Yoroniku（7 天前收取消費） → 太昌園 → 新日の基（當日 14:00 後電話）→ 焼肉やまだ（電話）→ SHIBUYA SKY 10/27 當天買。" }
 ];
 
 const researchSources = [
   { type: "Official", title: "SHIBUYA SKY 官網", url: "https://www.shibuya-sky.com/", takeaways: ["需提前線上購票與時段入場。", "日落時段最熱門，建議出發前兩週關注開賣。"] },
   { type: "Official", title: "明治神宮 參拜案內", url: "https://www.meijijingu.or.jp/", takeaways: ["開門 5:00-6:40（依月而异），關門 16:30-18:30。", "10 月日落早，安排 16:40 前離開較穩。"] },
-  { type: "Transport", title: "小田急 江之島・鎌倉周遊券", url: "https://www.odakyu.jp/", takeaways: ["含小田急往返與江之電不限次。", "價格每年調整，出發前再確認。"] },
-  { type: "Transport", title: "JR East N'EX", url: "https://www.jreast.co.jp/", takeaways: ["成田 ↔ 中野有 N'EX 直達。", "可購指定席；返程 D5 建議預留 3 小時到機場。"] },
+  
+  { type: "Transport", title: "京成 Skyliner", url: "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/", takeaways: ["成田 ↔ 日暮里／上野。", "返程 D7 13:20，預留 3 小時到機場。"] },
   { type: "Guide", title: "GO TOKYO 官方旅遊", url: "https://www.gotokyo.org/", takeaways: ["東京官方活動與區域介紹。", "可補週邊營業時間與活動。"] },
   { type: "Area", title: "鎌倉市観光", url: "https://www.kamakura-info.jp/", takeaways: ["鶴岡八幡宮、小町通、江之電路線。", "週末人潮多，早出發。"] }
 ];
@@ -901,58 +1290,37 @@ const researchSources = [
 
 const preDepartureGroups = [
   {
-    phase: "出發 14 天前",
+    phase: "10/23 晚上",
     items: [
-      { id: "passport-14d", title: "護照效期 ≥ 6 個月", detail: "SL394/395 姓名拼音與護照一致；影本存雲端。" },
-      { id: "insurance-14d", title: "海外旅遊保險", detail: "醫療、班機延誤、行李；確認鎌倉戶外活動是否理賠。" },
-      { id: "esim-14d", title: "預訂日本 eSIM / 漫遊", detail: "落地要能開 Google Maps、Tabelog、Instagram 查店。" },
-      { id: "sky-14d", title: "設鬧鐘：澀谷 Sky 開賣", detail: "10/10 前後搶 10/24 17:00-18:30 日落時段。" },
-      { id: "lionair-14d", title: "泰國獅航行李加購", detail: "確認 SL394/395 托運公斤數；超重先在官網買。" }
+      { id: "ticket-d0", title: "回覆易遊網同意 SL394 17:05", detail: "抵達 21:25 NRT T1N；4 人同班。" },
+      { id: "fuji-d0", title: "訂 10/28 河口湖高速巴士來回", detail: "去 08:15-08:35、回 15:45-16:15（現在就訂）。" },
+      { id: "yoroniku-d0", title: "訂 10/25 Yoroniku／10/27 太昌園", detail: "訂不到用備案。" },
+      { id: "baggage-d0", title: "加購託運行李", detail: "泰國獅航官網。" },
+      { id: "cash-d0", title: "日幣 ¥30,000-40,000", detail: "居酒屋只收現金。" }
     ]
   },
   {
-    phase: "出發 3 天前",
+    phase: "10/24 出發當天",
     items: [
-      { id: "restaurant-3d", title: "訂餐廳：やまわらう／Yoroniku／あぶる／日山", detail: "D2 午餐涮涮鍋、D2 晚 Yoroniku、D3 晚あぶる、D4 午日山（週日休）。" },
-      { id: "onepiece-3d", title: "確認 ONE PIECE BASE 抽籤結果", detail: "App BASE CREW；10/25 新宿丸井本館 4F 入場時段。" },
-      { id: "weather-3d", title: "看 10/25 鎌倉天氣", detail: "大雨改 One Piece + 池袋あぶる／Sunshine City。" },
-      { id: "housing-3d", title: "聯絡公寓入住", detail: "ギャラリー平和の森館 101：沼袋徒歩3分；西武請搭各停。" },
-      { id: "suica-3d", title: "確認 Suica 可加值", detail: "iPhone 錢包綁定或準備實體卡。" },
-      { id: "cash-3d", title: "兌換 ¥20,000-30,000", detail: "小店、神社、部分拉麵只收現金。" }
-    ]
-  },
-  {
-    phase: "出發當天",
-    items: [
-      { id: "address-day", title: "住宿地址日文截圖", detail: "新井4-26-2 ギャラリー平和の森館101；Maps https://maps.app.goo.gl/atNgDQb1A8BMatWv7" },
-      { id: "offline-day", title: "Google Maps 離線地圖", detail: "沼袋、中野、秋葉原、表参道、澀谷、鎌倉、池袋、人形町。" },
-      { id: "ics-day", title: "下載本頁 .ics", detail: "Sky、One Piece、日山、あぶる、14:00 出發。" },
-      { id: "flight-day", title: "SL394 12:10 起飛", detail: "提前 2.5-3 小時到桃園。" },
-      { id: "apps-day", title: "下載 App", detail: "Maps、Tabelog、ONE PIECE BASE、Japan Travel。" }
+      { id: "address-day", title: "兩間住宿日文地址截圖", detail: "中野區新井4-26-2 101／台東區北上野2-23-2。" },
+      { id: "late-day", title: "告訴房東 Shiryu 會深夜入住", detail: "約 00:00-00:30；搬家日問 Yoshi 能否提早寄放行李。" },
+      { id: "flight-day", title: "14:00 到桃園 T1", detail: "SL394 17:05 起飛。" }
     ]
   }
 ];
 
 const checklistItems = [
-  { id: "housing", title: "確認公寓入住與退房", detail: "平和の森館101；沼袋徒歩3分；西武各停（急行不停）。" },
-  { id: "yamawarau", title: "訂 D2 やまわらう 表参道午餐", detail: "明治神宮後表参道涮涮鍋。" },
-  { id: "yoroniku", title: "訂 D2 Yoroniku 晚餐", detail: "澀谷 Sky 後；備選もとむら／Uobei。" },
-  { id: "onepiece", title: "ONE PIECE BASE 抽籤", detail: "App BASE CREW；10/25 新宿丸井本館 4F。" },
-  { id: "aburu", title: "訂 D3 燒肉あぶる。池袋", detail: "鎌倉＋One Piece 後晚餐。" },
-  { id: "hiyama", title: "訂 D4 日山壽喜燒午餐", detail: "人形町；週日休，務必訂 10/26。" },
-  { id: "shibuya-sky", title: "預約 10/24 澀谷 Sky", detail: "官網搶日落時段。" },
-  { id: "kamakura-pass", title: "記 10/25 買鎌倉周遊券", detail: "新宿小田急；查天氣。" },
-  { id: "akihabara", title: "秋葉原購物清單（僅 D1）", detail: "宇奈とと後 20:30 起；之後不再回。" },
-  { id: "onsen-d4", title: "查 D4 光明泉／中野湯田公休", detail: "10/26 週一；刺青規定、¥100 硬幣。" },
-  { id: "passport", title: "檢查護照效期與機票姓名", detail: "SL394/395 與護照一致。" },
-  { id: "suica", title: "準備 Suica/Pasmo", detail: "機場或中野站加值。" },
-  { id: "nex-return", title: "D5 14:00 出發鬧鐘", detail: "17:25 起飛，15:30 前到 NRT。" },
-  { id: "insurance", title: "海外旅遊保險", detail: "醫療、班機延誤、行李。" },
-  { id: "cash", title: "準備日幣現金", detail: "¥20,000-30,000。" },
-  { id: "souvenir", title: "伴手禮 D5 早上補貨", detail: "中野站與百貨；機場最後補。" },
-  { id: "tabelog", title: "Tabelog 收藏主案店", detail: "やまわらう、Yoroniku、あぶる、日山。" },
-  { id: "powerbank", title: "行動電源與轉接頭", detail: "日本 100V；行動電源不可托運。" },
-  { id: "medicine", title: "常備藥", detail: "腸胃藥、止痛、OK 繃。" },
+  { id: "ticket", title: "4 人機票：去 10/24 SL394 17:05、回 10/30 SL395 17:25", detail: "去程時間異動需回覆同意。" },
+  { id: "stay1", title: "沼袋 10/24-10/27（HMPWSSD3ZE）", detail: "16:00 後入住、11:00 退房。" },
+  { id: "stay2", title: "上野入谷 10/27-10/30（HM5N242T99）", detail: "15:00 後入住、10:00 退房；Yoshi +81 80-3490-6745。" },
+  { id: "fuji-bus", title: "河口湖巴士 10/28", detail: "高速バスネット。" },
+  { id: "umbrella", title: "折傘＋防水外套", detail: "10/24-26、10/30 預報有雨。" },
+  { id: "yoroniku", title: "Yoroniku 10/25", detail: "每人 ¥15,000-21,500＋10%，7 天前起收取消費；備案 焼肉ライク／元ちゃん。" },
+  { id: "taishoen", title: "太昌園 10/27", detail: "備案 陽山道。" },
+  { id: "hinomoto", title: "新日の基 10/29", detail: "當日 14:00 後電話。" },
+  { id: "skyliner", title: "Skyliner 10/24 晚、10/30 13:20", detail: "線上買指定席。" },
+  { id: "suica", title: "Suica/Pasmo", detail: "iPhone 錢包或機場購買。" },
+  { id: "insurance", title: "旅遊保險 10/24-10/30", detail: "醫療、延誤、行李。" }
 ];
 
 const state = { activeDay: itinerary[0].id, activeFilter: "all", activeStopKey: null };
