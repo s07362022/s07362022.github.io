@@ -45,3 +45,4 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 - [Trip map](./trip-map.md) covers the overview map and the seven day maps.
 - [Transit guide](./transit-guide.md) covers the airport tutorial toggle and a route diagram.
 - [Food and night](./food-and-night.md) covers restaurant cards, night cards, and collapse or expand.
+- [Meals](./meals.md) covers each day's main pick and backup, and catches drift from `tokyo-food.md`.

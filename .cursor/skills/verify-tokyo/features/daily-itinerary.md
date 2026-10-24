@@ -36,6 +36,6 @@ Preconditions:
 - The mobile quick nav and the side nav both contain `每日行程`. Drive the side nav link `.nav-links a[href='#itinerary']` at 1280×900.
 - `button[data-day]` accessible names include the whole day title. Use `data-day` rather than the visible title string.
 - A stop image that 404s is removed by `onerror`, so a missing thumbnail is not visible. The asset HTTP check is the proof.
-- The detail pane's `預約清單` link points at `#prep`, and no element has that id. The section is `#prep-briefing`. The drive records `#prep` and does not treat any other missing anchor as allowed.
+- The detail pane's `預約清單` link points at `#prep-briefing`. A missing in-page anchor fails the drive.
 - The hero background is the Shibuya scramble file `images/shibuya.jpg`, not a separate `images/hero.jpg`.
 - Filtering does not change which day tab is active. Stay on `d2` before asserting the empty `泡湯` state.

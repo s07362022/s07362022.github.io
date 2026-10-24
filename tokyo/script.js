@@ -317,7 +317,9 @@ const itinerary = [
         "booking": "—",
         "note": "—",
         "place": "表参道ヒルズ",
-        "image": "images/takeshita.jpg"
+        "image": "images/takeshita.jpg",
+        "meal": "午",
+        "context": "竹下通與表參道 Hills 仍可逛。"
       },
       {
         "time": "15:00",
@@ -346,7 +348,8 @@ const itinerary = [
         "transit": "—",
         "booking": "Tabelog 預約。",
         "note": "—",
-        "place": "焼肉 よろにく"
+        "place": "焼肉 よろにく",
+        "meal": "晚"
       },
       {
         "time": "20:30",
@@ -396,7 +399,7 @@ const itinerary = [
     "id": "d3",
     "date": "10/26（一）",
     "title": "全日室內：池袋 Sunshine City → 秋葉原 → 新宿",
-    "summary": "預報整天雨（90%、約 16mm），全排室內：池袋 Sunshine 水族館＋展望台、秋葉原電玩街，晚上新宿思い出横丁。",
+    "summary": "預報整天雨（90%、約 16mm），全排室內：池袋 Sunshine 水族館＋展望台、秋葉原電玩街，晚上到新宿用餐。",
     "stats": [
       "室內日",
       "水族館",
@@ -424,12 +427,27 @@ const itinerary = [
         "status": "planned",
         "price": "水族館 ¥2,600-3,200",
         "route": "池袋東口 → 地下通道",
-        "eta": "約 3.5 小時（含午餐）",
+        "eta": "約 3.5 小時",
         "description": "水族館秋冬平日 10:00-18:00；ALPA 內有 Pokémon Center MEGA TOKYO、扭蛋店。",
         "transit": "—",
         "booking": "水族館官網可預約日時。",
         "note": "https://sunshinecity.jp/aquarium/ticket/",
         "place": "サンシャインシティ"
+      },
+      {
+        "time": "12:30",
+        "title": "午餐",
+        "category": "food",
+        "status": "planned",
+        "price": "—",
+        "route": "池袋站周邊",
+        "eta": "約 40 分",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "池袋",
+        "meal": "午"
       },
       {
         "time": "14:30",
@@ -459,7 +477,8 @@ const itinerary = [
         "booking": "不訂位。",
         "note": "https://shinjuku-omoide.com/",
         "place": "新宿 思い出横丁",
-        "image": "images/shinjuku.jpg"
+        "image": "images/shinjuku.jpg",
+        "meal": "晚"
       },
       {
         "time": "雨備",
@@ -584,7 +603,9 @@ const itinerary = [
         "transit": "—",
         "booking": "—",
         "note": "—",
-        "place": "アメ横商店街"
+        "place": "アメ横商店街",
+        "meal": "午",
+        "context": "這段仍可逛アメ横。"
       },
       {
         "time": "15:00",
@@ -640,7 +661,8 @@ const itinerary = [
         "transit": "—",
         "booking": "Tabelog 訂位。",
         "note": "—",
-        "place": "焼肉上野太昌園 本店"
+        "place": "焼肉上野太昌園 本店",
+        "meal": "晚"
       },
       {
         "time": "20:30",
@@ -737,7 +759,8 @@ const itinerary = [
         "transit": "—",
         "booking": "不訂位。",
         "note": "https://www.houtou-fudou.jp/",
-        "place": "ほうとう不動 東恋路店"
+        "place": "ほうとう不動 東恋路店",
+        "meal": "午"
       },
       {
         "time": "15:45",
@@ -765,7 +788,8 @@ const itinerary = [
         "transit": "—",
         "booking": "—",
         "note": "https://tabelog.com/tokyo/A1311/A131101/13016740/",
-        "place": "大統領 上野"
+        "place": "大統領 上野",
+        "meal": "晚"
       },
       {
         "time": "20:45",
@@ -830,12 +854,27 @@ const itinerary = [
         "price": "免費",
         "route": "鎌倉駅東口",
         "eta": "約 2.5 小時",
-        "description": "小町通吃吃喝喝當午餐。",
+        "description": "參拜與參道。",
         "transit": "—",
         "booking": "—",
         "note": "—",
         "place": "鶴岡八幡宮",
         "image": "images/kamakura.jpg"
+      },
+      {
+        "time": "12:30",
+        "title": "午餐",
+        "category": "food",
+        "status": "planned",
+        "price": "—",
+        "route": "鎌倉・江之島",
+        "eta": "約 50 分",
+        "description": "—",
+        "transit": "—",
+        "booking": "—",
+        "note": "—",
+        "place": "鎌倉",
+        "meal": "午"
       },
       {
         "time": "13:45",
@@ -878,7 +917,8 @@ const itinerary = [
         "transit": "—",
         "booking": "當日 14:00 後電話 03-3214-8021。",
         "note": "https://tabelog.com/tokyo/A1301/A130102/13006216/",
-        "place": "新日の基 有楽町"
+        "place": "新日の基 有楽町",
+        "meal": "晚"
       },
       {
         "time": "20:15",
@@ -961,7 +1001,8 @@ const itinerary = [
         "transit": "—",
         "booking": "—",
         "note": "只收現金；午餐 11:00–15:00。",
-        "place": "とんかつ山家 上野店"
+        "place": "とんかつ山家 上野店",
+        "meal": "午"
       },
       {
         "time": "13:20",
@@ -1030,8 +1071,8 @@ const tripGeoOverview = {
 const tripDayMaps = [
   { day: "D1", date: "10/24", color: "#c4a574", title: "深夜抵達・沼袋", route: ["nrt", "ueno", "nakano"], note: "SL394 21:25 抵達；Skyliner → 日暮里 → 高田馬場 → 沼袋" },
   { day: "D2", date: "10/25", color: "#2d6a4f", title: "明治神宮・原宿・澀谷", route: ["nakano", "harajuku", "shibuya", "nakano"], note: "神宮 + 表參道逛街 + 澀谷；Yoroniku 燒肉" },
-  { day: "D3", date: "10/26", color: "#4a6fa5", title: "雨天室內：池袋・秋葉原", route: ["nakano", "ikebukuro", "akihabara", "shinjuku", "nakano"], note: "Sunshine 水族館 + 秋葉原 + 思い出横丁" },
-  { day: "D4", date: "10/27", color: "#8b6f4e", title: "搬家・アメ横・淺草", route: ["nakano", "ueno", "asakusa", "ueno"], note: "11:00 退房；15:00 入谷入住；太昌園燒肉" },
+  { day: "D3", date: "10/26", color: "#4a6fa5", title: "雨天室內：池袋・秋葉原", route: ["nakano", "ikebukuro", "akihabara", "shinjuku", "nakano"], note: "Sunshine 水族館 + 秋葉原 + 新宿晚餐" },
+  { day: "D4", date: "10/27", color: "#8b6f4e", title: "搬家・アメ横・淺草", route: ["nakano", "ueno", "asakusa", "ueno"], note: "11:00 退房；15:00 入谷入住；上野燒肉" },
   { day: "D5", date: "10/28", color: "#b5543c", title: "富士山・河口湖", route: ["ueno", "shinjuku", "fuji", "shinjuku", "ueno"], note: "上野 → JR 新宿 → Busta 巴士；本週最晴" },
   { day: "D6", date: "10/29", color: "#6b4c9a", title: "鎌倉・江之島・有樂町", route: ["ueno", "kamakura", "enoshima", "yurakucho", "ueno"], note: "新日の基 鮮魚居酒屋" },
   { day: "D7", date: "10/30", color: "#2c5282", title: "返程 SL395", route: ["ueno", "nrt"], note: "13:20 Skyliner → 17:25 起飛 → 20:20 抵台" }
@@ -1164,7 +1205,7 @@ const routeDiagrams = [
   { day: "D1", title: "成田 NRT → 沼袋（深夜）", line: "nex", steps: [ { label: "NRT T1", sub: "21:25 抵達", icon: "✈" }, { label: "Skyliner", sub: "22:20/22:40 末班 23:00", icon: "🚄" }, { label: "日暮里", sub: "轉山手線", icon: "🟢" }, { label: "高田馬場", sub: "轉西武各停", icon: "🚃" }, { label: "沼袋", sub: "徒歩 3 分", icon: "🏠", hub: true } ], tips: ["急行不停沼袋", "趕不上就計程車"] },
   { day: "D2", title: "沼袋 → 原宿 → 澀谷", line: "yamanote", steps: [ { label: "沼袋", sub: "10:00", icon: "🏠", hub: true }, { label: "原宿", sub: "明治神宮", icon: "⛩" }, { label: "表參道", sub: "逛街", icon: "🛍" }, { label: "澀谷", sub: "PARCO", icon: "🌃" } ], tips: ["Yoroniku 需訂位", "のんべい横丁可選"] },
   { day: "D3", title: "沼袋 → 池袋 → 秋葉原 → 新宿（室內）", line: "yamanote", steps: [ { label: "池袋", sub: "Sunshine", icon: "🐠" }, { label: "秋葉原", sub: "GiGO", icon: "🎮" }, { label: "新宿", sub: "思い出横丁", icon: "🏮" } ], tips: ["地下通道少淋雨", "全日雨備"] },
-  { day: "D4", title: "沼袋 → 上野（搬家）→ 淺草", line: "local", steps: [ { label: "沼袋", sub: "11:00 退房", icon: "🧳" }, { label: "上野", sub: "寄放・アメ横", icon: "🛍" }, { label: "入谷", sub: "15:00 入住", icon: "🏠", hub: true }, { label: "淺草", sub: "淺草寺", icon: "⛩" } ], tips: ["計程車搬行李最省力", "太昌園燒肉"] },
+  { day: "D4", title: "沼袋 → 上野（搬家）→ 淺草", line: "local", steps: [ { label: "沼袋", sub: "11:00 退房", icon: "🧳" }, { label: "上野", sub: "寄放・アメ横", icon: "🛍" }, { label: "入谷", sub: "15:00 入住", icon: "🏠", hub: true }, { label: "淺草", sub: "淺草寺", icon: "⛩" } ], tips: ["計程車搬行李最省力", "上野燒肉"] },
   { day: "D5", title: "上野 → 新宿 → 河口湖（巴士）", line: "odakyu", steps: [ { label: "上野", sub: "08:30 山手線", icon: "🏠", hub: true }, { label: "バスタ新宿", sub: "08:15-08:35", icon: "🚌" }, { label: "河口湖", sub: "大石公園", icon: "🗻" }, { label: "上野", sub: "大統領", icon: "🏮" } ], tips: ["上午富士最清楚", "來回巴士先訂"] },
   { day: "D6", title: "上野 → 鎌倉 → 江之島 → 有樂町", line: "odakyu", steps: [ { label: "上野", sub: "10:00", icon: "🏠", hub: true }, { label: "鎌倉", sub: "八幡宮", icon: "⛩" }, { label: "江之島", sub: "江之電・夕陽", icon: "🌊" }, { label: "有樂町", sub: "新日の基", icon: "🍶" } ], tips: ["東京站轉橫須賀線", "日比谷線直回入谷"] },
   { day: "D7", title: "上野 → 成田（返程）", line: "nex", steps: [ { label: "入谷", sub: "10:00 前退房", icon: "🧳" }, { label: "京成上野", sub: "13:20 Skyliner", icon: "🚄" }, { label: "NRT T1", sub: "SL395 17:25", icon: "✈" } ], tips: ["15:00 前到機場", "20:20 抵台"] }
@@ -1222,33 +1263,12 @@ const taiwanPrep = [
   { title: "禮儀提醒", label: "重要", body: "電車內不講電話、垃圾隨身帶回、排隊靠左（大阪靠右，東京樓梯靠左為多）。" }
 ];
 
-const foodList = [
-  { title: "焼肉 よろにく（Yoroniku）", area: "表參道／南青山", price: "每人 ¥15,000-21,500＋10%", bestFor: "D2 燒肉晚餐（需訂位）", source: "https://tabelog.com/", map: "焼肉 よろにく 南青山" },
-  { title: "牛かつもとむら 渋谷", area: "澀谷", price: "約 ¥1,500-2,500", bestFor: "D2 備案", source: "https://motomura.jp/", map: "牛かつもとむら 渋谷" },
-  { title: "ほうとう不動", area: "河口湖", price: "約 ¥1,200-1,500", bestFor: "D5 河口湖午餐", source: "https://www.houtou-fudou.jp/", map: "ほうとう不動 東恋路店" },
-  { title: "思い出横丁 串燒", area: "新宿", price: "約 ¥2,500-4,500", bestFor: "D3 晚餐居酒屋", source: "https://shinjuku-omoide.com/", map: "思い出横丁" },
-  { title: "焼肉上野太昌園 本店", area: "上野", price: "約 ¥6,000-8,000", bestFor: "D4 燒肉晚餐", source: "https://tabelog.com/yakiniku/tokyo/A1311/rank/", map: "焼肉上野太昌園 本店" },
-  { title: "焼肉陽山道 上野広小路店", area: "上野", price: "約 ¥6,000-8,000", bestFor: "D4 燒肉備案（全席個室）", source: "https://tabelog.com/yakiniku/tokyo/A1311/rank/", map: "焼肉陽山道 上野広小路店" },
-  { title: "淺草 仲見世小吃", area: "淺草", price: "約 ¥300-800", bestFor: "D4 下午點心", source: "https://www.senso-ji.jp/", map: "仲見世通り" },
-  { title: "サンシャインシティ 飲食街", area: "池袋", price: "約 ¥1,000-2,000", bestFor: "D3 雨天午餐", source: "https://sunshinecity.jp/", map: "サンシャインシティ" },
-  { title: "松坂屋上野店 地下美食", area: "上野", price: "依店", bestFor: "D7 伴手禮", source: "https://www.matsuzakaya.co.jp/ueno/", map: "松坂屋上野店" },
-  { title: "大統領（アメ横）", area: "上野", price: "約 ¥2,000-3,000", bestFor: "D5 河口湖回來晚餐", source: "https://tabelog.com/tokyo/A1311/A131101/13016740/", map: "大統領 上野6-10-14" },
-  { title: "鎌倉小町通小吃", area: "鎌倉", price: "約 ¥500-1,500", bestFor: "D6 午餐散步", source: "https://www.kamakura-info.jp/", map: "鎌倉 小町通" },
-  { title: "ホルモン焼肉 縁 中野店", area: "中野（沼袋旁）", price: "90分食べ放題 ¥4,180-6,380", bestFor: "D1-D3 高CP燒肉", source: "https://www.ensyouji.co.jp/", map: "ホルモン焼肉 縁 中野" },
-  { title: "炭火焼肉 元ちゃん 新宿東口", area: "西武新宿 3 分", price: "¥3,480-3,980（含 3H 飲み放題）", bestFor: "D2-D3；西武線直回沼袋", source: "https://www.hotpepper.jp/strJ000651960/", map: "炭火焼肉 元ちゃん 新宿東口" },
-  { title: "天龍 新宿東口店", area: "西武新宿 0 分", price: "¥2,800-3,980 食べ放題", bestFor: "D2-D3 包廂", source: "https://www.hotpepper.jp/SA11/G008/g080/dncLT0089/U012/", map: "天龍 新宿東口店" },
-  { title: "焼肉ライク 上野店", area: "上野広小路", price: "¥1,000-2,000", bestFor: "D4-D7 一人一爐", source: "https://www.yakiniku-like.com/", map: "焼肉ライク 上野店" },
-  { title: "焼肉 やまだ", area: "上野広小路", price: "約 ¥4,000-6,000", bestFor: "D4-D6（只接電話預約）", source: "https://uyamaresort.com/column/ueno-yakiniku/", map: "焼肉 やまだ 上野" },
-  { title: "ホルモン本舗 炎 上野駅前店", area: "JR上野 1 分", price: "¥3,000-4,000", bestFor: "24 小時宵夜", source: "https://uyamaresort.com/column/ueno-yakiniku/", map: "ホルモン本舗 炎 上野駅前店" },
-  { title: "焼肉陽山道 上野本店 平日午餐", area: "御徒町", price: "午餐 ¥1,000-2,000", bestFor: "D4-D7 平日午餐 CP 最強", source: "https://tabelog.com/tokyo/A1311/A131101/13016717/", map: "焼肉陽山道 上野本店" },
-  { title: "たおや（銅鑼燒）", area: "阿佐ヶ谷", price: "約 ¥300-600", bestFor: "D2 10/25（週一二休、現金）", source: "https://www.elle.com/jp/gourmet/gourmet-restaurants-events/g71517719/ranking2026-2606/", map: "たおや 阿佐ヶ谷" },
-  { title: "新日の基（Andy's）", area: "有樂町", price: "約 ¥4,000-5,000", bestFor: "D6 晚餐鮮魚居酒屋（週日休）", source: "https://tabelog.com/tokyo/A1301/A130102/13006216/", map: "新日の基 有楽町2-4-4" }
-];
+/** Restaurant choices are read from tokyo-food.md. Do not copy shop names into a second list. */
 
 const nightList = [
   { title: "澀谷 のんべい横丁", type: "小酒館巷", hours: "約 18:00-深夜", price: "1 杯約 ¥600-1,000", route: "D2 澀谷", source: "https://www.gotokyo.org/", note: "店小，一兩杯就換。" },
   { title: "SHIBUYA SKY", type: "展望台", hours: "依預約時段", price: "約 ¥2,700-3,400", route: "D4 10/27 晴天傍晚", source: "https://www.shibuya-sky.com/", note: "當天看天氣再買。" },
-  { title: "新宿 思い出横丁", type: "串燒居酒屋", hours: "多數 17:00-24:00", price: "約 ¥2,500-4,500", route: "D3 室內日晚餐", source: "https://shinjuku-omoide.com/", note: "晚餐兼夜生活。" },
+  { title: "新宿 思い出横丁", type: "小巷", hours: "多數 17:00-24:00", price: "依店", route: "D3 晚餐在這條巷", source: "https://shinjuku-omoide.com/", note: "要吃哪一家看美食清單，這裡不另選店。" },
   { title: "新宿ゴールデン街", type: "小酒吧街", hours: "約 20:00-深夜", price: "席料＋1 杯約 ¥1,000-2,000", route: "D3 可選", source: "https://www.gotokyo.org/", note: "看清楚座位費。" },
   { title: "淺草 ホッピー通り", type: "燉煮露天酒場", hours: "白天-22:00 前後", price: "約 ¥1,500-3,000", route: "D4 淺草", source: "https://www.gotokyo.org/", note: "淺草寺西側。" },
   { title: "立飲み たきおか", type: "立飲み", hours: "07:00-23:30", price: "約 ¥1,000-2,000", route: "D5 上野", source: "https://tabelog.com/tokyo/A1311/A131101/13024952/", note: "Cash-on，帶零錢。" },
@@ -1398,7 +1418,7 @@ function renderTimeline() {
     return `
       <article class="timeline-item">
         <div class="time-block">${stop.time}</div>
-        <button class="stop-card ${state.activeStopKey === key ? "active" : ""}" type="button" data-stop="${key}">
+        <button class="stop-card ${state.activeStopKey === key ? "active" : ""}" type="button" data-stop="${key}" ${stop.meal ? `data-meal="${day.date}|${stop.meal}"` : ""}>
           ${stop.image ? `<img class="stop-thumb" src="${stop.image}" alt="${stop.title}圖片" loading="lazy" onerror="this.remove()" />` : ""}
           <h4>${stop.title}</h4>
           <p>${stop.description}</p>
@@ -1432,9 +1452,10 @@ function renderInspector() {
   elements.detailTransit.textContent = stop.transit;
   elements.detailBooking.textContent = stop.booking;
   elements.detailNote.textContent = stop.note;
+  const mapHref = stop.mapUrl || mapUrl(stop.place || "");
   elements.detailActions.innerHTML = `
-    <a class="button primary" href="${mapUrl(stop.place)}" target="_blank" rel="noopener noreferrer">Google 地圖</a>
-    <a class="button" href="#prep">預約清單</a>
+    <a class="button primary" href="${escapeHtml(mapHref)}" target="_blank" rel="noopener noreferrer">Google 地圖</a>
+    <a class="button" href="#prep-briefing">預約清單</a>
   `;
 }
 
@@ -1787,19 +1808,178 @@ function renderTaiwanGrid() {
   `);
 }
 
-function renderFoodGrid() {
-  renderCardGrid(elements.foodGrid, foodList, (item) => `
-    <article class="info-card">
-      <h3>${item.title}</h3>
-      <p>${item.area}</p>
-      <p><strong>${item.price}</strong></p>
-      <span>${item.bestFor}</span>
-      <div class="card-actions">
-        <a href="${item.source}" target="_blank" rel="noopener noreferrer">來源</a>
-        <a href="${mapUrl(item.map)}" target="_blank" rel="noopener noreferrer">地圖</a>
-      </div>
-    </article>
-  `);
+/**
+ * Escape text for HTML attributes and body content.
+ * @param {unknown} value
+ * @returns {string}
+ */
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+/**
+ * Parse the curated restaurant table in tokyo-food.md.
+ * @param {string} markdown
+ * @returns {Array<{date: string, slot: string, role: string, name: string, url: string, kind: string, price: string, google: string, hours: string, note: string, mapUrl: string}>}
+ */
+function parseFoodMarkdown(markdown) {
+  return markdown.split(/\n/).flatMap((line) => {
+    if (!line.startsWith("|") || line.includes("---")) return [];
+    const cells = line.split("|").slice(1, -1).map((cell) => cell.trim());
+    if (cells.length < 9 || cells[0] === "日期") return [];
+    const nameMatch = cells[3].match(/\[([^\]]+)\]\(([^)]+)\)/);
+    const mapMatch = cells[8].match(/\[地圖\]\(([^)]+)\)/);
+    const note = cells[8].replace(/；?\[地圖\]\([^)]+\)/g, "").trim();
+    const url = nameMatch ? nameMatch[2] : "";
+    return [{
+      date: cells[0],
+      slot: cells[1],
+      role: cells[2],
+      name: nameMatch ? nameMatch[1] : cells[3],
+      url,
+      kind: cells[4],
+      price: cells[5],
+      google: cells[6],
+      hours: cells[7],
+      note,
+      mapUrl: mapMatch ? mapMatch[1] : (url.includes("google.com/maps") ? url : "")
+    }];
+  });
+}
+
+/**
+ * Find one curated row.
+ * @param {ReturnType<typeof parseFoodMarkdown>} rows
+ * @param {string} date
+ * @param {string} slot
+ * @param {string} role
+ * @returns {ReturnType<typeof parseFoodMarkdown>[number] | undefined}
+ */
+function findFoodRow(rows, date, slot, role) {
+  return rows.find((row) => row.date === date && row.slot === slot && row.role === role);
+}
+
+/**
+ * Fill meal stops and the booking reminders from the curated rows.
+ * @param {ReturnType<typeof parseFoodMarkdown>} rows
+ * @returns {void}
+ */
+function applyFoodRows(rows) {
+  itinerary.forEach((day) => {
+    day.stops.forEach((stop) => {
+      if (!stop.meal) return;
+      const main = findFoodRow(rows, day.date, stop.meal, "主選");
+      const backup = findFoodRow(rows, day.date, stop.meal, "備案");
+      if (!main) return;
+      const label = stop.meal === "午" ? "午餐" : "晚餐";
+      stop.title = backup ? `${label}：${main.name}（備案 ${backup.name}）` : `${label}：${main.name}`;
+      stop.category = "food";
+      stop.price = main.price;
+      stop.place = main.name;
+      stop.mapUrl = main.mapUrl;
+      stop.booking = main.note || "—";
+      stop.note = `營業 ${main.hours}。Google ${main.google}`;
+      const parts = [];
+      if (stop.context) parts.push(stop.context);
+      parts.push(`主選：${main.name}，${main.kind}，${main.price}，${main.hours}。${main.note}`);
+      if (backup) {
+        parts.push(`備案：${backup.name}，${backup.kind}，${backup.price}，${backup.hours}。${backup.note}`);
+      }
+      stop.description = parts.join("");
+    });
+  });
+
+  const dinner25 = findFoodRow(rows, "10/25（日）", "晚", "主選");
+  const backup25 = findFoodRow(rows, "10/25（日）", "晚", "備案");
+  const dinner27 = findFoodRow(rows, "10/27（二）", "晚", "主選");
+  const backup27 = findFoodRow(rows, "10/27（二）", "晚", "備案");
+  const preItem = preDepartureGroups[0]?.items.find((item) => item.id === "yoroniku-d0");
+  if (preItem && dinner25 && backup25 && dinner27 && backup27) {
+    preItem.detail = `${dinner25.name} 訂不到改 ${backup25.name}；${dinner27.name} 訂不到改 ${backup27.name}。`;
+  }
+  const yoronikuItem = checklistItems.find((item) => item.id === "yoroniku");
+  if (yoronikuItem && dinner25 && backup25) {
+    yoronikuItem.detail = `${dinner25.price}；${dinner25.note}；備案 ${backup25.name}。`;
+  }
+  const taishoenItem = checklistItems.find((item) => item.id === "taishoen");
+  if (taishoenItem && dinner27 && backup27) {
+    taishoenItem.title = `${dinner27.name} 10/27`;
+    taishoenItem.detail = `${dinner27.note}；備案 ${backup27.name}。`;
+  }
+}
+
+/**
+ * Render the restaurant section from curated rows.
+ * @param {ReturnType<typeof parseFoodMarkdown>} rows
+ * @returns {void}
+ */
+function renderFoodFromRows(rows) {
+  if (!elements.foodGrid) return;
+  if (!rows.length) {
+    elements.foodGrid.innerHTML = `<p class="empty-state">美食清單沒有載入。請確認 tokyo-food.md 有跟著頁面一起提供。</p>`;
+    return;
+  }
+  elements.foodGrid.innerHTML = rows.map((row) => {
+    const mapHref = row.mapUrl || mapUrl(row.name);
+    return `
+      <article class="info-card" data-food-date="${escapeHtml(row.date)}" data-food-slot="${escapeHtml(row.slot)}" data-food-role="${escapeHtml(row.role)}">
+        <h3>${escapeHtml(row.name)}</h3>
+        <p>${escapeHtml(row.date)} ${escapeHtml(row.slot)} · ${escapeHtml(row.role)}</p>
+        <p>${escapeHtml(row.kind)}</p>
+        <p><strong>${escapeHtml(row.price)}</strong></p>
+        <span>${escapeHtml(row.hours)}</span>
+        <p>${escapeHtml(row.note)}</p>
+        <div class="card-actions">
+          ${row.url ? `<a href="${escapeHtml(row.url)}" target="_blank" rel="noopener noreferrer">來源</a>` : ""}
+          <a href="${escapeHtml(mapHref)}" target="_blank" rel="noopener noreferrer">地圖</a>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+/**
+ * Load tokyo-food.md, then draw the page. Restaurant names are not stored in this script.
+ * @returns {Promise<void>}
+ */
+async function boot() {
+  let rows = [];
+  try {
+    const response = await fetch("tokyo-food.md");
+    if (!response.ok) {
+      throw new Error(String(response.status));
+    }
+    rows = parseFoodMarkdown(await response.text());
+    applyFoodRows(rows);
+  } catch {
+    rows = [];
+  }
+  render();
+  renderRouteGrid();
+  renderTripHub();
+  renderTripDayTrees();
+  renderTransitTutorials();
+  renderTransitMaps();
+  renderRouteDiagrams();
+  renderTransitTips();
+  renderBudgetGrid();
+  renderTaiwanGrid();
+  renderFoodFromRows(rows);
+  renderNightGrid();
+  renderTips();
+  renderSources();
+  renderReminderList();
+  renderPreDeparture();
+  renderChecklist();
+  hydrateNotes();
+  bindEvents();
+  initFoldSections();
+  initNavHighlight();
+  updateOfflineStatus("線上版；可下載 .ics 行事曆", true);
 }
 
 function renderNightGrid() {
@@ -1984,25 +2164,4 @@ function render() {
   renderInspector();
 }
 
-render();
-renderRouteGrid();
-renderTripHub();
-renderTripDayTrees();
-renderTransitTutorials();
-renderTransitMaps();
-renderRouteDiagrams();
-renderTransitTips();
-renderBudgetGrid();
-renderTaiwanGrid();
-renderFoodGrid();
-renderNightGrid();
-renderTips();
-renderSources();
-renderReminderList();
-renderPreDeparture();
-renderChecklist();
-hydrateNotes();
-bindEvents();
-initFoldSections();
-initNavHighlight();
-updateOfflineStatus("線上版；可下載 .ics 行事曆", true);
+boot();

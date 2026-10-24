@@ -4,7 +4,7 @@ Food and night lists restaurants and evening stops inside collapsible sections. 
 
 ## Sub-features
 
-- `food-open` shows the Yoroniku card in the restaurant list.
+- `food-open` shows the よろにく card from `tokyo-food.md`.
 - `night-open` shows the Shibuya alley card in the night list.
 - `folds-collapse` hides both lists.
 - `folds-expand` shows both lists again.
@@ -21,12 +21,12 @@ Preconditions:
 
 - Doctor reports `ok: true` for `http://127.0.0.1:8765/tokyo/index.html`.
 - The viewport is 1280×900, so `#food` and `#night` start open.
-- The restaurant data includes `焼肉 よろにく（Yoroniku）` and the night data includes `澀谷 のんべい横丁`.
+- `tokyo-food.md` includes a row whose shop name is `よろにく`, and the night data includes `澀谷 のんべい横丁`.
 
-- **Open restaurants.** Choose `餐廳`. Run `python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive food-and-night`. The helper clicks `.nav-links a[href='#food']`. A heading `焼肉 よろにく（Yoroniku）` is visible in `#foodGrid`.
+- **Open restaurants.** Choose `餐廳`. Run `python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive food-and-night`. The helper clicks `.nav-links a[href='#food']`. A heading `よろにく` is visible in `#foodGrid`.
 - **Read night.** The heading `澀谷 のんべい横丁` is visible in `#nightGrid`.
 - **Collapse.** Choose `全部收合`. The helper clicks `#collapseAllFolds`. `#food` and `#night` are closed, and the Yoroniku heading is not visible.
-- **Expand.** Choose `全部展開`. The helper clicks `#expandAllFolds`. `#food` is open and the Yoroniku heading is visible again.
+- **Expand.** Choose `全部展開`. The helper clicks `#expandAllFolds`. `#food` is open and the `よろにく` heading is visible again.
 - **Proof.** `/tmp/verify-tokyo-evidence/food-and-night/` contains `01-food-open.png`, `02-night-open.png`, and `checks.json`.
 
 ## Gotchas
