@@ -40,10 +40,10 @@ FEATURES = (
     "trip-map",
     "transit-guide",
     "food-and-night",
+    "meals",
 )
-# Pre-existing in-page link. The inspector "預約清單" button points here;
-# the section id is prep-briefing. Asset checks still fail on anything else.
-KNOWN_BROKEN_ANCHORS = {"#prep"}
+# In-page anchors that are allowed to miss. Empty: #prep was retargeted to #prep-briefing.
+KNOWN_BROKEN_ANCHORS: set[str] = set()
 ASSET_RE = re.compile(r"images/[A-Za-z0-9_.-]+\.(?:jpg|jpeg|png|webp|svg)")
 
 
@@ -238,6 +238,8 @@ def run_feature(page, feature: str, evidence: Path) -> list[str]:
         return drive_transit_guide(page, evidence)
     if feature == "food-and-night":
         return drive_food_and_night(page, evidence)
+    if feature == "meals":
+        return drive_meals(page, evidence)
     fail(f"unknown feature {feature}")
     return []
 
@@ -388,20 +390,108 @@ def drive_food_and_night(page, evidence: Path) -> list[str]:
     """Read restaurant and night cards, then collapse and expand the sections."""
     notes = []
     page.locator(".nav-links a[href='#food']").click()
-    page.locator("#foodGrid").get_by_role("heading", name="焼肉 よろにく（Yoroniku）").wait_for()
+    page.locator("#foodGrid").get_by_role("heading", name="よろにく", exact=True).wait_for()
     page.locator("#nightGrid").get_by_role("heading", name="澀谷 のんべい横丁").wait_for()
     page.locator("#food").screenshot(path=str(evidence / "01-food-open.png"))
     page.locator("#collapseAllFolds").click()
     page.wait_for_function("() => document.querySelector('#food')?.open === false")
     page.wait_for_function("() => document.querySelector('#night')?.open === false")
-    if page.locator("#foodGrid").get_by_role("heading", name="焼肉 よろにく（Yoroniku）").is_visible():
+    if page.locator("#foodGrid").get_by_role("heading", name="よろにく", exact=True).is_visible():
         fail("food cards stayed visible after collapse")
     page.locator("#expandAllFolds").click()
     page.wait_for_function("() => document.querySelector('#food')?.open === true")
-    page.locator("#foodGrid").get_by_role("heading", name="焼肉 よろにく（Yoroniku）").wait_for()
+    page.locator("#foodGrid").get_by_role("heading", name="よろにく", exact=True).wait_for()
     page.locator("#night").screenshot(path=str(evidence / "02-night-open.png"))
     notes.append("food and night cards hide when collapsed and return when expanded")
     return notes
+
+
+def drive_meals(page, evidence: Path) -> list[str]:
+    """Open several days and prove each rendered meal matches tokyo-food.md."""
+    notes = []
+    page.wait_for_selector("#foodGrid [data-food-role='主選']")
+    rows = parse_food_markdown(http_text("/tokyo/tokyo-food.md"))
+    if len(rows) < 11:
+        fail(f"tokyo-food.md parsed to {len(rows)} rows")
+    page.locator(".nav-links a[href='#food']").click()
+    page.locator("#food").screenshot(path=str(evidence / "01-food-list.png"))
+    notes.append(f"food grid rendered from {len(rows)} markdown rows")
+    sample_dates = ["10/25（日）", "10/26（一）", "10/27（二）"]
+    for index, date in enumerate(sample_dates, start=2):
+        show_day_meals(page, date)
+        page.locator("#itinerary").screenshot(path=str(evidence / f"0{index}-day-{date[:5].replace('/', '')}.png"))
+        notes.append(f"screenshot {date} meals")
+    mismatches = meal_mismatches(page, rows)
+    if mismatches:
+        fail("food drift: " + "; ".join(mismatches))
+    notes.append("every markdown restaurant is on its day timeline and in the food grid")
+    return notes
+
+
+def show_day_meals(page, date: str) -> None:
+    """Select a day tab and the restaurant filter."""
+    page.locator(".nav-links a[href='#itinerary']").click()
+    page.locator("button[data-day]", has_text=date).click()
+    page.locator("button[data-filter='food']").click()
+    page.locator("#timeline").wait_for()
+
+
+def meal_mismatches(page, rows: list[dict[str, str]]) -> list[str]:
+    """Return rows whose shop name is missing from the food grid or that day's timeline."""
+    cards = page.eval_on_selector_all(
+        "#foodGrid [data-food-role]",
+        """elements => elements.map((el) => ({
+          date: el.getAttribute('data-food-date'),
+          slot: el.getAttribute('data-food-slot'),
+          role: el.getAttribute('data-food-role'),
+          name: el.querySelector('h3')?.textContent?.trim() || ''
+        }))""",
+    )
+    problems = []
+    for row in rows:
+        matched = any(
+            card["date"] == row["date"]
+            and card["slot"] == row["slot"]
+            and card["role"] == row["role"]
+            and card["name"] == row["name"]
+            for card in cards
+        )
+        if not matched:
+            problems.append(f"grid missing {row['date']} {row['slot']} {row['role']} {row['name']}")
+    dates = []
+    for row in rows:
+        if row["date"] not in dates:
+            dates.append(row["date"])
+    for date in dates:
+        show_day_meals(page, date)
+        timeline = page.locator("#timeline").inner_text()
+        for row in rows:
+            if row["date"] != date:
+                continue
+            if row["name"] not in timeline:
+                problems.append(f"timeline missing {date} {row['slot']} {row['role']} {row['name']}")
+    return problems
+
+
+def parse_food_markdown(text: str) -> list[dict[str, str]]:
+    """Parse restaurant rows from tokyo-food.md. Independent of the page parser."""
+    rows = []
+    for line in text.splitlines():
+        if not line.startswith("|") or "---" in line:
+            continue
+        cells = [cell.strip() for cell in line.split("|")[1:-1]]
+        if len(cells) < 9 or cells[0] == "日期":
+            continue
+        name_match = re.search(r"\[([^\]]+)\]\(([^)]+)\)", cells[3])
+        rows.append(
+            {
+                "date": cells[0],
+                "slot": cells[1],
+                "role": cells[2],
+                "name": name_match.group(1) if name_match else cells[3],
+            }
+        )
+    return rows
 
 
 def check_referenced_assets() -> dict[str, object]:

@@ -1,6 +1,6 @@
 ---
 name: verify-tokyo
-description: "Drive the Tokyo 2026 static itinerary (tokyo/index.html on the GitHub Pages site) in a desktop browser the way a traveler does. Use when changing the Tokyo page, checking its images, links, or local notes, or proving a user path before shipping."
+description: "Drive the Tokyo 2026 static itinerary (tokyo/index.html on the GitHub Pages site) in a desktop browser the way a traveler does. Use when changing the Tokyo page, its restaurant list in tokyo-food.md, images, links, or local notes, or proving a user path before shipping."
 ---
 
 # Verify Tokyo
@@ -59,6 +59,7 @@ python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive pre-departure
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive trip-map
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive transit-guide
 python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive food-and-night
+python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive meals
 ```
 
 The script opens `http://127.0.0.1:8765/tokyo/index.html` in headless Chrome at 1280×900 with a new context, so desktop fold sections start open and storage is empty. Chrome is launched with `--no-sandbox` and `--disable-dev-shm-usage` because this environment's sandbox cannot start otherwise. Recipes and selectors live in `features/`. Stable handles are `data-day`, `data-filter`, `data-stop`, `data-pre`, `data-check`, and the section ids. Prefer those over coordinates.
@@ -71,7 +72,8 @@ Proof is written to `/tmp/verify-tokyo-evidence/<feature>/`. Cleanup must not de
 
 - Screenshots show the page before the user action and the state after it. The Tokyo title or a section heading is in the shot.
 - `checks.json` records the feature id, assertion notes, console errors, page errors, same-origin failures, external failures, asset results, and missing in-page anchors.
-- A passing drive has no console errors, no page errors, no same-origin 404s, and no missing anchors other than the known `#prep` inspector link.
+- A passing drive has no console errors, no page errors, no same-origin 404s, and no missing in-page anchors. The inspector link `預約清單` points at `#prep-briefing`.
+- `drive meals` parses `tokyo/tokyo-food.md` on its own and fails if any shop name, meal, or role is missing from `#foodGrid` or from that day's restaurant filter.
 - Mutation proof for notes is a reload, then the checkbox and textarea values. Calendar proof is the downloaded `tokyo-departure-pack.ics` file, which must contain `BEGIN:VCALENDAR` and `SL394`.
 - Broken images are not proof by their absence: `script.js` removes an image on `onerror`. Trust the asset HTTP check.
 
