@@ -1,4 +1,4 @@
-/** Local images (see images/ + download_images.py). Works offline & on GitHub Pages. */
+/** Local images in images/. Works offline and on GitHub Pages. */
 const IMAGES = {
   narita: "images/narita.jpg",
   akihabara: "images/akihabara.jpg",
@@ -6,10 +6,7 @@ const IMAGES = {
   shibuya: "images/shibuya.jpg",
   kamakura: "images/kamakura.jpg",
   enoshima: "images/enoshima.jpg",
-  yanaka: "images/yanaka.jpg",
-  koenji: "images/koenji.jpg",
   takeshita: "images/takeshita.jpg",
-  kamakuraHigh: "images/kamakuraHigh.jpg",
   metroZh: "images/metroZh.png",
   yamanote: "images/yamanote.png",
   greaterTokyo: "images/greaterTokyo.png",
@@ -17,10 +14,6 @@ const IMAGES = {
   suica: "images/suica.png",
   ticketGate: "images/ticketGate.jpg",
   shinjuku: "images/shinjuku.jpg",
-  onsen: "images/onsen.jpg",
-  ticketMachine: "images/ticketMachine.jpg",
-  naritaStation: "images/naritaStation.jpg",
-  hero: "images/hero.jpg",
 };
 const mapUrl = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
@@ -239,7 +232,7 @@ const itinerary = [
         "booking": "上飛機前先線上買 Skyliner 指定席。",
         "note": "錯過末班：計程車固定車資每台約 ¥23,500-38,500（≈¥25,000 起），4 大人＋行李要 2 台或預約 Jumbo Taxi。",
         "place": "京成 成田空港駅",
-        "image": "images/naritaStation.jpg"
+        "image": "images/narita.jpg"
       },
       {
         "time": "00:15",
@@ -1054,13 +1047,13 @@ const transitTutorials = [
         step: 1,
         title: "入境後找 JR 指標",
         body: "跟著「Railway / 鉄道」→「京成 Keisei / Skyliner」往下到 B1。",
-        image: IMAGES.naritaStation
+        image: IMAGES.narita
       },
       {
         step: 2,
         title: "買 Skyliner 指定席 + Suica",
         body: "最好上飛機前就線上買好 Skyliner（22:20／22:40，末班約 23:00）。Suica 用 iPhone 錢包或機場購買 Welcome Suica。",
-        image: IMAGES.ticketMachine
+        image: IMAGES.ticketGate
       },
       {
         step: 3,

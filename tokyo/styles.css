@@ -192,7 +192,7 @@ img {
   color: #fff8ed;
   background:
     linear-gradient(90deg, rgba(28, 33, 30, 0.86), rgba(28, 33, 30, 0.62)),
-    url("images/hero.jpg") center / cover;
+    url("images/shibuya.jpg") center / cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
