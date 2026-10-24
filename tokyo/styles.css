@@ -25,6 +25,7 @@ html {
 
 body {
   margin: 0;
+  overflow-wrap: anywhere;
   color: var(--ink);
   background:
     radial-gradient(ellipse 80% 50% at 10% 0%, rgba(196, 165, 116, 0.12), transparent 50%),
@@ -946,12 +947,17 @@ textarea {
 }
 
 @media (max-width: 680px) {
-  .workspace {
-    padding: 14px 14px 88px;
+  html {
+    scroll-padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
 
-  .mobile-quick-nav {
-    display: grid;
+  .workspace {
+    padding: 14px 14px calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .inspector {
+    scroll-margin-top: 12px;
+    scroll-margin-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
 
   .side-panel {
@@ -1049,7 +1055,7 @@ textarea {
 
 .route-diagram-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 16px;
 }
 
@@ -1190,7 +1196,7 @@ textarea {
 
 .transit-map-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 16px;
 }
 
@@ -1408,6 +1414,12 @@ textarea {
 .mobile-quick-nav a.is-active {
   background: rgba(196, 165, 116, 0.28);
   color: #fff6e8;
+}
+
+@media (max-width: 680px) {
+  .mobile-quick-nav {
+    display: grid;
+  }
 }
 
 .hub-edge {
