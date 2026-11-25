@@ -1,6 +1,6 @@
 # Meals
 
-Meals shows each day's main restaurant and backup from `tokyo-food.md` on the restaurant list and on that day's timeline. The page does not keep a second copy of those shop names.
+Meals shows each day's main restaurant and backup from `tokyo-food.md` on the restaurant list and on that day's timeline. `script.js` still keeps older placeholder names, and those are what the timeline shows if that file does not load.
 
 ## Sub-features
 
@@ -20,7 +20,7 @@ Preconditions:
 - Doctor reports `ok: true` for `http://127.0.0.1:8765/tokyo/index.html`.
 - The viewport is 1280×900.
 - `GET /tokyo/tokyo-food.md` returns the curated table, including `もつ焼き ウッチャン 新宿思い出横丁` and `焼肉上野太昌園 上野駅前店`.
-- Day tabs exist only after the page has fetched that file.
+- Day tabs come from the itinerary in `script.js`. They still appear when `tokyo-food.md` fails to load. A filled `#foodGrid` is what shows the file loaded.
 
 - **Open the list.** Choose `餐廳`. Run `python3 .cursor/skills/verify-tokyo/scripts/verify-tokyo.py drive meals`. The helper waits for `#foodGrid [data-food-role='主選']`.
 - **Read a few days.** Choose `10/25（日）`, `10/26（一）`, and `10/27（二）`, then `餐廳`. Each `#timeline` contains that day's main pick and backup from the markdown.
