@@ -33,7 +33,7 @@ Preconditions:
 
 ## Gotchas
 
-- The mobile quick nav and the side nav both contain `每日行程`. Drive the side nav link `.nav-links a[href='#itinerary']` at 1280×900.
+- The side nav label is `每日行程`. The mobile quick nav label is `行程`. Drive the side nav link `.nav-links a[href='#itinerary']` at 1280×900.
 - `button[data-day]` accessible names include the whole day title. Use `data-day` rather than the visible title string.
 - A stop image that 404s is removed by `onerror`, so a missing thumbnail is not visible. The asset HTTP check is the proof.
 - The detail pane's `預約清單` link points at `#prep-briefing`. A missing in-page anchor fails the drive.
